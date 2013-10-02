@@ -1,0 +1,6 @@
+"3.7 (created: 2013/04/03 18:20:07)
+
+map <Leader>q <Esc>:q<CR>
+" vim: set ft=vimperator:
+
+echo "Vimperator up and running!"
