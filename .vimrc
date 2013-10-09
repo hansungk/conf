@@ -142,6 +142,7 @@ set tags+=/home/stephen/.vim/tags/cpp
 map <C-F11> :!ctags -R --sort=yes --c++-kinds=+pl --fields=+iaS --extra=+q .<CR>
 
 """ CONVENIENCE
+set title " Why is this not default?
 set tabstop=4 " SO PRO
 set shiftwidth=4 " SO PRO
 set showcmd " Show pressed keys
