@@ -1,5 +1,5 @@
-if [ -f /etc/bash_completion ]; then
-	    . /etc/bash_completion
+if [ -f /etc/bash.bashrc ]; then
+	    . /etc/bash.bashrc
 fi
 alias ls='ls --group-directories-first --time-style=+"%d.%m.%Y %H:%M" --color=auto'
 alias ll='ls -l --group-directories-first --time-style=+"%d.%m.%Y %H:%M" --color=auto'
@@ -44,33 +44,6 @@ export QT_IM_MODULE=ibus
 export EDITOR=vim
 export VISUAL=vim
 alias vi=vim
-
-# PS1 customizing
-GREEN=$'\e[1;32m'
-RED=$'\e[1;31m'
-BLUE=$'\e[1;34m'
-PURPLE=$'\e[1;35m'
-GRAY=$'\e[1;30m'
-RS=$'\e[0m'
-
-#OK=$'\342\234\224'		# Check sign
-OK='>'
-#ERROR=$'\342\234\227'	# X sign
-ERROR='x'
-
-get_exit_status() {
-	EXIT=$?
-	if [ ${EXIT} -eq 0 ] ; then
-		echo ''
-	else
-		echo ${RED}[${EXIT}]' '
-	fi
-}
-
-# If you use double quotes, all variables will be expanded at this stage and will not be updated (thus $? is always 0)"
-# With $'~'(note the dollar sign), all escape sequences EXCEPT \e will not be expanded.
-# Use \[ and \] around non-printing sequences (such as color-changers) to prevent the bash display from being garbled up.
-export PS1='\[$(get_exit_status)\]\[${GREEN}\]\u \[${RS}\]:: \[${BLUE}\]\w \[${RS}\]:: \[${PURPLE}\]\t\[${GRAY}\]\n> \[${RS}\]'
 
 # Startup scripts
 stty -ixon # Disable C-S suspension
