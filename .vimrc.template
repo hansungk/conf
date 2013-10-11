@@ -1,6 +1,6 @@
-source ~/dotfiles.git/_vimrc
+source ~/dotfiles.git/.vimrc
 nmap <Leader>v :e ~/.vimrc<CR>
-nmap <Leader><S-v> :e ~/dotfiles.git/_vimrc<CR>
+nmap <Leader><S-v> :e ~/dotfiles.git/.vimrc<CR>
 
 " This computer specific
 nmap <C-S> :w<CR>
