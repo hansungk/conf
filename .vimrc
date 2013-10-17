@@ -155,7 +155,6 @@ let g:solarized_termcolors=256
 if has("gui_running")
     " GVIM Specific
 	set lines=40
-    set guifont=DejaVu\ Sans\ Mono\ Book\ 10
     set guioptions-=T
     set guioptions-=R
     set guioptions-=L
