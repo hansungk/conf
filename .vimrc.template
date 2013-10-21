@@ -5,12 +5,5 @@ nmap <Leader><S-v> :e ~/dotfiles.git/.vimrc<CR>
 " This computer specific
 nmap <C-S> :w<CR>
 
-" Colorscheme settings
-if has("gui_running")
-    " GVIM Specific
-	set background=dark
-	colorscheme solarized
-else
-    " Terminal specific
-    colorscheme default
-endif
+" Terminal specific
+colorscheme default

@@ -151,20 +151,9 @@ set showcmd " Show pressed keys
 "autocmd InsertEnter * set cursorline
 "autocmd InsertLeave * set nocursorline
 
-let g:solarized_termcolors=256
 if has("gui_running")
-    " GVIM Specific
-	set lines=40
-    set guioptions-=T
-    set guioptions-=R
-    set guioptions-=L
-    "set guioptions-=m
-    set guicursor+=a:blinkon0 " Disable cursor blinking
-	set background=dark
-	colorscheme default
-	syntax on
+    " .gvimrc
 else
-	set mouse=a
     " Terminal specific
     set t_Co=256 " For vim terminals
     colorscheme default
