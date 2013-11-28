@@ -40,7 +40,9 @@ syntax on
 filetype plugin indent on
 set autoindent
 set nocompatible
+set noswapfile
 set nu
+set wildmenu
 set backupdir=~/.vim/tmp,.
 set directory=~/.vim/tmp,.
 
