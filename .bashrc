@@ -35,6 +35,9 @@ ex ()
 }
 
 ### USER EDITED AREA
+# Tell gnome-terminal
+export TERM=xterm-256color
+
 # Input module setup
 export GTK_IM_MODULE=ibus
 export XMODIFIERS=@im=ibus
@@ -47,3 +50,6 @@ alias vi=vim
 
 # Startup scripts
 stty -ixon # Disable C-S suspension
+
+# Fancy prompt
+. /home/stephen/bin/fancyprompt
