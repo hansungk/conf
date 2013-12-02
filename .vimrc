@@ -23,6 +23,7 @@ Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-fireplace'
 Bundle 'scrooloose/nerdtree'
 Bundle 'guns/vim-clojure-static'
+Bundle 'Lokaltog/powerline'
 " Bundle 'dag/vim2hs'
 " Bundle 'kana/vim-filetype-haskell'
 " Bundle 'lukerandall/haskellmode-vim'
@@ -34,6 +35,7 @@ Bundle 'guns/vim-clojure-static'
 
 let NERDTreeQuitOnOpen=1
 let g:haddock_browser = "/usr/bin/firefox"
+set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim " For powerline
 
 """ ESSENTIAL
 syntax on
@@ -148,7 +150,8 @@ set title " Why is this not default?
 set tabstop=4 " SO PRO
 set shiftwidth=4 " SO PRO
 set showcmd " Show pressed keys
-"set laststatus=2 " Always display statusline
+set laststatus=2 " Always display statusline
+set noshowmode " Powerline shows instead
 
 "autocmd InsertEnter * set cursorline
 "autocmd InsertLeave * set nocursorline
