@@ -1,9 +1,16 @@
-""" PLUGINS
-"" Pathogen
+" vim:fdm=marker
+" .vimrc
+" Author: Stephen Kim <stephen422@gmail.com>
+" Source: https://github.com/stephen422/dotfiles.git
+" Reference: YouTube "A Whirlwind Tour of my Vimrc" / " http://bitbucket.org/sjl/dotfiles
+
+" PLUGINS {{{
+
+" Pathogen {{{
 "execute pathogen#infect()
 "execute pathogen#helptags()
-
-"" Vundle
+" }}}
+" Vundle {{{
 filetype off " required by Vundle
 let os = substitute(system('uname'), "\n", "", "")
 if has('win32') || has('win64') " running on windows
@@ -15,9 +22,8 @@ else
 	call vundle#rc()
 endif
 
-" Own Vundle
-Bundle 'gmarik/vundle'
 " GitHub repos
+Bundle 'gmarik/vundle'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-fireplace'
@@ -32,24 +38,53 @@ Bundle 'Lokaltog/powerline'
 "Bundle 'git://git.wincent.com/command-t.git'
 " git repos on your local machine (ie. when working on your own plugin)
 "Bundle 'file:///Users/gmarik/path/to/plugin'
-
+" }}}
+" NERDTree {{{
 let NERDTreeQuitOnOpen=1
+" }}}
+" Haddock {{{
 let g:haddock_browser = "/usr/bin/firefox"
+" }}}
+" Powerline {{{
 set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim " For powerline
+" }}}
 
-""" ESSENTIAL
+" }}}
+
+" ESSENTIAL {{{
 syntax on
 filetype plugin indent on
 set autoindent
+set autowrite
+set encoding=utf-8	" Not sure this will work well
+set hlsearch
+set listchars=tab:▸\ ,eol:¬,extends:>,precedes:<
 set nocompatible
-set noswapfile
 set nu
+set splitbelow
+set splitright
+set title		" Why is this not default?
+set visualbell	" Turns off that annoying beeps.
 set wildmenu
-set backupdir=~/.vim/tmp,.
-set directory=~/.vim/tmp,.
 
-""" KEY MAPPING
-" Avoid to Esc key
+" Tabs
+set tabstop=4
+set shiftwidth=4
+
+" Backups
+set undodir=~/.vim/tmp/undo,.
+set backupdir=~/.vim/tmp/backup,.
+set directory=~/.vim/tmp/swap,.
+set nobackup
+set noswapfile " It's 2013, Vim.
+
+" Automatas
+au FocusLost * :wa
+" }}}
+
+" KEY MAPPINGS {{{
+
+"" Attempts to avoid the Esc key
 "nnoremap <Tab> <Esc>
 "vnoremap <Tab> <Esc>gV
 "onoremap <Tab> <Esc>
@@ -59,31 +94,69 @@ set directory=~/.vim/tmp,.
 "cnoremap kj <Esc>
 "onoremap kj <Esc>
 "inoremap kj <Esc>
-" Save, Open, Close
+
+"" Save, Open, Close
 nmap <C-S>		<Esc>:w<CR>
 imap <C-S>		<Esc>:w<CR>
 nmap <C-Q>		<Esc>:q<CR>
 imap <C-Q>		<Esc>:q<CR>
 nmap <Leader>w	<Esc>:w<CR>
 nmap <Leader>q	<Esc>:q<CR>
-" Misc
-nmap ; :
-nmap <Leader>v :e $MYVIMRC<CR>
+
+"" Substitution
+nnoremap S <Esc>:%s/<C-r><C-w>/
+
+"" Folding
+nnoremap <Space> za
+nnoremap <S-Space> zA
+" Fold everything except where the cursor is located, and center it
+nnoremap <Leader>z zMzvzz
+
+"" Convenience
+nnoremap ; :
+nnoremap <tab> %
+" New find lines are always at the middle of the window
+nnoremap n nzz
+nnoremap N Nzz
+" Don't jump to next when star-searching
+nnoremap * *<C-o>
+" 'Strong' h/l
+noremap H ^
+noremap L g_
+" Emacs bindings in insert mode
+inoremap <C-a> <Esc>I
+inoremap <C-e> <Esc>A
+" Quick resizing
+nnoremap <C-left> 5<C-w>>
+nnoremap <C-right> 5<C-w><
+nnoremap <C-up> 5<C-w>+
+nnoremap <C-down> 5<C-w>-
+" Quick copying/pasting
+vnoremap <C-c> "*y
+inoremap <C-v> <Esc>"*pa
+" Opening .vimrc
+nnoremap <Leader>v :e $MYVIMRC<CR>
+" Source ( source: bitbucket.org/sjl/dotfiles/vim/vimrc )
+nnoremap <Leader>s :
+vnoremap <leader>S y:execute @@<cr>:echo 'Sourced selection.'<cr>
+nnoremap <leader>S ^vg_y:execute @@<cr>:echo 'Sourced line.'<cr>
+
 " CMake, Run, Errors 
-map <F7>		<Esc>:CMake<CR>
-map <F8>		<Esc>:Make<CR>
-map <S-F8>		<Esc>:call Togglecopen()<CR>
-map <S-F9>		<Esc>:Run<CR>
-map <F9>		<Esc>:Debug<CR><Z>
-map <C-C><C-C>	<Esc>:cc<CR>
-map <C-C><C-N>	<Esc>:cn<CR>
-map <C-C><C-P>	<Esc>:cn<CR>
+"map <F7>		<Esc>:CMake<CR>
+"map <F8>		<Esc>:Make<CR>
+"map <S-F8>		<Esc>:call Togglecopen()<CR>
+"map <S-F9>		<Esc>:Run<CR>
+"map <F9>		<Esc>:Debug<CR><Z>
+"map <C-C><C-C>	<Esc>:cc<CR>
+"map <C-C><C-N>	<Esc>:cn<CR>
+"map <C-C><C-P>	<Esc>:cn<CR>
 " NERDTree
 map <F4>		<Esc>:NERDTreeToggle<CR>
 imap <F4>		<Esc>:NERDTreeToggle<CR>
 
+" }}}
 
-""" USER COMMANDS
+" USER COMMANDS {{{
 command Make call s:make()
 command CMake call s:cmake()
 command Run call s:run()
@@ -138,28 +211,20 @@ function! Togglecopen()
 endfunction
 
 " Startup calls
-call s:updatecmakepaths()
+" call s:updatecmakepaths()
+" }}}
 
-""" CTAGS
-set tags+=/home/stephen/.vim/tags/cpp
-" Build tags for my own project with Ctrl-F12
-map <C-F11> :!ctags -R --sort=yes --c++-kinds=+pl --fields=+iaS --extra=+q .<CR>
-
-""" CONVENIENCE
-set title " Why is this not default?
-set tabstop=4 " SO PRO
-set shiftwidth=4 " SO PRO
+" CONVENIENCE {{{
 set showcmd " Show pressed keys
-set laststatus=2 " Always display statusline
-set noshowmode " Powerline shows instead
+set laststatus=2 " Always display statusline (especially useful for Powerline)
+set noshowmode " Powerline shows mode instead
 
 "autocmd InsertEnter * set cursorline
 "autocmd InsertLeave * set nocursorline
 
-if has("gui_running")
-    " .gvimrc
-else
+if !has("gui_running")
     " Terminal specific
     set t_Co=256 " For vim terminals
     colorscheme default
 endif
+" }}}
