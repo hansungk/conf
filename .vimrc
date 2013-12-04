@@ -9,7 +9,7 @@ let os = substitute(system('uname'), "\n", "", "")
 if has('win32') || has('win64') " running on windows
 	set rtp+=~/vimfiles/bundle/vundle/
 	set rtp+=$VIM/vimfiles/bundle/vundle/
-	call vundle#rc('$VIM/vimfiles/bundle/')
+	call vundle#rc('~/vimfiles/bundle/')
 else
 	set rtp+=~/.vim/bundle/vundle/
 	call vundle#rc()
