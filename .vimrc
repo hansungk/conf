@@ -36,6 +36,7 @@ Bundle 'Lokaltog/powerline'
 let NERDTreeQuitOnOpen=1
 let g:haddock_browser = "/usr/bin/firefox"
 set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim " For powerline
+set rtp+=/usr/share/lilypond/2.16.2/vim/ " For lilypond vim mode
 
 """ ESSENTIAL
 syntax on
