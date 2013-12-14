@@ -52,4 +52,4 @@ alias vi=vim
 stty -ixon # Disable C-S suspension
 
 # Fancy prompt
-. /home/stephen/bin/fancyprompt
+. /home/stephen/Binaries/fancyprompt.sh
