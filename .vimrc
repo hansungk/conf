@@ -48,6 +48,9 @@ let g:haddock_browser = "/usr/bin/firefox"
 " Powerline {{{
 set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim " For powerline
 " }}}
+" Lilypond {{{
+set rtp+=/usr/share/lilypond/2.16.2/vim/ " For lilypond vim mode
+" }}}
 
 " }}}
 
