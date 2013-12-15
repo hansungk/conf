@@ -30,6 +30,7 @@ Bundle 'tpope/vim-fireplace'
 Bundle 'scrooloose/nerdtree'
 Bundle 'guns/vim-clojure-static'
 Bundle 'Lokaltog/powerline'
+Bundle "tomasr/molokai"
 " Bundle 'dag/vim2hs'
 " Bundle 'kana/vim-filetype-haskell'
 " Bundle 'lukerandall/haskellmode-vim'
@@ -146,7 +147,7 @@ nnoremap <leader>S ^vg_y:execute @@<cr>:echo 'Sourced line.'<cr>
 
 " CMake, Run, Errors 
 "map <F7>		<Esc>:CMake<CR>
-"map <F8>		<Esc>:Make<CR>
+map <F8>		<Esc>:make<CR>
 "map <S-F8>		<Esc>:call Togglecopen()<CR>
 "map <S-F9>		<Esc>:Run<CR>
 "map <F9>		<Esc>:Debug<CR><Z>

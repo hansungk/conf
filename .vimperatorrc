@@ -3,4 +3,6 @@
 map <Leader>q <Esc>:q<CR>
 " vim: set ft=vimperator:
 
+nnoremap j <C-e><C-e><C-e><C-e><C-e>
+nnoremap k <C-y><C-y><C-y><C-y><C-y>
 echo "Vimperator up and running!"
