@@ -56,12 +56,14 @@ set rtp+=/usr/share/lilypond/2.16.2/vim/ " For lilypond vim mode
 " }}}
 
 " ESSENTIAL {{{
+
 syntax on
 filetype plugin indent on
 set autoindent
 set autowrite
 set encoding=utf-8	" Not sure this will work well
 set hlsearch
+set list
 set listchars=tab:▸\ ,eol:¬,extends:>,precedes:<
 set nocompatible
 set nu
@@ -84,6 +86,7 @@ set noswapfile " It's 2013, Vim.
 
 " Automatas
 au FocusLost * :wa
+
 " }}}
 
 " KEY MAPPINGS {{{
@@ -136,6 +139,7 @@ nnoremap <C-right> 5<C-w><
 nnoremap <C-up> 5<C-w>+
 nnoremap <C-down> 5<C-w>-
 " Quick copying/pasting
+nnoremap <Leader>p "0p
 vnoremap <C-c> "*y
 inoremap <C-v> <Esc>"*pa
 " Opening .vimrc
@@ -161,6 +165,7 @@ imap <F4>		<Esc>:NERDTreeToggle<CR>
 " }}}
 
 " USER COMMANDS {{{
+
 command Make call s:make()
 command CMake call s:cmake()
 command Run call s:run()
@@ -216,9 +221,11 @@ endfunction
 
 " Startup calls
 " call s:updatecmakepaths()
+
 " }}}
 
 " CONVENIENCE {{{
+
 set showcmd " Show pressed keys
 set laststatus=2 " Always display statusline (especially useful for Powerline)
 set noshowmode " Powerline shows mode instead
@@ -231,4 +238,5 @@ if !has("gui_running")
     set t_Co=256 " For vim terminals
     colorscheme default
 endif
+
 " }}}
