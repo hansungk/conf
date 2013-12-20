@@ -7,9 +7,9 @@ if [ -f /etc/bashrc ]; then
 	    . /etc/bashrc
 fi
 
-alias ls='ls --group-directories-first --time-style=+"%d.%m.%Y %H:%M" --color=auto'
-alias ll='ls -l --group-directories-first --time-style=+"%d.%m.%Y %H:%M" --color=auto'
-alias la='ls -la --group-directories-first --time-style=+"%d.%m.%Y %H:%M" --color=auto'
+alias ls='ls --group-directories-first --time-style=+"%Y.%m.%d %H:%M" --color=auto'
+alias ll='ls -l --group-directories-first --time-style=+"%Y.%m.%d %H:%M" --color=auto'
+alias la='ls -la --group-directories-first --time-style=+"%Y.%m.%d %H:%M" --color=auto'
 alias grep='grep --color=auto -d skip'
 alias cp="cp -i"                          # confirm before overwriting something
 alias df='df -h'                          # human-readable sizes
