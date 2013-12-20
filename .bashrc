@@ -1,6 +1,12 @@
+# Source global rc file first
 if [ -f /etc/bash.bashrc ]; then
 	    . /etc/bash.bashrc
 fi
+
+if [ -f /etc/bashrc ]; then
+	    . /etc/bashrc
+fi
+
 alias ls='ls --group-directories-first --time-style=+"%d.%m.%Y %H:%M" --color=auto'
 alias ll='ls -l --group-directories-first --time-style=+"%d.%m.%Y %H:%M" --color=auto'
 alias la='ls -la --group-directories-first --time-style=+"%d.%m.%Y %H:%M" --color=auto'
