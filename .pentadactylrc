@@ -1,0 +1,7 @@
+" Use h and l as tab switcher
+" Also corresponds with H and L
+nnoremap h gT
+nnoremap l gt
+
+" <C-j> as Open Downloads dialog
+nnoremap <C-j> :dialog downloads<CR>
