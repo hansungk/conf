@@ -1,2 +1,2 @@
-git clone https://github.com/gmarik/vundle.git /home/stephen/.vim/bundle/vundle
-cp /home/stephen/dotfiles.git/.vimrc.template /home/stephen/.vimrc
+git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+cp ~/dotfiles.git/.vimrc.template ~/.vimrc
