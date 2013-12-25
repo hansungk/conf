@@ -7,9 +7,10 @@ if [ -f /etc/bashrc ]; then
 	    . /etc/bashrc
 fi
 
-alias ls='ls --group-directories-first --time-style=+"%Y.%m.%d %H:%M" --color=auto'
-alias ll='ls -l --group-directories-first --time-style=+"%Y.%m.%d %H:%M" --color=auto'
-alias la='ls -la --group-directories-first --time-style=+"%Y.%m.%d %H:%M" --color=auto'
+alias l='ls -G'
+alias ls='ls -G'
+alias ll='ls -l -G'
+alias la='ls -la -G'
 alias grep='grep --color=auto -d skip'
 alias cp="cp -i"                          # confirm before overwriting something
 alias df='df -h'                          # human-readable sizes
@@ -58,4 +59,4 @@ alias vi=vim
 stty -ixon # Disable C-S suspension
 
 # Fancy prompt
-. /home/stephen/Binaries/fancyprompt.sh
+. /Users/stephen/Binaries/fancyprompt.sh
