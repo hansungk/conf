@@ -31,6 +31,7 @@ Bundle 'scrooloose/nerdtree'
 Bundle 'guns/vim-clojure-static'
 Bundle 'Lokaltog/powerline'
 Bundle "tomasr/molokai"
+Bundle 'jnurmine/Zenburn'
 " Bundle 'dag/vim2hs'
 " Bundle 'kana/vim-filetype-haskell'
 " Bundle 'lukerandall/haskellmode-vim'
@@ -51,7 +52,10 @@ let g:haddock_browser = "/usr/bin/firefox"
 set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim " For powerline
 " }}}
 " Lilypond {{{
-set rtp+=/usr/share/lilypond/2.16.2/vim/ " For lilypond vim mode
+" set rtp+=/usr/share/lilypond/2.16.2/vim/ " For lilypond vim mode
+" }}}
+" Paredit {{{
+set rtp+=~/.vim/bundle/paredit0912/
 " }}}
 
 " }}}
@@ -73,6 +77,7 @@ set smartcase	" Should be used with ignorecase on
 set splitbelow
 set splitright
 set title		" Why is this not default?
+set titleold=	" No more Thanks, vim
 set visualbell	" Turns off that annoying beeps.
 set wildmenu
 
