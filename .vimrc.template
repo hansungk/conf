@@ -4,6 +4,3 @@ nmap <Leader><S-v> :e ~/dotfiles.git/.vimrc<CR>
 
 " This computer specific
 nmap <C-S> :w<CR>
-
-" Terminal specific
-colorscheme default
