@@ -243,8 +243,9 @@ set noshowmode " Powerline shows mode instead
 
 if !has("gui_running")
     " Terminal specific
+	echo "Entering terminal mode!"
     set t_Co=256 " For vim terminals
-    colorscheme default
+    colorscheme zenburn
 endif
 
 " }}}
