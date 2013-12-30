@@ -35,10 +35,11 @@ Bundle "tomasr/molokai"
 " Bundle 'kana/vim-filetype-haskell'
 " Bundle 'lukerandall/haskellmode-vim'
 " vim-scripts repos
+" Bundle 'paredit'
 " non github repos
 "Bundle 'git://git.wincent.com/command-t.git'
 " git repos on your local machine (ie. when working on your own plugin)
-"Bundle 'file:///Users/gmarik/path/to/plugin'
+" Bundle 'file:///Users/stephen/Plugins/paredit0912'
 " }}}
 " NERDTree {{{
 let NERDTreeQuitOnOpen=1
@@ -63,10 +64,12 @@ set autoindent
 set autowrite
 set encoding=utf-8	" Not sure this will work well
 set hlsearch
+set ignorecase
 set list
 set listchars=tab:▸\ ,eol:¬,extends:>,precedes:<
 set nocompatible
 set nu
+set smartcase	" Should be used with ignorecase on
 set splitbelow
 set splitright
 set title		" Why is this not default?
