@@ -10,37 +10,37 @@
 "execute pathogen#infect()
 "execute pathogen#helptags()
 " }}}
-" Vundle {{{
-filetype off " required by Vundle
-let os = substitute(system('uname'), "\n", "", "")
-if has('win32') || has('win64') " running on windows
-	set rtp+=~/vimfiles/bundle/vundle/
-	set rtp+=$VIM/vimfiles/bundle/vundle/
-	call vundle#rc('~/vimfiles/bundle/')
-else
-	set rtp+=~/.vim/bundle/vundle/
-	call vundle#rc()
+" NeoBundle {{{
+filetype off " required by NeoBundle, maybe
+if has('vim_starting')
+	set nocompatible
+
+	if has('win32') || has('win64') " running on windows
+		set rtp+=~/vimfiles/bundle/neobundle.vim/
+		set rtp+=$VIM/vimfiles/bundle/neobundle.vim/
+		call neobundle#rc('~/vimfiles/bundle/')
+	else
+		set rtp+=~/.vim/bundle/neobundle.vim/
+		call neobundle#rc(expand('~/.vim/bundle/'))
+	endif
 endif
 
 " GitHub repos
-Bundle 'gmarik/vundle'
-Bundle 'altercation/vim-colors-solarized'
-Bundle 'tpope/vim-surround'
-Bundle 'tpope/vim-fireplace'
-Bundle 'scrooloose/nerdtree'
-Bundle 'guns/vim-clojure-static'
-Bundle 'Lokaltog/powerline'
-Bundle "tomasr/molokai"
-Bundle 'jnurmine/Zenburn'
-" Bundle 'dag/vim2hs'
-" Bundle 'kana/vim-filetype-haskell'
-" Bundle 'lukerandall/haskellmode-vim'
-" vim-scripts repos
-" Bundle 'paredit'
-" non github repos
-"Bundle 'git://git.wincent.com/command-t.git'
-" git repos on your local machine (ie. when working on your own plugin)
-" Bundle 'file:///Users/stephen/Plugins/paredit0912'
+NeoBundleFetch 'Shougo/neobundle.vim'
+
+NeoBundle 'altercation/vim-colors-solarized'
+NeoBundle 'tpope/vim-surround'
+NeoBundle 'tpope/vim-fireplace'
+NeoBundle 'scrooloose/nerdtree'
+NeoBundle 'guns/vim-clojure-static'
+NeoBundle 'Lokaltog/powerline'
+NeoBundle "tomasr/molokai"
+NeoBundle 'jnurmine/Zenburn'
+NeoBundle 'bitbucket:kovisoft/paredit'
+
+filetype plugin indent on	" Required!
+" Installation check.
+NeoBundleCheck
 " }}}
 " NERDTree {{{
 let NERDTreeQuitOnOpen=1
