@@ -152,7 +152,8 @@ nnoremap <Leader>p "0p
 vnoremap <C-c> "*y
 inoremap <C-v> <Esc>"*pa
 " Opening .vimrc
-nnoremap <Leader>v :e $MYVIMRC<CR>
+nmap <Leader>v :e ~/.vimrc<CR>
+nmap <Leader><S-v> :e ~/dotfiles.git/.vimrc<CR>
 " Source ( source: bitbucket.org/sjl/dotfiles/vim/vimrc )
 nnoremap <Leader>s :
 vnoremap <leader>S y:execute @@<cr>:echo 'Sourced selection.'<cr>
@@ -245,7 +246,7 @@ set noshowmode " Powerline shows mode instead
 if !has("gui_running")
     " Terminal specific
     set t_Co=256 " For vim terminals
-    colorscheme zenburn
+    colorscheme molokai
 endif
 
 " }}}
