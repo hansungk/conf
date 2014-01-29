@@ -50,7 +50,7 @@ let g:haddock_browser = "/usr/bin/firefox"
 " }}}
 " Powerline {{{
 set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim " For powerline
-let g:Powerline_symbols= 'fancy'
+let g:Powerline_symbols= 'unicode'
 " }}}
 " Lilypond {{{
 " set rtp+=/usr/share/lilypond/2.16.2/vim/ " For lilypond vim mode
