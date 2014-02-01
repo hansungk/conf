@@ -7,6 +7,7 @@ if [ -f /etc/bashrc ]; then
 	    . /etc/bashrc
 fi
 
+# Aliases
 alias l='ls -G'
 alias ls='ls -G'
 alias ll='ls -l -G'
@@ -16,6 +17,7 @@ alias cp="cp -i"                          # confirm before overwriting something
 alias df='df -h'                          # human-readable sizes
 alias free='free -m'                      # show sizes in MB
 alias v='vim'
+alias vi=vim
 
 # ex - archive extractor
 # usage: ex <file>
@@ -53,10 +55,12 @@ export QT_IM_MODULE=ibus
 # Vim stuff
 export EDITOR=vim
 export VISUAL=vim
-alias vi=vim
+
+# PATH generation
+export PATH=/home/stephen/bin:$PATH
 
 # Startup scripts
-stty -ixon # Disable C-S suspension
+#stty -ixon # Disable C-S suspension
 
 # Fancy prompt
-. /Users/stephen/Binaries/fancyprompt.sh
+. /home/stephen/bin/fancyprompt.sh
