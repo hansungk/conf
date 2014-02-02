@@ -19,19 +19,19 @@ set -g status-justify centre # center allign window list
 
 # Left side of status bar
 set -g status-left-length 25
-set -g status-left-bg colour238 #grey
-set -g status-left '  #[bold]#S  '
+set -g status-left-bg colour166 #orange
+set -g status-left '#[fg=white,bold] #h '
 
 # Right side of status bar
-set -g status-right '#[bg=colour236] #(date +%m.%d) #[bold]#(date +%H:%M) '
+set -g status-right '#[fg=white,bold]#[bg=brightblue] #(date +%m.%d) #(date +%H:%M) #[bg=blue] #S '
 
 ### Window lists
 
 # Inactive windows in status bar
-set-window-option -g window-status-format '#[bg=] #I:#W#F '
+set-window-option -g window-status-format '#[bg=blue,bold] #I#F#[bg=colour234] #W '
 
 # Current or active window in status bar
-set-window-option -g window-status-current-format '#[fg=green] (#[reset]#I:#W#F) '
+set-window-option -g window-status-current-format '#[bg=brightgreen,bold] #I#F#[bg=colour234] #W '
 
 ### Usability
 
