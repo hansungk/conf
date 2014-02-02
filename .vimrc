@@ -1,4 +1,4 @@
-" vim:fdm=marker
+" vim:foldmethod=marker
 " .vimrc
 " Author: Stephen Kim <stephen422@gmail.com>
 " Source: https://github.com/stephen422/dotfiles.git
@@ -6,10 +6,6 @@
 
 " PLUGINS {{{
 
-" Pathogen {{{
-"execute pathogen#infect()
-"execute pathogen#helptags()
-" }}}
 " NeoBundle {{{
 filetype off " required by NeoBundle, maybe
 if has('vim_starting')
@@ -37,6 +33,18 @@ NeoBundle 'Lokaltog/powerline'
 NeoBundle "tomasr/molokai"
 NeoBundle 'jnurmine/Zenburn'
 NeoBundle 'bitbucket:kovisoft/paredit'
+NeoBundle 'Shougo/vimproc', {
+      \ 'build' : {
+      \     'windows' : 'make -f make_mingw32.mak',
+      \     'cygwin' : 'make -f make_cygwin.mak',
+      \     'mac' : 'make -f make_mac.mak',
+      \     'unix' : 'make -f make_unix.mak',
+      \    },
+      \ }
+NeoBundle 'eagletmt/ghcmod-vim'
+NeoBundle 'eagletmt/neco-ghc'
+NeoBundle 'lukerandall/haskellmode-vim'
+"NeoBundle 'dag/vim2hs'
 
 filetype plugin indent on	" Required!
 " Installation check.
@@ -70,7 +78,7 @@ set autowrite
 set encoding=utf-8	" Not sure this will work well
 set hlsearch
 set ignorecase
-set list
+set nolist
 set listchars=tab:▸\ ,eol:¬,extends:>,precedes:<
 set nocompatible
 set nu
