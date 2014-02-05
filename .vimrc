@@ -1,4 +1,4 @@
-" vim:foldmethod=marker
+" vim:fdm=marker
 " .vimrc
 " Author: Stephen Kim <stephen422@gmail.com>
 " Source: https://github.com/stephen422/dotfiles.git
@@ -44,6 +44,7 @@ NeoBundle 'Shougo/vimproc', {
 NeoBundle 'eagletmt/ghcmod-vim'
 NeoBundle 'eagletmt/neco-ghc'
 NeoBundle 'lukerandall/haskellmode-vim'
+NeoBundle 'vim-scripts/haskell.vim'
 "NeoBundle 'dag/vim2hs'
 
 filetype plugin indent on	" Required!
