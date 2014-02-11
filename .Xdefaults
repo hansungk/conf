@@ -38,5 +38,6 @@ Xft.hintstyle:	hintslight
 
 ! urxvt configurations -------------------------------------------------------
 URxvt.scrollBar: false
-URxvt.font: xft:DejaVu Sans Mono:pixelsize=14
+!URxvt.font: xft:Inconsolata:size=12
+URxvt.font: xft:Terminus:pixelsize=12
 !URxvt.letterSpace: -1
