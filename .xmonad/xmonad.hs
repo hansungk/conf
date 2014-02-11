@@ -7,6 +7,7 @@ import XMonad
 
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageHelpers
+import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.UrgencyHook
 import XMonad.Hooks.InsertPosition
 import XMonad.Hooks.EwmhDesktops
@@ -28,17 +29,15 @@ main :: IO()
 --main = xmonad =<< statusBar myBar myPP toggleStrutsKey myConfig
 main = do
 	h <- spawnPipe myBar
-	xmonad myConfig
-	where
-		myConfig = defaultConfig { workspaces = ["code", "web", "3", "4", "5", "6", "7", "8", "9"]
-								 , modMask = mod4Mask
-								 , terminal = "urxvt"
-								 , borderWidth = 2
-								 , focusedBorderColor = (colLook Cyan 0)
-								 , normalBorderColor = (colLook Black 0)
-								 , layoutHook = myLayoutHook
-								 , logHook = myLogHook h
-								 }
+	xmonad $ defaultConfig	{ workspaces = ["code", "web", "3", "4", "5", "6", "7", "8", "9"]
+							, modMask = mod4Mask
+							, terminal = "urxvt"
+							, borderWidth = 2
+							, focusedBorderColor = (colLook Cyan 0)
+							, normalBorderColor = (colLook Black 0)
+							, layoutHook = myLayoutHook
+							, logHook = myLogHook h
+							}
 
 
 ------------------------------------------------------------------------------------------
@@ -65,7 +64,7 @@ myLogHook h = dynamicLogWithPP myPP
 
 ------------------------------------------------------------------------------------------
 -- Custom layoutHook
-myLayoutHook = spacing 7 $ Tall nmaster delta ratio
+myLayoutHook = avoidStruts (spacing 10 $ Tall nmaster delta ratio)
 	where 
 		-- The default number of windows in the master pane
 		nmaster = 1
