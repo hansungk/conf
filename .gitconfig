@@ -3,3 +3,8 @@
 	email = stephen422@gmail.com
 [push]
 	default = simple
+[alias]
+	a	= "add"
+	cm	= "commit"
+	l	= "log"
+	st	= "status --short"

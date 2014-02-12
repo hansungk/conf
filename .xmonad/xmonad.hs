@@ -54,7 +54,13 @@ myLogHook h = dynamicLogWithPP myPP
 							, ppHidden	= xmobarColor (colLook Green 1) "" . wrap " " " "
 							, ppHiddenNoWindows = xmobarColor (colLook Black 0) "" . wrap " " " "
 							, ppUrgent	= xmobarColor (colLook White 1) "" . wrap "[" "]"
-							, ppLayout	= xmobarColor (colLook Green 1) "" -- . (\x -> "<icon=/home/stephen/.xmonad/icons/stlarch/tile.xbm/>")
+							, ppLayout	= xmobarColor (colLook Green 1) "" .
+								(\x -> case x of
+									"Spacing 7 Tall"	-> "<icon=/home/stephen/.xmonad/icons/stlarch/tile.xbm/>"
+									"Tall"				-> "<icon=/home/stephen/.xmonad/icons/stlarch/monocle.xbm/>"
+									"Full"				-> "<icon=/home/stephen/.xmonad/icons/stlarch/monocle2.xbm/>"
+									_					-> x
+								)
 							, ppTitle	= xmobarColor (colLook White 1) "" . shorten 80
 							, ppSep		= xmobarColor (colLook Grey 0) "" " | "
 							, ppWsSep	= xmobarColor "" "" "" -- Eliminates the gap
@@ -64,14 +70,18 @@ myLogHook h = dynamicLogWithPP myPP
 
 ------------------------------------------------------------------------------------------
 -- Custom layoutHook
-myLayoutHook = avoidStruts (spacing 10 $ Tall nmaster delta ratio)
+myLayoutHook = avoidStruts $
+	tiled ||| Full ||| fullTiled
 	where 
+		tiled		= spacing 7 $ Tall nmaster delta ratio
+		fullTiled	= Tall nmaster delta ratio
+
 		-- The default number of windows in the master pane
-		nmaster = 1
+		nmaster	= 1
 		-- Percentage of screen to increment by when resizing panes
-		delta = 5/100
+		delta	= 5/100
 		-- Default proportion of screen occupied by master pane
-		ratio = 1/2
+		ratio	= 1/2
 
 
 ------------------------------------------------------------------------------------------
