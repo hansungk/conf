@@ -1,5 +1,6 @@
 -- vim:ft=haskell
-Config { font = "xft:Terminus:size=8"
+--Config { font = "xft:Terminus:pixelsize=12" -- For PC
+Config { font = "xft:Inconsolata:pixelsize=28" -- For rMBP
        , bgColor = "black"
        , fgColor = "#555555"
        , position = TopW L 100
