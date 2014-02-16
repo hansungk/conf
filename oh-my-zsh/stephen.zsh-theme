@@ -5,7 +5,7 @@ function collapse_pwd {
 }
 
 function prompt_char {
-    echo -n "%{$fg_bold[white]%}"
+    echo -n "%{$fg_bold[grey]%}"
     git branch >/dev/null 2>/dev/null && echo "±%{$reset_color%}" && return
     echo ">%{$reset_color%}"
 }
