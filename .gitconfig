@@ -8,3 +8,5 @@
 	cm	= "commit"
 	l	= "log"
 	st	= "status --short"
+[credential]
+	helper = cache --timeout=3600

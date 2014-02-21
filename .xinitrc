@@ -15,7 +15,7 @@ fi
 #VBoxClient-all &
 
 # Set the background
-feh --bg-scale /home/stephen/Pictures/SurfaceWallpaper_by_Revengeday/1280x1024.png
+feh --bg-scale /home/stephen/Pictures/wallpaper.jpg
 
 # Start compton daemonized
 compton -b

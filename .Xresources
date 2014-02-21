@@ -74,7 +74,7 @@ URxvt.foreground:           #D6D6D6
 URxvt.background:           #050505
 URxvt.scrollBar: false
 ! For PC
-!URxvt.font: xft:Terminus:size=12
+URxvt.font: xft:Terminus:size=10
 ! For rMBP
-URxvt.font: xft:Inconsolata:pixelsize=28
-URxvt.letterSpace: -1
+!URxvt.font: xft:Inconsolata:size=12
+!URxvt.letterSpace: -1
