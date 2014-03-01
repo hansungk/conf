@@ -21,18 +21,9 @@ if has('vim_starting')
 	endif
 endif
 
-" GitHub repos
 NeoBundleFetch 'Shougo/neobundle.vim'
 
-NeoBundle 'altercation/vim-colors-solarized'
-NeoBundle 'tpope/vim-surround'
-NeoBundle 'tpope/vim-fireplace'
-NeoBundle 'scrooloose/nerdtree'
-NeoBundle 'guns/vim-clojure-static'
-NeoBundle 'Lokaltog/powerline'
-NeoBundle "tomasr/molokai"
-NeoBundle 'jnurmine/Zenburn'
-NeoBundle 'bitbucket:kovisoft/paredit'
+" Internal
 NeoBundle 'Shougo/vimproc', {
       \ 'build' : {
       \     'windows' : 'make -f make_mingw32.mak',
@@ -41,11 +32,23 @@ NeoBundle 'Shougo/vimproc', {
       \     'unix' : 'make -f make_unix.mak',
       \    },
       \ }
+NeoBundle 'tpope/vim-surround'
+NeoBundle 'Lokaltog/powerline'
+NeoBundle 'kien/ctrlp.vim'
+" Colorschemes
+NeoBundle "tomasr/molokai"
+NeoBundle 'altercation/vim-colors-solarized'
+NeoBundle 'jnurmine/Zenburn'
+" Clojure
+NeoBundle 'bitbucket:kovisoft/paredit'
+NeoBundle 'tpope/vim-fireplace'
+NeoBundle 'scrooloose/nerdtree'
+NeoBundle 'guns/vim-clojure-static'
+" Haskell
 NeoBundle 'eagletmt/ghcmod-vim'
 NeoBundle 'eagletmt/neco-ghc'
 NeoBundle 'lukerandall/haskellmode-vim'
 NeoBundle 'vim-scripts/haskell.vim'
-"NeoBundle 'dag/vim2hs'
 
 filetype plugin indent on	" Required!
 " Installation check.
@@ -53,6 +56,15 @@ NeoBundleCheck
 " }}}
 " NERDTree {{{
 let NERDTreeQuitOnOpen=1
+" }}}
+" CtrlP {{{
+" set wildignore=*.pdf,*.jpg,*.png,*.iso,*.dmg,*.dylib,*.so,*.o,*.out
+let g:ctrlp_max_files=1000
+let g:ctrlp_show_hidden=1
+let g:ctrlp_custom_ignore = {
+	\ 'dir':  '\v(Library|lib|Applications|Backups|Music)',
+	\ 'file': '\v\.(pdf|so|out)$',
+	\ }
 " }}}
 " Haddock {{{
 let g:haddock_browser = "/usr/bin/firefox"
