@@ -1,14 +1,23 @@
+# Source global rc file first
 if [ -f /etc/bash.bashrc ]; then
 	    . /etc/bash.bashrc
 fi
-alias ls='ls --group-directories-first --time-style=+"%d.%m.%Y %H:%M" --color=auto'
-alias ll='ls -l --group-directories-first --time-style=+"%d.%m.%Y %H:%M" --color=auto'
-alias la='ls -la --group-directories-first --time-style=+"%d.%m.%Y %H:%M" --color=auto'
+
+if [ -f /etc/bashrc ]; then
+	    . /etc/bashrc
+fi
+
+# Aliases
+alias l='ls -G'
+alias ls='ls -G'
+alias ll='ls -l -G'
+alias la='ls -la -G'
 alias grep='grep --color=auto -d skip'
 alias cp="cp -i"                          # confirm before overwriting something
 alias df='df -h'                          # human-readable sizes
 alias free='free -m'                      # show sizes in MB
 alias v='vim'
+alias vi=vim
 
 # ex - archive extractor
 # usage: ex <file>
@@ -35,6 +44,9 @@ ex ()
 }
 
 ### USER EDITED AREA
+# Tell gnome-terminal
+export TERM=xterm-256color
+
 # Input module setup
 export GTK_IM_MODULE=ibus
 export XMODIFIERS=@im=ibus
@@ -43,7 +55,12 @@ export QT_IM_MODULE=ibus
 # Vim stuff
 export EDITOR=vim
 export VISUAL=vim
-alias vi=vim
+
+# PATH generation
+export PATH=/home/stephen/bin:$PATH
 
 # Startup scripts
-stty -ixon # Disable C-S suspension
+#stty -ixon # Disable C-S suspension
+
+# Fancy prompt
+. /home/stephen/bin/fancyprompt.sh

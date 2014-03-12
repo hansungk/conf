@@ -1,0 +1,7 @@
+" Use h and l as tab switcher
+" Also corresponds with H and L
+nmap -builtin h gT
+nmap -builtin l gt
+
+" <C-j> as Open Downloads dialog
+nmap -builtin <C-j> :dialog downloads<CR>

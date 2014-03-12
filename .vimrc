@@ -1,53 +1,127 @@
-""" PLUGINS
-"" Pathogen
-"execute pathogen#infect()
-"execute pathogen#helptags()
+" vim:fdm=marker
+" .vimrc
+" Author: Stephen Kim <stephen422@gmail.com>
+" Source: https://github.com/stephen422/dotfiles.git
+" Reference: YouTube "A Whirlwind Tour of my Vimrc" / " http://bitbucket.org/sjl/dotfiles
 
-"" Vundle
-filetype off " required by Vundle
-let os = substitute(system('uname'), "\n", "", "")
-if has('win32') || has('win64') " running on windows
-	set rtp+=~/vimfiles/bundle/vundle/
-	set rtp+=$VIM/vimfiles/bundle/vundle/
-	call vundle#rc('$VIM/vimfiles/bundle/')
-else
-	set rtp+=~/.vim/bundle/vundle/
-	call vundle#rc()
+" PLUGINS {{{
+
+" NeoBundle {{{
+filetype off " required by NeoBundle, maybe
+if has('vim_starting')
+	set nocompatible
+
+	if has('win32') || has('win64') " running on windows
+		set rtp+=~/vimfiles/bundle/neobundle.vim/
+		set rtp+=$VIM/vimfiles/bundle/neobundle.vim/
+		call neobundle#rc('~/vimfiles/bundle/')
+	else
+		set rtp+=~/.vim/bundle/neobundle.vim/
+		call neobundle#rc(expand('~/.vim/bundle/'))
+	endif
 endif
 
-" Own Vundle
-Bundle 'gmarik/vundle'
-" GitHub repos
-Bundle 'altercation/vim-colors-solarized'
-Bundle 'tpope/vim-surround'
-Bundle 'tpope/vim-fireplace'
-Bundle 'scrooloose/nerdtree'
-Bundle 'guns/vim-clojure-static'
-" Bundle 'dag/vim2hs'
-" Bundle 'kana/vim-filetype-haskell'
-" Bundle 'lukerandall/haskellmode-vim'
-" vim-scripts repos
-" non github repos
-"Bundle 'git://git.wincent.com/command-t.git'
-" git repos on your local machine (ie. when working on your own plugin)
-"Bundle 'file:///Users/gmarik/path/to/plugin'
+NeoBundleFetch 'Shougo/neobundle.vim'
 
+" Internal
+NeoBundle 'Shougo/vimproc', {
+      \ 'build' : {
+      \     'windows' : 'make -f make_mingw32.mak',
+      \     'cygwin' : 'make -f make_cygwin.mak',
+      \     'mac' : 'make -f make_mac.mak',
+      \     'unix' : 'make -f make_unix.mak',
+      \    },
+      \ }
+NeoBundle 'tpope/vim-surround'
+NeoBundle 'Lokaltog/powerline'
+NeoBundle 'kien/ctrlp.vim'
+" Colorschemes
+NeoBundle "tomasr/molokai"
+NeoBundle 'altercation/vim-colors-solarized'
+NeoBundle 'jnurmine/Zenburn'
+" Clojure
+NeoBundle 'bitbucket:kovisoft/paredit'
+NeoBundle 'tpope/vim-fireplace'
+NeoBundle 'scrooloose/nerdtree'
+NeoBundle 'guns/vim-clojure-static'
+" Haskell
+NeoBundle 'eagletmt/ghcmod-vim'
+NeoBundle 'eagletmt/neco-ghc'
+NeoBundle 'lukerandall/haskellmode-vim'
+NeoBundle 'vim-scripts/haskell.vim'
+
+filetype plugin indent on	" Required!
+" Installation check.
+NeoBundleCheck
+" }}}
+" NERDTree {{{
 let NERDTreeQuitOnOpen=1
+" }}}
+" CtrlP {{{
+" set wildignore=*.pdf,*.jpg,*.png,*.iso,*.dmg,*.dylib,*.so,*.o,*.out
+let g:ctrlp_max_files=1000
+let g:ctrlp_show_hidden=1
+let g:ctrlp_custom_ignore = {
+	\ 'dir':  '\v(Library|lib|Applications|Backups|Music)',
+	\ 'file': '\v\.(pdf|so|out)$',
+	\ }
+" }}}
+" Haddock {{{
 let g:haddock_browser = "/usr/bin/firefox"
+" }}}
+" Powerline {{{
+set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim " For powerline
+let g:Powerline_symbols= 'unicode'
+" }}}
+" Lilypond {{{
+" set rtp+=/usr/share/lilypond/2.16.2/vim/ " For lilypond vim mode
+" }}}
+" Paredit {{{
+set rtp+=~/.vim/bundle/paredit0912/
+" }}}
 
-""" ESSENTIAL
+" }}}
+
+" ESSENTIAL {{{
+
 syntax on
 filetype plugin indent on
 set autoindent
+set autowrite
+set encoding=utf-8	" Not sure this will work well
+set hlsearch
+set ignorecase
+set nolist
+set listchars=tab:▸\ ,eol:¬,extends:>,precedes:<
 set nocompatible
-set noswapfile
 set nu
+set smartcase	" Should be used with ignorecase on
+set splitbelow
+set splitright
+set title		" Why is this not default?
+set titleold=	" No more Thanks, vim
+set visualbell	" Turns off that annoying beeps.
 set wildmenu
-set backupdir=~/.vim/tmp,.
-set directory=~/.vim/tmp,.
 
-""" KEY MAPPING
-" Avoid to Esc key
+" Tabs
+set tabstop=4
+set shiftwidth=4
+
+" Backups
+set undodir=~/.vim/tmp/undo,.
+set backupdir=~/.vim/tmp/backup,.
+set directory=~/.vim/tmp/swap,.
+set nobackup
+set noswapfile " It's 2013, Vim.
+
+" Automatas
+au FocusLost * :wa
+
+" }}}
+
+" KEY MAPPINGS {{{
+
+"" Attempts to avoid the Esc key
 "nnoremap <Tab> <Esc>
 "vnoremap <Tab> <Esc>gV
 "onoremap <Tab> <Esc>
@@ -57,31 +131,72 @@ set directory=~/.vim/tmp,.
 "cnoremap kj <Esc>
 "onoremap kj <Esc>
 "inoremap kj <Esc>
-" Save, Open, Close
+
+"" Save, Open, Close
 nmap <C-S>		<Esc>:w<CR>
 imap <C-S>		<Esc>:w<CR>
 nmap <C-Q>		<Esc>:q<CR>
 imap <C-Q>		<Esc>:q<CR>
 nmap <Leader>w	<Esc>:w<CR>
 nmap <Leader>q	<Esc>:q<CR>
-" Misc
-nmap ; :
-nmap <Leader>v :e $MYVIMRC<CR>
+
+"" Substitution
+nnoremap S <Esc>:%s/<C-r><C-w>/
+
+"" Folding
+nnoremap <Space> za
+nnoremap <S-Space> zA
+" Fold everything except where the cursor is located, and center it
+nnoremap <Leader>z zMzvzz
+
+"" Convenience
+nnoremap ; :
+nnoremap <tab> %
+" New find lines are always at the middle of the window
+nnoremap n nzz
+nnoremap N Nzz
+" Don't jump to next when star-searching
+nnoremap * *<C-o>
+" 'Strong' h/l
+noremap H ^
+noremap L g_
+" Emacs bindings in insert mode
+inoremap <C-a> <Esc>I
+inoremap <C-e> <Esc>A
+" Quick resizing
+nnoremap <C-left> 5<C-w>>
+nnoremap <C-right> 5<C-w><
+nnoremap <C-up> 5<C-w>+
+nnoremap <C-down> 5<C-w>-
+" Quick copying/pasting
+nnoremap <Leader>p "0p
+vnoremap <C-c> "*y
+inoremap <C-v> <Esc>"*pa
+" Opening .vimrc
+nmap <Leader>v :e ~/.vimrc<CR>
+nmap <Leader><S-v> :e ~/dotfiles.git/.vimrc<CR>
+" Source ( source: bitbucket.org/sjl/dotfiles/vim/vimrc )
+nnoremap <Leader>s :
+vnoremap <leader>S y:execute @@<cr>:echo 'Sourced selection.'<cr>
+nnoremap <leader>S ^vg_y:execute @@<cr>:echo 'Sourced line.'<cr>
+
 " CMake, Run, Errors 
-map <F7>		<Esc>:CMake<CR>
-map <F8>		<Esc>:Make<CR>
-map <S-F8>		<Esc>:call Togglecopen()<CR>
-map <S-F9>		<Esc>:Run<CR>
-map <F9>		<Esc>:Debug<CR><Z>
-map <C-C><C-C>	<Esc>:cc<CR>
-map <C-C><C-N>	<Esc>:cn<CR>
-map <C-C><C-P>	<Esc>:cn<CR>
+"map <F7>		<Esc>:CMake<CR>
+map <F8>		<Esc>:make<CR>
+"map <S-F8>		<Esc>:call Togglecopen()<CR>
+"map <S-F9>		<Esc>:Run<CR>
+"map <F9>		<Esc>:Debug<CR><Z>
+"map <C-C><C-C>	<Esc>:cc<CR>
+"map <C-C><C-N>	<Esc>:cn<CR>
+"map <C-C><C-P>	<Esc>:cn<CR>
 " NERDTree
 map <F4>		<Esc>:NERDTreeToggle<CR>
 imap <F4>		<Esc>:NERDTreeToggle<CR>
 
+" }}}
 
-""" USER COMMANDS
+" USER COMMANDS {{{
+
 command Make call s:make()
 command CMake call s:cmake()
 command Run call s:run()
@@ -136,27 +251,23 @@ function! Togglecopen()
 endfunction
 
 " Startup calls
-call s:updatecmakepaths()
+" call s:updatecmakepaths()
 
-""" CTAGS
-set tags+=/home/stephen/.vim/tags/cpp
-" Build tags for my own project with Ctrl-F12
-map <C-F11> :!ctags -R --sort=yes --c++-kinds=+pl --fields=+iaS --extra=+q .<CR>
+" }}}
 
-""" CONVENIENCE
-set title " Why is this not default?
-set tabstop=4 " SO PRO
-set shiftwidth=4 " SO PRO
+" CONVENIENCE {{{
+
 set showcmd " Show pressed keys
-"set laststatus=2 " Always display statusline
+set laststatus=2 " Always display statusline (especially useful for Powerline)
+set noshowmode " Powerline shows mode instead
 
 "autocmd InsertEnter * set cursorline
 "autocmd InsertLeave * set nocursorline
 
-if has("gui_running")
-    " .gvimrc
-else
+if !has("gui_running")
     " Terminal specific
     set t_Co=256 " For vim terminals
-    colorscheme default
+    colorscheme molokai
 endif
+
+" }}}

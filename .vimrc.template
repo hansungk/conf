@@ -1,9 +1,4 @@
+"" DEPRECATED
+"" Use ln -s instead
+
 source ~/dotfiles.git/.vimrc
-nmap <Leader>v :e ~/.vimrc<CR>
-nmap <Leader><S-v> :e ~/dotfiles.git/.vimrc<CR>
-
-" This computer specific
-nmap <C-S> :w<CR>
-
-" Terminal specific
-colorscheme default
