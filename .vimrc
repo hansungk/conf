@@ -267,7 +267,7 @@ set noshowmode " Powerline shows mode instead
 if !has("gui_running")
     " Terminal specific
     set t_Co=256 " For vim terminals
-    colorscheme molokai
+    colorscheme default
 endif
 
 " }}}
