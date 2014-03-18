@@ -71,7 +71,7 @@ let g:haddock_browser = "/usr/bin/firefox"
 " }}}
 " Powerline {{{
 set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim " For powerline
-let g:Powerline_symbols= 'unicode'
+let g:Powerline_symbols= 'fancy'
 " }}}
 " Lilypond {{{
 " set rtp+=/usr/share/lilypond/2.16.2/vim/ " For lilypond vim mode
@@ -267,7 +267,7 @@ set noshowmode " Powerline shows mode instead
 if !has("gui_running")
     " Terminal specific
     set t_Co=256 " For vim terminals
-    colorscheme molokai
+    colorscheme default
 endif
 
 " }}}
