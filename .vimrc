@@ -33,7 +33,7 @@ NeoBundle 'Shougo/vimproc', {
       \    },
       \ }
 NeoBundle 'tpope/vim-surround'
-NeoBundle 'Lokaltog/powerline'
+NeoBundle 'bling/vim-airline'
 NeoBundle 'kien/ctrlp.vim'
 " Colorschemes
 NeoBundle "tomasr/molokai"
@@ -70,8 +70,8 @@ let g:ctrlp_custom_ignore = {
 let g:haddock_browser = "/usr/bin/firefox"
 " }}}
 " Powerline {{{
-set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim " For powerline
-let g:Powerline_symbols= 'fancy'
+"set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim " For powerline
+"let g:Powerline_symbols= 'fancy'
 " }}}
 " Lilypond {{{
 " set rtp+=/usr/share/lilypond/2.16.2/vim/ " For lilypond vim mode
@@ -267,7 +267,7 @@ set noshowmode " Powerline shows mode instead
 if !has("gui_running")
     " Terminal specific
     set t_Co=256 " For vim terminals
-    colorscheme default
+    colorscheme molokai
 endif
 
 " }}}
