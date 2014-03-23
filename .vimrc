@@ -133,12 +133,13 @@ au FocusLost * :wa
 "inoremap kj <Esc>
 
 "" Save, Open, Close
-nmap <C-S>		<Esc>:w<CR>
+nmap <C-S>		:w<CR>
 imap <C-S>		<Esc>:w<CR>
-nmap <C-Q>		<Esc>:q<CR>
+nmap <C-Q>		:q<CR>
 imap <C-Q>		<Esc>:q<CR>
-nmap <Leader>w	<Esc>:w<CR>
-nmap <Leader>q	<Esc>:q<CR>
+imap <Leader>w	<Esc>:w<CR>a
+nmap <Leader>w	:w<CR>
+nmap <Leader>q	:q<CR>
 
 "" Substitution
 nnoremap S <Esc>:%s/<C-r><C-w>/
@@ -152,22 +153,32 @@ nnoremap <Leader>z zMzvzz
 "" Convenience
 nnoremap ; :
 nnoremap <tab> %
+
 " New find lines are always at the middle of the window
 nnoremap n nzz
 nnoremap N Nzz
+
 " Don't jump to next when star-searching
 nnoremap * *<C-o>
+
 " 'Strong' h/l
 noremap H ^
 noremap L g_
+
 " Emacs bindings in insert mode
+inoremap <C-f> <Esc>la
+inoremap <C-b> <Esc>i
+inoremap <C-n> <Esc>ja
+inoremap <C-p> <Esc>ka
 inoremap <C-a> <Esc>I
 inoremap <C-e> <Esc>A
+
 " Quick resizing
 nnoremap <C-left> 5<C-w>>
 nnoremap <C-right> 5<C-w><
 nnoremap <C-up> 5<C-w>+
 nnoremap <C-down> 5<C-w>-
+
 " Quick copying/pasting
 nnoremap <Leader>p "0p
 vnoremap <C-c> "*y
@@ -180,7 +191,7 @@ nnoremap <Leader>s :
 vnoremap <leader>S y:execute @@<cr>:echo 'Sourced selection.'<cr>
 nnoremap <leader>S ^vg_y:execute @@<cr>:echo 'Sourced line.'<cr>
 
-" CMake, Run, Errors 
+" CMake, Run, Errors
 "map <F7>		<Esc>:CMake<CR>
 map <F8>		<Esc>:make<CR>
 "map <S-F8>		<Esc>:call Togglecopen()<CR>
@@ -236,7 +247,7 @@ endfunction
 
 function! s:debug()
   call s:updatecmakepaths()
-  execute "!konsole -e gdb ".g:cmake_binary_path 
+  execute "!konsole -e gdb ".g:cmake_binary_path
 endfunction
 
 let s:iscopen = 0
