@@ -33,7 +33,7 @@ NeoBundle 'Shougo/vimproc', {
       \    },
       \ }
 NeoBundle 'tpope/vim-surround'
-NeoBundle 'bling/vim-airline'
+"NeoBundle 'bling/vim-airline'
 NeoBundle 'kien/ctrlp.vim'
 " Colorschemes
 NeoBundle "tomasr/molokai"
@@ -269,8 +269,8 @@ endfunction
 " CONVENIENCE {{{
 
 set showcmd " Show pressed keys
-set laststatus=2 " Always display statusline (especially useful for Powerline)
-set noshowmode " Powerline shows mode instead
+"set laststatus=2 " Always display statusline (especially useful for Powerline)
+"set noshowmode " Powerline shows mode instead
 
 "autocmd InsertEnter * set cursorline
 "autocmd InsertLeave * set nocursorline
