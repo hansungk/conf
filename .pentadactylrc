@@ -1,7 +1,28 @@
+" vim:ft=vim
+nmap -builtin ; :
+nmap -builtin : ;
+
+command reloadrc source '~/.pentadactylrc'
+
 " Use h and l as tab switcher
 " Also corresponds with H and L
-nmap -builtin h gT
-nmap -builtin l gt
+nmap h gT
+nmap l gt
+
+nmap -builtin <C-S-h> :tabm -1<Esc>
+nmap -builtin <C-S-l> :tabm +1<Esc>
+
+" Scroll steps
+nmap -builtin j 5j
+nmap -builtin k 5k
+nmap -builtin <C-h> 5h
+nmap -builtin <C-l> 5l
+
+" VimFx
+nmap -builtin x d
+nmap -builtin X u
+nmap d <C-d>
+nmap u <C-u>
 
 " <C-j> as Open Downloads dialog
 nmap -builtin <C-j> :dialog downloads<CR>
