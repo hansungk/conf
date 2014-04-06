@@ -24,7 +24,7 @@ ZSH_THEME="stephen"
 # DISABLE_LS_COLORS="true"
 
 # Uncomment following line if you want to disable autosetting terminal title.
-# DISABLE_AUTO_TITLE="true"
+DISABLE_AUTO_TITLE="true"
 
 # Uncomment following line if you want to disable command autocorrection
 # DISABLE_CORRECTION="true"
@@ -73,4 +73,4 @@ man() {
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
 
 #export LS_COLORS=''
-export TERM=xterm-256color
+#export TERM=xterm-256color
