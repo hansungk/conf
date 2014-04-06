@@ -19,6 +19,3 @@ feh --bg-scale /home/stephen/Pictures/wallpaper.jpg
 
 # Start compton daemonized
 compton -b
-
-# Now here we go
-exec xmonad

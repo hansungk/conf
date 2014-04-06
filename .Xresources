@@ -62,8 +62,8 @@ Xft.hintstyle:	hintslight
 *color15:            #FFFFFF
 
 ! urxvt configurations -------------------------------------------------------
-URxvt.foreground:           #D6D6D6
-URxvt.background:           #050505
+URxvt.foreground:           #eeeeee
+URxvt.background:           #000000
 URxvt.scrollBar: false
 !o For PC
 !URxvt.font: xft:Terminus:size=9
