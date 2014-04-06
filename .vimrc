@@ -59,7 +59,7 @@ let NERDTreeQuitOnOpen=1
 " }}}
 " CtrlP {{{
 " set wildignore=*.pdf,*.jpg,*.png,*.iso,*.dmg,*.dylib,*.so,*.o,*.out
-let g:ctrlp_max_files=1000
+"let g:ctrlp_max_files=1000
 let g:ctrlp_show_hidden=1
 let g:ctrlp_custom_ignore = {
 	\ 'dir':  '\v(Library|lib|Applications|Backups|Music)',
@@ -278,7 +278,7 @@ set showcmd " Show pressed keys
 if !has("gui_running")
     " Terminal specific
     set t_Co=256 " For vim terminals
-    colorscheme molokai
+    colorscheme jellybeans
 endif
 
 " }}}
