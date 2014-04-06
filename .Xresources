@@ -65,9 +65,8 @@ Xft.hintstyle:	hintslight
 URxvt.foreground:           #eeeeee
 URxvt.background:           #000000
 URxvt.scrollBar: false
-!o For PC
+! For PC
 !URxvt.font: xft:Terminus:size=9
-!URxvt.font: -*-proggyclean-*-*-*-*-13-*-*-*-*-*-*-*, xft:DejaVu Sans Mono:size=9
 ! For rMBP
 URxvt.font: xft:Inconsolata:size=10
 URxvt.letterSpace: -1
