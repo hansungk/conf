@@ -6,53 +6,39 @@
 
 " PLUGINS {{{
 
-" NeoBundle {{{
-filetype off " required by NeoBundle, maybe
+" Vundle {{{
+filetype off " required by Vundle
 if has('vim_starting')
 	set nocompatible
 
 	if has('win32') || has('win64') " running on windows
-		set rtp+=~/vimfiles/bundle/neobundle.vim/
-		set rtp+=$VIM/vimfiles/bundle/neobundle.vim/
-		call neobundle#rc('~/vimfiles/bundle/')
+		set rtp+=~/vimfiles/bundle/vundle/
+		set rtp+=$VIM/vimfiles/bundle/vundle/
+		call vundle#rc('~/vimfiles/bundle/')
 	else
-		set rtp+=~/.vim/bundle/neobundle.vim/
-		call neobundle#rc(expand('~/.vim/bundle/'))
+		set rtp+=~/.vim/bundle/vundle/
+		call vundle#rc()
 	endif
 endif
 
-NeoBundleFetch 'Shougo/neobundle.vim'
-
 " Internal
-NeoBundle 'Shougo/vimproc', {
-      \ 'build' : {
-      \     'windows' : 'make -f make_mingw32.mak',
-      \     'cygwin' : 'make -f make_cygwin.mak',
-      \     'mac' : 'make -f make_mac.mak',
-      \     'unix' : 'make -f make_unix.mak',
-      \    },
-      \ }
-NeoBundle 'tpope/vim-surround'
-"NeoBundle 'bling/vim-airline'
-NeoBundle 'kien/ctrlp.vim'
-" Colorschemes
-NeoBundle "tomasr/molokai"
-NeoBundle 'altercation/vim-colors-solarized'
-NeoBundle 'jnurmine/Zenburn'
-" Clojure
-NeoBundle 'bitbucket:kovisoft/paredit'
-NeoBundle 'tpope/vim-fireplace'
-NeoBundle 'scrooloose/nerdtree'
-NeoBundle 'guns/vim-clojure-static'
-" Haskell
-NeoBundle 'eagletmt/ghcmod-vim'
-NeoBundle 'eagletmt/neco-ghc'
-NeoBundle 'lukerandall/haskellmode-vim'
-NeoBundle 'vim-scripts/haskell.vim'
+Bundle 'gmarik/vundle'
+Bundle 'tpope/vim-surround'
+Bundle 'kien/ctrlp.vim'
+Bundle "tomasr/molokai"
+Bundle 'altercation/vim-colors-solarized'
+Bundle 'jnurmine/Zenburn'
+Bundle 'vim-scripts/paredit.vim'
+Bundle 'tpope/vim-fireplace'
+Bundle 'scrooloose/nerdtree'
+Bundle 'guns/vim-clojure-static'
+Bundle 'eagletmt/ghcmod-vim'
+Bundle 'eagletmt/neco-ghc'
+Bundle 'lukerandall/haskellmode-vim'
+Bundle 'vim-scripts/haskell.vim'
 
 filetype plugin indent on	" Required!
-" Installation check.
-NeoBundleCheck
+
 " }}}
 " NERDTree {{{
 let NERDTreeQuitOnOpen=1
