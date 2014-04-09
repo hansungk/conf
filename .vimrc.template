@@ -1,4 +1,0 @@
-"" DEPRECATED
-"" Use ln -s instead
-
-source ~/dotfiles.git/.vimrc
