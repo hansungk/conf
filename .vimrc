@@ -278,7 +278,7 @@ set showcmd " Show pressed keys
 if !has("gui_running")
     " Terminal specific
     set t_Co=256 " For vim terminals
-    colorscheme jellybeans
+    colorscheme molokai
 endif
 
 " }}}
