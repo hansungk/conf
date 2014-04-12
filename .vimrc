@@ -25,6 +25,7 @@ endif
 Bundle 'gmarik/vundle'
 Bundle 'tpope/vim-surround'
 Bundle 'kien/ctrlp.vim'
+Bundle 'Lokaltog/powerline'
 Bundle "tomasr/molokai"
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'jnurmine/Zenburn'
@@ -56,8 +57,8 @@ let g:ctrlp_custom_ignore = {
 let g:haddock_browser = "/usr/bin/firefox"
 " }}}
 " Powerline {{{
-"set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim " For powerline
-"let g:Powerline_symbols= 'fancy'
+set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim " For powerline
+let g:Powerline_symbols= 'fancy'
 " }}}
 " Lilypond {{{
 " set rtp+=/usr/share/lilypond/2.16.2/vim/ " For lilypond vim mode
@@ -255,8 +256,8 @@ endfunction
 " CONVENIENCE {{{
 
 set showcmd " Show pressed keys
-"set laststatus=2 " Always display statusline (especially useful for Powerline)
-"set noshowmode " Powerline shows mode instead
+set laststatus=2 " Always display statusline (especially useful for Powerline)
+set noshowmode " Powerline shows mode instead
 
 "autocmd InsertEnter * set cursorline
 "autocmd InsertLeave * set nocursorline

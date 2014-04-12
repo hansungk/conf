@@ -13,10 +13,10 @@ nmap -builtin <C-S-h> :tabm -1<Esc>
 nmap -builtin <C-S-l> :tabm +1<Esc>
 
 " Scroll steps
-nmap -builtin j 5j
-nmap -builtin k 5k
-nmap -builtin <C-h> 5h
-nmap -builtin <C-l> 5l
+nmap -builtin j 4j
+nmap -builtin k 4k
+nmap -builtin <C-h> 4h
+nmap -builtin <C-l> 4l
 
 " VimFx
 nmap -builtin x d
