@@ -6,40 +6,44 @@
 
 " PLUGINS {{{
 
+" Pathogen {{{
+execute pathogen#infect()
+"execute pathogen#helptags()
+" }}}
 " Vundle {{{
-filetype off " required by Vundle
-if has('vim_starting')
-	set nocompatible
-
-	if has('win32') || has('win64') " running on windows
-		set rtp+=~/vimfiles/bundle/vundle/
-		set rtp+=$VIM/vimfiles/bundle/vundle/
-		call vundle#rc('~/vimfiles/bundle/')
-	else
-		set rtp+=~/.vim/bundle/vundle/
-		call vundle#rc()
-	endif
-endif
-
-" Internal
-Bundle 'gmarik/vundle'
-Bundle 'tpope/vim-surround'
-Bundle 'kien/ctrlp.vim'
-Bundle 'Lokaltog/powerline'
-Bundle "tomasr/molokai"
-Bundle 'altercation/vim-colors-solarized'
-Bundle 'jnurmine/Zenburn'
-Bundle 'vim-scripts/paredit.vim'
-Bundle 'tpope/vim-fireplace'
-Bundle 'scrooloose/nerdtree'
-Bundle 'guns/vim-clojure-static'
-Bundle 'eagletmt/ghcmod-vim'
-Bundle 'eagletmt/neco-ghc'
-Bundle 'lukerandall/haskellmode-vim'
-Bundle 'vim-scripts/haskell.vim'
-
-filetype plugin indent on	" Required!
-
+"filetype off " required by Vundle
+"if has('vim_starting')
+"	set nocompatible
+"
+"	if has('win32') || has('win64') " running on windows
+"		set rtp+=~/vimfiles/bundle/vundle/
+"		set rtp+=$VIM/vimfiles/bundle/vundle/
+"		call vundle#rc('~/vimfiles/bundle/')
+"	else
+"		set rtp+=~/.vim/bundle/vundle/
+"		call vundle#rc()
+"	endif
+"endif
+"
+"" Internal
+"Bundle 'gmarik/vundle'
+"Bundle 'tpope/vim-surround'
+"Bundle 'kien/ctrlp.vim'
+"Bundle 'Lokaltog/powerline'
+"Bundle "tomasr/molokai"
+"Bundle 'altercation/vim-colors-solarized'
+"Bundle 'jnurmine/Zenburn'
+"Bundle 'vim-scripts/paredit.vim'
+"Bundle 'tpope/vim-fireplace'
+"Bundle 'scrooloose/nerdtree'
+"Bundle 'guns/vim-clojure-static'
+"Bundle 'eagletmt/ghcmod-vim'
+"Bundle 'eagletmt/neco-ghc'
+"Bundle 'lukerandall/haskellmode-vim'
+"Bundle 'vim-scripts/haskell.vim'
+"
+"filetype plugin indent on	" Required!
+"
 " }}}
 " NERDTree {{{
 let NERDTreeQuitOnOpen=1
