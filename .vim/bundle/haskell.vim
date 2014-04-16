@@ -1,1 +1,0 @@
-../bundle.avail/haskell.vim
