@@ -8,7 +8,7 @@
 GREEN=$'\e[1;32m'
 RED=$'\e[1;31m'
 BLUE=$'\e[1;34m'
-PURPLE=$'\e[1;35m'
+MAGENTA=$'\e[1;36m'
 GRAY=$'\e[1;30m'
 RS=$'\e[0m'
 
@@ -30,11 +30,11 @@ get_user_color() {
 	if [ "${USER}" = "root" ] ; then
 		echo ${RED}
 	else
-		echo ${GREEN}
+		echo ${MAGENTA}
 	fi
 }
 
 # If you use double quotes, all variables will be expanded at this stage and will not be updated (thus $? is always 0)"
 # With $'~'(note the dollar sign), all escape sequences EXCEPT \e will not be expanded.
 # Use \[ and \] around non-printing sequences (such as color-changers) to prevent the bash display from being garbled up.
-export PS1='\[$(get_exit_status)\]\[$(get_user_color)\]\u \[${RS}\]:: \[${BLUE}\]\w \[${RS}\]:: \[${PURPLE}\]\t\[${GRAY}\]\n> \[${RS}\]'
+export PS1='\[$(get_exit_status)\]\[$(get_user_color)\]\u \[${RS}\]in \[${GREEN}\]\H \[${RS}\]at \[${BLUE}\]\w\[${RS}\]\n-> \[${RS}\]'

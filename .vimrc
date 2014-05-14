@@ -16,32 +16,33 @@ if has('vim_starting')
 	set nocompatible
 
 	if has('win32') || has('win64') " running on windows
-		set rtp+=~/vimfiles/bundle/vundle/
-		set rtp+=$VIM/vimfiles/bundle/vundle/
-		call vundle#rc('~/vimfiles/bundle/')
+		set rtp+=~/vimfiles/bundle/Vundle.vim/
+		set rtp+=$VIM/vimfiles/bundle/Vundle.vim/
+		call vundle#begin('~/vimfiles/bundle/')
 	else
-		set rtp+=~/.vim/bundle/vundle/
-		call vundle#rc()
+		set rtp+=~/.vim/bundle/Vundle.vim/
+		call vundle#begin()
 	endif
 endif
 
 " Internal
-Bundle 'gmarik/vundle'
-Bundle 'tpope/vim-surround'
-Bundle 'kien/ctrlp.vim'
-Bundle 'Lokaltog/powerline'
-Bundle "tomasr/molokai"
-Bundle 'altercation/vim-colors-solarized'
-Bundle 'jnurmine/Zenburn'
-Bundle 'vim-scripts/paredit.vim'
-Bundle 'tpope/vim-fireplace'
-Bundle 'scrooloose/nerdtree'
-Bundle 'guns/vim-clojure-static'
-Bundle 'eagletmt/ghcmod-vim'
-Bundle 'eagletmt/neco-ghc'
-Bundle 'lukerandall/haskellmode-vim'
-Bundle 'vim-scripts/haskell.vim'
+Plugin 'gmarik/vundle'
+Plugin 'tpope/vim-surround'
+Plugin 'kien/ctrlp.vim'
+Plugin 'Lokaltog/powerline'
+Plugin 'tomasr/molokai'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'jnurmine/Zenburn'
+Plugin 'vim-scripts/paredit.vim'
+Plugin 'tpope/vim-fireplace'
+Plugin 'scrooloose/nerdtree'
+Plugin 'guns/vim-clojure-static'
+Plugin 'eagletmt/ghcmod-vim'
+Plugin 'eagletmt/neco-ghc'
+Plugin 'lukerandall/haskellmode-vim'
+Plugin 'vim-scripts/haskell.vim'
 
+call vundle#end()
 filetype plugin indent on	" Required!
 
 " }}}
