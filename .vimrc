@@ -6,60 +6,52 @@
 
 " PLUGINS {{{
 
-" NeoBundle {{{
-filetype off " required by NeoBundle, maybe
+" Pathogen {{{
+"execute pathogen#infect()
+"execute pathogen#helptags()
+" }}}
+" Vundle {{{
+filetype off " required by Vundle
 if has('vim_starting')
 	set nocompatible
 
 	if has('win32') || has('win64') " running on windows
-		set rtp+=~/vimfiles/bundle/neobundle.vim/
-		set rtp+=$VIM/vimfiles/bundle/neobundle.vim/
-		call neobundle#rc('~/vimfiles/bundle/')
+		set rtp+=~/vimfiles/bundle/Vundle.vim/
+		set rtp+=$VIM/vimfiles/bundle/Vundle.vim/
+		call vundle#begin('~/vimfiles/bundle/')
 	else
-		set rtp+=~/.vim/bundle/neobundle.vim/
-		call neobundle#rc(expand('~/.vim/bundle/'))
+		set rtp+=~/.vim/bundle/Vundle.vim/
+		call vundle#begin()
 	endif
 endif
 
-NeoBundleFetch 'Shougo/neobundle.vim'
-
 " Internal
-NeoBundle 'Shougo/vimproc', {
-      \ 'build' : {
-      \     'windows' : 'make -f make_mingw32.mak',
-      \     'cygwin' : 'make -f make_cygwin.mak',
-      \     'mac' : 'make -f make_mac.mak',
-      \     'unix' : 'make -f make_unix.mak',
-      \    },
-      \ }
-NeoBundle 'tpope/vim-surround'
-NeoBundle 'Lokaltog/powerline'
-NeoBundle 'kien/ctrlp.vim'
-" Colorschemes
-NeoBundle "tomasr/molokai"
-NeoBundle 'altercation/vim-colors-solarized'
-NeoBundle 'jnurmine/Zenburn'
-" Clojure
-NeoBundle 'bitbucket:kovisoft/paredit'
-NeoBundle 'tpope/vim-fireplace'
-NeoBundle 'scrooloose/nerdtree'
-NeoBundle 'guns/vim-clojure-static'
-" Haskell
-NeoBundle 'eagletmt/ghcmod-vim'
-NeoBundle 'eagletmt/neco-ghc'
-NeoBundle 'lukerandall/haskellmode-vim'
-NeoBundle 'vim-scripts/haskell.vim'
+Plugin 'gmarik/vundle'
+Plugin 'tpope/vim-surround'
+Plugin 'kien/ctrlp.vim'
+Plugin 'Lokaltog/powerline'
+Plugin 'tomasr/molokai'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'jnurmine/Zenburn'
+Plugin 'vim-scripts/paredit.vim'
+Plugin 'tpope/vim-fireplace'
+Plugin 'scrooloose/nerdtree'
+Plugin 'guns/vim-clojure-static'
+Plugin 'eagletmt/ghcmod-vim'
+Plugin 'eagletmt/neco-ghc'
+Plugin 'lukerandall/haskellmode-vim'
+Plugin 'vim-scripts/haskell.vim'
 
+call vundle#end()
 filetype plugin indent on	" Required!
-" Installation check.
-NeoBundleCheck
+
 " }}}
 " NERDTree {{{
 let NERDTreeQuitOnOpen=1
 " }}}
 " CtrlP {{{
 " set wildignore=*.pdf,*.jpg,*.png,*.iso,*.dmg,*.dylib,*.so,*.o,*.out
-let g:ctrlp_max_files=1000
+"let g:ctrlp_max_files=1000
 let g:ctrlp_show_hidden=1
 let g:ctrlp_custom_ignore = {
 	\ 'dir':  '\v(Library|lib|Applications|Backups|Music)',
@@ -71,7 +63,7 @@ let g:haddock_browser = "/usr/bin/firefox"
 " }}}
 " Powerline {{{
 set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim " For powerline
-let g:Powerline_symbols= 'unicode'
+let g:Powerline_symbols= 'fancy'
 " }}}
 " Lilypond {{{
 " set rtp+=/usr/share/lilypond/2.16.2/vim/ " For lilypond vim mode
@@ -133,12 +125,13 @@ au FocusLost * :wa
 "inoremap kj <Esc>
 
 "" Save, Open, Close
-nmap <C-S>		<Esc>:w<CR>
+nmap <C-S>		:w<CR>
 imap <C-S>		<Esc>:w<CR>
-nmap <C-Q>		<Esc>:q<CR>
+nmap <C-Q>		:q<CR>
 imap <C-Q>		<Esc>:q<CR>
-nmap <Leader>w	<Esc>:w<CR>
-nmap <Leader>q	<Esc>:q<CR>
+imap <Leader>w	<Esc>:w<CR>a
+nmap <Leader>w	:w<CR>
+nmap <Leader>q	:q<CR>
 
 "" Substitution
 nnoremap S <Esc>:%s/<C-r><C-w>/
@@ -152,22 +145,32 @@ nnoremap <Leader>z zMzvzz
 "" Convenience
 nnoremap ; :
 nnoremap <tab> %
+
 " New find lines are always at the middle of the window
 nnoremap n nzz
 nnoremap N Nzz
+
 " Don't jump to next when star-searching
 nnoremap * *<C-o>
+
 " 'Strong' h/l
 noremap H ^
 noremap L g_
+
 " Emacs bindings in insert mode
+inoremap <C-f> <Esc>la
+inoremap <C-b> <Esc>i
+inoremap <C-n> <Esc>ja
+inoremap <C-p> <Esc>ka
 inoremap <C-a> <Esc>I
 inoremap <C-e> <Esc>A
+
 " Quick resizing
 nnoremap <C-left> 5<C-w>>
 nnoremap <C-right> 5<C-w><
 nnoremap <C-up> 5<C-w>+
 nnoremap <C-down> 5<C-w>-
+
 " Quick copying/pasting
 nnoremap <Leader>p "0p
 vnoremap <C-c> "*y
@@ -180,7 +183,7 @@ nnoremap <Leader>s :
 vnoremap <leader>S y:execute @@<cr>:echo 'Sourced selection.'<cr>
 nnoremap <leader>S ^vg_y:execute @@<cr>:echo 'Sourced line.'<cr>
 
-" CMake, Run, Errors 
+" CMake, Run, Errors
 "map <F7>		<Esc>:CMake<CR>
 map <F8>		<Esc>:make<CR>
 "map <S-F8>		<Esc>:call Togglecopen()<CR>
@@ -236,7 +239,7 @@ endfunction
 
 function! s:debug()
   call s:updatecmakepaths()
-  execute "!konsole -e gdb ".g:cmake_binary_path 
+  execute "!konsole -e gdb ".g:cmake_binary_path
 endfunction
 
 let s:iscopen = 0
