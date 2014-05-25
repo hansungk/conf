@@ -72,4 +72,4 @@ man() {
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
 
 #export LS_COLORS=''
-#export TERM=xterm-256color
+export TERM=xterm-256color
