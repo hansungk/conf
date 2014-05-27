@@ -1,8 +1,37 @@
-"3.7 (created: 2013/04/03 18:20:07)
+" vim:ft=vim
 
-map <Leader>q <Esc>:q<CR>
-" vim: set ft=vimperator:
+" GUI ----------------------------------------
+set gui=nonavigation
 
-nnoremap j <C-e><C-e><C-e><C-e><C-e>
-nnoremap k <C-y><C-y><C-y><C-y><C-y>
-echo "Vimperator up and running!"
+" Key bindings -------------------------------
+nnoremap ; :
+nnoremap : ;
+
+command reloadrc source '~/.vimperatorrc'
+
+" Use h and l as tab switcher
+" Also corresponds with H and L
+nmap h gT
+nmap l gt
+
+nnoremap <C-S-h> :tabm -1<Esc>
+nnoremap <C-S-l> :tabm +1<Esc>
+
+" Scroll steps
+nnoremap j 5j
+nnoremap k 5k
+nnoremap <C-h> 5h
+nnoremap <C-l> 5l
+
+" VimFx
+nnoremap x d
+nnoremap X u
+nmap d <C-d>
+nmap u <C-u>
+
+" <C-j> as Open Downloads dialog
+nnoremap <C-j> :dialog downloads<CR>
+
+" Misc ---------------------------------------
+" Send one <Esc> to be in normal mode
+normal <Esc>
