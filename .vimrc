@@ -29,7 +29,7 @@ endif
 Plugin 'gmarik/vundle'
 Plugin 'tpope/vim-surround'
 Plugin 'kien/ctrlp.vim'
-Plugin 'Lokaltog/powerline'
+Plugin 'bling/vim-airline'
 Plugin 'tomasr/molokai'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'jnurmine/Zenburn'
@@ -62,8 +62,8 @@ let g:ctrlp_custom_ignore = {
 let g:haddock_browser = "/usr/bin/firefox"
 " }}}
 " Powerline {{{
-set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim " For powerline
-let g:Powerline_symbols= 'fancy'
+"set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim " For powerline
+"let g:Powerline_symbols= 'fancy'
 " }}}
 " Lilypond {{{
 " set rtp+=/usr/share/lilypond/2.16.2/vim/ " For lilypond vim mode
@@ -83,6 +83,7 @@ set autowrite
 set encoding=utf-8	" Not sure this will work well
 set hlsearch
 set ignorecase
+set incsearch
 set nolist
 set listchars=tab:▸\ ,eol:¬,extends:>,precedes:<
 set nocompatible
@@ -113,16 +114,16 @@ au FocusLost * :wa
 
 " KEY MAPPINGS {{{
 
-"" Attempts to avoid the Esc key
+"" Leader
+let mapleader = "\<Space>"
+
+"" Avoid the Esc monster
 "nnoremap <Tab> <Esc>
 "vnoremap <Tab> <Esc>gV
 "onoremap <Tab> <Esc>
 "inoremap <Tab> <Esc>
 "inoremap <Leader><Tab> <Tab>
-"vnoremap kj <Esc>
-"cnoremap kj <Esc>
-"onoremap kj <Esc>
-"inoremap kj <Esc>
+inoremap kj <Esc>
 
 "" Save, Open, Close
 nmap <C-S>		:w<CR>
@@ -132,13 +133,14 @@ imap <C-Q>		<Esc>:q<CR>
 imap <Leader>w	<Esc>:w<CR>a
 nmap <Leader>w	:w<CR>
 nmap <Leader>q	:q<CR>
+nmap <Leader>Q	:q!<CR>
 
 "" Substitution
-nnoremap S <Esc>:%s/<C-r><C-w>/
+nnoremap <Leader>s :%s/<C-r><C-w>/
 
 "" Folding
-nnoremap <Space> za
-nnoremap <S-Space> zA
+"nnoremap <Space> za
+"nnoremap <S-Space> zA
 " Fold everything except where the cursor is located, and center it
 nnoremap <Leader>z zMzvzz
 
@@ -146,13 +148,18 @@ nnoremap <Leader>z zMzvzz
 nnoremap ; :
 nnoremap <tab> %
 
-" New find lines are always at the middle of the window
+"" Find
+" Focus find
 nnoremap n nzz
 nnoremap N Nzz
+
+" Clear find
+nnoremap <Leader>/ :noh<CR>
 
 " Don't jump to next when star-searching
 nnoremap * *<C-o>
 
+" 
 " 'Strong' h/l
 noremap H ^
 noremap L g_
@@ -175,23 +182,15 @@ nnoremap <C-down> 5<C-w>-
 nnoremap <Leader>p "0p
 vnoremap <C-c> "*y
 inoremap <C-v> <Esc>"*pa
+
 " Opening .vimrc
 nmap <Leader>v :e ~/.vimrc<CR>
 nmap <Leader><S-v> :e ~/dotfiles.git/.vimrc<CR>
+
 " Source ( source: bitbucket.org/sjl/dotfiles/vim/vimrc )
-nnoremap <Leader>s :
 vnoremap <leader>S y:execute @@<cr>:echo 'Sourced selection.'<cr>
 nnoremap <leader>S ^vg_y:execute @@<cr>:echo 'Sourced line.'<cr>
 
-" CMake, Run, Errors
-"map <F7>		<Esc>:CMake<CR>
-map <F8>		<Esc>:make<CR>
-"map <S-F8>		<Esc>:call Togglecopen()<CR>
-"map <S-F9>		<Esc>:Run<CR>
-"map <F9>		<Esc>:Debug<CR><Z>
-"map <C-C><C-C>	<Esc>:cc<CR>
-"map <C-C><C-N>	<Esc>:cn<CR>
-"map <C-C><C-P>	<Esc>:cn<CR>
 " NERDTree
 map <F4>		<Esc>:NERDTreeToggle<CR>
 imap <F4>		<Esc>:NERDTreeToggle<CR>

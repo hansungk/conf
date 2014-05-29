@@ -29,7 +29,10 @@ nnoremap X u
 nmap d <C-d>
 nmap u <C-u>
 
-" <C-j> as Open Downloads dialog
+" Clear search
+nnoremap <Leader>/ <Esc>:noh<CR>
+
+" Open downloads
 nnoremap <C-j> :dialog downloads<CR>
 
 " Misc ---------------------------------------
