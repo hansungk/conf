@@ -6,6 +6,7 @@
 [alias]
 	a	= "add"
 	cm	= "commit"
+	co	= "checkout"
 	l	= "log"
 	st	= "status --short"
 	stl	= "status --long"
