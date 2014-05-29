@@ -65,6 +65,9 @@ let g:haddock_browser = "/usr/bin/firefox"
 "set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim " For powerline
 "let g:Powerline_symbols= 'fancy'
 " }}}
+" Airline {{{
+let g:airline_theme= 'dark'
+" }}}
 " Lilypond {{{
 " set rtp+=/usr/share/lilypond/2.16.2/vim/ " For lilypond vim mode
 " }}}
