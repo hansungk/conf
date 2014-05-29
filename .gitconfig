@@ -5,8 +5,10 @@
 	default = simple
 [alias]
 	a	= "add"
+	br	= "branch"
 	cm	= "commit"
 	co	= "checkout"
+	df	= "diff"
 	l	= "log"
 	st	= "status --short"
 	stl	= "status --long"
