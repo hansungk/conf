@@ -7,7 +7,7 @@ Xft.hinting:	true
 Xft.hintstyle:	hintslight
 
 ! terminal colors ------------------------------------------------------------
-#include "/home/stephen/.colors/erosionedit.xresources"
+#include "/home/stephen/.colors/seongnam.xresources"
 
 ! urxvt configurations -------------------------------------------------------
 URxvt.scrollBar: false
