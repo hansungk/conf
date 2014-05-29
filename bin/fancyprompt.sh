@@ -30,11 +30,17 @@ get_user_color() {
 	if [ "${USER}" = "root" ] ; then
 		echo ${RED}
 	else
-		echo ${MAGENTA}
+		echo ${GREEN}
 	fi
 }
 
 # If you use double quotes, all variables will be expanded at this stage and will not be updated (thus $? is always 0)"
 # With $'~'(note the dollar sign), all escape sequences EXCEPT \e will not be expanded.
 # Use \[ and \] around non-printing sequences (such as color-changers) to prevent the bash display from being garbled up.
-export PS1='\[$(get_exit_status)\]\[$(get_user_color)\]\u \[${RS}\]in \[${GREEN}\]\H \[${RS}\]at \[${BLUE}\]\w\[${RS}\]\n-> \[${RS}\]'
+
+# stephen in admin at ~/bin
+# ->
+#export PS1='\[$(get_exit_status)\]\[$(get_user_color)\]\u \[${RS}\]in \[${GREEN}\]\H \[${RS}\]at \[${BLUE}\]\w\[${RS}\]\n-> \[${RS}\]'
+
+# stephen@admin ~/bin $ 
+export PS1='\[$(get_exit_status)\]\[$(get_user_color)\]\u@\H \[${BLUE}\]\w $ \[${RS}\]'
