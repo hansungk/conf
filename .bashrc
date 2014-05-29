@@ -47,4 +47,4 @@ export PATH=/home/stephen/bin:$PATH
 #stty -ixon # Disable C-S suspension
 
 # Fancy prompt
-. /home/stephen/bin/fancyprompt.sh
+. /home/stephen/bin/fancyprompt
