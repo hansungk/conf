@@ -1,4 +1,4 @@
 dotfiles
 ========
 
-Dotfiles for the Distro Jumper
+Dotfiles for the distro jumper
