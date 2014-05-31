@@ -29,7 +29,7 @@ endif
 Plugin 'gmarik/vundle'
 Plugin 'tpope/vim-surround'
 Plugin 'kien/ctrlp.vim'
-Plugin 'bling/vim-airline'
+"Plugin 'bling/vim-airline'
 Plugin 'tomasr/molokai'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'jnurmine/Zenburn'
@@ -263,8 +263,9 @@ endfunction
 " CONVENIENCE {{{
 
 set showcmd " Show pressed keys
-set laststatus=2 " Always display statusline (especially useful for Powerline)
-set noshowmode " Powerline shows mode instead
+
+"set laststatus=2 " Always display statusline (especially useful for Powerline)
+"set noshowmode " Powerline shows mode instead
 
 "autocmd InsertEnter * set cursorline
 "autocmd InsertLeave * set nocursorline
@@ -272,7 +273,7 @@ set noshowmode " Powerline shows mode instead
 if !has("gui_running")
     " Terminal specific
     set t_Co=256 " For vim terminals
-    colorscheme molokai
+    colorscheme default
 endif
 
 " }}}

@@ -1,0 +1,18 @@
+namhan-1:	#EBDECD
+namhan-2:	#C1B39B
+namhan-3:	#74605E
+moran-1:	#DBD7D0
+moran-2:	#DBBB96
+moran-3:	#996A5D
+tancheon-1:	#BFBAAD
+tancheon-2:	#A9B6B1
+tancheon-3:	#887E74
+art-1:		#E6E4E2
+art-2:		#BDBBB9
+art-3:		#6A6763
+yuldong-1:	#76A0B3
+yuldong-2:	#8D8D5C
+yuldong-3:	#9F897D
+
+bundang-magenta: #968588
+bundang-magenta-b: #DBD8D6

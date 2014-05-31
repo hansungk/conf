@@ -1,21 +1,25 @@
 #!/bin/sh
+
 #
 # ~/.xinitrc
 #
 # Executed by startx (run your window manager from here)
+#
 
-if [ -d /etc/X11/xinit/xinitrc.d ]; then
-  for f in /etc/X11/xinit/xinitrc.d/*; do
-    [ -x "$f" ] && . "$f"
-  done
-  unset f
-fi
+# Set X settings
+xrdb -load ~/.Xresources
+
+# Start VMware tools (for autoresizing window)
+vmware-user &
+
+# Swap CAPSLOCK and CTRL
+setxkbmap -option ctrl:swapcaps
 
 # Load VirtualBox guest addons
 VBoxClient-all &
 
-# Set the background
-feh --bg-scale /home/stephen/Pictures/wallpaper.jpg
+# Start terminal
+urxvt &
 
 xrdb -load ~/.Xresources
 
