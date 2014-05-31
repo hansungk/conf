@@ -1,4 +1,5 @@
-URxvt.foreground: #f3f3f5
+! vim:ft=xdefaults
+URxvt.foreground: #ece8cf
 URxvt.background: #1f1e1b
 ! Black
 URxvt.color0: #47443f
@@ -13,14 +14,16 @@ URxvt.color10: #94863f
 URxvt.color3: #aea682
 URxvt.color11: #b69f6d
 ! Blue
-URxvt.color4: #5d8aa1
+URxvt.color4: #708797
 URxvt.color12: #9aa9a4
+!URxvt.color4: #a2a4a1
+!URxvt.color12: #c1bdb1
 ! Magenta
-URxvt.color5: #7e6465
+URxvt.color5: #704032
 URxvt.color13: #ab8e90
 ! Cyan
 URxvt.color6: #6D878D
 URxvt.color14: #42717B
 ! White
-URxvt.color7: #f3f3f5
-URxvt.color15: #eeeeee
+URxvt.color7: #ece8cf
+URxvt.color15: #f3f3f5

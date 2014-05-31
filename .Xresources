@@ -7,7 +7,7 @@ Xft.hinting:	true
 Xft.hintstyle:	hintslight
 
 ! terminal colors ------------------------------------------------------------
-#include "/home/stephen/.colors/seongnam.xresources"
+#include "/home/stephen/.colors/xdotshare.xresources"
 
 ! urxvt configurations -------------------------------------------------------
 URxvt.scrollBar: false
