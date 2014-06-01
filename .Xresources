@@ -12,7 +12,8 @@ Xft.hintstyle:	hintslight
 ! urxvt configurations -------------------------------------------------------
 URxvt.scrollBar: false
 ! For PC
-URxvt.font: xft:Terminus:size=9
+!URxvt.font: xft:Terminus:size=9
+URxvt.font: -*-gohufont-medium-*-*-*-11-*-*-*-*-*-*-*
 ! For rMBP
 !URxvt.font: xft:Inconsolata:size=10
 !URxvt.letterSpace: -1

@@ -9,18 +9,22 @@
 # Set X settings
 xrdb -load ~/.Xresources
 
-# Start VMware tools (for autoresizing window)
-vmware-user &
+VBoxClient-all &
 
 # Swap CAPSLOCK and CTRL
 setxkbmap -option ctrl:swapcaps
 
+# Bind keys
+xbindkeys
+
 # Set background
 feh --bg-fill ~/Pictures/wallpaper
+
+# Start compositing manager
+compton -b
 
 # Start terminal
 urxvt &
 
 # Start window manager
-sxhkd &
-exec bspwm
+exec 2bwm
