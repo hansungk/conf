@@ -15,13 +15,13 @@ xrdb -load ~/.Xresources
 setxkbmap -option ctrl:swapcaps
 
 # Bind keys
-#xbindkeys
+xbindkeys
 
 # Set background
 feh --bg-fill ~/Pictures/wallpaper
 
 # Start compositing manager
-#compton -b
+compton -b
 
 # Start terminal
 urxvt &

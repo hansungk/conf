@@ -11,9 +11,10 @@ Xft.hintstyle:	hintslight
 
 ! urxvt configurations -------------------------------------------------------
 URxvt.scrollBar: false
+URxvt*internalBorder: 15
 ! For PC
 !URxvt.font: xft:Terminus:size=9
-URxvt.font: -*-gohufont-medium-*-*-*-11-*-*-*-*-*-*-*
+URxvt.font: -*-gohufont-medium-*-*-*-11-*-*-*-*-*-*-*,xft:NanumGothicCoding:antialias=false
 ! For rMBP
 !URxvt.font: xft:Inconsolata:size=10
 !URxvt.letterSpace: -1
