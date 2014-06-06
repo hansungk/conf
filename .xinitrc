@@ -27,4 +27,4 @@ compton -b
 urxvt &
 
 # Start window manager
-exec 2bwm
+exec i3
