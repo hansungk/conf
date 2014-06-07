@@ -1,0 +1,71 @@
+# -- Application launchers ---------------------------------- {{{ --
+"urxvt"
+    Mod4 + Return
+#
+"dwb"
+    Mod4 + w
+#
+"~/bin/menu.sh"
+    Menu
+# ----------------------------------------------------------- }}} --
+
+# -- Volume management -------------------------------------- {{{ --
+"amixer set Master 5%+ unmute"
+    XF86AudioRaiseVolume
+
+"amixer set Master 5%- unmute"
+    XF86AudioLowerVolume
+
+"amixer set Master toggle"
+    XF86AudioMute
+
+"~/bin/popup volumebar"
+    XF86AudioRaiseVolume
+
+"~/bin/popup volumebar"
+    XF86AudioLowerVolume
+
+"~/bin/popup volumebar"
+    XF86AudioMute
+# ----------------------------------------------------------- }}} --
+
+# -- Gamma management --------------------------------------- {{{ --
+"~/bin/gamma.sh up 0.25"
+    Control + Prior
+
+"~/bin/gamma.sh down 0.25"
+    Control + Next
+
+"~/bin/gamma.sh reset"
+    Control + Home
+# ----------------------------------------------------------- }}} --
+
+# -- mpc -h gavroche remote control ------------------------------------- {{{ --
+"mpc -h gavroche toggle"
+    XF86AudioPlay
+
+"mpc -h gavroche stop"
+    XF86AudioStop
+
+"mpc -h gavroche prev"
+    XF86AudioPrev
+
+"mpc -h gavroche next"
+    XF86AudioNext
+
+"mpc -h gavroche volume +10"
+    control + XF86AudioRaiseVolume
+
+"mpc -h gavroche volume -10"
+    control + XF86AudioLowerVolume
+
+"mpc -h gavroche pause"
+    XF86AudioMute
+# ----------------------------------------------------------- }}} --
+
+# -- Desktop control ---------------------------------------- {{{ --
+"xtrlock"
+    control + mod1 + l
+# ----------------------------------------------------------- }}} --
+
+# vim: set foldmethod=marker syntax=conf:

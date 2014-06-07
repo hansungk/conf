@@ -13,7 +13,7 @@ Xft.hintstyle:	hintslight
 URxvt.scrollBar: false
 ! For PC
 !URxvt.font: xft:Terminus:size=9
-URxvt.font: -*-gohufont-medium-*-*-*-11-*-*-*-*-*-*-*
+URxvt.font: -*-termsyn-medium-*-*-*-14-*-*-*-*-*-*-*,xft:NanumGothicCoding:antialias=false
 ! For rMBP
 !URxvt.font: xft:Inconsolata:size=10
 !URxvt.letterSpace: -1

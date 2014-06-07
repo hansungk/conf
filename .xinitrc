@@ -9,7 +9,7 @@
 # Set X settings
 xrdb -load ~/.Xresources
 
-VBoxClient-all &
+#VBoxClient-all &
 
 # Swap CAPSLOCK and CTRL
 setxkbmap -option ctrl:swapcaps
