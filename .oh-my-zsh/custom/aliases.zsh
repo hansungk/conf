@@ -4,11 +4,11 @@ alias cp="cp -i"                          # confirm before overwriting something
 alias df='df -h'
 alias free='free -h'
 alias g='git'
-alias grep='grep --color=auto -d skip'
+#alias grep='grep --color=auto -d skip'
 alias l='ls'
-alias ls='ls --color=auto --group-directories-first'
-alias ll='ls -l -h'
-alias la='ls -la --group-directories-first'
+#alias ls='ls --color=auto --group-directories-first'
+#alias ll='ls -l -h'
+#alias la='ls -la'
 alias tmux="TERM=screen-256color-bce tmux"
 alias rm="rm -i"                          # confirm before overwriting something
 alias v='vim'
