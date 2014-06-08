@@ -13,10 +13,9 @@ function prompt_char {
     echo ">%{$reset_color%}"
 }
 
-PROMPT='%{$fg[magenta]%}%n%{$reset_color%} at %{$fg[yellow]%}%m%{$reset_color%} in %{$fg[green]%}${PWD/#$HOME/~}%{$reset_color%}$(git_prompt_info)
+PROMPT='%{$fg[red]%}%n%{$reset_color%} at %{$fg[yellow]%}%m%{$reset_color%} in %{$fg[green]%}${PWD/#$HOME/~}%{$reset_color%}$(git_prompt_info)
 $(prompt_char) '
 
-RPROMPT='%{$fg[green]%}[%*]%{$reset_color%}'
 RPROMPT=''
 
 ZSH_THEME_GIT_PROMPT_PREFIX=" on %{$fg[magenta]%}"

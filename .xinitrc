@@ -9,14 +9,19 @@
 # Set X settings
 xrdb -load ~/.Xresources
 
-# Start VMware tools (for autoresizing window)
-vmware-user &
+#VBoxClient-all &
 
 # Swap CAPSLOCK and CTRL
 setxkbmap -option ctrl:swapcaps
 
-# Load VirtualBox guest addons
-VBoxClient-all &
+# Bind keys
+xbindkeys
+
+# Set background
+feh --bg-fill ~/Pictures/wallpaper
+
+# Start compositing manager
+compton -b
 
 # Start terminal
 urxvt &
@@ -25,9 +30,5 @@ xrdb -load ~/.Xresources
 
 xbindkeys
 
-# Start compton daemonized
-#compton -b
-
-2bwm &
-
-exec urxvt
+# Start window manager
+exec i3

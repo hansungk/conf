@@ -12,7 +12,8 @@ alias la='ls -la --group-directories-first'
 alias tmux="TERM=screen-256color-bce tmux"
 alias rm="rm -i"                          # confirm before overwriting something
 alias v='vim'
-alias vi=vim
+alias vi='vim'
+alias view='vim -R'
 
 # ex - archive extractor
 # usage: ex <file>
