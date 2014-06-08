@@ -11,8 +11,8 @@ command reloadrc source '~/.vimperatorrc'
 
 " Use h and l as tab switcher
 " Also corresponds with H and L
-nmap h gT
-nmap l gt
+nmap K gT
+nmap J gt
 
 nnoremap <C-S-h> :tabm -1<Esc>
 nnoremap <C-S-l> :tabm +1<Esc>
@@ -20,20 +20,14 @@ nnoremap <C-S-l> :tabm +1<Esc>
 " Scroll steps
 nnoremap j 5j
 nnoremap k 5k
-nnoremap <C-h> 5h
-nnoremap <C-l> 5l
-
-" VimFx
-nnoremap x d
-nnoremap X u
-nmap d <C-d>
-nmap u <C-u>
+nnoremap h 5h
+nnoremap l 5l
 
 " Clear search
 nnoremap <Leader>/ <Esc>:noh<CR>
 
 " Open downloads
-nnoremap <C-j> :dialog downloads<CR>
+nnoremap <C-j> :downloads<CR>
 
 " Misc ---------------------------------------
 " Send one <Esc> to be in normal mode

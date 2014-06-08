@@ -8,8 +8,9 @@
 
 # Set X settings
 xrdb -load ~/.Xresources
+xset +fp /usr/share/fonts/local
 
-#VBoxClient-all &
+VBoxClient-all &
 
 # Swap CAPSLOCK and CTRL
 setxkbmap -option ctrl:swapcaps
