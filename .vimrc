@@ -118,7 +118,7 @@ au FocusLost * :wa
 " KEY MAPPINGS {{{
 
 "" Leader
-let mapleader = "\<Space>"
+"let mapleader = "\<Space>"
 
 "" Avoid the Esc monster
 "nnoremap <Tab> <Esc>
@@ -273,7 +273,7 @@ set showcmd " Show pressed keys
 if !has("gui_running")
     " Terminal specific
     set t_Co=256 " For vim terminals
-    colorscheme default
+    colorscheme jellybeans
 endif
 
 " }}}

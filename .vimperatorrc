@@ -1,13 +1,15 @@
 " vim:ft=vim
 
-" GUI ----------------------------------------
+" Essential ----------------------------------
 set gui=nonavigation
+set hintchars=hjklasdfqwertyuiopzxcvbnm
+
 
 " Key bindings -------------------------------
 nnoremap ; :
 nnoremap : ;
 
-command reloadrc source '~/.vimperatorrc'
+command reloadrc source /Users/stephen/.vimperatorrc
 
 " Use h and l as tab switcher
 " Also corresponds with H and L
