@@ -118,7 +118,7 @@ au FocusLost * :wa
 " KEY MAPPINGS {{{
 
 "" Leader
-let mapleader = "\<Space>"
+"let mapleader = "\<Space>"
 
 "" Avoid the Esc monster
 "nnoremap <Tab> <Esc>

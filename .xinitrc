@@ -9,6 +9,12 @@
 # Set X settings
 xrdb -load ~/.Xresources
 xset +fp /usr/share/fonts/local
+xset r rate 200 20
+
+# FCITX settings
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+export XMODIFIERS="@im=fcitx"
 
 VBoxClient-all &
 
@@ -23,6 +29,9 @@ feh --bg-fill ~/Pictures/wallpaper
 
 # Start compositing manager
 #compton -b
+
+# Start input method
+fcitx &
 
 # Start terminal
 urxvt &
