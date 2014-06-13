@@ -34,7 +34,8 @@ feh --bg-fill ~/Pictures/wallpaper
 fcitx &
 
 # Start terminal
-urxvt &
+sxhkd &
+bspwm &
 
 # Start window manager
-exec i3
+exec urxvt
