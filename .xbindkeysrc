@@ -1,15 +1,12 @@
-# -- Application launchers ---------------------------------- {{{ --
+# -- Application launchers ----------------------------------
 "urxvt"
-    Mod4 + Return
-#
-"dwb"
-    Mod4 + w
-#
-"~/bin/menu.sh"
-    Menu
-# ----------------------------------------------------------- }}} --
+    Mod1 + Return
 
-# -- Volume management -------------------------------------- {{{ --
+"firefox"
+    Mod1 + w
+# -----------------------------------------------------------
+
+# -- Volume management --------------------------------------
 "amixer set Master 5%+ unmute"
     XF86AudioRaiseVolume
 
@@ -18,29 +15,9 @@
 
 "amixer set Master toggle"
     XF86AudioMute
+# -----------------------------------------------------------
 
-"~/bin/popup volumebar"
-    XF86AudioRaiseVolume
-
-"~/bin/popup volumebar"
-    XF86AudioLowerVolume
-
-"~/bin/popup volumebar"
-    XF86AudioMute
-# ----------------------------------------------------------- }}} --
-
-# -- Gamma management --------------------------------------- {{{ --
-"~/bin/gamma.sh up 0.25"
-    Control + Prior
-
-"~/bin/gamma.sh down 0.25"
-    Control + Next
-
-"~/bin/gamma.sh reset"
-    Control + Home
-# ----------------------------------------------------------- }}} --
-
-# -- mpc -h gavroche remote control ------------------------------------- {{{ --
+# -- mpc -h gavroche remote control -------------------------
 "mpc -h gavroche toggle"
     XF86AudioPlay
 
@@ -61,11 +38,11 @@
 
 "mpc -h gavroche pause"
     XF86AudioMute
-# ----------------------------------------------------------- }}} --
+# -----------------------------------------------------------
 
-# -- Desktop control ---------------------------------------- {{{ --
+# -- Desktop control ----------------------------------------
 "xtrlock"
     control + mod1 + l
-# ----------------------------------------------------------- }}} --
+# ----------------------------------------------------------- 
 
-# vim: set foldmethod=marker syntax=conf:
+# vim: set syntax=conf:
