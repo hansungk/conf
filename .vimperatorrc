@@ -9,6 +9,7 @@ set hintchars=asdfghjkl
 " Key bindings -------------------------------
 nnoremap ; :
 nnoremap : ;
+nnoremap <BS> H
 
 command reloadrc source ~/.vimperatorrc
 
