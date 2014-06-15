@@ -18,7 +18,7 @@ bspc control --subscribe | perl -pe 's|[M,m]VGA-0.*?([M,m]DVI-I-1)|$1|g' > "$PAN
 #/home/stephen/bin/bspct > "$PANEL_FIFO" &
 bspc control --subscribe > "$PANEL_FIFO" &
 #xtitle -sf 'T%s' > "$PANEL_FIFO" &
-date +'S%H:%M %p' > "$PANEL_FIFO" &
+conky -c /home/stephen/.config/bspwm/panel/panel_conky > "$PANEL_FIFO" &
 
 . panel_colors
 
