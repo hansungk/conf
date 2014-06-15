@@ -23,7 +23,7 @@ VBoxClient-all &
 setxkbmap -option ctrl:swapcaps
 
 # Bind keys
-xbindkeys
+#xbindkeys
 
 # Set background
 feh --bg-fill ~/Pictures/wallpaper
