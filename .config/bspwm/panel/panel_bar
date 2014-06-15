@@ -1,0 +1,70 @@
+#! /bin/sh
+#
+# Example panel for LemonBoy's bar
+
+. panel_colors
+
+while read -r line ; do
+    case $line in
+        S*)
+            # clock output
+            sys_infos="%{F$COLOR_STATUS_FG}${line#?}"
+            ;;
+        T*)
+            # xtitle output
+            title="%{F$COLOR_TITLE_FG}%{B$COLOR_TITLE_BG}${line#?}"
+            ;;
+        W*)
+            # bspwm internal state
+            wm_infos=""
+            IFS=':'
+            #line=`echo $line | perl -pe 's|[M,m]VGA-0.*?([M,m]DVI-I-1)|$1|g'`
+            set -- ${line#?}
+            while [ $# -gt 0 ] ; do
+                item=$1
+#               name=${item#?}
+                case $item in
+                    O*)
+                        # focused occupied desktop
+                        wm_infos="$wm_infos %{F$COLOR_FOCUSED_OCCUPIED_FG} "
+                        ;;
+                    F*)
+                        # focused free desktop
+                        wm_infos="$wm_infos %{F$COLOR_FOCUSED_FREE_FG} "
+                        ;;
+                    U*)
+                        # focused urgent desktop
+                        wm_infos="$wm_infos %{F$COLOR_FOCUSED_URGENT_FG} "
+                        ;;
+                    o*)
+                        # occupied desktop
+                        wm_infos="$wm_infos %{F$COLOR_OCCUPIED_FG} "
+                        ;;
+                    f*)
+                        # free desktop
+                        wm_infos="$wm_infos %{F$COLOR_FREE_FG} "
+                        ;;
+                    u*)
+                        # urgent desktop
+                        wm_infos="$wm_infos %{F$COLOR_URGENT_FG} "
+                        ;;
+                    L*) # layout
+#                       layout=$(printf "%s" "${name}" | sed 's/\(.\).*/\U\1/')
+#                       wm_infos="$wm_infos    %{F$COLOR_LAYOUT_FG}%{B$COLOR_LAYOUT_BG}$layout"
+#                       ;;
+                esac
+                shift
+            done
+            ;;
+        *)
+            wm_infos="Fuck you from panel_bar"
+            ;;
+    esac
+
+    # For dual monitor setup
+    wm_infos_vga=`echo $wm_infos | awk '{ print $1 "  " $2 "  " $3 "  " $4 "  " $5 "  " $6 "  " $7 "  " $8 "  " $9 "  " $10 }'`
+    wm_infos_dvi=`echo $wm_infos | awk '{ print $11 "  " $12 "  " $13 "  " $14 "  " $15 "  " $16 "  " $17 "  " $18 "  " $19 "  " $20 }'`
+
+    printf "%s\n" "%{Sf}%{c}$wm_infos_dvi %{r} $sys_infos %{Sl}%{c}$wm_infos_vga %{r} $sys_infos"
+    #printf "%s\n" "%{Sf}%{l} lefty %{c} DVI $wm_infos %{r} righty %{Sl} %{c} VGA"
+done
