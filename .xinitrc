@@ -38,5 +38,5 @@ fcitx &
 urxvt &
 
 # Start window manager
-#sxhkd &
-exec startkde
+sxhkd &
+exec bspwm
