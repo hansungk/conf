@@ -37,6 +37,10 @@ fcitx &
 # Start terminal
 urxvt &
 
+xrdb -load ~/.Xresources
+
+xbindkeys
+
 # Start window manager
 sxhkd &
 exec bspwm
