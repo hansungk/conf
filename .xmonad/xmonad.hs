@@ -29,8 +29,8 @@ main :: IO()
 --main = xmonad =<< statusBar myBar myPP toggleStrutsKey myConfig
 main = do
 	h <- spawnPipe myBar
-	xmonad $ defaultConfig	{ workspaces = ["code", "web", "3", "4", "5", "6", "7", "8", "9"]
-							, modMask = mod4Mask
+	xmonad $ defaultConfig	{ workspaces = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
+							, modMask = mod1Mask
 							, terminal = "urxvt"
 							, borderWidth = 2
 							, focusedBorderColor = (colLook Cyan 0)

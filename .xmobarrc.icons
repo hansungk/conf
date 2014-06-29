@@ -1,0 +1,21 @@
+-- vim:ft=haskell
+--Config { font = "xft:Terminus:size=12" -- For PC
+Config { font = "xft:Inconsolata:size=10" -- For rMBP
+       , bgColor = "black"
+       , fgColor = "#555555"
+       , position = TopW L 100
+       , commands = [ Run Weather "RKSS" ["-t","<tempC>C","-L","10","-H","25","--normal","green","--high","red","--low","lightblue"] 36000
+                    , Run Cpu ["-t", "<icon=/home/stephen/.xmonad/icons/xbm8x8/cpu.xbm/> <total>", "-L","49","-H","50","--normal","green","--high","red"] 20
+                    , Run Memory ["-t","<icon=/home/stephen/.xmonad/icons/xbm8x8/mem.xbm/> <usedratio>"] 10
+					--, Run CoreTemp ["-t", "TEMP <core0>C", "-L", "40", "-H", "60", "--normal","green","--high","red","--low","lightblue"] 50
+					--, Run Network "wlp7s0" ["-t", "<dev> <rx>K|<tx>K", "-L","0","-H","1000","--normal","green","--high","red"] 10
+					, Run DiskIO [("/", "<icon=/home/stephen/.xmonad/icons/xbm8x8/diskette.xbm/> <read>|<write>")] [] 10
+					--, Run BatteryP ["BAT0"] ["-t", "<acstatus>,<left>%"] 300
+                    , Run Date "<icon=/home/stephen/.xmonad/icons/xbm8x8/clock.xbm/> %a %b %_d %H:%M" "date" 10
+					, Run Com "whoami" [] "" 0
+                    , Run StdinReader
+                    ]
+       , sepChar = "%"
+       , alignSep = "}{"
+       , template = "%StdinReader% }{ [ <fc=#D6D6D6>%cpu%</fc> ][ <fc=#D6D6D6>%memory%</fc> ][ <fc=#D6D6D6>%diskio%</fc> ][ <fc=#D6D6D6>%date% %RKSS%</fc> ][ <fc=#D6D6D6><icon=/home/stephen/.xmonad/icons/xbm8x8/arch_10x10.xbm/></fc> ]"
+}

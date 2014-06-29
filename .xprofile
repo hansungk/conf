@@ -11,6 +11,7 @@ xrdb -load ~/.Xresources
 xset +fp /usr/share/fonts/local
 xset fp rehash
 xset r rate 200 30
+xrandr --output VGA-0 --mode 1280x1024 --right-of DVI-I-1
 
 VBoxClient-all &
 
