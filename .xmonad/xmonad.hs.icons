@@ -32,7 +32,7 @@ main = do
 	xmonad $ defaultConfig	{ workspaces = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
 							, modMask = mod1Mask
 							, terminal = "urxvt"
-							, borderWidth = 1
+							, borderWidth = 2
 							, focusedBorderColor = (colLook Cyan 0)
 							, normalBorderColor = (colLook Black 0)
 							, layoutHook = myLayoutHook
@@ -56,9 +56,9 @@ myLogHook h = dynamicLogWithPP myPP
 							, ppUrgent	= xmobarColor (colLook White 1) "" . wrap "[" "]"
 							, ppLayout	= xmobarColor (colLook Green 1) "" .
 								(\x -> case x of
-									"Spacing 7 Tall"	-> "[]="
-									"Tall"				-> "[]="
-									"Full"				-> "[F]"
+									"Spacing 7 Tall"	-> "<icon=/home/stephen/.xmonad/icons/stlarch/tile.xbm/>"
+									"Tall"				-> "<icon=/home/stephen/.xmonad/icons/stlarch/monocle.xbm/>"
+									"Full"				-> "<icon=/home/stephen/.xmonad/icons/stlarch/monocle2.xbm/>"
 									_					-> x
 								)
 							, ppTitle	= xmobarColor (colLook White 1) "" . shorten 80
