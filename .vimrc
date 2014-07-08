@@ -168,12 +168,12 @@ noremap H ^
 noremap L g_
 
 " Emacs bindings in insert mode
-inoremap <C-f> <Esc>la
-inoremap <C-b> <Esc>i
-inoremap <C-n> <Esc>ja
-inoremap <C-p> <Esc>ka
-inoremap <C-a> <Esc>I
-inoremap <C-e> <Esc>A
+"inoremap <C-f> <Esc>la
+"inoremap <C-b> <Esc>i
+"inoremap <C-n> <Esc>ja
+"inoremap <C-p> <Esc>ka
+"inoremap <C-a> <Esc>I
+"inoremap <C-e> <Esc>A
 
 " Quick resizing
 nnoremap <C-left> 5<C-w>>

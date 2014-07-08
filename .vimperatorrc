@@ -2,6 +2,7 @@
 
 " Essential ----------------------------------
 set gui=nonavigation
+set defsearch=google
 set hintchars=hjklasdfqwertyuiopzxcvbnm
 
 
