@@ -1,0 +1,37 @@
+" vim:ft=vim
+
+" Essential ----------------------------------
+echo "Welcome to Vimperator!"
+set defsearch=google
+set gui=nonavigation
+set hintchars=asdfghjkl
+
+" Key bindings -------------------------------
+nnoremap ; :
+nnoremap : ;
+nnoremap <BS> H
+
+command reloadrc source ~/.vimperatorrc
+
+" Tab switcher
+nmap K gT
+nmap J gt
+
+nnoremap <C-S-h> :tabm -1<Esc>
+nnoremap <C-S-l> :tabm +1<Esc>
+
+" Scroll steps
+nnoremap j 5j
+nnoremap k 5k
+nnoremap h 5h
+nnoremap l 5l
+
+" Clear search
+nnoremap <Leader>/ <Esc>:noh<CR>
+
+" Open downloads
+nnoremap <C-j> :downloads<CR>
+
+" Misc ---------------------------------------
+" Send one <Esc> to be in normal mode
+normal <Esc>

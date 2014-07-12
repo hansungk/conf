@@ -7,13 +7,15 @@ Xft.hinting:	true
 Xft.hintstyle:	hintslight
 
 ! terminal colors ------------------------------------------------------------
-#include "/home/stephen/.colors/z3bra.xresources"
+#include "/home/stephen/.colors/vacuous2.xresources"
+!URxvt.background: #000000
+!URxvt.foreground: #ffffff
 
 ! urxvt configurations -------------------------------------------------------
 URxvt.scrollBar: false
 ! For PC
-!URxvt.font: xft:Terminus:size=9
-URxvt.font: -*-termsyn-medium-*-*-*-14-*-*-*-*-*-*-*,xft:NanumGothicCoding:antialias=false
+!URxvt.font: -*-termsyn-medium-*-*-*-14-*-*-*-*-*-*-*,-*-stlarch-medium-*-normal-*-12-*-*-*-*-*-*-*,xft:NanumGothicCoding:antialias=false
+URxvt.font: -*-tamsyn-medium-*-*-*-14-*-*-*-*-*-*-*,xft:NanumGothicCoding:antialias=false
 ! For rMBP
 !URxvt.font: xft:Inconsolata:size=10
 !URxvt.letterSpace: -1
