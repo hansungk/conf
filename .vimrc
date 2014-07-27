@@ -20,13 +20,13 @@ if has('vim_starting')
 		set rtp+=$VIM/vimfiles/bundle/Vundle.vim/
 		call vundle#begin('~/vimfiles/bundle/')
 	else
-		set rtp+=~/.vim/bundle/Vundle.vim/
+		set rtp+=~/.vim/bundle/Vundle.vim
 		call vundle#begin()
 	endif
 endif
 
 " Internal
-Plugin 'gmarik/vundle'
+Plugin 'gmarik/Vundle.vim'
 Plugin 'tpope/vim-surround'
 Plugin 'kien/ctrlp.vim'
 "Plugin 'bling/vim-airline'
