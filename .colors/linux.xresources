@@ -1,8 +1,7 @@
 ! tangoesque scheme
-*background: #111111
-!*foreground: #babdb6
+*background: #000000
 *foreground: #ffffff
-! Black (not tango) + DarkGrey
+! Black + DarkGrey
 *color0:  #000000
 *color8:  #555753
 ! DarkRed + Red

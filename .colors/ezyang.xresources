@@ -1,4 +1,5 @@
-URxvt*background: #2B2B2B
+!URxvt*background: #2B2B2B
+URxvt*background: #000000
 URxvt*foreground: #DEDEDE
 ! black
 URxvt*color0  : #2E3436
