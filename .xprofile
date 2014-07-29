@@ -11,36 +11,21 @@ xrdb -load ~/.Xresources
 xset +fp /usr/share/fonts/local
 xset fp rehash
 xset r rate 200 30
+xrandr --output VGA-0 --mode 1280x1024 --right-of DVI-I-1
 
-# FCITX settings
-export GTK_IM_MODULE=fcitx
-export QT_IM_MODULE=fcitx
-export XMODIFIERS="@im=fcitx"
-
-VBoxClient-all &
+#VBoxClient-all &
 
 # Swap CAPSLOCK and CTRL
 setxkbmap -option ctrl:swapcaps
 
 # Bind keys
-#xbindkeys
+xbindkeys
 
 # Set background
 feh --bg-fill ~/Pictures/wallpaper
 
 # Start compositing manager
-compton -b
-
-# Start input method
-fcitx &
+#compton -b
 
 # Start terminal
 urxvt &
-
-xrdb -load ~/.Xresources
-
-xbindkeys
-
-# Start window manager
-sxhkd &
-exec bspwm
