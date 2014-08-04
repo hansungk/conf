@@ -9,6 +9,7 @@
 # Set X settings
 xrdb -load ~/.Xresources
 xset +fp /usr/share/fonts/local
+xset +fp /usr/share/fonts/misc
 xset fp rehash
 xset r rate 200 30
 
@@ -42,5 +43,4 @@ xrdb -load ~/.Xresources
 xbindkeys
 
 # Start window manager
-sxhkd &
-exec bspwm
+exec i3
