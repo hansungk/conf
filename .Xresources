@@ -7,9 +7,7 @@ Xft.hinting:	true
 Xft.hintstyle:	hintslight
 
 ! terminal colors ------------------------------------------------------------
-#include "/home/stephen/.colors/vacuous2.xresources"
-!URxvt.background: #000000
-!URxvt.foreground: #ffffff
+#include "/home/stephen/.colors/ezyang.xresources"
 
 ! urxvt configurations -------------------------------------------------------
 URxvt.scrollBar: false
