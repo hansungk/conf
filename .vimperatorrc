@@ -7,16 +7,6 @@ set hintchars=asdfghjkl
 
 " GUI ----------------------------------------
 set gui=nonavigation
-highlight -append StatusLine font-family:Terminus; font-size:12px;
-highlight -append CmdLine font-family:Terminus; font-size:12px;
-highlight -append CmdOutput font-family:Terminus; font-size:12px;
-highlight -append CompDesc font-family:Terminus; font-size:12px;
-highlight -append CompMsg font-family:Terminus; font-size:12px;
-highlight -append CompResult font-family:Terminus; font-size:12px;
-highlight -append CompTitle font-family:Terminus; font-size:12px;
-highlight -append ErrorMsg font-family:Terminus; font-size:12px;
-highlight -append Message font-family:Terminus; font-size:12px;
-highlight -append WarningMsg font-family:Terminus; font-size:12px;
 
 " Key bindings -------------------------------
 nnoremap ; :

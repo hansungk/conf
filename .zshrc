@@ -59,7 +59,7 @@ export MANPATH=/usr/local/texlive/2013/texmf-dist/doc/man:$MANPATH
 export INFOPATH=/usr/local/texlive/2013/texmf-dist/doc/info:$INFOPATH
 
 # Compilation flags
-export MAKEFLAGS="-j8"
+export MAKEFLAGS="-j9"
 
 # Colored man pages
 man() {
@@ -81,3 +81,6 @@ man() {
 
 export CLICOLOR=1
 export LSCOLORS=ExGxBxDxCxEgEdxbxgxcxd
+
+# OPAM configuration
+. /home/stephen/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
