@@ -43,4 +43,4 @@ xrdb -load ~/.Xresources
 xbindkeys
 
 # Start window manager
-exec i3
+exec 2bwm

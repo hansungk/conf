@@ -7,7 +7,7 @@ Xft.hinting:	true
 Xft.hintstyle:	hintslight
 
 ! terminal colors ------------------------------------------------------------
-#include "/home/stephen/.colors/grassland.xresources"
+#include "/home/stephen/.colors/xdotshare.xresources"
 !URxvt*background: #002b36
 
 ! urxvt configurations -------------------------------------------------------
@@ -18,3 +18,10 @@ URxvt.font: -*-Terminus-medium-*-*-*-12-*-*-*-*-*-*-*
 ! For rMBP
 !URxvt.font: xft:Inconsolata:size=10
 !URxvt.letterSpace: -1
+URxvt*.depth: 24
+
+!URxvt.transparent: true
+!URxvt.shading: 20
+!URxvt.blurRadius: 30
+!URxvt.fading: 30
+URxvt.internalBorder: 15

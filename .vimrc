@@ -84,7 +84,7 @@ filetype plugin indent on
 set autoindent
 set autowrite
 set encoding=utf-8	" Not sure this will work well
-set expandtab
+"set expandtab
 set hlsearch
 set ignorecase
 set incsearch

@@ -23,10 +23,10 @@ nmap -builtin <C-S-k> :tabm -1<CR>
 nmap -builtin <C-S-j> :tabm +1<CR>
 
 " Scroll steps
-nmap -builtin j 5j
-nmap -builtin k 5k
-nmap -builtin h 5h
-nmap -builtin l 5l
+"nmap -builtin j 5j
+"nmap -builtin k 5k
+"nmap -builtin h 5h
+"nmap -builtin l 5l
 
 " Clear search
 nmap -builtin <Leader>/ <Esc>:noh<CR>
