@@ -20,13 +20,13 @@ if has('vim_starting')
 		set rtp+=$VIM/vimfiles/bundle/Vundle.vim/
 		call vundle#begin('~/vimfiles/bundle/')
 	else
-		set rtp+=~/.vim/bundle/Vundle.vim/
+		set rtp+=~/.vim/bundle/Vundle.vim
 		call vundle#begin()
 	endif
 endif
 
 " Internal
-Plugin 'gmarik/vundle'
+Plugin 'gmarik/Vundle.vim'
 Plugin 'tpope/vim-surround'
 Plugin 'kien/ctrlp.vim'
 "Plugin 'bling/vim-airline'
@@ -84,6 +84,7 @@ filetype plugin indent on
 set autoindent
 set autowrite
 set encoding=utf-8	" Not sure this will work well
+"set expandtab
 set hlsearch
 set ignorecase
 set incsearch
@@ -118,7 +119,7 @@ au FocusLost * :wa
 " KEY MAPPINGS {{{
 
 "" Leader
-let mapleader = "\<Space>"
+"let mapleader = "\<Space>"
 
 "" Avoid the Esc monster
 "nnoremap <Tab> <Esc>
@@ -133,6 +134,7 @@ nmap <C-S>		:w<CR>
 imap <C-S>		<Esc>:w<CR>
 nmap <C-Q>		:q<CR>
 imap <C-Q>		<Esc>:q<CR>
+nmap <C-b>		:CtrlPBuffer<CR>
 imap <Leader>w	<Esc>:w<CR>a
 nmap <Leader>w	:w<CR>
 nmap <Leader>q	:q<CR>
@@ -168,12 +170,12 @@ noremap H ^
 noremap L g_
 
 " Emacs bindings in insert mode
-inoremap <C-f> <Esc>la
-inoremap <C-b> <Esc>i
-inoremap <C-n> <Esc>ja
-inoremap <C-p> <Esc>ka
-inoremap <C-a> <Esc>I
-inoremap <C-e> <Esc>A
+"inoremap <C-f> <Esc>la
+"inoremap <C-b> <Esc>i
+"inoremap <C-n> <Esc>ja
+"inoremap <C-p> <Esc>ka
+"inoremap <C-a> <Esc>I
+"inoremap <C-e> <Esc>A
 
 " Quick resizing
 nnoremap <C-left> 5<C-w>>
@@ -264,7 +266,7 @@ endfunction
 
 set showcmd " Show pressed keys
 
-"set laststatus=2 " Always display statusline (especially useful for Powerline)
+set laststatus=2 " Always display statusline (especially useful for Powerline)
 "set noshowmode " Powerline shows mode instead
 
 "autocmd InsertEnter * set cursorline
@@ -273,7 +275,7 @@ set showcmd " Show pressed keys
 if !has("gui_running")
     " Terminal specific
     set t_Co=256 " For vim terminals
-    colorscheme default
+    colorscheme jellybeans
 endif
 
 " }}}

@@ -1,7 +1,8 @@
 ! grassland by bohoomil
 
 *background:  #0d1926
-*foreground:  #d9e6f2
+!*foreground:  #d9e6f2
+*foreground:  #c7ced9
 *cursorColor: #238c0e
 
 ! black
