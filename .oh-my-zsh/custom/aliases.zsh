@@ -1,5 +1,6 @@
 # Aliases
 alias cd..='cd ..'
+alias colors='~/bin/colors'
 alias cp="cp -i"                          # confirm before overwriting something
 alias df='df -h'
 alias free='free -h'

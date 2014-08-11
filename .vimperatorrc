@@ -1,6 +1,11 @@
 " vim:ft=vim
 
 " Essential ----------------------------------
+echo "Welcome to Vimperator!"
+set defsearch=google
+set hintchars=asdfghjkl
+
+" GUI ----------------------------------------
 set gui=nonavigation
 set defsearch=google
 set hintchars=hjklasdfqwertyuiopzxcvbnm
@@ -9,11 +14,11 @@ set hintchars=hjklasdfqwertyuiopzxcvbnm
 " Key bindings -------------------------------
 nnoremap ; :
 nnoremap : ;
+nnoremap <BS> H
 
 command reloadrc source /Users/stephen/.vimperatorrc
 
-" Use h and l as tab switcher
-" Also corresponds with H and L
+" Tab switcher
 nmap K gT
 nmap J gt
 

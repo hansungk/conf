@@ -1,28 +1,39 @@
 " vim:ft=vim
+
+" Essential ----------------------------------
+echo "Welcome to Pentadactyl!"
+set defsearch=google
+set hintkeys=asdfghjklqwertyuiopzxcvbnm
+
+" GUI ----------------------------------------
+highlight -append Hint text-transform: uppercase;
+
+" Key bindings -------------------------------
 nmap -builtin ; :
 nmap -builtin : ;
+nmap -builtin <BS> H
 
-command reloadrc source '~/.pentadactylrc'
+command reloadrc source ~/.pentadactylrc
 
-" Use h and l as tab switcher
-" Also corresponds with H and L
-nmap h gT
-nmap l gt
+" Tab switcher
+nmap K gT
+nmap J gt
 
-nmap -builtin <C-S-h> :tabm -1<Esc>
-nmap -builtin <C-S-l> :tabm +1<Esc>
+nmap -builtin <C-S-k> :tabm -1<CR>
+nmap -builtin <C-S-j> :tabm +1<CR>
 
 " Scroll steps
-nmap -builtin j 4j
-nmap -builtin k 4k
-nmap -builtin <C-h> 4h
-nmap -builtin <C-l> 4l
+"nmap -builtin j 5j
+"nmap -builtin k 5k
+"nmap -builtin h 5h
+"nmap -builtin l 5l
 
-" VimFx
-nmap -builtin x d
-nmap -builtin X u
-nmap d <C-d>
-nmap u <C-u>
+" Clear search
+nmap -builtin <Leader>/ <Esc>:noh<CR>
 
-" <C-j> as Open Downloads dialog
-nmap -builtin <C-j> :dialog downloads<CR>
+" Open downloads
+nmap -builtin <C-j> :downloads<CR>
+
+" Misc ---------------------------------------
+" Send one <Esc> to be in normal mode
+normal <Esc>
