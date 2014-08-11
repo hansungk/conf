@@ -50,8 +50,12 @@ plugins=(git mercurial cabal brew autojump)
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
-
 export PATH=$HOME/.cabal/bin:$HOME/bin:/usr/local/bin:$PATH
+
+# Tex
+export PATH=/usr/local/texbin:$PATH
+export MANPATH=/usr/local/texlive/2013/texmf-dist/doc/man:$MANPATH
+export INFOPATH=/usr/local/texlive/2013/texmf-dist/doc/info:$INFOPATH
 
 # Compilation flags
 export MAKEFLAGS="-j8"
