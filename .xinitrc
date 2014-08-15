@@ -13,12 +13,12 @@ xset +fp /usr/share/fonts/misc
 xset fp rehash
 xset r rate 200 30
 
-# FCITX settings
-export GTK_IM_MODULE=fcitx
-export QT_IM_MODULE=fcitx
-export XMODIFIERS="@im=fcitx"
+# Input module settings
+export GTK_IM_MODULE=ibus
+export QT_IM_MODULE=ibus
+export XMODIFIERS="@im=ibus"
 
-VBoxClient-all &
+#VBoxClient-all &
 
 # Swap CAPSLOCK and CTRL
 setxkbmap -option ctrl:swapcaps
@@ -43,4 +43,6 @@ xrdb -load ~/.Xresources
 xbindkeys
 
 # Start window manager
-exec 2bwm
+sxhkd &
+urxvt &
+exec bspwm
