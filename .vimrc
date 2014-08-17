@@ -186,7 +186,7 @@ nnoremap <C-down> 5<C-w>-
 " Quick copying/pasting
 nnoremap <Leader>p "0p
 vnoremap <C-c> "*y
-inoremap <C-v> <Esc>"*pa
+"inoremap <C-v> <Esc>"*pa
 
 " Opening .vimrc
 nmap <Leader>v :e ~/.vimrc<CR>

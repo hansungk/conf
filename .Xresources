@@ -13,8 +13,7 @@ Xft.hintstyle:	hintslight
 ! urxvt configurations -------------------------------------------------------
 URxvt.scrollBar: false
 ! For PC
-!URxvt.font: -*-termsyn-medium-*-*-*-14-*-*-*-*-*-*-*,-*-stlarch-medium-*-normal-*-12-*-*-*-*-*-*-*,xft:NanumGothicCoding:antialias=false
-URxvt.font: -*-Terminus-medium-*-*-*-12-*-*-*-*-*-*-*
+URxvt.font: -*-terminus-medium-*-*-*-12-*-*-*-*-*-*-*,-*-stlarch-*-*-normal-*-*-*-*-*-*-*-*-*,-*-nanumgothic-medium-r-normal-*-12-*-*-*-*-*-*-*
 ! For rMBP
 !URxvt.font: xft:Inconsolata:size=10
 !URxvt.letterSpace: -1
@@ -24,4 +23,8 @@ URxvt*.depth: 24
 !URxvt.shading: 20
 !URxvt.blurRadius: 30
 !URxvt.fading: 30
-URxvt.internalBorder: 15
+!URxvt.internalBorder: 15
+!
+URxvt*.inputMethod: ibus
+URxvt*.preeditType: OverTheSpot
+URxvt*.imLocale: ko_KR.UTF-8

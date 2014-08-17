@@ -4,4 +4,4 @@ out_to_x no
 update_interval 0.2
 
 TEXT
-S${if_mpd_playing}${mpd_artist} - ${mpd_album} - ${mpd_title}   ${endif}%{F\#FF9edcbb} %{F-}${exec amixer get Master | awk 'NR==5 {print $4}' | tr -d '['-']' | tr -d '%'}   %{F\#FF9edcbb} %{F-}${time %I:%M %P} 
+S${if_mpd_playing}Music: ${mpd_artist} - ${mpd_album} - ${mpd_title}  ${endif} Vol: ${exec amixer get Master | awk 'NR==5 {print $4}' | tr -d '['-']' | tr -d '%'}%%   Time: ${time %I:%M %P} 
