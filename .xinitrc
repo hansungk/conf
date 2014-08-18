@@ -18,7 +18,7 @@ export GTK_IM_MODULE=ibus
 export QT_IM_MODULE=ibus
 export XMODIFIERS="@im=ibus"
 
-ibus-daemon &
+ibus-daemon -drx
 
 #VBoxClient-all &
 

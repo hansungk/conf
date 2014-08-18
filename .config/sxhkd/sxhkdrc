@@ -86,6 +86,33 @@ super + Return
 super + space
 	dmenu_run
 
-# make sxhkd reload its configuration files:
+# -- Volume management --------------------------------------
+XF86AudioRaiseVolume
+	amixer set Master 5%+ unmute
+
+XF86AudioLowerVolume
+	amixer set Master 5%- unmute
+
+XF86AudioMute
+	amixer set Master toggle
+# -----------------------------------------------------------
+
+# -- mpc -h gavroche remote control -------------------------
+XF86AudioPlay
+	mpc toggle
+
+XF86AudioStop
+	mpc stop
+
+XF86AudioPrev
+	mpc prev
+
+XF86AudioNext
+	mpc next
+# -----------------------------------------------------------
+
+#
+# Reload configuration files
+#
 super + Escape
 	pkill -USR1 -x sxhkd
