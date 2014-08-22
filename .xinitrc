@@ -13,6 +13,9 @@ xset +fp /usr/share/fonts/misc
 xset fp rehash
 xset r rate 200 30
 
+# Sound server
+start-pulseaudio-x11
+
 # Input module settings
 export GTK_IM_MODULE=ibus
 export QT_IM_MODULE=ibus
