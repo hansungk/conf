@@ -37,7 +37,7 @@ super + m
 super + {_,shift + }{h,j,k,l}
 	bspc window -{f,s} {left,down,up,right}
 
-super + {_,shift + }c
+super + {_,shift + }n
 	bspc window -f {next,prev}
 
 super + {comma,period}
@@ -80,11 +80,18 @@ super + @button{1-3}
 # wm independent hotkeys
 #
 
+# -- Program execution --------------------------------------
 super + Return
 	urxvt
 
 super + space
 	dmenu_run
+
+super + shift + f
+	firefox
+	
+super + shift + c
+	google-chrome-stable
 
 # -- Volume management --------------------------------------
 XF86AudioRaiseVolume
@@ -97,7 +104,7 @@ XF86AudioMute
 	amixer set Master toggle
 # -----------------------------------------------------------
 
-# -- mpc -h gavroche remote control -------------------------
+# -- MPD management -----------------------------------------
 XF86AudioPlay
 	mpc toggle
 

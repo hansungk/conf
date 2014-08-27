@@ -41,7 +41,7 @@ compton -b
 fcitx &
 
 # Start terminal
-urxvt &
+#urxvt &
 
 xrdb -load ~/.Xresources
 
@@ -49,5 +49,4 @@ xbindkeys
 
 # Start window manager
 sxhkd &
-urxvt &
 exec bspwm
