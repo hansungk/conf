@@ -16,6 +16,7 @@ bspc rule -a Gimp desktop=^8 follow=on floating=on
 bspc rule -a Google-chrome-stable desktop=^2
 bspc rule -a Firefox desktop=^2
 bspc rule -a Steam desktop=^9 floating=on
-bspc rule -a "Minecraft 1.7.10" desktop=^9 floating=on
+bspc rule -a 'Minecraft 1.7.10' desktop=^9 floating=on
+bspc rule -a hl2_linux desktop=^9 fullscreen=on
 
 panel &

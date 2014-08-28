@@ -127,7 +127,7 @@ au FocusLost * :wa
 "onoremap <Tab> <Esc>
 "inoremap <Tab> <Esc>
 "inoremap <Leader><Tab> <Tab>
-inoremap kj <Esc>
+"inoremap kj <Esc>
 
 "" Save, Open, Close
 nmap <C-S>		:w<CR>
