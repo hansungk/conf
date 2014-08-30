@@ -1,9 +1,10 @@
 #!/bin/bash
 
-TOTAL="`wmctrl -l | grep 'admin-arch .* \- YouTube \- Google Chrome' -o`"
+HOSTNAME="`hostname`"
+TOTAL="`wmctrl -l | grep "${HOSTNAME} .* - YouTube - Chrome" -o`"
 
-NOPREFIX=${TOTAL#admin-arch }
-NOSUFFIX=${NOPREFIX% - YouTube - Google Chrome}
+NOPREFIX=${TOTAL#${HOSTNAME} }
+NOSUFFIX=${NOPREFIX% - YouTube - Chrome}
 TITLE=${NOSUFFIX}
 
 echo $TITLE
