@@ -6,10 +6,6 @@
 
 " PLUGINS {{{
 
-" Pathogen {{{
-"execute pathogen#infect()
-"execute pathogen#helptags()
-" }}}
 " Vundle {{{
 filetype off " required by Vundle
 if has('vim_starting')
@@ -37,9 +33,9 @@ Plugin 'vim-scripts/paredit.vim'
 Plugin 'tpope/vim-fireplace'
 Plugin 'scrooloose/nerdtree'
 Plugin 'guns/vim-clojure-static'
-Plugin 'eagletmt/ghcmod-vim'
-Plugin 'eagletmt/neco-ghc'
-Plugin 'lukerandall/haskellmode-vim'
+"Plugin 'eagletmt/ghcmod-vim'
+"Plugin 'eagletmt/neco-ghc'
+"Plugin 'lukerandall/haskellmode-vim'
 Plugin 'vim-scripts/haskell.vim'
 
 call vundle#end()
