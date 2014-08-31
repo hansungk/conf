@@ -13,11 +13,10 @@ Xft.hintstyle:	hintslight
 ! urxvt configurations -------------------------------------------------------
 URxvt.scrollBar: false
 ! For PC
-URxvt.font: -*-gohufont-medium-r-normal--12-*-*-*-*-*-*-*,-*-stlarch-*-*-normal-*-*-*-*-*-*-*-*-*,-*-nanumgothic-medium-r-normal-*-12-*-*-*-*-*-*-*
-! For rMBP
-!URxvt.font: xft:Inconsolata:size=10
-!URxvt.letterSpace: -1
-URxvt*.depth: 24
+!URxvt.font: -*-gohufont-medium-r-normal--12-*-*-*-*-*-*-*,-*-stlarch-*-*-normal-*-*-*-*-*-*-*-*-*,-*-nanumgothic-medium-r-normal-*-12-*-*-*-*-*-*-*
+URxvt.font: xft:Monospace:size=9,xft:NanumGothicCoding:size=11
+URxvt.letterSpace: -2
+!URxvt*.depth: 24
 
 !URxvt.transparent: true
 !URxvt.shading: 20
