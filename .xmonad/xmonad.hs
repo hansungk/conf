@@ -33,10 +33,10 @@ main = do
 							, modMask = mod1Mask
 							, terminal = "urxvt"
 							, borderWidth = 1
-							, focusedBorderColor = (colLook Red 0)
-							, normalBorderColor = (colLook Black 0)
-							, layoutHook = myLayoutHook
-							, logHook = myLogHook h
+--							, focusedBorderColor = (colLook Red 0)
+--							, normalBorderColor = (colLook Black 0)
+--							, layoutHook = myLayoutHook
+--							, logHook = myLogHook h
 							}
 
 
@@ -47,6 +47,7 @@ myBar = "xmobar"
 
 ------------------------------------------------------------------------------------------
 -- Custom logHook
+-- configure xmobar looks
 myLogHook h = dynamicLogWithPP myPP
 	where
 		myPP = defaultPP	{ ppCurrent	= xmobarColor (colLook White 1) (colLook Green 0) . wrap " " " "
@@ -70,6 +71,7 @@ myLogHook h = dynamicLogWithPP myPP
 
 ------------------------------------------------------------------------------------------
 -- Custom layoutHook
+-- configure layouts
 myLayoutHook = avoidStruts $
 	tiled ||| Full ||| fullTiled
 	where 

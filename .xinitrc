@@ -48,5 +48,4 @@ xrdb -load ~/.Xresources
 xbindkeys
 
 # Start window manager
-sxhkd &
-exec bspwm
+exec xmonad
