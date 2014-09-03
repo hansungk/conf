@@ -13,9 +13,9 @@ Xft.hintstyle:	hintslight
 ! urxvt configurations -------------------------------------------------------
 URxvt.scrollBar: false
 ! For PC
-!URxvt.font: -*-gohufont-medium-r-normal--12-*-*-*-*-*-*-*,-*-stlarch-*-*-normal-*-*-*-*-*-*-*-*-*,-*-nanumgothic-medium-r-normal-*-12-*-*-*-*-*-*-*
-URxvt.font: xft:Source Code Pro:size=10,xft:DejaVu Sans Mono:size=10,xft:NanumGothicCoding:size=11
-URxvt.letterSpace: -1
+URxvt.font: -*-terminus-medium-r-normal--12-*-*-*-*-*-*-*,-*-stlarch-*-*-normal-*-*-*-*-*-*-*-*-*,-*-nanumgothic-medium-r-normal-*-12-*-*-*-*-*-*-*
+!URxvt.font: xft:Source Code Pro:size=10,xft:DejaVu Sans Mono:size=10,xft:NanumGothicCoding:size=11
+!URxvt.letterSpace: -1
 !URxvt*.depth: 24
 
 !URxvt.transparent: true
