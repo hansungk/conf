@@ -14,7 +14,7 @@ xset fp rehash
 xset r rate 200 30
 
 # Sound server
-#start-pulseaudio-x11
+start-pulseaudio-x11
 
 # Input module settings
 export GTK_IM_MODULE=ibus
@@ -40,9 +40,8 @@ compton -b
 # Start terminal
 #urxvt &
 
-xrdb -load ~/.Xresources
-
 xbindkeys
 
 # Start window manager
+sxhkd &
 exec xmonad

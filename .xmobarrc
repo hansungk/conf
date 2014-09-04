@@ -1,5 +1,5 @@
 -- vim:ft=haskell
-Config { font = "xft:Tamsyn:pixelsize=14,xft:NanumGothic:size=9" -- For PC
+Config { font = "-*-terminus-*-*-*-*-12-*-*-*-*-*-*-*,-*-nanumgothic-*-*-*-*-12-*-*-*-*-*-*-0" -- For PC
        , bgColor = "black"
        , fgColor = "#555555"
        , position = TopW L 100
