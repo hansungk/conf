@@ -16,7 +16,6 @@ import XMonad.Layout.NoBorders
 import XMonad.Layout.ResizableTile
 import XMonad.Layout.Renamed
 import XMonad.Layout.Tabbed
-import XMonad.Layout.Spacing
 
 import XMonad.Util.Run (spawnPipe, hPutStrLn)
 
@@ -29,24 +28,27 @@ main :: IO()
 --main = xmonad =<< statusBar myBar myPP toggleStrutsKey myConfig
 main = do
 	h <- spawnPipe myBar
-	xmonad $ defaultConfig	{ workspaces = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
-							, modMask = mod1Mask
-							, terminal = "urxvt"
-							, borderWidth = 1
-							, focusedBorderColor = (colLook Red 0)
-							, normalBorderColor = (colLook Black 0)
-							, layoutHook = myLayoutHook
-							, logHook = myLogHook h
-							}
+	xmonad $ ewmh defaultConfig	{ manageHook = manageDocks <+> manageHook defaultConfig
+								, layoutHook = vanillaLayoutHook
+								, logHook = vanillaLogHook h
+								, modMask = mod1Mask
+								, terminal = "urxvt"
+								, borderWidth = 1
+	--							, focusedBorderColor = (colLook Red 0)
+	--							, normalBorderColor = (colLook Black 0)
+								}
 
 
 ------------------------------------------------------------------------------------------
 -- Constants
-myBar = "xmobar"
+myBar = "/usr/bin/xmobar /home/stephen/.xmobarrc"
 
 
 ------------------------------------------------------------------------------------------
 -- Custom logHook
+-- configure xmobar looks
+
+-- Pretty with colored background
 myLogHook h = dynamicLogWithPP myPP
 	where
 		myPP = defaultPP	{ ppCurrent	= xmobarColor (colLook White 1) (colLook Green 0) . wrap " " " "
@@ -67,10 +69,19 @@ myLogHook h = dynamicLogWithPP myPP
 							, ppOutput	= hPutStrLn h
 							}
 
+-- Vanilla config
+vanillaLogHook h = dynamicLogWithPP xmobarPP
+					{ ppOutput = hPutStrLn h
+					, ppTitle = xmobarColor "green" "" . shorten 200
+					}
+
 
 ------------------------------------------------------------------------------------------
 -- Custom layoutHook
-myLayoutHook = avoidStruts $
+-- configure layouts
+
+-- Useless gaps
+gaplessLayoutHook = avoidStruts $
 	tiled ||| Full ||| fullTiled
 	where 
 		tiled		= spacing 7 $ Tall nmaster delta ratio
@@ -83,6 +94,8 @@ myLayoutHook = avoidStruts $
 		-- Default proportion of screen occupied by master pane
 		ratio	= 1/2
 
+-- Vanilla
+vanillaLayoutHook = avoidStruts  $  layoutHook defaultConfig
 
 ------------------------------------------------------------------------------------------
 -- Key Bindings

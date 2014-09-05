@@ -6,10 +6,6 @@
 
 " PLUGINS {{{
 
-" Pathogen {{{
-"execute pathogen#infect()
-"execute pathogen#helptags()
-" }}}
 " Vundle {{{
 filetype off " required by Vundle
 if has('vim_starting')
@@ -37,9 +33,9 @@ Plugin 'vim-scripts/paredit.vim'
 Plugin 'tpope/vim-fireplace'
 Plugin 'scrooloose/nerdtree'
 Plugin 'guns/vim-clojure-static'
-Plugin 'eagletmt/ghcmod-vim'
-Plugin 'eagletmt/neco-ghc'
-Plugin 'lukerandall/haskellmode-vim'
+"Plugin 'eagletmt/ghcmod-vim'
+"Plugin 'eagletmt/neco-ghc'
+"Plugin 'lukerandall/haskellmode-vim'
 Plugin 'vim-scripts/haskell.vim'
 
 call vundle#end()
@@ -127,7 +123,7 @@ au FocusLost * :wa
 "onoremap <Tab> <Esc>
 "inoremap <Tab> <Esc>
 "inoremap <Leader><Tab> <Tab>
-inoremap kj <Esc>
+"inoremap kj <Esc>
 
 "" Save, Open, Close
 nmap <C-S>		:w<CR>
@@ -186,7 +182,7 @@ nnoremap <C-down> 5<C-w>-
 " Quick copying/pasting
 nnoremap <Leader>p "0p
 vnoremap <C-c> "*y
-inoremap <C-v> <Esc>"*pa
+"inoremap <C-v> <Esc>"*pa
 
 " Opening .vimrc
 nmap <Leader>v :e ~/.vimrc<CR>

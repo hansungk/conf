@@ -1,0 +1,10 @@
+#!/bin/bash
+
+HOSTNAME="`hostname`"
+TOTAL="`wmctrl -l | grep "${HOSTNAME} .* - YouTube - Google Chrome" -o`"
+
+NOPREFIX=${TOTAL#${HOSTNAME} }
+NOSUFFIX=${NOPREFIX% - YouTube - Google Chrome}
+TITLE=${NOSUFFIX}
+
+echo $TITLE
