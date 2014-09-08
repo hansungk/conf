@@ -184,6 +184,9 @@ nnoremap <Leader>p "0p
 vnoremap <C-c> "*y
 "inoremap <C-v> <Esc>"*pa
 
+" Quick external ex command
+nnoremap <Leader>r :!!<CR>
+
 " Opening .vimrc
 nmap <Leader>v :e ~/.vimrc<CR>
 nmap <Leader><S-v> :e ~/dotfiles.git/.vimrc<CR>

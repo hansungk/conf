@@ -72,7 +72,7 @@ myLogHook h = dynamicLogWithPP myPP
 -- Vanilla config
 vanillaLogHook h = dynamicLogWithPP xmobarPP
 					{ ppOutput = hPutStrLn h
-					, ppTitle = xmobarColor "green" "" . shorten 200
+					, ppTitle = xmobarColor "green" "" . shorten 80
 					}
 
 

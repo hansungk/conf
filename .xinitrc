@@ -28,9 +28,6 @@ VBoxClient-all &
 # Swap CAPSLOCK and CTRL
 setxkbmap -option ctrl:swapcaps
 
-# Bind keys
-#xbindkeys
-
 # Set background
 feh --bg-fill ~/Pictures/wallpaper
 
@@ -40,8 +37,12 @@ compton -b
 # Start terminal
 #urxvt &
 
+# Start panel
+plank &
+
+# Start keymapper
+sxhkd &
 xbindkeys
 
 # Start window manager
-sxhkd &
 exec xmonad
