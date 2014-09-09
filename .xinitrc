@@ -45,4 +45,4 @@ sxhkd &
 xbindkeys
 
 # Start window manager
-exec xmonad
+exec bspwm
