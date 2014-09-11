@@ -13,6 +13,8 @@ xset +fp /usr/share/fonts/misc
 xset fp rehash
 xset r rate 200 30
 
+source /home/stephen/bin/gencolorvals
+
 # Sound server
 start-pulseaudio-x11
 
@@ -36,9 +38,6 @@ compton -b
 
 # Start terminal
 #urxvt &
-
-# Start panel
-plank &
 
 # Start keymapper
 sxhkd &
