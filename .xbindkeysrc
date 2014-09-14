@@ -1,9 +1,6 @@
 # -- Application launchers ----------------------------------
-"urxvt"
-    Mod1 + Return
-
 "firefox"
-    Mod1 + w
+    Mod4 + shift + f
 # -----------------------------------------------------------
 
 # -- Volume management --------------------------------------
@@ -17,27 +14,18 @@
     XF86AudioMute
 # -----------------------------------------------------------
 
-# -- mpc -h gavroche remote control -------------------------
-"mpc -h gavroche toggle"
+# -- MPD management -----------------------------------------
+"mpc toggle"
     XF86AudioPlay
 
-"mpc -h gavroche stop"
+"mpc stop"
     XF86AudioStop
 
-"mpc -h gavroche prev"
+"mpc prev"
     XF86AudioPrev
 
-"mpc -h gavroche next"
+"mpc next"
     XF86AudioNext
-
-"mpc -h gavroche volume +10"
-    control + XF86AudioRaiseVolume
-
-"mpc -h gavroche volume -10"
-    control + XF86AudioLowerVolume
-
-"mpc -h gavroche pause"
-    XF86AudioMute
 # -----------------------------------------------------------
 
 # -- Desktop control ----------------------------------------

@@ -37,11 +37,11 @@ feh --bg-fill ~/Pictures/wallpaper
 compton -b
 
 # Start terminal
-#urxvt &
+urxvtd &
 
 # Start keymapper
-sxhkd &
+#sxhkd &
 xbindkeys
 
 # Start window manager
-exec bspwm
+exec 2bwm
