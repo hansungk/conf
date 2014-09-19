@@ -7,13 +7,13 @@ Xft.hinting:	true
 Xft.hintstyle:	hintslight
 
 ! terminal colors ------------------------------------------------------------
-#include "/home/stephen/.colors/xdotshare.xresources"
+#include "/home/stephen/.colors/base16-default.dark.xresources"
 !URxvt*background: #002b36
 
 ! urxvt configurations -------------------------------------------------------
 URxvt.scrollBar: false
 ! For PC
-URxvt.font: -*-terminus-medium-r-normal--12-*-*-*-*-*-*-*,-*-stlarch-*-*-normal-*-*-*-*-*-*-*-*-*,-*-nanumgothic-medium-r-normal-*-12-*-*-*-*-*-*-*
+URxvt.font: -*-gohufont-medium-r-normal--11-*-*-*-*-*-*-*,-*-stlarch-*-*-normal-*-*-*-*-*-*-*-*-*,-*-nanumgothic-medium-r-normal-*-12-*-*-*-*-*-*-*
 !URxvt.font: xft:Source Code Pro:size=10,xft:DejaVu Sans Mono:size=10,xft:NanumGothicCoding:size=11
 !URxvt.letterSpace: -1
 !URxvt*.depth: 24
@@ -22,8 +22,8 @@ URxvt.font: -*-terminus-medium-r-normal--12-*-*-*-*-*-*-*,-*-stlarch-*-*-normal-
 !URxvt.shading: 20
 !URxvt.blurRadius: 30
 !URxvt.fading: 30
-!URxvt.internalBorder: 15
-!
+URxvt.internalBorder: 10
+
 URxvt*.inputMethod: ibus
 URxvt*.preeditType: OverTheSpot
 URxvt*.imLocale: ko_KR.UTF-8

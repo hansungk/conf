@@ -10,6 +10,7 @@
 xrdb -load ~/.Xresources
 xset +fp /usr/share/fonts/local
 xset +fp /usr/share/fonts/misc
+xset +fp ~/.fonts
 xset fp rehash
 xset r rate 200 30
 
@@ -26,6 +27,7 @@ export XMODIFIERS="@im=ibus"
 ibus-daemon -drx
 
 VBoxClient-all &
+vmware-user &
 
 # Swap CAPSLOCK and CTRL
 setxkbmap -option ctrl:swapcaps
@@ -37,11 +39,10 @@ feh --bg-fill ~/Pictures/wallpaper
 compton -b
 
 # Start terminal
-#urxvt &
+urxvtd &
 
 # Start keymapper
-sxhkd &
 xbindkeys
 
 # Start window manager
-exec bspwm
+exec 2bwm
