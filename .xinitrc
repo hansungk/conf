@@ -14,7 +14,7 @@ xset +fp ~/.fonts
 xset fp rehash
 xset r rate 200 30
 
-source /home/stephen/bin/gencolorvals
+#source /home/stephen/bin/gencolorvals
 
 # Sound server
 start-pulseaudio-x11
@@ -39,10 +39,10 @@ feh --bg-fill ~/Pictures/wallpaper
 compton -b
 
 # Start terminal
-urxvtd &
+urxvt & 
 
 # Start keymapper
 xbindkeys
 
 # Start window manager
-exec 2bwm
+exec i3
