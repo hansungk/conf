@@ -7,14 +7,14 @@ Xft.hinting:	true
 Xft.hintstyle:	hintslight
 
 ! terminal colors ------------------------------------------------------------
-#include "/home/stephen/.colors/base16-default.dark.xresources"
+#include "/home/stephen/.colors/base16-solarized.dark.xresources"
 !URxvt*background: #002b36
 
 ! urxvt configurations -------------------------------------------------------
 URxvt.scrollBar: false
 ! For PC
-URxvt.font: -*-gohufont-medium-r-normal--11-*-*-*-*-*-*-*,-*-stlarch-*-*-normal-*-*-*-*-*-*-*-*-*,-*-nanumgothic-medium-r-normal-*-12-*-*-*-*-*-*-*
-!URxvt.font: xft:Source Code Pro:size=10,xft:DejaVu Sans Mono:size=10,xft:NanumGothicCoding:size=11
+URxvt.font: -*-tamsyn-medium-r-normal--12-*-*-*-*-*-*-*,-*-stlarch-*-*-normal-*-*-*-*-*-*-*-*-*,-*-nanumgothic-medium-r-normal-*-12-*-*-*-*-*-*-*
+!URxvt.font: xft:DejaVu Sans Mono:size=10,xft:NanumGothicCoding:size=11
 !URxvt.letterSpace: -1
 !URxvt*.depth: 24
 
@@ -22,7 +22,7 @@ URxvt.font: -*-gohufont-medium-r-normal--11-*-*-*-*-*-*-*,-*-stlarch-*-*-normal-
 !URxvt.shading: 20
 !URxvt.blurRadius: 30
 !URxvt.fading: 30
-URxvt.internalBorder: 10
+!URxvt.internalBorder: 10
 
 URxvt*.inputMethod: ibus
 URxvt*.preeditType: OverTheSpot
