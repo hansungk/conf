@@ -40,6 +40,7 @@ compton -b
 
 # Start terminal
 urxvt & 
+xterm &
 
 # Start keymapper
 xbindkeys
