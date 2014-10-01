@@ -30,7 +30,7 @@ VBoxClient-all &
 vmware-user &
 
 # Swap CAPSLOCK and CTRL
-setxkbmap -option ctrl:swapcaps
+setxkbmap -option ctrl:nocaps
 
 # Set background
 feh --bg-fill ~/Pictures/wallpaper
