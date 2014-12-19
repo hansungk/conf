@@ -30,6 +30,7 @@ fi
 ### USER EDITED AREA
 # PATH manipulation
 export PATH=/home/stephen/bin:$PATH
+export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
 
 # Vim stuff
 export EDITOR=vim
