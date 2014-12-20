@@ -37,6 +37,7 @@ Plugin 'scrooloose/nerdtree'
 "Plugin 'eagletmt/neco-ghc'
 "Plugin 'lukerandall/haskellmode-vim'
 Plugin 'vim-scripts/haskell.vim'
+Plugin 'wting/rust.vim'
 
 call vundle#end()
 filetype plugin indent on	" Required!
