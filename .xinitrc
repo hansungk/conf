@@ -39,7 +39,7 @@ feh --bg-fill ~/Pictures/wallpaper
 compton -b
 
 # Start terminal
-urxvt & 
+#urxvt & 
 
 # Start keymapper
 xbindkeys
