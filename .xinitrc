@@ -45,4 +45,4 @@ urxvt &
 xbindkeys
 
 # Start window manager
-exec i3
+exec awesome
