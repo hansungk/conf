@@ -27,16 +27,17 @@ Plugin 'tpope/vim-surround'
 Plugin 'kien/ctrlp.vim'
 "Plugin 'bling/vim-airline'
 Plugin 'tomasr/molokai'
-Plugin 'altercation/vim-colors-solarized'
+"Plugin 'altercation/vim-colors-solarized'
 Plugin 'jnurmine/Zenburn'
-Plugin 'vim-scripts/paredit.vim'
-Plugin 'tpope/vim-fireplace'
+"Plugin 'vim-scripts/paredit.vim'
+"Plugin 'tpope/vim-fireplace'
 Plugin 'scrooloose/nerdtree'
-Plugin 'guns/vim-clojure-static'
+"Plugin 'guns/vim-clojure-static'
 "Plugin 'eagletmt/ghcmod-vim'
 "Plugin 'eagletmt/neco-ghc'
 "Plugin 'lukerandall/haskellmode-vim'
 Plugin 'vim-scripts/haskell.vim'
+Plugin 'wting/rust.vim'
 
 call vundle#end()
 filetype plugin indent on	" Required!
@@ -274,7 +275,7 @@ set laststatus=2 " Always display statusline (especially useful for Powerline)
 if !has("gui_running")
     " Terminal specific
     set t_Co=256 " For vim terminals
-    colorscheme jellybeans
+    colorscheme zenburn
 endif
 
 " }}}
