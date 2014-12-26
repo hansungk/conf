@@ -45,4 +45,4 @@ compton -b
 xbindkeys
 
 # Start window manager
-exec awesome
+exec i3
