@@ -5,9 +5,10 @@ alias df='df -h'
 alias free='free -h'
 alias g='git'
 alias grep='grep --color=auto -d skip'
+alias ls='ls --color=auto --group-directories-first'
 alias l='ls'
 alias ll='ls -l -h'
-alias la='ls -la --group-directories-first'
+alias la='ls -la'
 alias tmux="TERM=xterm-256color tmux"
 alias rm="rm -i"                          # confirm before overwriting something
 alias v='vim'
