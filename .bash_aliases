@@ -6,7 +6,6 @@ alias free='free -h'
 alias g='git'
 alias grep='grep --color=auto -d skip'
 alias l='ls'
-alias ls='ls --color=auto --group-directories-first'
 alias ll='ls -l -h'
 alias la='ls -la --group-directories-first'
 alias tmux="TERM=xterm-256color tmux"

@@ -37,4 +37,4 @@ export EDITOR=vim
 export VISUAL=vim
 
 # Fancy prompt
-. /home/stephen/bin/fancyprompt
+. /Users/stephen/bin/fancyprompt
