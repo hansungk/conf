@@ -43,4 +43,4 @@ get_user_color() {
 #export PS1='\[$(get_exit_status)\]\[$(get_user_color)\]\u \[${RS}\]in \[${GREEN}\]\H \[${RS}\]at \[${BLUE}\]\w\[${RS}\]\n-> \[${RS}\]'
 
 # stephen@admin ~/bin $ 
-export PS1='\[$(get_exit_status)\]\[$(get_user_color)\]\u@\H \[${BLUE}\]\w $ \[${RS}\]'
+export PS1='\[$(get_exit_status)\]\[$(get_user_color)\]\u@\H \[${BLUE}\]\W \[${RS}\]$ '

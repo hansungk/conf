@@ -28,23 +28,16 @@ if ! shopt -oq posix; then
 fi
 
 ### USER EDITED AREA
-# Tell gnome-terminal
-export TERM=screen-256color-bce
+# PATH manipulation
+export PATH=/home/stephen/bin:$PATH
+export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
 
-# Input module setup
-export GTK_IM_MODULE=ibus
-export XMODIFIERS=@im=ibus
-export QT_IM_MODULE=ibus
+# Why not use already beautiful default?
+#unset LS_COLORS
 
 # Vim stuff
 export EDITOR=vim
 export VISUAL=vim
-
-# PATH generation
-export PATH=/home/stephen/bin:$PATH
-
-# Startup scripts
-#stty -ixon # Disable C-S suspension
 
 # Fancy prompt
 . /home/stephen/bin/fancyprompt
