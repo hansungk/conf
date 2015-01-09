@@ -8,6 +8,7 @@
 GREEN=$'\e[1;32m'
 RED=$'\e[1;31m'
 BLUE=$'\e[1;34m'
+YELLOW=$'\e[1;33m'
 MAGENTA=$'\e[1;36m'
 GRAY=$'\e[1;30m'
 RS=$'\e[0m'
@@ -22,7 +23,7 @@ get_exit_status() {
 	if [ ${EXIT} -eq 0 ] ; then
 		echo ''
 	else
-		echo ${RED}[${EXIT}]' '
+		echo ${RED}${EXIT}' '
 	fi
 }
 get_user_color() {
@@ -43,4 +44,4 @@ get_user_color() {
 #export PS1='\[$(get_exit_status)\]\[$(get_user_color)\]\u \[${RS}\]in \[${GREEN}\]\H \[${RS}\]at \[${BLUE}\]\w\[${RS}\]\n-> \[${RS}\]'
 
 # stephen@admin ~/bin $ 
-export PS1='\[$(get_exit_status)\]\[$(get_user_color)\]\u@\H \[${BLUE}\]\W \[${RS}\]$ '
+export PS1='\[$(get_exit_status)\]\[${RED}\]\u \[${YELLOW}\]\H \[${GREEN}\]\w \[${RS}\]$ '

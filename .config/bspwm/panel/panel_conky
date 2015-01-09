@@ -1,7 +1,8 @@
 background yes
 out_to_console yes
 out_to_x no
-update_interval 0.2
+update_interval 1
+default_bar_size 1 6
 
 TEXT
-S${if_mpd_playing}%{F\#FFFF5500}${mpd_artist}%{F-} - ${mpd_album} - ${mpd_title}   ${endif}%{F\#FFFF5500}YouTube %{F-}%{F\#FFFF5500}Vol%{F-} ${exec amixer get Master | grep -om1 '\w*%'}%%   %{F\#FFFF5500}Time%{F-} ${time %I:%M %P}
+S${if_mpd_playing}%{F\#FFFF5500}${mpd_artist}%{F-} - ${mpd_album} - ${mpd_title}   ${endif}${if_empty ${exec youtube-nowplaying}}${else}%{F\#FFFF5500}YouTube %{F-}${exec youtube-nowplaying}   ${endif}%{F\#FFaa759f}Cpu %{F-}${cpu cpu0}   %{F\#FFaa759f}Ram %{F-}${memperc}   %{F\#FF6a9fb5}Vol%{F-} ${exec getvolume}   %{F\#FF90a959}Time%{F-} ${time %I:%M %P}

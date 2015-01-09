@@ -187,6 +187,9 @@ nnoremap <Leader>p "0p
 vnoremap <C-c> "*y
 "inoremap <C-v> <Esc>"*pa
 
+" Quick external ex command
+nnoremap <Leader>r :!!<CR>
+
 " Opening .vimrc
 nmap <Leader>v :e ~/.vimrc<CR>
 nmap <Leader><S-v> :e ~/dotfiles.git/.vimrc<CR>
@@ -274,7 +277,7 @@ set laststatus=2 " Always display statusline (especially useful for Powerline)
 if !has("gui_running")
     " Terminal specific
     set t_Co=256 " For vim terminals
-    colorscheme jellybeans
+    colorscheme zenburn
 endif
 
 " }}}

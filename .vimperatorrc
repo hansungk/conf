@@ -7,13 +7,16 @@ set hintchars=asdfghjkl
 
 " GUI ----------------------------------------
 set gui=nonavigation
+set defsearch=google
+set hintchars=hjklasdfqwertyuiopzxcvbnm
+
 
 " Key bindings -------------------------------
 nnoremap ; :
 nnoremap : ;
 nnoremap <BS> H
 
-command reloadrc source ~/.vimperatorrc
+command reloadrc source /Users/stephen/.vimperatorrc
 
 " Tab switcher
 nmap K gT
