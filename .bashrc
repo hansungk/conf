@@ -28,13 +28,23 @@ if ! shopt -oq posix; then
 fi
 
 ### USER EDITED AREA
-# PATH manipulation
-export PATH=/home/stephen/bin:$PATH
-export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
+
+# Why not use already beautiful default?
+#unset LS_COLORS
 
 # Vim stuff
 export EDITOR=vim
 export VISUAL=vim
+
+# PATH generation
+export PATH=/Users/stephen/bin:$PATH
+
+# Mac ls
+export CLICOLOR=1
+export LSCOLORS=ExGxBxDxCxEgEdxbxgxcxd
+
+# Startup scripts
+#stty -ixon # Disable C-S suspension
 
 # Fancy prompt
 . /home/stephen/bin/fancyprompt

@@ -1,8 +1,11 @@
 " vim:fdm=marker
 " .vimrc
 " Author: Stephen Kim <stephen422@gmail.com>
-" Source: https://github.com/stephen422/dotfiles.git
+" Repo: https://github.com/stephen422/dotfiles.git
 " Reference: YouTube "A Whirlwind Tour of my Vimrc" / " http://bitbucket.org/sjl/dotfiles
+
+" TODO
+" Start clean when executed from TTY (no X)
 
 " PLUGINS {{{
 
