@@ -7,6 +7,7 @@
 ## PS1 customizing
 GREEN=$'\e[1;32m'
 RED=$'\e[1;31m'
+LRED=$'\e[0;31m'
 BLUE=$'\e[1;34m'
 YELLOW=$'\e[1;33m'
 MAGENTA=$'\e[1;36m'
@@ -23,7 +24,7 @@ get_exit_status() {
 	if [ ${EXIT} -eq 0 ] ; then
 		echo ''
 	else
-		echo ${RED}${EXIT}' '
+		echo ${LRED}${EXIT}' '
 	fi
 }
 get_user_color() {
