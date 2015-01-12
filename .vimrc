@@ -134,7 +134,6 @@ nmap <C-S>		:w<CR>
 imap <C-S>		<Esc>:w<CR>
 nmap <C-Q>		:q<CR>
 imap <C-Q>		<Esc>:q<CR>
-nmap <C-b>		:CtrlPBuffer<CR>
 imap <Leader>w	<Esc>:w<CR>a
 nmap <Leader>w	:w<CR>
 nmap <Leader>q	:q<CR>
