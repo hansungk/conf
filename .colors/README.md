@@ -1,1 +1,0 @@
-/home/stephen/gitrepos/base16-xresources/README.md
