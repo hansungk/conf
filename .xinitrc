@@ -34,14 +34,10 @@ setxkbmap -option ctrl:swapcaps
 feh --bg-fill ~/Pictures/wallpaper
 
 # Start compositing manager
-compton -b
+#compton -b
 
 # Start terminal
 #urxvt &
 
-# Start keymapper
-sxhkd &
-xbindkeys
-
 # Start window manager
-exec bspwm
+exec xmonad
