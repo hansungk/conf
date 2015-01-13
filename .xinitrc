@@ -29,7 +29,7 @@ ibus-daemon -drx
 VBoxClient-all &
 vmware-user &
 
-# Swap CAPSLOCK and CTRL
+# Capslock as additional Ctrl
 setxkbmap -option ctrl:nocaps
 
 # Set background
