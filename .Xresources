@@ -20,10 +20,10 @@ URxvt.scrollBar: false
 
 ! Fonts ----------------------------------------------------------------------
 ! Bitmap font
-!URxvt.font: -*-gohufont-medium-r-normal--11-*-*-*-*-*-*-*,-*-stlarch-*-*-normal-*-*-*-*-*-*-*-*-*,-*-nanumgothic-medium-r-normal-*-12-*-*-*-*-*-*-*
+URxvt.font: -*-terminus-medium-r-normal--14-*-*-*-*-*-*-*,-*-stlarch-*-*-normal-*-*-*-*-*-*-*-*-*,-*-nanumgothic-medium-r-normal-*-12-*-*-*-*-*-*-*
 ! Truetype font
-URxvt.font: xft:DejaVu Sans Mono:size=10,xft:NanumGothicCoding:size=11
-URxvt.letterSpace: -1
+!URxvt.font: xft:DejaVu Sans Mono:size=10,xft:NanumGothicCoding:size=11
+!URxvt.letterSpace: -1
 
 ! Input method ---------------------------------------------------------------
 URxvt*.inputMethod: ibus
