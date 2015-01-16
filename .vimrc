@@ -1,8 +1,11 @@
 " vim:fdm=marker
 " .vimrc
 " Author: Stephen Kim <stephen422@gmail.com>
-" Source: https://github.com/stephen422/dotfiles.git
+" Repo: https://github.com/stephen422/dotfiles.git
 " Reference: YouTube "A Whirlwind Tour of my Vimrc" / " http://bitbucket.org/sjl/dotfiles
+
+" TODO
+" Start clean when executed from TTY (no X)
 
 " PLUGINS {{{
 
@@ -27,16 +30,17 @@ Plugin 'tpope/vim-surround'
 Plugin 'kien/ctrlp.vim'
 "Plugin 'bling/vim-airline'
 Plugin 'tomasr/molokai'
-Plugin 'altercation/vim-colors-solarized'
+"Plugin 'altercation/vim-colors-solarized'
 Plugin 'jnurmine/Zenburn'
-Plugin 'vim-scripts/paredit.vim'
-Plugin 'tpope/vim-fireplace'
+"Plugin 'vim-scripts/paredit.vim'
+"Plugin 'tpope/vim-fireplace'
 Plugin 'scrooloose/nerdtree'
-Plugin 'guns/vim-clojure-static'
+"Plugin 'guns/vim-clojure-static'
 "Plugin 'eagletmt/ghcmod-vim'
 "Plugin 'eagletmt/neco-ghc'
 "Plugin 'lukerandall/haskellmode-vim'
 Plugin 'vim-scripts/haskell.vim'
+Plugin 'wting/rust.vim'
 
 call vundle#end()
 filetype plugin indent on	" Required!
@@ -130,7 +134,6 @@ nmap <C-S>		:w<CR>
 imap <C-S>		<Esc>:w<CR>
 nmap <C-Q>		:q<CR>
 imap <C-Q>		<Esc>:q<CR>
-nmap <C-b>		:CtrlPBuffer<CR>
 imap <Leader>w	<Esc>:w<CR>a
 nmap <Leader>w	:w<CR>
 nmap <Leader>q	:q<CR>
@@ -274,7 +277,7 @@ set laststatus=2 " Always display statusline (especially useful for Powerline)
 if !has("gui_running")
     " Terminal specific
     set t_Co=256 " For vim terminals
-    colorscheme jellybeans
+    colorscheme zenburn
 endif
 
 " }}}

@@ -1,1 +1,4 @@
-/home/stephen/gitrepos/base16-xresources/README.md
+base16-xresources
+=================
+
+Base16 for Xresources

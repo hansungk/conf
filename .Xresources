@@ -5,25 +5,27 @@ Xft.antialias:	true
 Xft.rgba:		rgb
 Xft.hinting:	true
 Xft.hintstyle:	hintslight
+Xft.lcdfilter:	lcddefault
 
-! terminal colors ------------------------------------------------------------
-#include "/home/stephen/.colors/base16-solarized.dark.xresources"
-!URxvt*background: #002b36
+! Colors ---------------------------------------------------------------------
+#include "/home/stephen/.colors/base16-ocean.dark.256.xresources"
 
-! urxvt configurations -------------------------------------------------------
+! Appearances ----------------------------------------------------------------
 URxvt.scrollBar: false
-! For PC
-URxvt.font: -*-terminus-medium-r-normal--12-*-*-*-*-*-*-*,-*-stlarch-*-*-normal-*-*-*-*-*-*-*-*-*,-*-nanumgothic-medium-r-normal-*-12-*-*-*-*-*-*-*
-!URxvt.font: xft:DejaVu Sans Mono:size=10,xft:NanumGothicCoding:size=11
-!URxvt.letterSpace: -1
-!URxvt*.depth: 24
-
 !URxvt.transparent: true
 !URxvt.shading: 20
 !URxvt.blurRadius: 30
 !URxvt.fading: 30
 !URxvt.internalBorder: 10
 
+! Fonts ----------------------------------------------------------------------
+! Bitmap font
+URxvt.font: -*-terminus-medium-r-normal--14-*-*-*-*-*-*-*,-*-stlarch-*-*-normal-*-*-*-*-*-*-*-*-*,-*-nanumgothic-medium-r-normal-*-12-*-*-*-*-*-*-*
+! Truetype font
+!URxvt.font: xft:DejaVu Sans Mono:size=10,xft:NanumGothicCoding:size=11
+!URxvt.letterSpace: -1
+
+! Input method ---------------------------------------------------------------
 URxvt*.inputMethod: ibus
 URxvt*.preeditType: OverTheSpot
 URxvt*.imLocale: ko_KR.UTF-8

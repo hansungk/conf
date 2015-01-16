@@ -29,7 +29,7 @@ ibus-daemon -drx
 VBoxClient-all &
 vmware-user &
 
-# Swap CAPSLOCK and CTRL
+# Capslock as additional Ctrl
 setxkbmap -option ctrl:nocaps
 
 # Set background
@@ -39,10 +39,10 @@ feh --bg-fill ~/Pictures/wallpaper
 compton -b
 
 # Start terminal
-urxvt & 
+#urxvt & 
 
 # Start keymapper
 xbindkeys
 
 # Start window manager
-exec i3
+exec xmonad

@@ -28,20 +28,20 @@ if ! shopt -oq posix; then
 fi
 
 ### USER EDITED AREA
-# Tell gnome-terminal
-export TERM=screen-256color-bce
 
-# Input module setup
-export GTK_IM_MODULE=ibus
-export XMODIFIERS=@im=ibus
-export QT_IM_MODULE=ibus
+# Why not use already beautiful default?
+#unset LS_COLORS
 
 # Vim stuff
 export EDITOR=vim
 export VISUAL=vim
 
 # PATH generation
-export PATH=/home/stephen/bin:$PATH
+export PATH=/Users/stephen/bin:$PATH
+
+# Mac ls
+export CLICOLOR=1
+export LSCOLORS=ExGxBxDxCxEgEdxbxgxcxd
 
 # Startup scripts
 #stty -ixon # Disable C-S suspension
