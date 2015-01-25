@@ -33,9 +33,11 @@ Plugin 'tomasr/molokai'
 "Plugin 'altercation/vim-colors-solarized'
 Plugin 'jnurmine/Zenburn'
 "Plugin 'vim-scripts/paredit.vim'
-"Plugin 'tpope/vim-fireplace'
+Plugin 'tpope/vim-fireplace'
 Plugin 'scrooloose/nerdtree'
-"Plugin 'guns/vim-clojure-static'
+Plugin 'guns/vim-clojure-static'
+Plugin 'guns/vim-sexp'
+Plugin 'tpope/vim-sexp-mappings-for-regular-people'
 "Plugin 'eagletmt/ghcmod-vim'
 "Plugin 'eagletmt/neco-ghc'
 "Plugin 'lukerandall/haskellmode-vim'
@@ -204,7 +206,7 @@ imap <F4>		<Esc>:NERDTreeToggle<CR>
 
 " }}}
 
-" USER COMMANDS {{{
+" FUNCTIONS {{{
 
 command Make call s:make()
 command CMake call s:cmake()
@@ -261,6 +263,12 @@ endfunction
 
 " Startup calls
 " call s:updatecmakepaths()
+
+" }}}
+
+" AUTOCOMMANDS {{{
+
+au BufNewFile,BufRead *.md set filetype=markdown
 
 " }}}
 
