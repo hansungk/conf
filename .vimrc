@@ -28,10 +28,8 @@ endif
 Plugin 'gmarik/Vundle.vim'
 Plugin 'tpope/vim-surround'
 Plugin 'kien/ctrlp.vim'
-"Plugin 'bling/vim-airline'
-Plugin 'tomasr/molokai'
+Plugin 'bling/vim-airline'
 "Plugin 'altercation/vim-colors-solarized'
-Plugin 'jnurmine/Zenburn'
 "Plugin 'vim-scripts/paredit.vim'
 Plugin 'tpope/vim-fireplace'
 Plugin 'scrooloose/nerdtree'
@@ -43,6 +41,11 @@ Plugin 'tpope/vim-sexp-mappings-for-regular-people'
 "Plugin 'lukerandall/haskellmode-vim'
 Plugin 'vim-scripts/haskell.vim'
 Plugin 'wting/rust.vim'
+" Colorschemes
+Plugin 'jnurmine/Zenburn'
+Plugin 'tomasr/molokai'
+Plugin 'morhetz/gruvbox'
+Plugin 'sjl/badwolf'
 
 call vundle#end()
 filetype plugin indent on	" Required!
@@ -97,9 +100,10 @@ set nu
 set smartcase	" Should be used with ignorecase on
 set splitbelow
 set splitright
+set timeoutlen=1000 ttimeoutlen=0	" Remove delay when insert mode switching in powerline/airline, read doc
 set title		" Why is this not default?
 set titleold=	" No more Thanks, vim
-set visualbell	" Turns off that annoying beeps.
+set novisualbell	" Turns off that annoying beeps.
 set wildmenu
 
 " Tabs
@@ -165,7 +169,7 @@ nnoremap <Leader>/ :noh<CR>
 " Don't jump to next when star-searching
 nnoremap * *<C-o>
 
-" 
+"
 " 'Strong' h/l
 noremap H ^
 noremap L g_
@@ -285,7 +289,7 @@ set laststatus=2 " Always display statusline (especially useful for Powerline)
 if !has("gui_running")
     " Terminal specific
     set t_Co=256 " For vim terminals
-    colorscheme zenburn
+    colorscheme badwolf
 endif
 
 " }}}
