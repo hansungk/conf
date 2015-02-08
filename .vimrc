@@ -29,7 +29,7 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'tpope/vim-surround'
 Plugin 'kien/ctrlp.vim'
 Plugin 'bling/vim-airline'
-"Plugin 'altercation/vim-colors-solarized'
+Plugin 'altercation/vim-colors-solarized'
 "Plugin 'vim-scripts/paredit.vim'
 Plugin 'tpope/vim-fireplace'
 Plugin 'scrooloose/nerdtree'
@@ -125,7 +125,7 @@ au FocusLost * :wa
 " KEY MAPPINGS {{{
 
 "" Leader
-"let mapleader = "\<Space>"
+let mapleader = " "
 
 "" Avoid the Esc monster
 "nnoremap <Tab> <Esc>
@@ -140,7 +140,6 @@ nmap <C-S>		:w<CR>
 imap <C-S>		<Esc>:w<CR>
 nmap <C-Q>		:q<CR>
 imap <C-Q>		<Esc>:q<CR>
-imap <Leader>w	<Esc>:w<CR>a
 nmap <Leader>w	:w<CR>
 nmap <Leader>q	:q<CR>
 nmap <Leader>Q	:q!<CR>
@@ -156,7 +155,6 @@ nnoremap <Leader>z zMzvzz
 
 "" Convenience
 nnoremap ; :
-nnoremap <tab> %
 
 "" Find
 " Focus find
@@ -169,7 +167,6 @@ nnoremap <Leader>/ :noh<CR>
 " Don't jump to next when star-searching
 nnoremap * *<C-o>
 
-"
 " 'Strong' h/l
 noremap H ^
 noremap L g_
@@ -190,23 +187,20 @@ nnoremap <C-down> 5<C-w>-
 
 " Quick copying/pasting
 nnoremap <Leader>p "0p
-vnoremap <C-c> "*y
-"inoremap <C-v> <Esc>"*pa
+vnoremap <Leader>y "*y
 
 " Quick external ex command
 nnoremap <Leader>r :!!<CR>
 
 " Opening .vimrc
 nmap <Leader>v :e ~/.vimrc<CR>
-nmap <Leader><S-v> :e ~/dotfiles.git/.vimrc<CR>
 
 " Source ( source: bitbucket.org/sjl/dotfiles/vim/vimrc )
 vnoremap <leader>S y:execute @@<cr>:echo 'Sourced selection.'<cr>
 nnoremap <leader>S ^vg_y:execute @@<cr>:echo 'Sourced line.'<cr>
 
 " NERDTree
-map <F4>		<Esc>:NERDTreeToggle<CR>
-imap <F4>		<Esc>:NERDTreeToggle<CR>
+nnoremap <leader>n :NERDTreeToggle<CR>
 
 " }}}
 
@@ -289,7 +283,7 @@ set laststatus=2 " Always display statusline (especially useful for Powerline)
 if !has("gui_running")
     " Terminal specific
     set t_Co=256 " For vim terminals
-    colorscheme badwolf
+    colorscheme hybrid
 endif
 
 " }}}
