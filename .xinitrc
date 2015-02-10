@@ -26,20 +26,20 @@ export XMODIFIERS="@im=ibus"
 
 ibus-daemon -drx
 
-VBoxClient-all &
-vmware-user &
+#VBoxClient-all &
+#vmware-user &
 
 # Capslock as additional Ctrl
 setxkbmap -option ctrl:nocaps
 
 # Set background
-feh --bg-fill ~/Pictures/wallpaper
+#feh --bg-fill ~/Pictures/wallpaper
 
 # Start compositing manager
 compton -b
 
 # Start terminal
-#urxvt & 
+#urxvt &
 
 # Start keymapper
 xbindkeys

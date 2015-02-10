@@ -8,8 +8,7 @@ Xft.hintstyle:	hintslight
 Xft.lcdfilter:	lcddefault
 
 ! Colors ---------------------------------------------------------------------
-#include "/home/stephen/.colors/base16-ocean.dark.256.xresources"
-
+#include "/home/stephen/.colors/molokai.xresources"
 ! Appearances ----------------------------------------------------------------
 URxvt.scrollBar: false
 !URxvt.transparent: true
@@ -20,7 +19,8 @@ URxvt.scrollBar: false
 
 ! Fonts ----------------------------------------------------------------------
 ! Bitmap font
-URxvt.font: -*-terminus-medium-r-normal--14-*-*-*-*-*-*-*,-*-stlarch-*-*-normal-*-*-*-*-*-*-*-*-*,-*-nanumgothic-medium-r-normal-*-12-*-*-*-*-*-*-*
+!URxvt.font: -*-terminus-medium-r-normal--12-*-*-*-*-*-*-*,-*-stlarch-*-*-normal-*-*-*-*-*-*-*-*-*,-*-nanumgothic-medium-r-normal-*-12-*-*-*-*-*-*-*
+URxvt.font: -*-proggyclean-medium-r-normal--13-*-*-*-*-*-*-*
 ! Truetype font
 !URxvt.font: xft:DejaVu Sans Mono:size=10,xft:NanumGothicCoding:size=11
 !URxvt.letterSpace: -1
