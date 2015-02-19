@@ -47,4 +47,4 @@ export LSCOLORS=ExGxBxDxCxEgEdxbxgxcxd
 #stty -ixon # Disable C-S suspension
 
 # Fancy prompt
-. /Users/stephen/bin/fancyprompt
+. /home/stephen/bin/fancyprompt

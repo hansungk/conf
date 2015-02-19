@@ -58,6 +58,9 @@ export PATH=/usr/local/texbin:$PATH
 export MANPATH=/usr/local/texlive/2013/texmf-dist/doc/man:$MANPATH
 export INFOPATH=/usr/local/texlive/2013/texmf-dist/doc/info:$INFOPATH
 
+# libvirt
+export LIBVIRT_DEFAULT_URI='qemu:///system'
+
 # Compilation flags
 export MAKEFLAGS="-j9"
 
@@ -73,14 +76,9 @@ man() {
 		man "$@"
 }
 
-# ssh
-# export SSH_KEY_PATH="~/.ssh/dsa_id"
-
 #export LS_COLORS=''
 #export TERM=xterm-256color
 
+# Mac terminal
 export CLICOLOR=1
 export LSCOLORS=ExGxBxDxCxEgEdxbxgxcxd
-
-# OPAM configuration
-. /home/stephen/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true

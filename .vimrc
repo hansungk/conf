@@ -28,18 +28,26 @@ endif
 Plugin 'gmarik/Vundle.vim'
 Plugin 'tpope/vim-surround'
 Plugin 'kien/ctrlp.vim'
-"Plugin 'bling/vim-airline'
-Plugin 'tomasr/molokai'
+Plugin 'bling/vim-airline'
 Plugin 'altercation/vim-colors-solarized'
-Plugin 'jnurmine/Zenburn'
-Plugin 'vim-scripts/paredit.vim'
+"Plugin 'vim-scripts/paredit.vim'
 Plugin 'tpope/vim-fireplace'
 Plugin 'scrooloose/nerdtree'
 Plugin 'guns/vim-clojure-static'
+Plugin 'guns/vim-sexp'
+Plugin 'tpope/vim-sexp-mappings-for-regular-people'
+"Plugin 'kien/rainbow_parentheses.vim'
+Plugin 'amdt/vim-niji'
 "Plugin 'eagletmt/ghcmod-vim'
 "Plugin 'eagletmt/neco-ghc'
 "Plugin 'lukerandall/haskellmode-vim'
 Plugin 'vim-scripts/haskell.vim'
+Plugin 'wting/rust.vim'
+" Colorschemes
+Plugin 'jnurmine/Zenburn'
+Plugin 'tomasr/molokai'
+Plugin 'morhetz/gruvbox'
+Plugin 'sjl/badwolf'
 
 call vundle#end()
 filetype plugin indent on	" Required!
@@ -94,9 +102,10 @@ set nu
 set smartcase	" Should be used with ignorecase on
 set splitbelow
 set splitright
+set timeoutlen=1000 ttimeoutlen=0	" Remove delay when insert mode switching in powerline/airline, read doc
 set title		" Why is this not default?
 set titleold=	" No more Thanks, vim
-set visualbell	" Turns off that annoying beeps.
+set novisualbell	" Turns off that annoying beeps.
 set wildmenu
 
 " Tabs
@@ -118,23 +127,21 @@ au FocusLost * :wa
 " KEY MAPPINGS {{{
 
 "" Leader
-"let mapleader = "\<Space>"
+let mapleader = " "
 
-"" Avoid the Esc monster
+"" Avoid the Esc key
 "nnoremap <Tab> <Esc>
 "vnoremap <Tab> <Esc>gV
 "onoremap <Tab> <Esc>
 "inoremap <Tab> <Esc>
 "inoremap <Leader><Tab> <Tab>
-"inoremap kj <Esc>
+inoremap jk <Esc>
 
 "" Save, Open, Close
 nmap <C-S>		:w<CR>
 imap <C-S>		<Esc>:w<CR>
 nmap <C-Q>		:q<CR>
 imap <C-Q>		<Esc>:q<CR>
-nmap <C-b>		:CtrlPBuffer<CR>
-imap <Leader>w	<Esc>:w<CR>a
 nmap <Leader>w	:w<CR>
 nmap <Leader>q	:q<CR>
 nmap <Leader>Q	:q!<CR>
@@ -150,7 +157,6 @@ nnoremap <Leader>z zMzvzz
 
 "" Convenience
 nnoremap ; :
-nnoremap <tab> %
 
 "" Find
 " Focus find
@@ -163,7 +169,6 @@ nnoremap <Leader>/ :noh<CR>
 " Don't jump to next when star-searching
 nnoremap * *<C-o>
 
-" 
 " 'Strong' h/l
 noremap H ^
 noremap L g_
@@ -184,27 +189,24 @@ nnoremap <C-down> 5<C-w>-
 
 " Quick copying/pasting
 nnoremap <Leader>p "0p
-vnoremap <C-c> "*y
-"inoremap <C-v> <Esc>"*pa
+vnoremap <Leader>y "*y
 
 " Quick external ex command
 nnoremap <Leader>r :!!<CR>
 
 " Opening .vimrc
 nmap <Leader>v :e ~/.vimrc<CR>
-nmap <Leader><S-v> :e ~/dotfiles.git/.vimrc<CR>
 
 " Source ( source: bitbucket.org/sjl/dotfiles/vim/vimrc )
 vnoremap <leader>S y:execute @@<cr>:echo 'Sourced selection.'<cr>
 nnoremap <leader>S ^vg_y:execute @@<cr>:echo 'Sourced line.'<cr>
 
 " NERDTree
-map <F4>		<Esc>:NERDTreeToggle<CR>
-imap <F4>		<Esc>:NERDTreeToggle<CR>
+nnoremap <leader>n :NERDTreeToggle<CR>
 
 " }}}
 
-" USER COMMANDS {{{
+" FUNCTIONS {{{
 
 command Make call s:make()
 command CMake call s:cmake()
@@ -264,6 +266,12 @@ endfunction
 
 " }}}
 
+" AUTOCOMMANDS {{{
+
+au BufNewFile,BufRead *.md set filetype=markdown
+
+" }}}
+
 " CONVENIENCE {{{
 
 set showcmd " Show pressed keys
@@ -277,7 +285,7 @@ set laststatus=2 " Always display statusline (especially useful for Powerline)
 if !has("gui_running")
     " Terminal specific
     set t_Co=256 " For vim terminals
-    colorscheme zenburn
+    colorscheme badwolf
 endif
 
 " }}}

@@ -7,6 +7,9 @@ fi
 
 trap 'trap - TERM; kill 0' INT TERM QUIT EXIT
 
+PANEL_FIFO="/tmp/panel-fifo"
+PANEL_HEIGHT="24"
+
 [ -e "$PANEL_FIFO" ] && rm "$PANEL_FIFO"
 mkfifo "$PANEL_FIFO"
 
@@ -17,7 +20,7 @@ xtitle -sf 'T%s' > "$PANEL_FIFO" &
 conky -c /home/stephen/.config/bspwm/panel/panel_conky > "$PANEL_FIFO" &
 
 . panel_colors
-PANEL_FONT_FAMILY1="-misc-stlarch-medium-r-normal--12-120-75-75-c-*-iso10646-1"
+PANEL_FONT_FAMILY1="-*-stlarch-medium-r-*-*-10-*-*-*-*-*-*-*"
 PANEL_FONT_FAMILY2="-*-terminus-medium-*-*-*-12-*-*-*-*-*-*-*"
 PANEL_FONT_FAMILY3="-*-nanumgothic-medium-r-normal-*-12-*-*-*-*-*-*-*"
 cat "$PANEL_FIFO" | panel_bar | bar -g x$PANEL_HEIGHT -f "$PANEL_FONT_FAMILY1","$PANEL_FONT_FAMILY2","$PANEL_FONT_FAMILY3" -F "$COLOR_FOREGROUND" -B "$COLOR_BACKGROUND" &

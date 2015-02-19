@@ -13,4 +13,4 @@
 	st	= "status --short"
 	stl	= "status --long"
 [credential]
-	helper = cache --timeout=3600
+	helper = cache --timeout=10800 # I'm lazy

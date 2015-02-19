@@ -81,18 +81,18 @@ vanillaLogHook h = dynamicLogWithPP xmobarPP
 -- configure layouts
 
 -- Useless gaps
-gaplessLayoutHook = avoidStruts $
-	tiled ||| Full ||| fullTiled
-	where 
-		tiled		= spacing 7 $ Tall nmaster delta ratio
-		fullTiled	= Tall nmaster delta ratio
-
-		-- The default number of windows in the master pane
-		nmaster	= 1
-		-- Percentage of screen to increment by when resizing panes
-		delta	= 5/100
-		-- Default proportion of screen occupied by master pane
-		ratio	= 1/2
+--gaplessLayoutHook = avoidStruts $
+--	tiled ||| Full ||| fullTiled
+--	where 
+--		tiled		= spacing 7 $ Tall nmaster delta ratio
+--		fullTiled	= Tall nmaster delta ratio
+--
+--		-- The default number of windows in the master pane
+--		nmaster	= 1
+--		-- Percentage of screen to increment by when resizing panes
+--		delta	= 5/100
+--		-- Default proportion of screen occupied by master pane
+--		ratio	= 1/2
 
 -- Vanilla
 vanillaLayoutHook = avoidStruts  $  layoutHook defaultConfig
