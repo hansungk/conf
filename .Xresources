@@ -19,8 +19,10 @@ URxvt.scrollBar: false
 
 ! Fonts ----------------------------------------------------------------------
 ! Bitmap font
-!URxvt.font: -*-terminus-medium-r-normal--12-*-*-*-*-*-*-*,-*-stlarch-*-*-normal-*-*-*-*-*-*-*-*-*,-*-nanumgothic-medium-r-normal-*-12-*-*-*-*-*-*-*
-URxvt.font: -*-proggyclean-medium-r-normal--13-*-*-*-*-*-*-*
+URxvt.font: -*-proggyclean-medium-r-normal--13-*-*-*-*-*-*-*,-*-stlarch-*-*-normal-*-*-*-*-*-*-*-*-*,-*-nanumgothic-medium-r-normal-*-12-*-*-*-*-*-*-*
+!URxvt.boldFont: -*-proggysquare-*-*-*--11-*-*-*-*-*-*-*
+!URxvt.font: -*-proggytiny-medium-r-normal--10-*-*-*-*-*-*-*
+!URxvt.boldFont: -*-proggytiny-*-*-*--10-*-*-*-*-*-*-*
 ! Truetype font
 !URxvt.font: xft:DejaVu Sans Mono:size=10,xft:NanumGothicCoding:size=11
 !URxvt.letterSpace: -1

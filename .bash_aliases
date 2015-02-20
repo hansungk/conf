@@ -9,7 +9,7 @@ alias ls='ls --color=auto --group-directories-first'
 alias l='ls'
 alias ll='ls -l -h'
 alias la='ls -la --group-directories-first'
-alias tmux="TERM=xterm-256color tmux"
+#alias tmux="TERM=xterm-256color tmux"
 alias rm="rm -i"                          # confirm before overwriting something
 alias v='vim'
 alias vi=vim
