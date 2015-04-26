@@ -33,11 +33,12 @@ Plugin 'altercation/vim-colors-solarized'
 "Plugin 'vim-scripts/paredit.vim'
 Plugin 'tpope/vim-fireplace'
 Plugin 'scrooloose/nerdtree'
+Plugin 'scrooloose/syntastic'
 Plugin 'guns/vim-clojure-static'
 Plugin 'guns/vim-sexp'
 Plugin 'tpope/vim-sexp-mappings-for-regular-people'
 "Plugin 'kien/rainbow_parentheses.vim'
-Plugin 'amdt/vim-niji'
+"Plugin 'amdt/vim-niji'
 "Plugin 'eagletmt/ghcmod-vim'
 "Plugin 'eagletmt/neco-ghc'
 "Plugin 'lukerandall/haskellmode-vim'
@@ -111,6 +112,7 @@ set wildmenu
 " Tabs
 set tabstop=4
 set shiftwidth=4
+set expandtab
 
 " Backups
 set undodir=~/.vim/tmp/undo,.
@@ -145,6 +147,8 @@ imap <C-Q>		<Esc>:q<CR>
 nmap <Leader>w	:w<CR>
 nmap <Leader>q	:q<CR>
 nmap <Leader>Q	:q!<CR>
+nmap <Leader>b	:CtrlPBuffer<CR>
+
 
 "" Substitution
 nnoremap <Leader>s :%s/<C-r><C-w>/
@@ -285,7 +289,7 @@ set laststatus=2 " Always display statusline (especially useful for Powerline)
 if !has("gui_running")
     " Terminal specific
     set t_Co=256 " For vim terminals
-    colorscheme Tomorrow-Night
+    colorscheme solarized
 endif
 
 " }}}

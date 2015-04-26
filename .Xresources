@@ -8,9 +8,10 @@ Xft.hintstyle:	hintslight
 Xft.lcdfilter:	lcddefault
 
 ! Colors ---------------------------------------------------------------------
-#include "/home/stephen/.colors/molokai.xresources"
+#include "/home/stephen/.colors/solarized.xresources"
 ! Appearances ----------------------------------------------------------------
 URxvt.scrollBar: false
+URxvt.intensityStyles: false
 !URxvt.transparent: true
 !URxvt.shading: 20
 !URxvt.blurRadius: 30
@@ -19,13 +20,13 @@ URxvt.scrollBar: false
 
 ! Fonts ----------------------------------------------------------------------
 ! Bitmap font
-URxvt.font: -*-proggyclean-medium-r-normal--13-*-*-*-*-*-*-*,-*-stlarch-*-*-normal-*-*-*-*-*-*-*-*-*,-*-nanumgothic-medium-r-normal-*-12-*-*-*-*-*-*-*
-!URxvt.boldFont: -*-proggysquare-*-*-*--11-*-*-*-*-*-*-*
+!URxvt.font: -*-terminus-medium-r-normal--14-*-*-*-*-*-*-*,-*-stlarch-*-*-normal-*-*-*-*-*-*-*-*-*,xft:NanumGothicCoding:pixelsize=13
+!URxvt.boldFont: -*-proggyclean-*-r-normal--13-*-*-*-*-*-*-*
 !URxvt.font: -*-proggytiny-medium-r-normal--10-*-*-*-*-*-*-*
 !URxvt.boldFont: -*-proggytiny-*-*-*--10-*-*-*-*-*-*-*
 ! Truetype font
-!URxvt.font: xft:DejaVu Sans Mono:size=10,xft:NanumGothicCoding:size=11
-!URxvt.letterSpace: -1
+URxvt.font: xft:Inconsolata:size=11,xft:NanumGothicCoding:size=11
+URxvt.letterSpace: -1
 
 ! Input method ---------------------------------------------------------------
 URxvt*.inputMethod: ibus
