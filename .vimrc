@@ -74,11 +74,7 @@ let g:haddock_browser = "/usr/bin/firefox"
 "let g:Powerline_symbols= 'fancy'
 " }}}
 " Airline {{{
-<<<<<<< HEAD
-"let g:airline_theme= 'dark'
-=======
 " let g:airline_theme= 'dark'
->>>>>>> mac
 " }}}
 " Lilypond {{{
 " set rtp+=/usr/share/lilypond/2.16.2/vim/ " For lilypond vim mode
@@ -290,11 +286,7 @@ set laststatus=2 " Always display statusline (especially useful for Powerline)
 if !has("gui_running")
     " Terminal specific
     set t_Co=256 " For vim terminals
-<<<<<<< HEAD
     colorscheme default
-=======
-    colorscheme solarized
->>>>>>> mac
 endif
 
 " }}}
