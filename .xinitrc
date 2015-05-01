@@ -36,7 +36,7 @@ setxkbmap -option ctrl:nocaps
 #feh --bg-fill ~/Pictures/wallpaper
 
 # Start compositing manager
-compton -b
+#compton -b
 
 # Start terminal
 #urxvt &
