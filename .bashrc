@@ -37,7 +37,7 @@ export EDITOR=vim
 export VISUAL=vim
 
 # PATH generation
-export PATH=/Users/stephen/bin:$PATH
+export PATH=$HOME/bin:$PATH
 
 # Mac ls
 export CLICOLOR=1
@@ -47,4 +47,4 @@ export LSCOLORS=ExGxBxDxCxEgEdxbxgxcxd
 #stty -ixon # Disable C-S suspension
 
 # Fancy prompt
-. /home/stephen/bin/fancyprompt
+. $HOME/bin/fancyprompt
