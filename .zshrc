@@ -50,7 +50,7 @@ plugins=(git mercurial cabal brew autojump)
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
-export PATH=$HOME/.cabal/bin:$HOME/bin:/usr/local/bin:$PATH
+export PATH=$HOME/Library/Haskell/bin:$HOME/bin:/usr/local/bin:$PATH
 export PATH=$HOME/.config/bspwm/panel:$PATH
 
 # Tex

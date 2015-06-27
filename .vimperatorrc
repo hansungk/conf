@@ -19,8 +19,8 @@ nnoremap <BS> H
 command reloadrc source /Users/stephen/.vimperatorrc
 
 " Tab switcher
-nmap K gT
-nmap J gt
+"nmap K gT
+"nmap J gt
 
 nnoremap <C-S-h> :tabm -1<Esc>
 nnoremap <C-S-l> :tabm +1<Esc>
