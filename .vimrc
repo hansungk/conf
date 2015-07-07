@@ -28,11 +28,10 @@ endif
 Plugin 'gmarik/Vundle.vim'
 Plugin 'tpope/vim-surround'
 Plugin 'kien/ctrlp.vim'
-Plugin 'bling/vim-airline'
+"Plugin 'bling/vim-airline'
 Plugin 'altercation/vim-colors-solarized'
 "Plugin 'vim-scripts/paredit.vim'
 Plugin 'tpope/vim-fireplace'
-Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
 Plugin 'guns/vim-clojure-static'
 Plugin 'guns/vim-sexp'
@@ -99,6 +98,7 @@ set incsearch
 set nolist
 set listchars=tab:▸\ ,eol:¬,extends:>,precedes:<
 set nocompatible
+set noimd		" Disable IME when normal mode
 set nu
 set smartcase	" Should be used with ignorecase on
 set splitbelow
@@ -283,10 +283,11 @@ set showcmd " Show pressed keys
 set laststatus=2 " Always display statusline (especially useful for Powerline)
 "set noshowmode " Powerline shows mode instead
 
+colorscheme default
+
 if !has("gui_running")
     " Terminal specific
     set t_Co=256 " For vim terminals
-    colorscheme inkpot
 endif
 
 " }}}

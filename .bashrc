@@ -46,5 +46,8 @@ export LSCOLORS=ExGxBxDxCxEgEdxbxgxcxd
 # Startup scripts
 #stty -ixon # Disable C-S suspension
 
+# Cabal setup
+export PATH=$HOME/Library/Haskell/bin:$PATH
+
 # Fancy prompt
 . $HOME/bin/fancyprompt
