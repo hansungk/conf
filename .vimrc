@@ -286,7 +286,7 @@ set laststatus=2 " Always display statusline (especially useful for Powerline)
 if !has("gui_running")
     " Terminal specific
     set t_Co=256 " For vim terminals
-    colorscheme default
+    colorscheme inkpot
 endif
 
 " }}}

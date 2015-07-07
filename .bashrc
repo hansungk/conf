@@ -37,7 +37,7 @@ export EDITOR=vim
 export VISUAL=vim
 
 # PATH generation
-export PATH=/Users/stephen/bin:$PATH
+export PATH=/home/stephen/bin:$PATH
 
 # Mac ls
 export CLICOLOR=1
