@@ -3,13 +3,11 @@
 " Essential ----------------------------------
 echo "Welcome to Vimperator!"
 set defsearch=google
-set hintchars=asdfghjklqwertyuiopzxcvbnm
 
 " GUI ----------------------------------------
 set gui=nonavigation
-set defsearch=google
-set hintchars=hjklasdfqwertyuiopzxcvbnm
-
+set hintchars=asdfghjkl
+highlight Hint -append font-size: 16px;
 
 " Key bindings -------------------------------
 nnoremap ; :
