@@ -32,7 +32,7 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'altercation/vim-colors-solarized'
 "Plugin 'vim-scripts/paredit.vim'
 Plugin 'tpope/vim-fireplace'
-"Plugin 'scrooloose/nerdtree'
+Plugin 'scrooloose/syntastic'
 Plugin 'guns/vim-clojure-static'
 Plugin 'guns/vim-sexp'
 Plugin 'tpope/vim-sexp-mappings-for-regular-people'
@@ -112,6 +112,7 @@ set wildmenu
 " Tabs
 set tabstop=4
 set shiftwidth=4
+set expandtab
 
 " Backups
 set undodir=~/.vim/tmp/undo,.
@@ -146,6 +147,8 @@ imap <C-Q>		<Esc>:q<CR>
 nmap <Leader>w	:w<CR>
 nmap <Leader>q	:q<CR>
 nmap <Leader>Q	:q!<CR>
+nmap <Leader>b	:CtrlPBuffer<CR>
+
 
 "" Substitution
 nnoremap <Leader>s :%s/<C-r><C-w>/
