@@ -7,7 +7,7 @@ set defsearch=google
 " GUI ----------------------------------------
 set gui=nonavigation
 set hintchars=asdfghjkl
-highlight Hint -append font-size: 16px;
+highlight Hint -append font-size: 10px;
 
 " Key bindings -------------------------------
 nnoremap ; :
