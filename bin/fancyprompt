@@ -42,4 +42,7 @@ get_user_color() {
 #export PS1='\[$(get_exit_status)\]\[$(get_user_color)\]\u \[${RS}\]in \[${GREEN}\]\H \[${RS}\]at \[${BLUE}\]\w\[${RS}\]\n-> \[${RS}\]'
 
 # stephen alpha-debian-vm ~/bin $
-export PS1="${LRED}\$(get_exit_status)${RED}\u ${YELLOW}\H ${GREEN}\W ${RS}$ "
+#export PS1="${LRED}\$(get_exit_status)${RED}\u ${YELLOW}\H ${GREEN}\W ${RS}$ "
+
+# stephen@alpha-debian-vm:~/bin$
+export PS1="${LRED}\$(get_exit_status)${RS}[\u@\H:${GREEN}\w${RS}]$ "
