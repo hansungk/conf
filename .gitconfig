@@ -10,7 +10,6 @@
 	co	= "checkout"
 	df	= "diff"
 	l	= "log"
-	st	= "status --short"
-	stl	= "status --long"
+	st	= "status"
 [credential]
 	helper = cache --timeout=10800 # I'm lazy
