@@ -1,11 +1,12 @@
 # Aliases
 alias cd..='cd ..'
 alias cp="cp -i"                          # confirm before overwriting something
+alias cdproj="cd ~/projects"
 alias df='df -h'
 alias free='free -h'
 alias g='git'
 alias grep='grep --color=auto -d skip'
-alias ls='ls --color=auto --group-directories-first'
+alias ls='ls'
 alias l='ls'
 alias ll='ls -l -h'
 alias la='ls -la'
@@ -40,15 +41,15 @@ ex ()
 
 # man - colored manpage
 # source: ArchWiki "man page"
-man() {
-	env LESS_TERMCAP_mb=$'\E[01;31m' \
-		LESS_TERMCAP_md=$'\E[01;38;5;74m' \
-		LESS_TERMCAP_me=$'\E[0m' \
-		LESS_TERMCAP_se=$'\E[0m' \
-		LESS_TERMCAP_so=$'\E[38;5;246m' \
-		LESS_TERMCAP_ue=$'\E[0m' \
-		LESS_TERMCAP_us=$'\E[04;38;5;146m' \
-		man "$@"
-}
+#man() {
+#	env LESS_TERMCAP_mb=$'\E[01;31m' \
+#		LESS_TERMCAP_md=$'\E[01;38;5;74m' \
+#		LESS_TERMCAP_me=$'\E[0m' \
+#		LESS_TERMCAP_se=$'\E[0m' \
+#		LESS_TERMCAP_so=$'\E[38;5;246m' \
+#		LESS_TERMCAP_ue=$'\E[0m' \
+#		LESS_TERMCAP_us=$'\E[04;38;5;146m' \
+#		man "$@"
+#}
 
 # vim:ft=sh

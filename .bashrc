@@ -30,13 +30,14 @@ fi
 ### USER EDITED AREA
 
 # Why not use already beautiful default?
-#unset LS_COLORS
+unset LS_COLORS
 
 # Vim stuff
 export EDITOR=vim
 export VISUAL=vim
 
 # PATH generation
+export PATH=/usr/local/bin:$PATH
 export PATH=$HOME/bin:$PATH
 
 # Mac ls
@@ -48,6 +49,9 @@ export LSCOLORS=ExGxBxDxCxEgEdxbxgxcxd
 
 # Cabal setup
 export PATH=$HOME/Library/Haskell/bin:$PATH
+
+# clang-svn
+export PATH=$HOME/src/llvm-build/bin:$PATH
 
 # Fancy prompt
 . $HOME/bin/fancyprompt

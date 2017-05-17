@@ -280,10 +280,10 @@ au BufNewFile,BufRead *.md set filetype=markdown
 
 set background=dark " Always dark background
 set showcmd " Show pressed keys
-set laststatus=2 " Always display statusline (especially useful for Powerline)
+"set laststatus=2 " Always display statusline (especially useful for Powerline)
 "set noshowmode " Powerline shows mode instead
 
-colorscheme default
+colorscheme zenburn
 
 if !has("gui_running")
     " Terminal specific
