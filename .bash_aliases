@@ -1,5 +1,6 @@
 # Aliases
 alias cd..='cd ..'
+alias cclean='rm -rf CMakeCache.txt CMakeFiles/'
 alias cp="cp -i"                          # confirm before overwriting something
 alias cdproj="cd ~/projects"
 alias df='df -h'
@@ -13,7 +14,7 @@ alias la='ls -la'
 alias tmux="TERM=xterm-256color tmux"
 alias rm="rm -i"                          # confirm before overwriting something
 alias v='vim'
-alias vi=vim
+alias vi='vim'
 
 # ex - archive extractor
 # usage: ex <file>

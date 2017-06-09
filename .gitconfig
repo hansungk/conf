@@ -1,5 +1,5 @@
 [user]
-	name = Stephen Kim
+	name = Hansung Kim
 	email = stephen422@gmail.com
 [push]
 	default = simple
@@ -11,5 +11,6 @@
 	df	= "diff"
 	l	= "log"
 	st	= "status"
+	dfc = diff --cached
 [credential]
 	helper = cache --timeout=10800 # I'm lazy

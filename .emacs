@@ -7,6 +7,21 @@
    (format-time-string "%Y-%m-%d" (current-time))))
 (global-set-key (kbd "C-c C-d") 'insert-date)
 
+;; LLVM-style C++ coding style
+;; (https://llvm.org/svn/llvm-project/llvm/branches/release_36/utils/emacs/emacs.el)
+(c-add-style "llvm"
+             '((fill-column . 80)
+	       (c++-indent-level . 2)
+	       (c-basic-offset . 2)
+	       (indent-tabs-mode . nil)
+	       (c-offsets-alist . ((arglist-intro . ++)
+				   (innamespace . 0)
+				   (member-init-intro . ++)
+				   ))
+               ))
+
+(setq c-default-style "llvm")
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -64,7 +79,7 @@
      ("melpa" . "http://melpa.milkbox.net/packages/"))))
  '(package-selected-packages
    (quote
-    (zenburn-theme sublime-themes solarized-theme racket-mode paredit monokai-theme magit gruvbox-theme geiser color-theme-sanityinc-tomorrow cider auctex)))
+    (magit rust-mode cmake-mode zenburn-theme sublime-themes solarized-theme paredit monokai-theme gruvbox-theme geiser color-theme-sanityinc-tomorrow cider auctex)))
  '(pos-tip-background-color "#073642")
  '(pos-tip-foreground-color "#93a1a1")
  '(scroll-bar-mode (quote right))
@@ -120,9 +135,6 @@
 	     "/Applications/Racket v6.2.1/bin")
 (add-to-list 'exec-path
 	     "/usr/local/bin")
-
-;; Default C/C++ indentation style
-(setq c-default-style "linux")
 
 ;; Paredit auto-activation
 (autoload 'enable-paredit-mode "paredit" "Turn on pseudo-structural editing of Lisp code." t)

@@ -283,7 +283,7 @@ set showcmd " Show pressed keys
 "set laststatus=2 " Always display statusline (especially useful for Powerline)
 "set noshowmode " Powerline shows mode instead
 
-colorscheme zenburn
+colorscheme jellybeans
 
 if !has("gui_running")
     " Terminal specific
