@@ -279,9 +279,10 @@ au BufNewFile,BufRead *.md set filetype=markdown
 " APPEARANCE {{{
 
 set background=dark " Always dark background
-set showcmd " Show pressed keys
-"set laststatus=2 " Always display statusline (especially useful for Powerline)
-"set noshowmode " Powerline shows mode instead
+set ruler
+" set showcmd " Show pressed keys
+" set laststatus=2 " Always display statusline (especially useful for Powerline)
+" set noshowmode " Powerline shows mode instead
 
 colorscheme jellybeans
 

@@ -1,16 +1,21 @@
+[core]
+	excludesfile=~/.gitignoreall
+	editor = vim
 [user]
 	name = Hansung Kim
 	email = stephen422@gmail.com
-[push]
-	default = simple
 [alias]
-	a	= "add"
-	br	= "branch"
-	cm	= "commit"
-	co	= "checkout"
-	df	= "diff"
-	l	= "log"
-	st	= "status"
+	a	= add
+	br	= branch
+	cm	= commit
+	co	= checkout
+	df	= diff
+	l = log --graph --pretty=changelog
+	st	= status
 	dfc = diff --cached
+	pl = pull
+	ll = log
 [credential]
 	helper = cache --timeout=10800 # I'm lazy
+[pretty]
+	changelog = format:%C(auto)%h%C(auto)%d %Creset%s %C(green)%an %C(blue)%cr
