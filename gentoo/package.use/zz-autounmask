@@ -1,0 +1,6 @@
+# package.use# required by sys-kernel/genkernel-3.5.3.3::gentoo
+# required by sys-kernel/genkernel (argument)
+>=sys-apps/util-linux-2.33.2 static-libs
+# required by sys-boot/os-prober-1.76-r1::gentoo
+# required by os-prober (argument)
+>=sys-boot/grub-2.02-r4 mount

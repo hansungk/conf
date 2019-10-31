@@ -1,0 +1,9 @@
+# required by sys-power/suspend-1.0_p20150810-r1::gentoo[crypt]
+# required by sys-power/suspend (argument)
+dev-libs/libgcrypt static-libs
+# required by sys-power/suspend-1.0_p20150810-r1::gentoo[crypt]
+# required by sys-power/suspend (argument)
+dev-libs/libgpg-error static-libs
+# required by sys-power/suspend-1.0_p20150810-r1::gentoo[lzo]
+# required by sys-power/suspend (argument)
+dev-libs/lzo static-libs

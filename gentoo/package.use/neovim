@@ -1,0 +1,10 @@
+# required by app-editors/neovim-0.3.7::gentoo
+# required by neovim (argument)
+dev-lua/lpeg luajit
+# required by app-editors/neovim-0.3.7::gentoo
+# required by neovim (argument)
+dev-lua/mpack luajit
+# required by app-editors/neovim-0.4.2::gentoo
+# required by @selected
+# required by @world (argument)
+dev-lua/luv luajit

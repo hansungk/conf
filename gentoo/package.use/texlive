@@ -1,0 +1,12 @@
+app-text/texlive cjk graphics l10n_ko luatex xetex
+# required by dev-texlive/texlive-xetex-2019::gentoo
+# required by app-text/texlive-2019::gentoo[xetex]
+# required by app-text/texlive (argument)
+app-text/texlive-core cjk xetex
+# required by media-gfx/graphviz-2.40.1-r1::gentoo
+# required by dev-python/pydot-1.4.1::gentoo
+# required by dev-tex/dot2tex-2.9.0::gentoo
+# required by dev-tex/dot2texi-3.0::gentoo
+# required by app-text/texlive-2019::gentoo[graphics]
+# required by app-text/texlive (argument)
+media-libs/gd fontconfig
