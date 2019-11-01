@@ -1,6 +1,5 @@
 [core]
-	excludesfile=~/.gitignoreall
-	editor = vim
+	excludesfile=~/.gitignores
 [user]
 	name = Hansung Kim
 	email = stephen422@gmail.com
