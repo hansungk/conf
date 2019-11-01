@@ -6,7 +6,6 @@ set guioptions-=r
 set guioptions-=L
 "set guioptions-=m
 set guicursor+=a:blinkon0 " Disable cursor blinking
-"set guifont=Monospace\ 10 " When on Linux
-set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h12 " When on OS X
-set background=dark
-colorscheme solarized
+"set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h12 " When on OS X
+set guifont=Monaco:h12 " When on OS X
+set noimd

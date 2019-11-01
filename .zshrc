@@ -82,3 +82,5 @@ man() {
 # Mac terminal
 export CLICOLOR=1
 export LSCOLORS=ExGxBxDxCxEgEdxbxgxcxd
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

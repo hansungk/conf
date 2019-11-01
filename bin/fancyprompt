@@ -13,6 +13,8 @@ BLUE=$"\[\033[1;34m\]"
 YELLOW=$"\[\033[0;33m\]"
 MAGENTA=$"\[\033[1;36m\]"
 GRAY=$"\[\033[1;30m\]"
+BOLD=$"\[\033[0;97m\]"
+GRAY=$"\[\033[0;90m\]"
 RS=$"\[\033[0m\]"
 
 #OK=$'\342\234\224'		# Check sign
@@ -43,6 +45,7 @@ get_user_color() {
 # stephen in admin at ~/bin
 # ->
 #export PS1='\[$(get_exit_status)\]\[$(get_user_color)\]\u \[${RS}\]in \[${GREEN}\]\H \[${RS}\]at \[${BLUE}\]\w\[${RS}\]\n-> \[${RS}\]'
+export PS1="${LRED}\$(get_exit_status)${RED}\u ${BOLD}in ${YELLOW}\H ${BOLD}at ${GREEN}\W ${GRAY}\n->${RS} "
 
 # stephen alpha-debian-vm ~/bin $
-export PS1="${LRED}\$(get_exit_status)${RED}\u ${YELLOW}\H ${GREEN}\W ${RS}$ "
+#export PS1="${LRED}\$(get_exit_status)${RED}\u ${YELLOW}\H ${GREEN}\W ${RS}$ "
