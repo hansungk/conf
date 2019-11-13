@@ -17,10 +17,21 @@ There are two things you can do about this warning:
     (add-to-list 'package-archives (cons "gnu" (concat proto "://elpa.gnu.org/packages/")))))
 (package-initialize)
 
-;; Emacs server
+;; Start Emacs server
 (server-start)
 
+(add-hook 'after-make-frame-functions
+  (lambda ()
+    (when (not (display-graphic-p))
+      (set-face-background 'vertical-border "gray")
+      (set-face-foreground 'vertical-border (face-background 'vertical-border)))))
+
+;; Global modes enabled for default
+(show-paren-mode 1)
 (savehist-mode 1)
+
+;; Do not clutter PWD with *~ files
+(setq backup-directory-alist `(("." . "~/.emacs.d/saves")))
 
 (if (eq system-type 'darwin)
     (progn
@@ -59,7 +70,8 @@ There are two things you can do about this warning:
 (setq enable-recursive-minibuffers t)
 ;; enable this if you want `swiper' to use it
 ;; (setq search-default-mode #'char-fold-to-regexp)
-(global-set-key "\C-s" 'swiper)
+(global-set-key (kbd "C-s") 'swiper)
+(global-set-key (kbd "C-r") 'swiper-backward)
 (global-set-key (kbd "C-c C-r") 'ivy-resume)
 (global-set-key (kbd "M-x") 'counsel-M-x)
 (global-set-key (kbd "C-x C-f") 'counsel-find-file)
@@ -67,11 +79,16 @@ There are two things you can do about this warning:
 
 ;; Keys
 (global-set-key (kbd "C-x g") 'magit-status)
-(global-set-key (kbd "C-c c") 'compile)
+;; (global-set-key (kbd "C-c c") 'compile)
 (global-set-key (kbd "C-c i") 'imenu)
 (global-set-key (kbd "s-u") 'revert-buffer)
 (global-set-key (kbd "s-c") 'clipboard-kill-ring-save)
 (global-set-key (kbd "s-v") 'clipboard-yank)
+; Counsel
+(global-set-key (kbd "C-c c") 'counsel-compile)
+(global-set-key (kbd "C-c k") 'counsel-rg)
+(global-set-key (kbd "C-c m") 'counsel-linux-app)
+(global-set-key (kbd "C-c n") 'counsel-fzf)
 
 ;; Evil
 (setq evil-want-C-u-scroll t)
@@ -94,7 +111,8 @@ There are two things you can do about this warning:
 
 ;; C
 (defun my-c-mode-hook ()
-  (c-set-style "han"))
+  (c-set-style "han")
+  (c-toggle-comment-style -1))
 (add-hook 'c-mode-hook 'my-c-mode-hook)
 
 ;; Highlight TODO, FIXME, etc.
@@ -110,8 +128,8 @@ There are two things you can do about this warning:
 (c-add-style "han"
              '("gnu"
 	       (fill-column . 80)
-	       (c++-indent-level . 2)
-	       (c-basic-offset . 2)
+	       (c++-indent-level . 4)
+	       (c-basic-offset . 4)
 	       (indent-tabs-mode . nil)
 	       (c-offsets-alist . ((arglist-intro . ++)
 				   (innamespace . 0)
@@ -135,9 +153,17 @@ There are two things you can do about this warning:
 ;; Verilog
 (defun my-verilog-mode-hook ()
   (setq indent-tabs-mode nil)
-  (setq verilog-auto-newline nil)
+  (setq verilog-indent-level 2
+        verilog-indent-level-module 0
+        verilog-indent-level-declaration 0
+        verilog-auto-newline nil)
   (set-fill-column 80))
 (add-hook 'verilog-mode-hook 'my-verilog-mode-hook)
+
+;; LaTeX
+(defun my-latex-mode-hook ()
+  (set-fill-column 80))
+(add-hook `latex-mode-hook `my-latex-mode-hook)
 
 ;; Custom functions ------------------------------------------------------------
 
