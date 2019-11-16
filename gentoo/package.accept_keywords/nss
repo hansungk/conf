@@ -1,0 +1,8 @@
+# required by net-misc/networkmanager-1.18.2::gentoo[nss]
+# required by dev-qt/qtnetwork-5.12.5::gentoo[networkmanager]
+# required by dev-qt/qtbluetooth-5.12.5::gentoo
+# required by dev-python/PyQt5-5.12.2::gentoo[bluetooth]
+# required by net-print/hplip-3.18.12::gentoo[-minimal,qt5]
+# required by @selected
+# required by @world (argument)
+dev-libs/nss ~amd64

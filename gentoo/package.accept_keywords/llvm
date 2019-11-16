@@ -1,0 +1,23 @@
+=sys-devel/llvm-9* **
+=sys-devel/llvmgold-9* **
+=dev-util/lldb-9* **
+=sys-devel/clang-common-9* **
+# required by sys-devel/clang-9.0.0.9999::gentoo
+# required by sys-libs/compiler-rt-9.0.0.9999::gentoo[clang]
+=sys-devel/clang-runtime-9* **
+# required by sys-devel/clang-runtime-9.0.0.9999::gentoo[openmp]
+# required by sys-devel/clang-9.0.0.9999::gentoo
+# required by sys-libs/compiler-rt-9.0.0.9999::gentoo[clang]
+=sys-libs/libomp-9* **
+# required by =sys-devel/clang-9.0.0.9999 (argument)
+=sys-devel/clang-9* **
+# required by sys-devel/clang-runtime-9.0.0.9999::gentoo[compiler-rt]
+# required by sys-devel/clang-9.0.0.9999::gentoo
+# required by sys-libs/compiler-rt-sanitizers-9.0.0.9999::gentoo[clang]
+=sys-libs/compiler-rt-9* **
+# required by sys-devel/clang-runtime-9.0.0.9999::gentoo[compiler-rt,sanitize]
+# required by sys-devel/clang-9.0.0.9999::gentoo
+# required by sys-libs/compiler-rt-9.0.0.9999::gentoo[clang]
+=sys-libs/compiler-rt-sanitizers-9* **
+# for firefox
+=sys-devel/lld-9* **

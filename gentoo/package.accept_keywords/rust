@@ -1,0 +1,4 @@
+dev-lang/rust ~amd64
+virtual/rust ~amd64
+virtual/cargo ~amd64
+# dev-util/cbindgen ~amd64
