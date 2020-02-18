@@ -1,20 +1,22 @@
+#!/bin/bash
 # -*- shell-script -*-
 #---------------------------------------------------------------------
-# HOW TO USE
-#
-# DISREGARD--->Copy into /etc/profile.d and check if /etc/profile sources it
+# HOW TO USE:
+# copy into /etc/profile.d and check if /etc/profile sources it
 #---------------------------------------------------------------------
 
-## PS1 customizing
 GREEN=$"\[\033[0;32m\]"
+BGREEN=$"\[\033[1;32m\]"
 RED=$"\[\033[0;31m\]"
-LRED=$"\[\033[0;31m\]"
-BLUE=$"\[\033[1;34m\]"
+BRED=$"\[\033[1;31m\]"
+BLUE=$"\[\033[0;34m\]"
+BBLUE=$"\[\033[1;34m\]"
 YELLOW=$"\[\033[0;33m\]"
 MAGENTA=$"\[\033[1;36m\]"
-GRAY=$"\[\033[1;30m\]"
-BOLD=$"\[\033[0;97m\]"
+BGRAY=$"\[\033[1;90m\]"
 GRAY=$"\[\033[0;90m\]"
+WHITE=$"\[\033[0;97m\]"
+BWHITE=$"\[\033[1;97m\]"
 RS=$"\[\033[0m\]"
 
 #OK=$'\342\234\224'		# Check sign
@@ -25,7 +27,7 @@ ERROR="x"
 get_exit_status() {
 	EXIT=$?
 	if [ ${EXIT} -ne 0 ] ; then
-		echo ${EXIT}" "
+		echo "${EXIT} "
 	fi
 }
 get_user_color() {
@@ -33,10 +35,17 @@ get_user_color() {
 	if [ "${USER}" = "root" ] ; then
 		echo ${RED}
 	else
-		echo ${GREEN}
+		echo ${YELLOW}
 	fi
 }
-
+user_ps1() {
+	USER=$(whoami)
+	if [ "${USER}" = "root" ] ; then
+		echo "##"
+	else
+		echo "::"
+	fi
+}
 # With $'~'(note the dollar sign), all escape sequences EXCEPT \e will
 # not be expanded.
 # Use \[ and \] around non-printing sequences (such as color-changers)
@@ -44,8 +53,13 @@ get_user_color() {
 
 # stephen in admin at ~/bin
 # ->
-#export PS1='\[$(get_exit_status)\]\[$(get_user_color)\]\u \[${RS}\]in \[${GREEN}\]\H \[${RS}\]at \[${BLUE}\]\w\[${RS}\]\n-> \[${RS}\]'
-export PS1="${LRED}\$(get_exit_status)${RED}\u ${BOLD}in ${YELLOW}\H ${BOLD}at ${GREEN}\W ${GRAY}\n->${RS} "
+# export PS1="$(get_exit_status)$(get_user_color)\u${RS} in ${BWHITE}\H${RS} at ${GREEN}\w${RS}\n${GRAY}->${RS} "
+# export PS1="$(user_ps1) \w ${GRAY}>${RS} "
+
+#export PS1="${BWHITE}\$(get_exit_status)${BGREEN}\u ${WHITE}in ${BWHITE}\H ${WHITE}at ${BLUE}\W ${GRAY}\n->${RS} "
+
+# [stephen@alpha ~]$
+export PS1="[${BLUE}\u${RS}@${BWHITE}\h ${GREEN}\W${RS}]\$ "
 
 # stephen alpha-debian-vm ~/bin $
 #export PS1="${LRED}\$(get_exit_status)${RED}\u ${YELLOW}\H ${GREEN}\W ${RS}$ "
