@@ -1,5 +1,6 @@
 [core]
 	excludesfile=~/.gitignores
+	editor = nvim
 [user]
 	name = Hansung Kim
 	email = stephen422@gmail.com
