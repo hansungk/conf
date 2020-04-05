@@ -10,6 +10,23 @@ ZSH_THEME="stephen"
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+alias cd..='cd ..'
+alias cclean='rm -rf CMakeCache.txt CMakeFiles/'
+alias cp="cp -i"                          # confirm before overwriting something
+alias cdproj="cd ~/projects"
+alias df='df -h'
+alias free='free -h'
+alias g='git'
+alias grep='grep --color=auto -d skip'
+alias ls='ls -G -F'
+alias l='exa -l'
+alias ll='ls -l -h'
+alias la='ls -la'
+alias tmux="TERM=xterm-256color tmux"
+alias rm="rm -i"                          # confirm before overwriting something
+alias v='nvim'
+alias vi='nvim'
+alias vim='nvim'
 
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
@@ -45,39 +62,9 @@ ZSH_THEME="stephen"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git mercurial cabal brew autojump)
+plugins=(git brew)
 
 source $ZSH/oh-my-zsh.sh
-
-# User configuration
-export PATH=$HOME/Library/Haskell/bin:$HOME/bin:/usr/local/bin:$PATH
-export PATH=$HOME/.config/bspwm/panel:$PATH
-
-# Tex
-export PATH=/usr/local/texbin:$PATH
-export MANPATH=/usr/local/texlive/2013/texmf-dist/doc/man:$MANPATH
-export INFOPATH=/usr/local/texlive/2013/texmf-dist/doc/info:$INFOPATH
-
-# libvirt
-export LIBVIRT_DEFAULT_URI='qemu:///system'
-
-# Compilation flags
-export MAKEFLAGS="-j9"
-
-# Colored man pages
-man() {
-	env LESS_TERMCAP_mb=$'\E[01;31m' \
-		LESS_TERMCAP_md=$'\E[01;38;5;74m' \
-		LESS_TERMCAP_me=$'\E[0m' \
-		LESS_TERMCAP_se=$'\E[0m' \
-		LESS_TERMCAP_so=$'\E[38;5;246m' \
-		LESS_TERMCAP_ue=$'\E[0m' \
-		LESS_TERMCAP_us=$'\E[04;38;5;146m' \
-		man "$@"
-}
-
-#export LS_COLORS=''
-#export TERM=xterm-256color
 
 # Mac terminal
 export CLICOLOR=1

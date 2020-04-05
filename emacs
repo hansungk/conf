@@ -1,3 +1,5 @@
+;; -*- emacs-lisp -*-
+
 (require 'package)
 (let* ((no-ssl (and (memq system-type '(windows-nt ms-dos))
                     (not (gnutls-available-p))))
@@ -26,9 +28,10 @@ There are two things you can do about this warning:
       (set-face-background 'vertical-border "gray")
       (set-face-foreground 'vertical-border (face-background 'vertical-border)))))
 
-;; Global modes enabled for default
+;; Global modes enabled/disabled by default
 (show-paren-mode 1)
 (savehist-mode 1)
+(global-eldoc-mode -1)
 
 ;; Do not clutter PWD with *~ files
 (setq backup-directory-alist `(("." . "~/.emacs.d/saves")))
@@ -136,10 +139,15 @@ There are two things you can do about this warning:
 				   (member-init-intro . ++)))))
 (defun my-c++-mode-hook ()
   (c-set-style "han")
-  (lsp-ccls))
+  (lsp-ccls)
+  (define-key c-mode-base-map (kbd "C-M-i") 'completion-at-point)
+  (define-key c-mode-base-map (kbd "C-c h") 'eglot-help-at-point))
 (add-hook 'c++-mode-hook 'my-c++-mode-hook)
 
-(setq-default indent-tabs-mode nil)
+(require 'eglot)
+(add-to-list 'eglot-server-programs '((c++-mode c-mode) "clangd"))
+(add-hook 'c-mode-hook 'eglot-ensure)
+(add-hook 'c++-mode-hook 'eglot-ensure)(setq-default indent-tabs-mode nil)
 
 ;; (setq-default tab-width 4)
 ;; (defvaralias 'c-basic-offset 'tab-width)
