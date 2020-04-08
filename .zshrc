@@ -10,23 +10,6 @@ ZSH_THEME="stephen"
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias cd..='cd ..'
-alias cclean='rm -rf CMakeCache.txt CMakeFiles/'
-alias cp="cp -i"                          # confirm before overwriting something
-alias cdproj="cd ~/projects"
-alias df='df -h'
-alias free='free -h'
-alias g='git'
-alias grep='grep --color=auto -d skip'
-alias ls='ls -G -F'
-alias l='exa -l'
-alias ll='ls -l -h'
-alias la='ls -la'
-alias tmux="TERM=xterm-256color tmux"
-alias rm="rm -i"                          # confirm before overwriting something
-alias v='nvim'
-alias vi='nvim'
-alias vim='nvim'
 
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
@@ -62,12 +45,36 @@ alias vim='nvim'
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git brew)
+plugins=(brew)
 
 source $ZSH/oh-my-zsh.sh
+
+alias cd..='cd ..'
+alias cclean='rm -rf CMakeCache.txt CMakeFiles/'
+alias cp="cp -i"                          # confirm before overwriting something
+alias cdproj="cd ~/projects"
+alias df='df -h'
+alias free='free -h'
+alias g='git'
+alias grep='grep --color=auto -d skip'
+alias ls='ls -G -F'
+alias l='exa -l'
+alias ll='ls -l -h'
+alias la='ls -la'
+alias tmux="TERM=xterm-256color tmux"
+alias rm="rm -i"                          # confirm before overwriting something
+alias v='nvim'
+alias vi='nvim'
+alias vim='nvim'
 
 # Mac terminal
 export CLICOLOR=1
 export LSCOLORS=ExGxBxDxCxEgEdxbxgxcxd
 
+export EDITOR=nvim
+
+export PATH="$HOME/build/llvm/bin:$PATH"
+export PATH="$HOME/build/ccls:$PATH"
+
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export FZF_DEFAULT_COMMAND='fd --type f'

@@ -1,20 +1,21 @@
 # Aliases
-alias cd..='cd ..'
-alias colors='~/bin/colors'
-alias cp="cp -i"                          # confirm before overwriting something
-alias df='df -h'
-alias free='free -h'
-alias g='git'
-#alias grep='grep --color=auto -d skip'
-alias l='ls'
-#alias ls='ls --color=auto --group-directories-first'
-#alias ll='ls -l -h'
-#alias la='ls -la'
-alias tmux="TERM=screen-256color-bce tmux"
-alias rm="rm -i"                          # confirm before overwriting something
-alias v='vim'
-alias vi='vim'
-alias view='vim -R'
+# Just use .zshrc...
+# alias cd..='cd ..'
+# alias colors='~/bin/colors'
+# alias cp="cp -i"                          # confirm before overwriting something
+# alias df='df -h'
+# alias free='free -h'
+# alias g='git'
+# #alias grep='grep --color=auto -d skip'
+# alias l='ls'
+# #alias ls='ls --color=auto --group-directories-first'
+# #alias ll='ls -l -h'
+# #alias la='ls -la'
+# alias tmux="TERM=screen-256color-bce tmux"
+# alias rm="rm -i"                          # confirm before overwriting something
+# alias v='vim'
+# alias vi='vim'
+# alias view='vim -R'
 
 # ex - archive extractor
 # usage: ex <file>
