@@ -1,5 +1,4 @@
 alias l='exa -l'
-alias ls='ls --color=auto'
 alias ll='ls -l'
 alias e='emacsclient --no-wait'
 alias se='SUDO_EDITOR="emacsclient" sudo -e'
