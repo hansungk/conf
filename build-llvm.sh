@@ -14,35 +14,45 @@
 
 export CC=${CC:-/usr/bin/clang}
 export CXX=${CXX:-/usr/bin/clang++}
+export CFLAGS='-march=native -O2 -DNDEBUG'
+export CXXFLAGS=${CFLAGS}
 prefix=$HOME/build/llvm-$(date +'%y%m%d')
 srcdir=$HOME/src/llvm-project
 
-cmake_args="
+cmake_args=(
 -DCMAKE_BUILD_TYPE=Release
--DCMAKE_C_FLAGS=-march=native -O2
--DCMAKE_CXX_FLAGS=-march=native -O2
 -DCMAKE_INSTALL_PREFIX=${prefix}
--DLLVM_ENABLE_PROJECTS=clang;clang-tools-extra;compiler-rt;libcxx;libcxxabi;libunwind;lld;lldb;openmp;polly
+-DCMAKE_C_FLAGS_RELEASE=
+-DCMAKE_CXX_FLAGS_RELEASE=
+-DLLVM_ENABLE_PROJECTS="clang;clang-tools-extra;compiler-rt;libcxx;libcxxabi;libunwind;lld;lldb;openmp;polly"
+-DLIBCXX_CXX_ABI=libcxxabi
+-DLIBCXXABI_USE_LLVM_UNWINDER=On
 -DLLVM_INSTALL_UTILS=On
--DLLDB_ENABLE_LIBEDIT=On"
+-DLLDB_ENABLE_LIBEDIT=On
+)
+# -DLIBCXX_HAS_GCC_S_LIB=Off
 
 if [ "$(uname)" == "Darwin" ]; then
-    cmake_args+=" -DLLVM_CREATE_XCODE_TOOLCHAIN=ON"
-    cmake_args+=" -DCOMPILER_RT_ENABLE_IOS=Off"
-    cmake_args+=" -DLLVM_BUILD_EXTERNAL_COMPILER_RT=ON"
-    cmake_args+=" -DLLVM_ENABLE_LIBCXX=ON"
-    cmake_args+=" -DDEFAULT_SYSROOT=$(xcrun --sdk macosx --show-sdk-path)"
+    cmake_args+=( -DLLVM_CREATE_XCODE_TOOLCHAIN=ON)
+    cmake_args+=( -DCOMPILER_RT_ENABLE_IOS=Off)
+    cmake_args+=( -DLLVM_BUILD_EXTERNAL_COMPILER_RT=ON)
+    cmake_args+=( -DLLVM_ENABLE_LIBCXX=ON)
+    cmake_args+=( -DDEFAULT_SYSROOT=$(xcrun --sdk macosx --show-sdk-path))
 else
-    cmake_args+=" -DCLANG_DEFAULT_CXX_STDLIB=libc++"
-    cmake_args+=" -DCLANG_DEFAULT_LINKER=lld"
-    cmake_args+=" -DCLANG_DEFAULT_RTLIB=compiler-rt"
-    cmake_args+=" -DLLVM_USE_LINKER=gold"
-    cmake_args+=" -DLLVM_PARALLEL_LINK_JOBS=1"
+    # cmake_args+=" -DCLANG_DEFAULT_CXX_STDLIB=libc++"
+    cmake_args+=( -DCLANG_DEFAULT_LINKER=lld)
+    cmake_args+=( -DCLANG_DEFAULT_RTLIB=compiler-rt)
+    # compiler-rt can replace libgcc_s except that it doesn't incluce an
+    # unwinder; that's why we need to specify libunwind as the default
+    # unwindlib.
+    cmake_args+=( -DCLANG_DEFAULT_UNWINDLIB=libunwind)
+    cmake_args+=( -DLLVM_USE_LINKER=gold)
+    cmake_args+=( -DLLVM_PARALLEL_LINK_JOBS=1)
     # not really needed for Void linux
-    cmake_args+=" -DLLVM_LIBDIR_SUFFIX=64"
+    cmake_args+=( -DLLVM_LIBDIR_SUFFIX=64)
 fi
 
-cmake $srcdir/llvm -G Ninja ${cmake_args}
+cmake $srcdir/llvm -G Ninja ${cmake_args[@]}
 
 ninja
 
