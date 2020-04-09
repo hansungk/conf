@@ -12,6 +12,9 @@
 # NOTE-3: For fast and safe linking use bintils-gold and LINK_JOBS="1"
 # COMPILE_JOBS="2"
 
+# Some useful docs.
+# Purpose of LLVM_ENABLE_LIBCXX: http://lists.llvm.org/pipermail/llvm-dev/2015-July/088689.html
+
 export CC=${CC:-/usr/bin/clang}
 export CXX=${CXX:-/usr/bin/clang++}
 export CFLAGS='-march=native -O2 -DNDEBUG'
@@ -25,12 +28,21 @@ cmake_args=(
 -DCMAKE_C_FLAGS_RELEASE=
 -DCMAKE_CXX_FLAGS_RELEASE=
 -DLLVM_ENABLE_PROJECTS="clang;clang-tools-extra;compiler-rt;libcxx;libcxxabi;libunwind;lld;lldb;openmp;polly"
--DLIBCXX_CXX_ABI=libcxxabi
--DLIBCXXABI_USE_LLVM_UNWINDER=On
 -DLLVM_INSTALL_UTILS=On
+-DLIBCXX_CXX_ABI=libcxxabi
+-DLIBCXX_USE_COMPILER_RT=On
+-DLIBCXXABI_USE_COMPILER_RT=On
+-DLIBCXXABI_USE_LLVM_UNWINDER=On
+-DLIBCXXABI_ENABLE_ASSERTIONS=Off
+-DLIBUNWIND_USE_COMPILER_RT=On
+-DLIBUNWIND_ENABLE_ASSERTIONS=Off
 -DLLDB_ENABLE_LIBEDIT=On
 )
-# -DLIBCXX_HAS_GCC_S_LIB=Off
+# -DLLVM_ENABLE_LIBCXX=On
+# To link libunwind statically into everything add follows:
+# -DLIBCXX_ENABLE_STATIC_ABI_LIBRARY=On
+# -DLIBCXXABI_ENABLE_STATIC_UNWINDER=On
+# -DSANITIZER_USE_STATIC_LLVM_UNWINDER=On
 
 if [ "$(uname)" == "Darwin" ]; then
     cmake_args+=( -DLLVM_CREATE_XCODE_TOOLCHAIN=ON)
@@ -39,17 +51,20 @@ if [ "$(uname)" == "Darwin" ]; then
     cmake_args+=( -DLLVM_ENABLE_LIBCXX=ON)
     cmake_args+=( -DDEFAULT_SYSROOT=$(xcrun --sdk macosx --show-sdk-path))
 else
-    # cmake_args+=" -DCLANG_DEFAULT_CXX_STDLIB=libc++"
-    cmake_args+=( -DCLANG_DEFAULT_LINKER=lld)
-    cmake_args+=( -DCLANG_DEFAULT_RTLIB=compiler-rt)
+    # cmake_args+=( -DCLANG_DEFAULT_CXX_STDLIB=libc++)
+    # cmake_args+=( -DCLANG_DEFAULT_LINKER=lld)
+    # cmake_args+=( -DCLANG_DEFAULT_RTLIB=compiler-rt)
     # compiler-rt can replace libgcc_s except that it doesn't incluce an
     # unwinder; that's why we need to specify libunwind as the default
     # unwindlib.
-    cmake_args+=( -DCLANG_DEFAULT_UNWINDLIB=libunwind)
+    # See https://github.com/rust-lang/rust/issues/65051#issuecomment-537862559.
+    # cmake_args+=( -DCLANG_DEFAULT_UNWINDLIB=libunwind)
+    # cmake_args+=( -DCOMPILER_RT_USE_BUILTINS_LIBRARY=On)
+    # cmake_args+=( -DCOMPILER_RT_USE_LIBCXX=On)
     cmake_args+=( -DLLVM_USE_LINKER=gold)
     cmake_args+=( -DLLVM_PARALLEL_LINK_JOBS=1)
     # not really needed for Void linux
-    cmake_args+=( -DLLVM_LIBDIR_SUFFIX=64)
+    # cmake_args+=( -DLLVM_LIBDIR_SUFFIX=64)
 fi
 
 cmake $srcdir/llvm -G Ninja ${cmake_args[@]}
