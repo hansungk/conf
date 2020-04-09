@@ -17,16 +17,16 @@
 
 export CC=${CC:-/usr/bin/clang}
 export CXX=${CXX:-/usr/bin/clang++}
-export CFLAGS='-march=native -O2 -DNDEBUG'
-export CXXFLAGS=${CFLAGS}
+# export CFLAGS='-march=native -O2 -DNDEBUG'
+# export CXXFLAGS=${CFLAGS}
 prefix=$HOME/build/llvm-$(date +'%y%m%d')
 srcdir=$HOME/src/llvm-project
 
 cmake_args=(
 -DCMAKE_BUILD_TYPE=Release
 -DCMAKE_INSTALL_PREFIX=${prefix}
--DCMAKE_C_FLAGS_RELEASE=
--DCMAKE_CXX_FLAGS_RELEASE=
+-DCMAKE_C_FLAGS=-march=native
+-DCMAKE_CXX_FLAGS=-march=native
 -DLLVM_ENABLE_PROJECTS="clang;clang-tools-extra;compiler-rt;libcxx;libcxxabi;libunwind;lld;lldb;openmp;polly"
 -DLLVM_INSTALL_UTILS=On
 -DLIBCXX_CXX_ABI=libcxxabi
@@ -51,6 +51,9 @@ if [ "$(uname)" == "Darwin" ]; then
     cmake_args+=( -DLLVM_ENABLE_LIBCXX=ON)
     cmake_args+=( -DDEFAULT_SYSROOT=$(xcrun --sdk macosx --show-sdk-path))
 else
+    # These args set the Clang's default behavior when building other programs,
+    # tend to wreck LLVM tests because there's usually no existing libc++ in
+    # the system at the time of the test.
     # cmake_args+=( -DCLANG_DEFAULT_CXX_STDLIB=libc++)
     # cmake_args+=( -DCLANG_DEFAULT_LINKER=lld)
     # cmake_args+=( -DCLANG_DEFAULT_RTLIB=compiler-rt)
@@ -59,10 +62,13 @@ else
     # unwindlib.
     # See https://github.com/rust-lang/rust/issues/65051#issuecomment-537862559.
     # cmake_args+=( -DCLANG_DEFAULT_UNWINDLIB=libunwind)
+
     # cmake_args+=( -DCOMPILER_RT_USE_BUILTINS_LIBRARY=On)
     # cmake_args+=( -DCOMPILER_RT_USE_LIBCXX=On)
+
     cmake_args+=( -DLLVM_USE_LINKER=gold)
     cmake_args+=( -DLLVM_PARALLEL_LINK_JOBS=1)
+
     # not really needed for Void linux
     # cmake_args+=( -DLLVM_LIBDIR_SUFFIX=64)
 fi
