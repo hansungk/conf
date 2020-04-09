@@ -34,6 +34,7 @@ Plug 'tomasr/molokai'
 Plug 'twerth/ir_black'
 Plug 'chriskempson/base16-vim'
 Plug 'jnurmine/Zenburn'
+Plug 'nanotech/jellybeans.vim'
 Plug 'w0ng/vim-hybrid'
 Plug 'croaker/mustang-vim'
 "Plug 'lifepillar/vim-solarized8'
@@ -150,7 +151,7 @@ endif
 
 let g:lsc_server_commands = {
 \ 'cpp': {
-\    'command': '/home/stephen/build/ccls/ccls',
+\    'command': 'clangd -background-index',
 \    'message_hooks': {
 \        'initialize': {
 \            'rootUri': {m, p -> lsc#uri#documentUri(fnamemodify(findfile('compile_commands.json', expand('%:p') . ';'), ':p:h'))}
@@ -158,20 +159,35 @@ let g:lsc_server_commands = {
 \    },
 \    'suppress_stderr': v:true,
 \  },
-\ 'c': {
-\    'command': '/home/stephen/build/ccls/ccls',
-\    'message_hooks': {
-\        'initialize': {
-\            'rootUri': {m, p -> lsc#uri#documentUri(fnamemodify(findfile('compile_commands.json', expand('%:p') . ';'), ':p:h'))}
-\        },
-\    },
+\ 'rust': {
+\    'command': 'rustup run stable rls',
 \    'suppress_stderr': v:true,
 \  },
 \}
+" let g:lsc_server_commands = {
+" \ 'cpp': {
+" \    'command': '/home/stephen/build/ccls/ccls',
+" \    'message_hooks': {
+" \        'initialize': {
+" \            'rootUri': {m, p -> lsc#uri#documentUri(fnamemodify(findfile('compile_commands.json', expand('%:p') . ';'), ':p:h'))}
+" \        },
+" \    },
+" \    'suppress_stderr': v:true,
+" \  },
+" \ 'c': {
+" \    'command': '/home/stephen/build/ccls/ccls',
+" \    'message_hooks': {
+" \        'initialize': {
+" \            'rootUri': {m, p -> lsc#uri#documentUri(fnamemodify(findfile('compile_commands.json', expand('%:p') . ';'), ':p:h'))}
+" \        },
+" \    },
+" \    'suppress_stderr': v:true,
+" \  },
+" \}
 let g:lsc_auto_map = v:true
 let g:lsc_enable_autocomplete  = v:true
-let g:lsc_enable_diagnostics   = v:false
-let g:lsc_reference_highlights = v:false
+" let g:lsc_enable_diagnostics   = v:false
+" let g:lsc_reference_highlights = v:false
 let g:lsc_trace_level          = 'off'
 set completeopt=menu,menuone,noinsert,noselect
 
@@ -231,8 +247,8 @@ command! -bang -nargs=* GGrep
 " }}}
 
 " clang-format
-map <C-K> :pyf ~/build/llvm/share/clang/clang-format.py<cr>
-imap <C-K> <c-o>:pyf ~/build/llvm/share/clang/clang-format.py<cr>
+map <C-K> :py3f ~/build/llvm/share/clang/clang-format.py<cr>
+imap <C-K> <c-o>:py3f ~/build/llvm/share/clang/clang-format.py<cr>
 
 au FileType go set ts=8 sw=8 noexpandtab
 au FileType tex set ts=2 sw=2 expandtab
@@ -241,8 +257,9 @@ au FileType verilog set ts=3 sw=3 expandtab
 
 "set background=dark
 set termguicolors
-let ayucolor="dark"
-colo ayu
+colo simple-dark
+hi Number             guifg=#d0d0d0
+" hi Todo             guifg=#A8FF60
 " hi Normal gui=NONE guibg=#000000
 " hi Macro           guifg=#ffcfaf gui=bold                     ctermfg=223 cterm=bold
 " hi Macro           gui=NONE
