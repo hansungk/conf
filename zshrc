@@ -21,6 +21,16 @@ setopt HIST_FIND_NO_DUPS
 setopt HIST_SAVE_NO_DUPS
 setopt HIST_BEEP
 
+# Bash-style alt-backspace bahavior
+autoload -U select-word-style
+select-word-style bash
+
+export PATH="$HOME/bin:$PATH"
+
+autoload -z edit-command-line
+zle -N edit-command-line
+bindkey "^X^E" edit-command-line
+
 export EDITOR=nvim
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
