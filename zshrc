@@ -8,3 +8,19 @@ if [ -d $HOME/.zshrc.d ]
 then
     for file ($HOME/.zshrc.d/*) source $file
 fi
+
+# History
+HISTSIZE=10000
+SAVEHIST=10000
+setopt EXTENDED_HISTORY
+setopt HIST_EXPIRE_DUPS_FIRST
+setopt HIST_IGNORE_DUPS
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_IGNORE_SPACE
+setopt HIST_FIND_NO_DUPS
+setopt HIST_SAVE_NO_DUPS
+setopt HIST_BEEP
+
+export EDITOR=nvim
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
