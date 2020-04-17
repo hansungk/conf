@@ -15,12 +15,40 @@
 # Some useful docs.
 # Purpose of LLVM_ENABLE_LIBCXX: http://lists.llvm.org/pipermail/llvm-dev/2015-July/088689.html
 
+if [ "$#" -ge 1 ]; then
+    REV=${1}
+else
+    REV=master
+fi
+
 export CC=${CC:-/usr/bin/clang}
 export CXX=${CXX:-/usr/bin/clang++}
-# export CFLAGS='-march=native -O2 -DNDEBUG'
-# export CXXFLAGS=${CFLAGS}
-prefix=$HOME/build/llvm-$(date +'%y%m%d')
-srcdir=$HOME/src/llvm-project
+timestamp=$(date +'%y%m%d-%H%M%S')
+prefix=${HOME}/build/llvm-${timestamp}
+workdir=${PWD}/build-llvm-${REV}-${timestamp}
+srcdir=${workdir}/llvm-project
+builddir=${workdir}/build
+
+mkdir ${workdir}
+cd ${workdir}
+
+echo ">>> Fetching LLVM."
+if [[ ! -d ${srcdir} ]]; then
+    echo "REV: ${REV}"
+    git clone --depth 100 https://github.com/llvm/llvm-project ${srcdir}
+else
+    echo "Skipping clone."
+fi
+if [ ${REV} != "master" ]; then
+    pushd ${srcdir}
+    git checkout ${REV}
+    popd
+fi
+
+echo ""
+echo ">>> Configuring LLVM."
+mkdir ${builddir}
+cd ${builddir}
 
 cmake_args=(
 -DCMAKE_BUILD_TYPE=Release
@@ -29,16 +57,24 @@ cmake_args=(
 -DCMAKE_CXX_FLAGS=-march=native
 -DLLVM_ENABLE_PROJECTS="clang;clang-tools-extra;compiler-rt;libcxx;libcxxabi;libunwind;lld;lldb;openmp;polly"
 -DLLVM_INSTALL_UTILS=On
--DLIBCXX_CXX_ABI=libcxxabi
--DLIBCXX_USE_COMPILER_RT=On
--DLIBCXXABI_USE_COMPILER_RT=On
--DLIBCXXABI_USE_LLVM_UNWINDER=On
--DLIBCXXABI_ENABLE_ASSERTIONS=Off
--DLIBUNWIND_USE_COMPILER_RT=On
--DLIBUNWIND_ENABLE_ASSERTIONS=Off
 -DLLDB_ENABLE_LIBEDIT=On
+-DLLVM_ENABLE_ASSERTIONS=Off
+-DLIBCXXABI_ENABLE_ASSERTIONS=Off
+-DLIBUNWIND_ENABLE_ASSERTIONS=Off
 )
+# -DLIBCXX_USE_COMPILER_RT=On
+# -DLIBCXXABI_USE_COMPILER_RT=On
+# -DLIBCXXABI_USE_LLVM_UNWINDER=On
+# -DLIBUNWIND_USE_COMPILER_RT=On
+#
+# This option is recommended against in the official libc++ documentation
+# (https://libcxx.llvm.org/docs/BuildingLibcxx.html), unless libc++abi is
+# already installed on the system:
+# -DLIBCXX_CXX_ABI=libcxxabi
+#
+# Cause the Clang/LLVM binaries to be linked against a system-installed libc++:
 # -DLLVM_ENABLE_LIBCXX=On
+#
 # To link libunwind statically into everything add follows:
 # -DLIBCXX_ENABLE_STATIC_ABI_LIBRARY=On
 # -DLIBCXXABI_ENABLE_STATIC_UNWINDER=On
@@ -66,20 +102,34 @@ else
     # cmake_args+=( -DCOMPILER_RT_USE_BUILTINS_LIBRARY=On)
     # cmake_args+=( -DCOMPILER_RT_USE_LIBCXX=On)
 
-    cmake_args+=( -DLLVM_USE_LINKER=gold)
+    cmake_args+=( -DLLVM_USE_LINKER=/usr/bin/ld.lld)
     cmake_args+=( -DLLVM_PARALLEL_LINK_JOBS=1)
 
     # not really needed for Void linux
     # cmake_args+=( -DLLVM_LIBDIR_SUFFIX=64)
 fi
 
-cmake $srcdir/llvm -G Ninja ${cmake_args[@]}
+echo ">>> Configured arguments:"
+echo ${cmake_args[*]}
 
-ninja
+cmake ${srcdir}/llvm -G Ninja ${cmake_args[@]}
 
-ninja check-all
+echo ""
+echo ">>> Building."
+cmake --build . -- -v
 
-ninja install
+echo ""
+echo ">>> Checking."
+# check-lldb fails
+cmake --build . --target check-llvm check-clang check-cxx check-cxxabi check-lld
 
+echo ""
+echo ">>> Installing."
+cmake --build . --target install
+
+echo ""
+echo ">>> Creating symbolic link."
 rm -f $HOME/build/llvm
 ln -s $prefix $HOME/build/llvm
+echo ""
+echo ">>> Finished!"
