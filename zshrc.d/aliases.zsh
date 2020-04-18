@@ -1,3 +1,4 @@
+alias ls='ls --color=auto'
 alias l='exa -l'
 alias ll='ls -l'
 alias e='emacsclient --no-wait'

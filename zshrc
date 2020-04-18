@@ -1,8 +1,7 @@
 autoload -Uz compinit promptinit
 compinit
 promptinit
-
-prompt walters
+bindkey -e
 
 if [ -d $HOME/.zshrc.d ]
 then
