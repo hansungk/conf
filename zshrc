@@ -1,7 +1,8 @@
 autoload -Uz compinit promptinit
 compinit
 promptinit
-bindkey -e
+# Vi mode
+bindkey -v
 
 if [ -d $HOME/.zshrc.d ]
 then
@@ -10,6 +11,7 @@ fi
 
 # History
 HISTSIZE=10000
+HISTFILE=~/.zsh_history
 SAVEHIST=10000
 setopt EXTENDED_HISTORY
 setopt HIST_EXPIRE_DUPS_FIRST
