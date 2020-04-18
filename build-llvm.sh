@@ -24,7 +24,7 @@ fi
 export CC=${CC:-/usr/bin/clang}
 export CXX=${CXX:-/usr/bin/clang++}
 timestamp=$(date +'%y%m%d-%H%M%S')
-prefix=${HOME}/build/llvm-${timestamp}
+prefix=${HOME}/build/llvm-${REV}-${timestamp}
 workdir=${PWD}/build-llvm-${REV}-${timestamp}
 srcdir=${workdir}/llvm-project
 builddir=${workdir}/build
@@ -35,15 +35,15 @@ cd ${workdir}
 echo ">>> Fetching LLVM."
 if [[ ! -d ${srcdir} ]]; then
     echo "REV: ${REV}"
-    git clone --depth 100 https://github.com/llvm/llvm-project ${srcdir}
+    git clone https://github.com/llvm/llvm-project ${srcdir}
 else
     echo "Skipping clone."
 fi
-if [ ${REV} != "master" ]; then
-    pushd ${srcdir}
-    git checkout ${REV}
-    popd
-fi
+pushd ${srcdir}
+git checkout ${REV}
+# git pull --depth 1 origin ${REV}
+# git gc --prune=all
+popd
 
 echo ""
 echo ">>> Configuring LLVM."
@@ -102,8 +102,8 @@ else
     # cmake_args+=( -DCOMPILER_RT_USE_BUILTINS_LIBRARY=On)
     # cmake_args+=( -DCOMPILER_RT_USE_LIBCXX=On)
 
-    cmake_args+=( -DLLVM_USE_LINKER=/usr/bin/ld.lld)
-    cmake_args+=( -DLLVM_PARALLEL_LINK_JOBS=1)
+    cmake_args+=( -DLLVM_USE_LINKER=gold)
+    cmake_args+=( -DLLVM_PARALLEL_LINK_JOBS=2)
 
     # not really needed for Void linux
     # cmake_args+=( -DLLVM_LIBDIR_SUFFIX=64)
