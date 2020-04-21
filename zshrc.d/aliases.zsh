@@ -1,5 +1,7 @@
 if [ "$(uname)" != "Darwin" ]; then
     alias ls='ls --color=auto'
+    alias open='xdg-open'
+else
 fi
 alias l='exa -l'
 alias ll='ls -l'
@@ -10,7 +12,6 @@ alias vi='nvim'
 alias vim='nvim'
 alias svim='sudo -E nvim'
 alias rm='rm -i'
-alias open='xdg-open'
 alias cclean='rm -rf CMakeCache.txt CMakeFiles/'
 alias xi='xbps-install'
 alias xq='xbps-query'

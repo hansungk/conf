@@ -51,12 +51,18 @@ echo ">>> Configuring LLVM."
 mkdir ${builddir}
 cd ${builddir}
 
+if [ "(uname) == "Darwin ]; then
+    projects="clang;clang-tools-extra;compiler-rt;libcxx;libunwind;lld;lldb;openmp;polly"
+else
+    projects="clang;clang-tools-extra;compiler-rt;libcxx;libcxxabi;libunwind;lld;lldb;openmp;polly"
+fi
+
 cmake_args=(
 -DCMAKE_BUILD_TYPE=Release
 -DCMAKE_INSTALL_PREFIX=${prefix}
 -DCMAKE_C_FLAGS=-march=native
 -DCMAKE_CXX_FLAGS=-march=native
--DLLVM_ENABLE_PROJECTS="clang;clang-tools-extra;compiler-rt;libcxx;libcxxabi;libunwind;lld;lldb;openmp;polly"
+-DLLVM_ENABLE_PROJECTS=${projects}
 -DLLVM_INSTALL_UTILS=On
 -DLLDB_ENABLE_LIBEDIT=On
 -DLLVM_ENABLE_ASSERTIONS=Off
@@ -84,11 +90,18 @@ cmake_args=(
 if [ "$(uname)" == "Darwin" ]; then
     cmake_args+=( -DDEFAULT_SYSROOT=$(xcrun --sdk macosx --show-sdk-path))
     cmake_args+=( -DLLVM_TARGETS_TO_BUILD=X86)
-    cmake_args+=( -DLLVM_CREATE_XCODE_TOOLCHAIN=ON)
-    cmake_args+=( -DCOMPILER_RT_ENABLE_IOS=Off)
+    cmake_args+=( -DLLVM_LINK_LLVM_DYLIB=ON)
+    cmake_args+=( -DLLVM_ENABLE_LTO=Thin)
+    # cmake_args+=( -DCMAKE_EXE_LINKER_FLAGS="-L/Users/stephen/build/llvm/lib -Wl,-rpath /Users/stephen/build/llvm/lib")
+    # cmake_args+=( -DLLVM_CREATE_XCODE_TOOLCHAIN=ON)
+    cmake_args+=( -DCOMPILER_RT_ENABLE_IOS=Off) # causes compiler-rt to be built with the new Clang
     cmake_args+=( -DLLVM_BUILD_EXTERNAL_COMPILER_RT=ON)
     cmake_args+=( -DLLVM_ENABLE_LIBCXX=ON)
+    cmake_args+=( -DLIBCXX_CXX_ABI=libcxxabi)
+    cmake_args+=( -DLIBCXX_CXX_ABI_INCLUDE_PATHS=$(xcrun --sdk macosx --show-sdk-path)/usr/include)
+    cmake_args+=( -DLIBCXX_CXX_ABI_LIBRARY_PATH=/usr/lib)
     cmake_args+=( -DLLDB_USE_SYSTEM_DEBUGSERVER=ON)
+    # cmake_args+=( -DLLDB_INCLUDE_TESTS=OFF) # LLDB tests require libc++
 else
     # These args set the Clang's default behavior when building other programs,
     # tend to wreck LLVM tests because there's usually no existing libc++ in
@@ -115,14 +128,14 @@ fi
 # echo ">>> Configured arguments:"
 # echo ${cmake_args[*]}
 
-cmake ${srcdir}/llvm -G Ninja ${cmake_args[@]}
+cmake ${srcdir}/llvm -G Ninja "${cmake_args[@]}" # -DCMAKE_EXE_LINKER_FLAGS="-L/Users/stephen/build/llvm/lib -Wl,-rpath /Users/stephen/build/llvm/lib"
 
 echo ""
 echo ">>> Building."
 cmake --build . -- -v
 
-echo ""
-echo ">>> Checking."
+# echo ""
+# echo ">>> Checking."
 # Tests failing on Darwin:
 # - check-tsan
 # - check-lldb-api
@@ -140,7 +153,7 @@ echo ">>> Checking."
 #      Clang :: Driver/riscv64-toolchain-extra.c
 #      Clang :: Driver/sysroot.c
 #      Clang :: Frontend/warning-poison-system-directories.c
-cmake --build . --target check-llvm check-clang check-cxx check-cxxabi check-lld
+# cmake --build . --target check-llvm check-clang check-cxx check-cxxabi check-lld
 
 echo ""
 echo ">>> Installing."
