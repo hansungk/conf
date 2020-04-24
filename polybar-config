@@ -34,7 +34,14 @@ height = 50
 ;offset-x = 1%
 ;offset-y = 1%
 ;radius = 6.0
-fixed-center = false
+
+; Prefer fixed center position for the `modules-center` block.
+; The center block will stay in the middle of the bar whenever
+; possible. It can still be pushed around if other blocks need
+; more space.
+; When false, the center block is centered in the space between
+; the left and right block.
+fixed-center = true
 
 background = ${colors.background}
 foreground = ${colors.foreground}
@@ -60,7 +67,7 @@ font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
 font-2 = siji:pixelsize=10;1
 
 modules-left = bspwm
-modules-center =
+modules-center = xwindow
 modules-right = eth filesystem cpu temperature memory date
 
 tray-position = right
@@ -98,13 +105,16 @@ label-empty-foreground=#222222
 
 [module/xwindow]
 type = internal/xwindow
-label = %title:0:30:...%
+;label = %title:0:30:...%
+label = %title%
+label-maxlen = 200
 
 [module/xkeyboard]
 type = internal/xkeyboard
 blacklist-0 = num lock
 
-format-prefix = " "
+; format-prefix = " "
+format-prefix = ""
 format-prefix-foreground = ${colors.foreground-alt}
 format-prefix-underline = ${colors.secondary}
 
