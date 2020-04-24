@@ -51,7 +51,7 @@ echo ">>> Configuring LLVM."
 mkdir ${builddir}
 cd ${builddir}
 
-if [ "(uname) == "Darwin ]; then
+if [ "$(uname)" == "Darwin" ]; then
     projects="clang;clang-tools-extra;compiler-rt;libcxx;libunwind;lld;lldb;openmp;polly"
 else
     projects="clang;clang-tools-extra;compiler-rt;libcxx;libcxxabi;libunwind;lld;lldb;openmp;polly"
@@ -118,7 +118,10 @@ else
     # cmake_args+=( -DCOMPILER_RT_USE_BUILTINS_LIBRARY=On)
     # cmake_args+=( -DCOMPILER_RT_USE_LIBCXX=On)
 
-    cmake_args+=( -DLLVM_USE_LINKER=gold)
+    cmake_args+=( -DCMAKE_EXE_LINKER_FLAGS="-L${HOME}/build/llvm/lib -Wl,-rpath,${HOME}/build/llvm/lib")
+
+    cmake_args+=( -DLLVM_ENABLE_LTO=Thin)
+    cmake_args+=( -DLLVM_USE_LINKER=lld)
     cmake_args+=( -DLLVM_PARALLEL_LINK_JOBS=2)
 
     # not really needed for Void linux
@@ -128,7 +131,7 @@ fi
 # echo ">>> Configured arguments:"
 # echo ${cmake_args[*]}
 
-cmake ${srcdir}/llvm -G Ninja "${cmake_args[@]}" # -DCMAKE_EXE_LINKER_FLAGS="-L/Users/stephen/build/llvm/lib -Wl,-rpath /Users/stephen/build/llvm/lib"
+cmake ${srcdir}/llvm -G Ninja "${cmake_args[@]}"
 
 echo ""
 echo ">>> Building."
