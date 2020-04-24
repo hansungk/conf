@@ -21,7 +21,7 @@
 background = #000
 background-alt = #444
 ;foreground = ${xrdb:color7:#222}
-foreground = #dfdfdf
+foreground = #ffffff
 foreground-alt = #555
 primary = #ffb52a
 secondary = #e60053
@@ -72,8 +72,8 @@ wm-restack = bspwm
 
 ;override-redirect = true
 
-scroll-up = bspwm-desknext
-scroll-down = bspwm-deskprev
+;scroll-up = bspwm-deskprev
+;scroll-down = bspwm-desknext
 
 ;scroll-up = i3wm-wsnext
 ;scroll-down = i3wm-wsprev
@@ -124,7 +124,7 @@ mount-0 = /
 mount-1 = /home
 
 label-mounted = %{F#555}%mountpoint%%{F-} %percentage_used%%
-label-mounted-underline = ${colors.foreground}
+;label-mounted-underline = ${colors.foreground}
 label-unmounted = %mountpoint% not mounted
 label-unmounted-foreground = ${colors.foreground-alt}
 
@@ -263,7 +263,7 @@ interval = 2
 format-prefix = "cpu "
 format-prefix-foreground = ${colors.foreground-alt}
 ;format-underline = #f90000
-format-underline = ${colors.foreground}
+;format-underline = ${colors.foreground}
 label = %percentage:2%%
 
 [module/memory]
@@ -273,7 +273,7 @@ interval = 2
 format-prefix = "mem "
 format-prefix-foreground = ${colors.foreground-alt}
 ;format-underline = #4bffdc
-format-underline = ${colors.foreground}
+;format-underline = ${colors.foreground}
 label = %percentage_used%%
 
 [module/wlan]
@@ -304,7 +304,7 @@ interface = enp0s25
 interval = 3.0
 
 ;format-connected-underline = #55aa55
-format-connected-underline = ${colors.foreground}
+;format-connected-underline = ${colors.foreground}
 format-connected-prefix = "eth "
 format-connected-prefix-foreground = ${colors.foreground-alt}
 label-connected = %local_ip%
@@ -431,9 +431,9 @@ format-prefix = "temp "
 format-prefix-foreground = ${colors.foreground-alt}
 format = "<label>"
 ;format-underline = #f50a4d
-format-underline = ${colors.foreground}
+;format-underline = ${colors.foreground}
 format-warn = <ramp> <label-warn>
-format-warn-underline = ${self.format-underline}
+;format-warn-underline = ${self.format-underline}
 
 label = %temperature-c%
 label-warn = %temperature-c%
