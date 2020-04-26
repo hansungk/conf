@@ -156,7 +156,7 @@ endif
 
 let g:lsc_server_commands = {
 \ 'cpp': {
-\    'command': 'clangd -background-index',
+\    'command': 'clangd -j=6 --background-index --clang-tidy',
 \    'message_hooks': {
 \        'initialize': {
 \            'rootUri': {m, p -> lsc#uri#documentUri(fnamemodify(findfile('compile_commands.json', expand('%:p') . ';'), ':p:h'))}
@@ -165,7 +165,7 @@ let g:lsc_server_commands = {
 \    'suppress_stderr': v:true,
 \  },
 \ 'c': {
-\    'command': 'clangd -background-index',
+\    'command': 'clangd -j=6 --background-index --clang-tidy',
 \    'message_hooks': {
 \        'initialize': {
 \            'rootUri': {m, p -> lsc#uri#documentUri(fnamemodify(findfile('compile_commands.json', expand('%:p') . ';'), ':p:h'))}
@@ -178,26 +178,6 @@ let g:lsc_server_commands = {
 \    'suppress_stderr': v:true,
 \  },
 \}
-" let g:lsc_server_commands = {
-" \ 'cpp': {
-" \    'command': 'ccls',
-" \    'message_hooks': {
-" \        'initialize': {
-" \            'rootUri': {m, p -> lsc#uri#documentUri(fnamemodify(findfile('compile_commands.json', expand('%:p') . ';'), ':p:h'))}
-" \        },
-" \    },
-" \    'suppress_stderr': v:true,
-" \  },
-" \ 'c': {
-" \    'command': 'ccls',
-" \    'message_hooks': {
-" \        'initialize': {
-" \            'rootUri': {m, p -> lsc#uri#documentUri(fnamemodify(findfile('compile_commands.json', expand('%:p') . ';'), ':p:h'))}
-" \        },
-" \    },
-" \    'suppress_stderr': v:true,
-" \  },
-" \}
 let g:lsc_auto_map = v:true
 let g:lsc_enable_autocomplete  = v:true
 let g:lsc_enable_diagnostics   = v:true
