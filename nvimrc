@@ -17,7 +17,7 @@ Plug 'junegunn/fzf.vim'
 "     \ }
 Plug 'natebosch/vim-lsc'
 "Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'ziglang/zig.vim'
+"Plug 'ziglang/zig.vim'
 "Plug 'vim-airline/vim-airline'
 "Plug 'vim-airline/vim-airline-themes'
 "Plug 'itchyny/lightline.vim'
@@ -28,14 +28,19 @@ Plug 'skielbasa/vim-material-monokai'
 Plug 'sjl/badwolf'
 Plug 'tek256/simple-dark'
 Plug 'ayu-theme/ayu-vim'
-"Plug 'rakr/vim-one'
+Plug 'kyoz/purify', { 'rtp': 'vim' }
+Plug 'drewtempelmeyer/palenight.vim'
+Plug 'rakr/vim-one'
 Plug 'joshdick/onedark.vim'
 Plug 'tomasr/molokai'
 Plug 'twerth/ir_black'
 Plug 'chriskempson/base16-vim'
+Plug 'mhartington/oceanic-next'
 Plug 'jnurmine/Zenburn'
 Plug 'nanotech/jellybeans.vim'
 Plug 'w0ng/vim-hybrid'
+Plug 'kristijanhusak/vim-hybrid-material'
+Plug 'kaicataldo/material.vim'
 Plug 'croaker/mustang-vim'
 "Plug 'lifepillar/vim-solarized8'
 Plug 'morhetz/gruvbox'
@@ -151,7 +156,8 @@ endif
 
 let g:lsc_server_commands = {
 \ 'cpp': {
-\    'command': 'clangd -background-index',
+\    'command': 'clangd -j=6 --background-index --clang-tidy',
+"\    'command': '/home/stephen/build/ccls/ccls --log-file=/tmp/ccls.log',
 \    'message_hooks': {
 \        'initialize': {
 \            'rootUri': {m, p -> lsc#uri#documentUri(fnamemodify(findfile('compile_commands.json', expand('%:p') . ';'), ':p:h'))}
@@ -186,10 +192,11 @@ let g:lsc_server_commands = {
 " \}
 let g:lsc_auto_map = v:true
 let g:lsc_enable_autocomplete  = v:true
-" let g:lsc_enable_diagnostics   = v:false
+let g:lsc_enable_diagnostics   = v:true
 " let g:lsc_reference_highlights = v:false
 let g:lsc_trace_level          = 'off'
 set completeopt=menu,menuone,noinsert,noselect
+nnoremap <silent> g<C-]> :vertical LSClientGoToDefinitionSplit<CR>
 
 " }}}
 " ALE {{{
@@ -250,17 +257,21 @@ command! -bang -nargs=* GGrep
 map <C-K> :py3f ~/build/llvm/share/clang/clang-format.py<cr>
 imap <C-K> <c-o>:py3f ~/build/llvm/share/clang/clang-format.py<cr>
 
+au FileType cpp set ts=2 sw=2 expandtab
 au FileType go set ts=8 sw=8 noexpandtab
 au FileType tex set ts=2 sw=2 expandtab
 au FileType tex set makeprg=pdflatex\ %
 au FileType verilog set ts=3 sw=3 expandtab
 
-"set background=dark
 set termguicolors
-colo simple-dark
-hi Number             guifg=#d0d0d0
+"let ayucolor="light"
+colo ayu
+" ayu
+hi VertSplit guifg=#212933
+
+" hi! link Error Normal
+" hi Error            guifg=NONE        guibg=NONE        gui=undercurl     guisp=#FF6C60
+
+" hi Number             guifg=#d0d0d0
 " hi Todo             guifg=#A8FF60
 " hi Normal gui=NONE guibg=#000000
-" hi Macro           guifg=#ffcfaf gui=bold                     ctermfg=223 cterm=bold
-" hi Macro           gui=NONE
-" highlight MatchParen guifg=none guibg=none
