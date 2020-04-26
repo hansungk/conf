@@ -156,8 +156,16 @@ endif
 
 let g:lsc_server_commands = {
 \ 'cpp': {
-\    'command': 'clangd -j=6 --background-index --clang-tidy',
-"\    'command': '/home/stephen/build/ccls/ccls --log-file=/tmp/ccls.log',
+\    'command': 'clangd -background-index',
+\    'message_hooks': {
+\        'initialize': {
+\            'rootUri': {m, p -> lsc#uri#documentUri(fnamemodify(findfile('compile_commands.json', expand('%:p') . ';'), ':p:h'))}
+\        },
+\    },
+\    'suppress_stderr': v:true,
+\  },
+\ 'c': {
+\    'command': 'clangd -background-index',
 \    'message_hooks': {
 \        'initialize': {
 \            'rootUri': {m, p -> lsc#uri#documentUri(fnamemodify(findfile('compile_commands.json', expand('%:p') . ';'), ':p:h'))}
@@ -172,7 +180,7 @@ let g:lsc_server_commands = {
 \}
 " let g:lsc_server_commands = {
 " \ 'cpp': {
-" \    'command': '/home/stephen/build/ccls/ccls',
+" \    'command': 'ccls',
 " \    'message_hooks': {
 " \        'initialize': {
 " \            'rootUri': {m, p -> lsc#uri#documentUri(fnamemodify(findfile('compile_commands.json', expand('%:p') . ';'), ':p:h'))}
@@ -181,7 +189,7 @@ let g:lsc_server_commands = {
 " \    'suppress_stderr': v:true,
 " \  },
 " \ 'c': {
-" \    'command': '/home/stephen/build/ccls/ccls',
+" \    'command': 'ccls',
 " \    'message_hooks': {
 " \        'initialize': {
 " \            'rootUri': {m, p -> lsc#uri#documentUri(fnamemodify(findfile('compile_commands.json', expand('%:p') . ';'), ':p:h'))}
@@ -193,10 +201,12 @@ let g:lsc_server_commands = {
 let g:lsc_auto_map = v:true
 let g:lsc_enable_autocomplete  = v:true
 let g:lsc_enable_diagnostics   = v:true
-" let g:lsc_reference_highlights = v:false
+let g:lsc_reference_highlights = v:true
 let g:lsc_trace_level          = 'off'
 set completeopt=menu,menuone,noinsert,noselect
 nnoremap <silent> g<C-]> :vertical LSClientGoToDefinitionSplit<CR>
+nnoremap <A-n> :lnext<CR>
+nnoremap <A-p> :lprev<CR>
 
 " }}}
 " ALE {{{
@@ -258,6 +268,7 @@ map <C-K> :py3f ~/build/llvm/share/clang/clang-format.py<cr>
 imap <C-K> <c-o>:py3f ~/build/llvm/share/clang/clang-format.py<cr>
 
 au FileType cpp set ts=2 sw=2 expandtab
+au FileType cmake set ts=2 sw=2 expandtab
 au FileType go set ts=8 sw=8 noexpandtab
 au FileType tex set ts=2 sw=2 expandtab
 au FileType tex set makeprg=pdflatex\ %
