@@ -258,7 +258,7 @@ set termguicolors
 "let ayucolor="light"
 colo ayu
 " ayu
-hi VertSplit guifg=#212933
+hi VertSplit guifg=#191f26 " was 14191F
 
 " hi! link Error Normal
 " hi Error            guifg=NONE        guibg=NONE        gui=undercurl     guisp=#FF6C60
