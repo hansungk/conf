@@ -156,7 +156,8 @@ endif
 
 let g:lsc_server_commands = {
 \ 'cpp': {
-\    'command': 'clangd -j=6 --background-index --clang-tidy',
+\    'command': 'ccls --log-file=/tmp/ccls.log',
+"\    'command': 'clangd -j=6 --background-index --clang-tidy',
 \    'message_hooks': {
 \        'initialize': {
 \            'rootUri': {m, p -> lsc#uri#documentUri(fnamemodify(findfile('compile_commands.json', expand('%:p') . ';'), ':p:h'))}
@@ -165,7 +166,8 @@ let g:lsc_server_commands = {
 \    'suppress_stderr': v:true,
 \  },
 \ 'c': {
-\    'command': 'clangd -j=6 --background-index --clang-tidy',
+\    'command': 'ccls --log-file=/tmp/ccls.log',
+"\    'command': 'clangd -j=6 --background-index --clang-tidy',
 \    'message_hooks': {
 \        'initialize': {
 \            'rootUri': {m, p -> lsc#uri#documentUri(fnamemodify(findfile('compile_commands.json', expand('%:p') . ';'), ':p:h'))}
