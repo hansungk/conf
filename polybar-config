@@ -27,6 +27,10 @@ primary = #ffb52a
 secondary = #e60053
 alert = #bd2c40
 
+[global/wm]
+margin-top = 0
+margin-bottom = 0
+
 [bar/example]
 ;monitor = ${env:MONITOR:HDMI-1}
 width = 100%
@@ -46,11 +50,11 @@ fixed-center = true
 background = ${colors.background}
 foreground = ${colors.foreground}
 
-line-size = 3
+line-size = 4
 line-color = #f00
 
 border-size = 0
-border-color = #00000000
+border-color = #FF000000
 
 padding-left = 0
 padding-right = 0
@@ -62,7 +66,8 @@ dpi-x = 192
 dpi-y = 192
 
 ;font-0 = fixed:pixelsize=30;1
-font-0 = scientifica:size=30:hinting=none;4
+;font-0 = scientifica:size=30:hinting=none;4
+font-0 = hack:size=9:hinting=none;0
 font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
 font-2 = siji:pixelsize=10;1
 
@@ -490,9 +495,5 @@ screenchange-reload = true
 ;compositing-foreground = source
 ;compositing-border = over
 ;pseudo-transparency = false
-
-[global/wm]
-margin-top = 5
-margin-bottom = 5
 
 ; vim:ft=dosini
