@@ -5,6 +5,7 @@ else
 fi
 alias l='exa -l'
 alias ll='ls -l'
+alias cdw='cd ~/src/compiler-base'
 alias e='emacsclient --no-wait'
 alias se='SUDO_EDITOR="emacsclient" sudo -e'
 alias g='git'

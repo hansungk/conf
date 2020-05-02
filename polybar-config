@@ -60,14 +60,14 @@ padding-left = 0
 padding-right = 0
 
 module-margin-left = 1
-module-margin-right = 2
+module-margin-right = 1
 
 dpi-x = 192
 dpi-y = 192
 
 ;font-0 = fixed:pixelsize=30;1
 ;font-0 = scientifica:size=30:hinting=none;4
-font-0 = hack:size=9:hinting=none;0
+font-0 = hack:size=8:hinting=none;0
 font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
 font-2 = siji:pixelsize=10;1
 
@@ -112,7 +112,7 @@ label-empty-foreground=#222222
 type = internal/xwindow
 ;label = %title:0:30:...%
 label = %title%
-label-maxlen = 200
+label-maxlen = 120
 
 [module/xkeyboard]
 type = internal/xkeyboard
