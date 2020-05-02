@@ -218,7 +218,7 @@ let g:ale_virtualtext_cursor = 1
 
 " }}}
 " FZF {{{
-command W echo "Did you mean :w?"
+command W w
 
 " Command for git grep
 " - fzf#vim#grep(command, with_column, [options], [fullscreen])
