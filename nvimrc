@@ -34,6 +34,7 @@ Plug 'rakr/vim-one'
 Plug 'joshdick/onedark.vim'
 Plug 'tomasr/molokai'
 Plug 'twerth/ir_black'
+Plug 'cocopon/iceberg.vim'
 Plug 'chriskempson/base16-vim'
 Plug 'mhartington/oceanic-next'
 Plug 'jnurmine/Zenburn'
@@ -157,7 +158,7 @@ endif
 let g:lsc_server_commands = {
 \ 'cpp': {
 "\    'command': 'ccls --log-file=/tmp/ccls.log',
-\    'command': 'clangd -j=6 --background-index --cross-file-rename --clang-tidy',
+\    'command': 'clangd -j=7 --background-index --cross-file-rename --clang-tidy',
 \    'message_hooks': {
 \        'initialize': {
 \            'rootUri': {m, p -> lsc#uri#documentUri(fnamemodify(findfile('compile_commands.json', expand('%:p') . ';'), ':p:h'))}
@@ -167,7 +168,7 @@ let g:lsc_server_commands = {
 \  },
 \ 'c': {
 "\    'command': 'ccls --log-file=/tmp/ccls.log',
-\    'command': 'clangd -j=6 --background-index --cross-file-rename --clang-tidy',
+\    'command': 'clangd -j=7 --background-index --cross-file-rename --clang-tidy',
 \    'message_hooks': {
 \        'initialize': {
 \            'rootUri': {m, p -> lsc#uri#documentUri(fnamemodify(findfile('compile_commands.json', expand('%:p') . ';'), ':p:h'))}
@@ -249,7 +250,7 @@ command! -bang -nargs=* GGrep
 map <C-K> :py3f ~/build/llvm/share/clang/clang-format.py<cr>
 imap <C-K> <c-o>:py3f ~/build/llvm/share/clang/clang-format.py<cr>
 
-au FileType cpp set ts=2 sw=2 expandtab
+au FileType cpp setlocal ts=2 sw=2 expandtab
 au FileType cmake set ts=2 sw=2 expandtab
 au FileType go set ts=8 sw=8 noexpandtab
 au FileType tex set ts=2 sw=2 expandtab
@@ -257,10 +258,11 @@ au FileType tex set makeprg=pdflatex\ %
 au FileType verilog set ts=3 sw=3 expandtab
 
 set termguicolors
-"let ayucolor="light"
-colo ayu
+" let ayucolor="mirage"
+colo iceberg
 " ayu
-hi VertSplit guifg=#191f26 " was 14191F
+" hi VertSplit guifg=#191f26 " was 14191F
+" hi VertSplit guifg=#272d38 " was 212733
 
 " hi! link Error Normal
 " hi Error            guifg=NONE        guibg=NONE        gui=undercurl     guisp=#FF6C60
