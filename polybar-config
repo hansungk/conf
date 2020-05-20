@@ -24,7 +24,8 @@ background-alt = #444
 foreground = #ffffff
 foreground-alt = #555
 primary = #ffb52a
-secondary = #e60053
+;secondary = #e60053
+secondary = #ff3333
 alert = #bd2c40
 
 [global/wm]
@@ -447,7 +448,9 @@ format-prefix-foreground = ${colors.foreground-alt}
 format = "<label>"
 ;format-underline = #f50a4d
 ;format-underline = ${colors.foreground}
-format-warn = <ramp> <label-warn>
+format-warn-prefix = "temp "
+format-warn-prefix-foreground = ${colors.foreground-alt}
+format-warn = "<label-warn>"
 ;format-warn-underline = ${self.format-underline}
 
 label = %temperature-c%
