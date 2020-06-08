@@ -28,7 +28,6 @@ Plug 'skielbasa/vim-material-monokai'
 Plug 'sjl/badwolf'
 Plug 'tek256/simple-dark'
 Plug 'ayu-theme/ayu-vim'
-Plug 'kyoz/purify', { 'rtp': 'vim' }
 Plug 'drewtempelmeyer/palenight.vim'
 Plug 'rakr/vim-one'
 Plug 'joshdick/onedark.vim'
@@ -259,8 +258,7 @@ au FileType tex set makeprg=pdflatex\ %
 au FileType verilog set ts=3 sw=3 expandtab
 
 set termguicolors
-" let ayucolor="mirage"
-colo ir_black
+colo jellybeans
 " ayu
 " hi VertSplit guifg=#191f26 " was 14191F
 " hi VertSplit guifg=#272d38 " was 212733
@@ -268,6 +266,5 @@ colo ir_black
 " hi! link Error Normal
 " hi Error            guifg=NONE        guibg=NONE        gui=undercurl     guisp=#FF6C60
 
-" hi Number             guifg=#d0d0d0
-hi Todo             guifg=#A8FF60
-" hi Normal gui=NONE guibg=#000000
+" hi Todo             guifg=#A8FF60
+" hi! link Todo Number
