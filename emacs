@@ -1,3 +1,5 @@
+;; -*- emacs-lisp -*-
+
 (require 'package)
 (let* ((no-ssl (and (memq system-type '(windows-nt ms-dos))
                     (not (gnutls-available-p))))
@@ -29,6 +31,9 @@ There are two things you can do about this warning:
 ;; Global modes enabled for default
 (show-paren-mode 1)
 (savehist-mode 1)
+(line-number-mode 1)
+(column-number-mode 1)
+(setq column-number-indicator-zero-based nil)
 
 ;; Do not clutter PWD with *~ files
 (setq backup-directory-alist `(("." . "~/.emacs.d/saves")))
@@ -92,9 +97,6 @@ There are two things you can do about this warning:
 
 ;; Evil
 (setq evil-want-C-u-scroll t)
-
-;; Make column number start at 1
-(setq column-number-indicator-zero-based nil)
 
 ;;; Language-specific options --------------------------------------------------
 
