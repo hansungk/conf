@@ -64,6 +64,7 @@ There are two things you can do about this warning:
 
 (set-language-environment "Korean")
 (prefer-coding-system 'utf-8)
+(global-unset-key (kbd "S-SPC"))
 ;; (global-set-key (kbd "<S-space>") 'toggle-input-method)
 
 ;; shift+arrow for window moving
@@ -97,6 +98,17 @@ There are two things you can do about this warning:
 
 ;; Evil
 (setq evil-want-C-u-scroll t)
+
+;; Make column number start at 1
+(setq column-number-indicator-zero-based nil)
+
+; Flymake
+(global-set-key (kbd "M-n") 'flymake-goto-next-error)
+(global-set-key (kbd "M-p") 'flymake-goto-prev-error)
+(use-package flymake-diagnostic-at-point
+  :after flymake
+  :config
+  (add-hook 'flymake-mode-hook #'flymake-diagnostic-at-point-mode))
 
 ;;; Language-specific options --------------------------------------------------
 
@@ -141,13 +153,14 @@ There are two things you can do about this warning:
 				   (member-init-intro . ++)))))
 (defun my-c++-mode-hook ()
   (c-set-style "han")
-  (lsp-ccls))
+  ;; (lsp-ccls)
+  )
 (add-hook 'c++-mode-hook 'my-c++-mode-hook)
 
 (require 'eglot)
 (add-to-list 'eglot-server-programs '((c++-mode c-mode) "clangd" "-j=7" "--background-index" "--cross-file-rename"))
-(add-hook 'c-mode-hook 'eglot-ensure)
-(add-hook 'c++-mode-hook 'eglot-ensure)
+;; (add-hook 'c-mode-hook 'eglot-ensure)
+;; (add-hook 'c++-mode-hook 'eglot-ensure)
 
 (setq-default indent-tabs-mode nil)
 
