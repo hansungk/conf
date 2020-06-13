@@ -145,8 +145,8 @@ There are two things you can do about this warning:
 (c-add-style "han"
              '("gnu"
 	       (fill-column . 80)
-	       (c++-indent-level . 4)
-	       (c-basic-offset . 4)
+	       (c++-indent-level . 2)
+	       (c-basic-offset . 2)
 	       (indent-tabs-mode . nil)
 	       (c-offsets-alist . ((arglist-intro . ++)
 				   (innamespace . 0)
@@ -199,10 +199,10 @@ There are two things you can do about this warning:
     (search-forward-regexp (concat "\\_<" word "\\_>"))))
 
 ;; Startup layout
-(setq inhibit-startup-screen t)
-(toggle-frame-maximized)
-(split-window-right)
-(other-window 1)
+;; (setq inhibit-startup-screen t)
+;; (toggle-frame-maximized)
+;; (split-window-right)
+;; (other-window 1)
 
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file)
