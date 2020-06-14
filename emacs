@@ -70,6 +70,9 @@ There are two things you can do about this warning:
 ;; shift+arrow for window moving
 (windmove-default-keybindings)
 
+;; Jump to the last position on file open
+(save-place-mode 1)
+
 ;; Ivy
 (ivy-mode 1)
 (setq ivy-use-virtual-buffers t)
