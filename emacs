@@ -201,6 +201,17 @@ There are two things you can do about this warning:
     (setq regexp-search-ring (cons (concat "\\_<" word "\\_>") regexp-search-ring))
     (search-forward-regexp (concat "\\_<" word "\\_>"))))
 
+; Ref: https://www.emacswiki.org/emacs/DiredGetFileSize
+(defun dired-get-size ()
+  (interactive)
+  (let ((files (dired-get-marked-files)))
+    (with-temp-buffer
+      (apply 'call-process "/usr/bin/du" nil t nil "-sch" files)
+      (message "Size of all marked files: %s"
+               (progn
+                 (re-search-backward "\\(^[0-9.,]+[A-Za-z]+\\).*total$")
+                 (match-string 1))))))
+
 ;; Startup layout
 ;; (setq inhibit-startup-screen t)
 ;; (toggle-frame-maximized)
