@@ -21,7 +21,7 @@ export CXX=${CXX:-/usr/bin/clang++}
 if [ "$#" -ge 1 ]; then
     srcdir=${PWD}/${1}
 else
-    echo "usage: ${0} srcdir name"
+    echo "usage: ${0} srcdir [name]"
     exit 1
 fi
 if [ "$#" -ge 2 ]; then
