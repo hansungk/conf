@@ -28,6 +28,9 @@ There are two things you can do about this warning:
       (set-face-background 'vertical-border "gray")
       (set-face-foreground 'vertical-border (face-background 'vertical-border)))))
 
+;; I hit C-x C-c by accident way too many times
+(setq confirm-kill-emacs 'yes-or-no-p)
+
 ;; Global modes enabled for default
 (show-paren-mode 1)
 (savehist-mode 1)
@@ -211,6 +214,19 @@ There are two things you can do about this warning:
                (progn
                  (re-search-backward "\\(^[0-9.,]+[A-Za-z]+\\).*total$")
                  (match-string 1))))))
+
+; Ref: https://www.emacswiki.org/emacs/TransposeWindows
+(defun transpose-windows (arg)
+  "Transpose the buffers shown in two windows."
+  (interactive "p")
+  (let ((selector (if (>= arg 0) 'next-window 'previous-window)))
+    (while (/= arg 0)
+      (let ((this-win (window-buffer))
+            (next-win (window-buffer (funcall selector))))
+        (set-window-buffer (selected-window) next-win)
+        (set-window-buffer (funcall selector) this-win)
+        (select-window (funcall selector)))
+      (setq arg (if (plusp arg) (1- arg) (1+ arg))))))
 
 ;; Startup layout
 ;; (setq inhibit-startup-screen t)
