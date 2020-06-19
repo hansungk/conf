@@ -29,7 +29,7 @@ There are two things you can do about this warning:
       (set-face-foreground 'vertical-border (face-background 'vertical-border)))))
 
 ;; I hit C-x C-c by accident way too many times
-(setq confirm-kill-emacs 'yes-or-no-p)
+(setq confirm-kill-emacs 'y-or-n-p)
 
 ;; Global modes enabled for default
 (show-paren-mode 1)
