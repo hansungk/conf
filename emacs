@@ -55,7 +55,7 @@ There are two things you can do about this warning:
       ;; (set-language-environment "Korean") ; does not work
 
       (setenv "PATH" (concat (getenv "PATH")
-                             ":/Library/TeX/texbin"))
+                             ":/Users/stephen/.fzf/bin"))
       ;; Clang
       (setenv "CXX" "/usr/local/opt/llvm/bin/clang++")
       (setenv "CC" "/usr/local/opt/llvm/bin/clang++")))
@@ -68,7 +68,7 @@ There are two things you can do about this warning:
 (set-language-environment "Korean")
 (prefer-coding-system 'utf-8)
 (global-unset-key (kbd "S-SPC"))
-;; (global-set-key (kbd "<S-space>") 'toggle-input-method)
+;; (global-set-key (kbd "S-SPC") 'toggle-input-method)
 
 ;; shift+arrow for window moving
 (windmove-default-keybindings)
