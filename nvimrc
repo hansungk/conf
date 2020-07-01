@@ -250,7 +250,7 @@ map <C-K> :py3f ~/build/llvm/share/clang/clang-format.py<cr>
 imap <C-K> <c-o>:py3f ~/build/llvm/share/clang/clang-format.py<cr>
 
 au FileType c setlocal ts=4 sw=4 expandtab
-au FileType cpp setlocal ts=4 sw=4 expandtab
+au FileType cpp setlocal ts=2 sw=2 expandtab
 au FileType cmake set ts=2 sw=2 expandtab
 au FileType go set ts=8 sw=8 noexpandtab
 au FileType tex set ts=2 sw=2 expandtab
@@ -258,10 +258,10 @@ au FileType tex set makeprg=pdflatex\ %
 au FileType verilog set ts=3 sw=3 expandtab
 
 set termguicolors
-colo jellybeans
+colo ayu
 " ayu
 " hi VertSplit guifg=#191f26 " was 14191F
-" hi VertSplit guifg=#272d38 " was 212733
+hi VertSplit guifg=#272d38 " was 212733
 
 " hi! link Error Normal
 " hi Error            guifg=NONE        guibg=NONE        gui=undercurl     guisp=#FF6C60
