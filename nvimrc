@@ -48,6 +48,7 @@ call plug#end()
 
 set autoindent
 set cinoptions=:0 " case:
+set cc=+1
 set expandtab
 set fillchars+=vert:│
 set hlsearch
@@ -157,7 +158,7 @@ endif
 let g:lsc_server_commands = {
 \ 'cpp': {
 "\    'command': 'ccls --log-file=/tmp/ccls.log',
-\    'command': 'clangd -j=7 --background-index --cross-file-rename --clang-tidy',
+\    'command': 'clangd -j=7 --background-index --cross-file-rename',
 \    'message_hooks': {
 \        'initialize': {
 \            'rootUri': {m, p -> lsc#uri#documentUri(fnamemodify(findfile('compile_commands.json', expand('%:p') . ';'), ':p:h'))}
@@ -167,7 +168,7 @@ let g:lsc_server_commands = {
 \  },
 \ 'c': {
 "\    'command': 'ccls --log-file=/tmp/ccls.log',
-\    'command': 'clangd -j=7 --background-index --cross-file-rename --clang-tidy',
+\    'command': 'clangd -j=7 --background-index --cross-file-rename',
 \    'message_hooks': {
 \        'initialize': {
 \            'rootUri': {m, p -> lsc#uri#documentUri(fnamemodify(findfile('compile_commands.json', expand('%:p') . ';'), ':p:h'))}
