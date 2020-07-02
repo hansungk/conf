@@ -19,7 +19,7 @@ export CC=${CC:-/usr/bin/clang}
 export CXX=${CXX:-/usr/bin/clang++}
 
 if [ "$#" -ge 1 ]; then
-    srcdir=${PWD}/${1}
+    srcdir=${1}
 else
     echo "usage: ${0} srcdir [name]"
     exit 1
@@ -31,7 +31,6 @@ else
     tag=${timestamp}
 fi
 prefix=${HOME}/build/llvm-${tag}
-builddir=${PWD}/build-llvm-${tag}
 
 # echo ">>> Fetching LLVM."
 # if [[ ! -d ${srcdir} ]]; then
@@ -48,8 +47,6 @@ builddir=${PWD}/build-llvm-${tag}
 # echo ""
 # 
 echo ">>> Configuring LLVM."
-mkdir ${builddir}
-cd ${builddir}
 
 if [ "$(uname)" == "Darwin" ]; then
     projects="clang;clang-tools-extra;compiler-rt;libcxx;libunwind;lld;lldb;openmp;polly"
