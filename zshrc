@@ -2,7 +2,8 @@ autoload -Uz compinit promptinit
 compinit
 promptinit
 # Vi mode
-bindkey -v
+# bindkey -v
+bindkey -e
 
 if [ -d $HOME/.zshrc.d ]
 then
