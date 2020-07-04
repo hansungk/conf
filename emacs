@@ -89,6 +89,14 @@ There are two things you can do about this warning:
 (global-set-key (kbd "C-x C-f") 'counsel-find-file)
 (global-set-key (kbd "C-c k") 'counsel-rg)
 
+;; Evil
+(setq evil-want-C-u-scroll t)
+(evil-set-initial-state 'xref--xref-buffer-mode 'emacs)
+(evil-mode 1)
+(require 'evil-escape)
+(evil-escape-mode 1)
+(setq-default evil-escape-key-sequence "jk")
+
 ;; Keys
 (global-set-key (kbd "C-x g") 'magit-status)
 ;; (global-set-key (kbd "C-c c") 'compile)
@@ -203,6 +211,10 @@ There are two things you can do about this warning:
     (beginning-of-defun)
     (setq regexp-search-ring (cons (concat "\\_<" word "\\_>") regexp-search-ring))
     (search-forward-regexp (concat "\\_<" word "\\_>"))))
+
+(defun count-source-lines ()
+  (interactive)
+  (shell-command "wc -l *.cc *.h"))
 
 ; Ref: https://www.emacswiki.org/emacs/DiredGetFileSize
 (defun dired-get-size ()
