@@ -91,6 +91,7 @@ There are two things you can do about this warning:
 
 ;; Evil
 (setq evil-want-C-u-scroll t)
+(require 'evil)
 (evil-set-initial-state 'xref--xref-buffer-mode 'emacs)
 (evil-set-initial-state 'compilation-mode 'emacs)
 (evil-mode 1)
