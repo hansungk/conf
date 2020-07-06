@@ -134,8 +134,17 @@ There are two things you can do about this warning:
   (interactive)
   (require 'ccls)
   (lsp))
-(setq lsp-enable-snippet nil)
-;; (setq lsp-prefer-flymake :none)
+
+(use-package lsp-mode
+  :commands lsp
+  :config
+  (progn
+    (lsp-register-client
+     (make-lsp-client :new-connection (lsp-tramp-connection "/home/stephen/build/llvm/bin/clangd")
+		    :major-modes '(c++-mode)
+		    :remote? t
+		    :server-id 'clangd-remote))
+    (setq lsp-enable-completion-at-point nil)))
 
 ;; CC mode
 (defun my-c-mode-common-hook ()
