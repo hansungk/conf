@@ -135,8 +135,12 @@ There are two things you can do about this warning:
   (require 'ccls)
   (lsp))
 
+(setq lsp-keymap-prefix "C-c l")
 (use-package lsp-mode
   :commands lsp
+  :init
+  (progn
+    (setq lsp-ui-doc-enable nil))
   :config
   (progn
     (lsp-register-client
