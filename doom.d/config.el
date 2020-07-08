@@ -21,11 +21,14 @@
 ;; font string. You generally only need these two:
 ;; (setq doom-font (font-spec :family "monospace" :size 12 :weight 'semi-light)
 ;;       doom-variable-pitch-font (font-spec :family "sans" :size 13))
+(setq doom-font (font-spec :family "Hack" :size 10.0))
+      ;; doom-variable-pitch-font (font-spec :family "Noto Sans CJK KR" :size 10))
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq doom-theme 'doom-one)
+;; (setq doom-theme 'doom-one)
+(setq doom-theme 'doom-sourcerer)
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
@@ -55,8 +58,11 @@
 
 (setq-default global-flycheck-mode nil)
 
-(add-hook! c++-mode
+(add-hook! (c-mode c++-mode)
   (setq flycheck-disabled-checkers '(c/c++-clang c/c++-gcc c/c++-cppcheck)))
+
+(add-hook 'c++-mode-hook #'lsp)
+(add-hook 'c-mode-hook #'lsp)
 
 (use-package! lsp-mode
   :commands lsp
@@ -64,7 +70,7 @@
   (progn
     (setq lsp-ui-doc-enable nil)
     (setq lsp-ui-sideline-enable nil)
-    (setq lsp-diagnostic-package :flycheck))
+    (setq lsp-diagnostic-package :flymake))
   :config
   (progn
     (lsp-register-client

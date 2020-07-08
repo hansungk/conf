@@ -50,3 +50,4 @@
 ;(unpin! t)
 
 (package! cmake-mode)
+(package! gruvbox-theme)
