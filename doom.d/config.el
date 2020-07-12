@@ -24,13 +24,13 @@
 (setq doom-font
       (if (eq system-type 'darwin)
           (font-spec :family "Menlo" :size 14)
-          (font-spec :family "Hack" :size 10.0)))
+          (font-spec :family "monospace" :size 10.0 :weight 'normal)))
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
 ;; (setq doom-theme 'doom-one)
-(setq doom-theme 'doom-material)
+(setq doom-theme 'doom-city-lights)
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
@@ -59,6 +59,9 @@
 ;; they are implemented.
 
 (set-face-italic-p 'italic nil)
+
+(add-hook! prog-mode
+  (smartparens-global-mode -1))
 
 (add-hook! (c-mode c++-mode)
   (setq flycheck-disabled-checkers '(c/c++-clang c/c++-gcc c/c++-cppcheck))
@@ -90,3 +93,4 @@
   (smartparens-global-mode -1))
 
 (define-key doom-leader-map (kbd "=") 'lsp-format-region)
+(define-key evil-motion-state-map (kbd "C-s") 'swiper)
