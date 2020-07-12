@@ -23,14 +23,14 @@
 ;;       doom-variable-pitch-font (font-spec :family "sans" :size 13))
 (setq doom-font
       (if (eq system-type 'darwin)
-          (font-spec :family "Hack" :size 14)
+          (font-spec :family "Menlo" :size 14)
           (font-spec :family "Hack" :size 10.0)))
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
 ;; (setq doom-theme 'doom-one)
-(setq doom-theme 'doom-sourcerer)
+(setq doom-theme 'doom-material)
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
@@ -58,13 +58,12 @@
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 
-(setq-default global-flycheck-mode nil)
+(set-face-italic-p 'italic nil)
 
 (add-hook! (c-mode c++-mode)
-  (setq flycheck-disabled-checkers '(c/c++-clang c/c++-gcc c/c++-cppcheck)))
-
-(add-hook 'c++-mode-hook #'lsp)
-(add-hook 'c-mode-hook #'lsp)
+  (setq flycheck-disabled-checkers '(c/c++-clang c/c++-gcc c/c++-cppcheck))
+  (smartparens-global-mode -1))
+(add-hook! (c-mode c++-mode) #'lsp)
 
 (use-package! lsp-mode
   :commands lsp
@@ -72,7 +71,9 @@
   (progn
     (setq lsp-ui-doc-enable nil)
     (setq lsp-ui-sideline-enable nil)
-    (setq lsp-diagnostic-package :flymake))
+    (setq lsp-diagnostic-package :flymake)
+    (setq lsp-clients-clangd-args '("-j=7" "--background-index" "--cross-file-rename"))
+    )
   :config
   (progn
     (lsp-register-client
@@ -85,4 +86,7 @@
     ;; (setq flycheck-checker 'lsp)
     ))
 
-     ;; (make-lsp-client :new-connection (lsp-tramp-connection "clangd")
+(after! smartparens
+  (smartparens-global-mode -1))
+
+(define-key doom-leader-map (kbd "=") 'lsp-format-region)
