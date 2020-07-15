@@ -50,4 +50,4 @@
 ;(unpin! t)
 
 (package! cmake-mode)
-(package! gruvbox-theme)
+(package! swift-mode)

@@ -259,6 +259,7 @@ au FileType tex set makeprg=pdflatex\ %
 au FileType verilog set ts=3 sw=3 expandtab
 
 set termguicolors
+" let ayucolor="light"
 colo ayu
 " ayu
 " hi VertSplit guifg=#191f26 " was 14191F
