@@ -14,6 +14,8 @@
 ;;      Alternatively, press 'gd' (or 'C-c c d') on a module to browse its
 ;;      directory (for easy access to its source code).
 
+;; For mu4e
+(add-to-list 'load-path "/usr/share/emacs/site-lisp/mu4e/")
 (doom! :input
        ;;chinese
        ;;japanese
@@ -164,7 +166,7 @@
        ;;yaml              ; JSON, but readable
 
        :email
-       ;;(mu4e +gmail)
+       (mu4e +gmail)
        ;;notmuch
        ;;(wanderlust +gmail)
 

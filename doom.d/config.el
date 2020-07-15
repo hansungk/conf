@@ -6,8 +6,8 @@
 
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets.
-(setq user-full-name "John Doe"
-      user-mail-address "john@doe.com")
+(setq user-full-name "Hansung Kim"
+      user-mail-address "hansung_kim@berkeley.edu")
 
 ;; Doom exposes five (optional) variables for controlling fonts in Doom. Here
 ;; are the three important ones:
@@ -24,7 +24,7 @@
 (setq doom-font
       (if (eq system-type 'darwin)
           (font-spec :family "Menlo" :size 14)
-          (font-spec :family "monospace" :size 10.0 :weight 'normal)))
+          (font-spec :family "Hack" :size 10.0 :weight 'normal)))
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
@@ -32,7 +32,7 @@
 ;; (setq doom-theme 'doom-one)
 (setq doom-theme (if (eq system-type 'darwin)
                      'doom-nord-light
-                     'doom-city-lights))
+                     'doom-spacegrey))
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
@@ -96,3 +96,36 @@
 
 (define-key doom-leader-map (kbd "=") 'lsp-format-region)
 (define-key evil-motion-state-map (kbd "C-s") 'swiper)
+
+;; mu4e configuration
+;; Refs:
+;; * Doom mu4e module manual
+;; * mu4e for dummies [https://www.reddit.com/r/emacs/comments/bfsck6/mu4e_for_dummies/?utm_source=share&utm_medium=web2x]
+;; * https://www.chrislockard.net/posts/2019-11-14-notes-on-configuring-mu4e-and-doom-emacs/
+(after! mu4e
+  (setq! mu4e-maildir (expand-file-name "~/.mail/gmail") ; the rest of the mu4e folders are RELATIVE to this one
+         mu4e-get-mail-command "mbsync -a"
+         mu4e-index-update-in-background t
+         mu4e-compose-signature-auto-include t
+         mu4e-use-fancy-chars t
+         mu4e-view-show-addresses t
+         mu4e-view-show-images t
+         mu4e-compose-format-flowed t
+         ;mu4e-compose-in-new-frame t
+         mu4e-change-filenames-when-moving t ;; http://pragmaticemacs.com/emacs/fixing-duplicate-uid-errors-when-using-mbsync-and-mu4e/
+
+         ;; Message Formatting and sending
+         message-send-mail-function 'smtpmail-send-it
+         ))
+
+(set-email-account! "berkeley.edu"
+  '((mu4e-sent-folder       . "/[Gmail]/Sent Mail")
+    (mu4e-drafts-folder     . "/[Gmail]/Drafts")
+    (mu4e-trash-folder      . "/[Gmail]/Trash")
+    (mu4e-refile-folder     . "/[Gmail]/All Mail")
+    (smtpmail-smtp-user     . "hansung_kim@berkeley.edu")
+    (smtpmail-smtp-server   . "smtp.gmail.com")
+    (smtpmail-smtp-service  . 587)
+    (smtpmail-stream-type   . starttls)
+    (smtpmail-debug-info    . t))
+  t)
