@@ -18,12 +18,21 @@
 export CC=${CC:-/usr/bin/clang}
 export CXX=${CXX:-/usr/bin/clang++}
 
-if [ "$#" -ge 1 ]; then
-    srcdir=${1}
-else
+usage() {
     echo "usage: ${0} srcdir [name]"
     exit 1
+}
+
+if [ "$#" -lt 1 ]; then
+    usage
 fi
+
+if [ "${1}" == "-h" ] || [ "${1}" == "--help" ]; then
+    usage
+fi
+
+srcdir=${1}
+
 if [ "$#" -ge 2 ]; then
     tag=${2}
 else
