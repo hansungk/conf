@@ -5,6 +5,7 @@
 call plug#begin('~/.local/share/nvim/plugged')
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
+Plug 'tpope/vim-commentary'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'natebosch/vim-lsc'
@@ -46,7 +47,7 @@ set ignorecase
 set mouse=a
 set modeline
 "set nu
-set nowrap
+"set nowrap
 set showbreak=↪
 set tags=./tags;
 set scrolloff=3
