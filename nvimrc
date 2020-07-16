@@ -4,30 +4,17 @@
 
 call plug#begin('~/.local/share/nvim/plugged')
 Plug 'tpope/vim-fugitive'
-"Plug 'dag/vim-fish'
-"Plug 'octol/vim-cpp-enhanced-highlight'
-"Plug 'prabirshrestha/async.vim'
-"Plug 'prabirshrestha/vim-lsp'
-"Plug 'w0rp/ale'
+Plug 'tpope/vim-surround'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-" Plug 'autozimu/LanguageClient-neovim', {
-"     \ 'branch': 'next',
-"     \ 'do': 'bash install.sh',
-"     \ }
 Plug 'natebosch/vim-lsc'
-"Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-"Plug 'ziglang/zig.vim'
-"Plug 'vim-airline/vim-airline'
-"Plug 'vim-airline/vim-airline-themes'
-"Plug 'itchyny/lightline.vim'
+Plug 'ayu-theme/ayu-vim'
 Plug 'arcticicestudio/nord-vim'
 Plug 'romainl/Apprentice'
 Plug 'dracula/vim'
 Plug 'skielbasa/vim-material-monokai'
 Plug 'sjl/badwolf'
 Plug 'tek256/simple-dark'
-Plug 'ayu-theme/ayu-vim'
 Plug 'drewtempelmeyer/palenight.vim'
 Plug 'rakr/vim-one'
 Plug 'joshdick/onedark.vim'
@@ -42,7 +29,6 @@ Plug 'w0ng/vim-hybrid'
 Plug 'kristijanhusak/vim-hybrid-material'
 Plug 'kaicataldo/material.vim'
 Plug 'croaker/mustang-vim'
-"Plug 'lifepillar/vim-solarized8'
 Plug 'morhetz/gruvbox'
 call plug#end()
 
