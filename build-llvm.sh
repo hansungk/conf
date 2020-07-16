@@ -164,13 +164,14 @@ cmake --build . -- -v
 #      Clang :: Frontend/warning-poison-system-directories.c
 # cmake --build . --target check-llvm check-clang check-cxx check-cxxabi check-lld
 
-echo ""
-echo ">>> Installing."
-cmake --build . --target install
+# echo ""
+# echo ">>> Installing."
+# cmake --build . --target install
 
-echo ""
-echo ">>> Creating symbolic link."
-rm -f $HOME/build/llvm
-ln -s $prefix $HOME/build/llvm
-echo ""
+# echo ""
+# echo ">>> Creating symbolic link."
+# rm -f $HOME/build/llvm
+# ln -s $prefix $HOME/build/llvm
+# echo ""
+
 echo ">>> Finished!"
