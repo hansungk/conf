@@ -4,4 +4,5 @@ tmux rename-window 'dev'
 tmux new-window -d
 tmux new-window -d -n 'code'
 tmux new-window -d -n 'sys'
+tmux new-window -d -n 'mon'
 tmux attach-session -d -t main
