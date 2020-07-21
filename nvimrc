@@ -1,6 +1,8 @@
 " vim: foldmethod=marker
-"unlet! skip_defaults_vim
-"source $VIMRUNTIME/defaults.vim
+if !has("nvim")
+    unlet! skip_defaults_vim
+    source $VIMRUNTIME/defaults.vim
+endif
 
 call plug#begin('~/.local/share/nvim/plugged')
 Plug 'tpope/vim-fugitive'
@@ -40,7 +42,7 @@ set expandtab
 set fillchars+=vert:│
 set hlsearch
 set ignorecase
-"set laststatus=2
+set laststatus=1
 "set listchars=tab:▸\ ,eol:¬,trail:·
 "set listchars=tab:▸\ ,trail:·
 "set list
@@ -60,8 +62,8 @@ set undofile
 inoremap jk <Esc>
 
 let mapleader = " "
-nnoremap <silent> <leader><space> :Buffers<cr>
-nnoremap <silent> <leader>f :Files<cr>
+nnoremap <silent> <leader>, :Buffers<cr>
+nnoremap <silent> <leader><space> :Files<cr>
 nnoremap <silent> <leader>l :BLines<cr>
 nnoremap <leader>g :Rg 
 nnoremap <silent> <leader>n :ALENextWrap<cr>
@@ -71,6 +73,9 @@ nnoremap <silent> <leader>/ :noh<cr>
 nnoremap =q :cc<cr>
 nnoremap ]q :cnext<cr>
 nnoremap [q :cprev<cr>
+nnoremap =l :ll<cr>
+nnoremap ]l :lnext<cr>
+nnoremap [l :lprev<cr>
 
 autocmd BufReadPost *
     \ if line("'\"") >= 1 && line("'\"") <= line("$") && &ft !~# 'commit'
@@ -238,22 +243,32 @@ map <C-K> :py3f ~/build/llvm/share/clang/clang-format.py<cr>
 imap <C-K> <c-o>:py3f ~/build/llvm/share/clang/clang-format.py<cr>
 
 au FileType c setlocal ts=4 sw=4 expandtab
-au FileType cpp setlocal ts=2 sw=2 expandtab
+au FileType cpp setlocal ts=2 sw=2 commentstring=//\ %s expandtab
 au FileType cmake set ts=2 sw=2 expandtab
 au FileType go set ts=8 sw=8 noexpandtab
 au FileType tex set ts=2 sw=2 expandtab
 au FileType tex set makeprg=pdflatex\ %
 au FileType verilog set ts=3 sw=3 expandtab
 
+if !has("nvim")
+    if exists('+termguicolors')
+        let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+        let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+    endif
+    set background=dark
+endif
+
 set termguicolors
 " let ayucolor="light"
-colo ayu
-" ayu
-" hi VertSplit guifg=#191f26 " was 14191F
-hi VertSplit guifg=#272d38 " was 212733
+" colo default
 
 " hi! link Error Normal
 " hi Error            guifg=NONE        guibg=NONE        gui=undercurl     guisp=#FF6C60
 
+" for ir_black
 " hi Todo             guifg=#A8FF60
 " hi! link Todo Number
+
+" for ayu
+" hi VertSplit guifg=#191f26 " was 14191F
+" hi VertSplit guifg=#272d38 " was 212733
