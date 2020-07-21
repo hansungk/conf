@@ -49,5 +49,6 @@
 ;; ...Or *all* packages (NOT RECOMMENDED; will likely break things)
 ;(unpin! t)
 
+(package! zenburn-theme)
 (package! cmake-mode)
 (package! swift-mode)

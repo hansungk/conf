@@ -32,7 +32,7 @@
 ;; (setq doom-theme 'doom-one)
 (setq doom-theme (if (eq system-type 'darwin)
                      'doom-nord-light
-                     'doom-spacegrey))
+                     'zenburn))
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
@@ -96,6 +96,7 @@
 
 (define-key doom-leader-map (kbd "=") 'lsp-format-region)
 (define-key evil-motion-state-map (kbd "C-s") 'swiper)
+(global-set-key (kbd "C-s") 'swiper)
 
 ;; mu4e configuration
 ;; Refs:
@@ -116,7 +117,19 @@
 
          ;; Message Formatting and sending
          message-send-mail-function 'smtpmail-send-it
-         ))
+         )
+  (evil-set-initial-state 'mu4e-view-mode 'normal)
+  ; Fixes switcing to insert state when entering the header area.
+  ; See https://github.com/emacs-evil/evil-collection/issues/345 and check if
+  ; fixed.
+  (evil-set-initial-state 'mu4e-compose-mode 'normal))
+
+(add-hook! mu4e-compose-mode
+           (evil-normal-state))
+
+(add-hook! org-mu4e-compose-org-mode
+           (message "HIHIHIH")
+           (evil-normal-state))
 
 (set-email-account! "berkeley.edu"
   '((mu4e-sent-folder       . "/[Gmail]/Sent Mail")
@@ -129,3 +142,5 @@
     (smtpmail-stream-type   . starttls)
     (smtpmail-debug-info    . t))
   t)
+
+; (add-to-list 'custom-theme-load-path "~/.doom.d/themes/")

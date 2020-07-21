@@ -16,6 +16,7 @@
 
 ;; For mu4e
 (add-to-list 'load-path "/usr/share/emacs/site-lisp/mu4e/")
+(add-to-list 'load-path "~/Downloads/")
 (doom! :input
        ;;chinese
        ;;japanese
