@@ -1,0 +1,19 @@
+#!/bin/sh
+
+# Fixes `loginctl suspend` resuming to black screen with nvidia cards.
+# Ref: https://bugs.gentoo.org/693384
+
+case "${1-}" in
+    'pre')
+	chvt 63
+	echo "suspend" > /proc/driver/nvidia/suspend
+        ;;
+
+    'post')
+	echo "resume" > /proc/driver/nvidia/suspend
+        (sleep 2 && chvt 1)&
+        ;;
+    *)
+        exit 1
+        ;;
+esac
