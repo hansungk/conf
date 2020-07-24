@@ -33,6 +33,6 @@ autoload -z edit-command-line
 zle -N edit-command-line
 bindkey "^X^E" edit-command-line
 
-export EDITOR=nvim
+export EDITOR=vim
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
