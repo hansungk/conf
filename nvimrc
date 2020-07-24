@@ -27,6 +27,7 @@ Plug 'cocopon/iceberg.vim'
 Plug 'chriskempson/base16-vim'
 Plug 'mhartington/oceanic-next'
 Plug 'jnurmine/Zenburn'
+Plug 'lifepillar/vim-solarized8'
 Plug 'nanotech/jellybeans.vim'
 Plug 'w0ng/vim-hybrid'
 Plug 'kristijanhusak/vim-hybrid-material'
@@ -37,7 +38,7 @@ call plug#end()
 
 set autoindent
 set cinoptions=:0 " case:
-set cc=+1
+" set cc=+1
 set expandtab
 set fillchars+=vert:│
 set hlsearch
@@ -175,8 +176,8 @@ let g:lsc_server_commands = {
 \}
 let g:lsc_auto_map = v:true
 let g:lsc_enable_autocomplete  = v:true
-let g:lsc_enable_diagnostics   = v:true
-let g:lsc_reference_highlights = v:true
+let g:lsc_enable_diagnostics   = v:false
+let g:lsc_reference_highlights = v:false
 let g:lsc_trace_level          = 'off'
 set completeopt=menu,menuone,noinsert,noselect
 nnoremap <silent> g<C-]> :vertical LSClientGoToDefinitionSplit<CR>
@@ -260,7 +261,7 @@ endif
 
 set termguicolors
 " let ayucolor="light"
-" colo default
+colo solarized8
 
 " hi! link Error Normal
 " hi Error            guifg=NONE        guibg=NONE        gui=undercurl     guisp=#FF6C60
