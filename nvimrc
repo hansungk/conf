@@ -48,6 +48,9 @@ set laststatus=1
 "set listchars=tab:▸\ ,trail:·
 "set list
 set mouse=a
+if !has("nvim")
+    set ttymouse=xterm2
+endif
 set modeline
 "set nu
 "set nowrap
