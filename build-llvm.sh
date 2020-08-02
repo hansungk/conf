@@ -128,7 +128,7 @@ else
 
     cmake_args+=( -DLLVM_ENABLE_LTO=Thin)
     cmake_args+=( -DLLVM_USE_LINKER=lld)
-    cmake_args+=( -DLLVM_PARALLEL_LINK_JOBS=2)
+    # cmake_args+=( -DLLVM_PARALLEL_LINK_JOBS=2)
 
     # not really needed for Void linux
     # cmake_args+=( -DLLVM_LIBDIR_SUFFIX=64)
