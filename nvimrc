@@ -172,10 +172,10 @@ let g:lsc_server_commands = {
 \    },
 \    'suppress_stderr': v:true,
 \  },
-\ 'rust': {
-\    'command': 'rustup run stable rls',
-\    'suppress_stderr': v:true,
-\  },
+"\ 'rust': {
+"\    'command': 'rustup run stable rls',
+"\    'suppress_stderr': v:true,
+"\  },
 \}
 let g:lsc_auto_map = v:true
 let g:lsc_enable_autocomplete  = v:true
@@ -263,8 +263,8 @@ if !has("nvim")
 endif
 
 set termguicolors
-" let ayucolor="light"
-colo solarized8
+" let ayucolor="mirage"
+colo badwolf
 
 " hi! link Error Normal
 " hi Error            guifg=NONE        guibg=NONE        gui=undercurl     guisp=#FF6C60
