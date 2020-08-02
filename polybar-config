@@ -51,7 +51,7 @@ fixed-center = true
 background = ${colors.background}
 foreground = ${colors.foreground}
 
-line-size = 4
+line-size = 3
 line-color = #f00
 
 border-size = 0
@@ -72,7 +72,7 @@ font-0 = hack:size=8:hinting=none;0
 font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
 font-2 = siji:pixelsize=10;1
 
-modules-left = bspwm
+modules-left = i3
 modules-center = xwindow
 modules-right = eth filesystem cpu temperature memory date
 
@@ -85,11 +85,11 @@ wm-restack = bspwm
 
 ;override-redirect = true
 
-scroll-up = bspwm-desknext
-scroll-down = bspwm-deskprev
+;scroll-up = bspwm-desknext
+;scroll-down = bspwm-deskprev
 
-;scroll-up = i3wm-wsnext
-;scroll-down = i3wm-wsprev
+scroll-up = i3wm-wsnext
+scroll-down = i3wm-wsprev
 
 cursor-click = pointer
 cursor-scroll = ns-resize
@@ -229,7 +229,8 @@ label-mode-background = ${colors.primary}
 ; focused = Active workspace on focused monitor
 label-focused = %index%
 label-focused-background = ${colors.background-alt}
-label-focused-underline= ${colors.primary}
+# label-focused-underline= ${colors.primary}
+label-focused-underline= #ffffff
 label-focused-padding = 2
 
 ; unfocused = Inactive workspace on any monitor
