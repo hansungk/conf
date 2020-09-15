@@ -3,5 +3,6 @@
 media-libs/libvpx postproc
 # required by www-client/firefox-69.0::gentoo[system-sqlite]
 # required by firefox (argument)
-dev-db/sqlite secure-delete
-www-client/firefox clang lto cpu_flags_x86_avx2 hwaccel
+# dev-db/sqlite secure-delete
+# www-client/firefox clang lto cpu_flags_x86_avx2 hwaccel
+www-client/firefox cpu_flags_x86_avx2 hwaccel

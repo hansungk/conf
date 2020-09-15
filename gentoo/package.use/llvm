@@ -1,2 +1,3 @@
 sys-devel/llvm gold
+# sys-devel/clang default-compiler-rt
 dev-util/lldb libedit

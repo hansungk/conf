@@ -1,0 +1,4 @@
+media-video/vlc opus v4l x265
+# required by media-video/vlc-3.0.10-r1::gentoo
+# required by media-video/vlc (argument)
+sys-libs/zlib minizip

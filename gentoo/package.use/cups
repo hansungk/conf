@@ -1,0 +1,104 @@
+net-print/cups zeroconf
+
+# Required by steam's abi_x86_32
+# required by net-print/cups-2.3.3-r1::gentoo[zeroconf]
+# required by x11-libs/gtk+-3.24.20::gentoo[cups]
+# required by gnome-base/gnome-core-libs-3.34.4::gentoo
+# required by gnome-base/gnome-light-3.34.4::gentoo
+# required by @selected
+# required by @world (argument)
+>=net-dns/avahi-0.8-r2 abi_x86_32
+# required by net-dns/avahi-0.8-r2::gentoo
+# required by net-print/cups-2.3.3-r1::gentoo[zeroconf]
+# required by x11-libs/gtk+-3.24.20::gentoo[cups]
+# required by gnome-base/gnome-core-libs-3.34.4::gentoo
+# required by gnome-base/gnome-light-3.34.4::gentoo
+# required by @selected
+# required by @world (argument)
+>=dev-libs/libevent-2.1.11 abi_x86_32
+# required by net-dns/avahi-0.8-r2::gentoo[gdbm]
+# required by net-print/cups-2.3.3-r1::gentoo[zeroconf]
+# required by x11-libs/gtk+-3.24.20::gentoo[cups]
+# required by gnome-base/gnome-core-libs-3.34.4::gentoo
+# required by gnome-base/gnome-light-3.34.4::gentoo
+# required by @selected
+# required by @world (argument)
+>=sys-libs/gdbm-1.18.1 abi_x86_32
+# required by net-dns/avahi-0.8-r2::gentoo[gtk]
+# required by net-print/cups-2.3.3-r1::gentoo[zeroconf]
+# required by @steam
+# required by @selected
+# required by @world (argument)
+>=x11-libs/gtk+-3.24.20 abi_x86_32
+# required by x11-libs/gtk+-3.24.20::gentoo
+# required by net-dns/avahi-0.8-r2::gentoo[gtk]
+# required by net-print/cups-2.3.3-r1::gentoo[zeroconf]
+# required by @steam
+# required by @selected
+# required by @world (argument)
+>=media-libs/libepoxy-1.5.4 abi_x86_32
+# required by x11-libs/gtk+-3.24.20::gentoo[colord]
+# required by net-dns/avahi-0.8-r2::gentoo[gtk]
+# required by net-print/cups-2.3.3-r1::gentoo[zeroconf]
+# required by @steam
+# required by @selected
+# required by @world (argument)
+>=x11-misc/colord-1.3.5 abi_x86_32
+# required by x11-libs/gtk+-3.24.20::gentoo[X]
+# required by net-dns/avahi-0.8-r2::gentoo[gtk]
+# required by net-print/cups-2.3.3-r1::gentoo[zeroconf]
+# required by @steam
+# required by @selected
+# required by @world (argument)
+>=app-accessibility/at-spi2-atk-2.34.2 abi_x86_32
+# required by app-accessibility/at-spi2-atk-2.34.2::gentoo
+# required by x11-libs/gtk+-3.24.20::gentoo[X]
+# required by net-dns/avahi-0.8-r2::gentoo[gtk]
+# required by net-print/cups-2.3.3-r1::gentoo[zeroconf]
+# required by @steam
+# required by @selected
+# required by @world (argument)
+>=app-accessibility/at-spi2-core-2.34.0 abi_x86_32
+# required by x11-misc/colord-1.3.5::gentoo
+# required by x11-libs/gtk+-3.24.20::gentoo[colord]
+# required by net-dns/avahi-0.8-r2::gentoo[gtk]
+# required by net-print/cups-2.3.3-r1::gentoo[zeroconf]
+# required by @steam
+# required by @selected
+# required by @world (argument)
+>=media-libs/lcms-2.9 abi_x86_32
+# required by x11-misc/colord-1.3.5::gentoo[gusb]
+# required by x11-libs/gtk+-3.24.20::gentoo[colord]
+# required by net-dns/avahi-0.8-r2::gentoo[gtk]
+# required by net-print/cups-2.3.3-r1::gentoo[zeroconf]
+# required by @steam
+# required by @selected
+# required by @world (argument)
+>=dev-libs/libgusb-0.3.4 abi_x86_32
+# required by x11-misc/colord-1.3.5::gentoo[udev]
+# required by x11-libs/gtk+-3.24.20::gentoo[colord]
+# required by net-dns/avahi-0.8-r2::gentoo[gtk]
+# required by net-print/cups-2.3.3-r1::gentoo[zeroconf]
+# required by @steam
+# required by @selected
+# required by @world (argument)
+>=dev-libs/libgudev-233-r1 abi_x86_32
+# required by dev-libs/libgusb-0.3.4::gentoo
+# required by x11-misc/colord-1.3.5::gentoo[gusb]
+# required by x11-libs/gtk+-3.24.20::gentoo[colord]
+# required by net-dns/avahi-0.8-r2::gentoo[gtk]
+# required by net-print/cups-2.3.3-r1::gentoo[zeroconf]
+# required by @steam
+# required by @selected
+# required by @world (argument)
+>=virtual/libusb-1-r2 abi_x86_32
+# required by virtual/libusb-1-r2::gentoo
+# required by dev-libs/libgusb-0.3.4::gentoo
+# required by x11-misc/colord-1.3.5::gentoo[gusb]
+# required by x11-libs/gtk+-3.24.20::gentoo[colord]
+# required by net-dns/avahi-0.8-r2::gentoo[gtk]
+# required by net-print/cups-2.3.3-r1::gentoo[zeroconf]
+# required by @steam
+# required by @selected
+# required by @world (argument)
+>=dev-libs/libusb-1.0.21-r1 abi_x86_32

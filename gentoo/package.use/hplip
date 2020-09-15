@@ -1,1 +1,6 @@
 net-print/hplip scanner
+# required by dev-python/PyQt5-5.14.2::gentoo[multimedia]
+# required by net-print/hplip-3.20.3::gentoo[python_single_target_python3_7,-minimal,qt5]
+# required by net-print/hplip-plugin-3.20.3::gentoo
+# required by hplip-plugin (argument)
+dev-qt/qtmultimedia widgets

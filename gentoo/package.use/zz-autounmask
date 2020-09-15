@@ -4,3 +4,37 @@
 # required by sys-boot/os-prober-1.76-r1::gentoo
 # required by os-prober (argument)
 >=sys-boot/grub-2.02-r4 mount
+# required by media-libs/mesa-20.0.8::gentoo[libglvnd]
+# required by gnome-base/gnome-session-3.34.2::gentoo
+# required by gnome-base/gnome-control-center-3.34.5-r1::gentoo
+# required by gnome-base/gnome-shell-3.34.5::gentoo
+# required by gnome-base/gdm-3.34.1::gentoo
+>=media-libs/libglvnd-1.3.2 abi_x86_32
+# required by media-libs/mesa-20.0.8::gentoo[zstd]
+# required by gnome-base/gnome-session-3.34.2::gentoo
+# required by gnome-base/gnome-control-center-3.34.5-r1::gentoo
+# required by gnome-base/gnome-shell-3.34.5::gentoo
+# required by gnome-base/gdm-3.34.1::gentoo
+>=app-arch/zstd-1.4.4-r4 abi_x86_32
+# required by media-sound/pulseaudio-13.0::gentoo
+# required by gnome-base/gnome-settings-daemon-3.34.2::gentoo
+# required by gnome-base/gnome-session-3.34.2::gentoo
+# required by gnome-base/gnome-control-center-3.34.5-r1::gentoo
+# required by gnome-base/gnome-shell-3.34.5::gentoo
+# required by gnome-base/gdm-3.34.1::gentoo
+>=media-libs/libsndfile-1.0.29_pre2_p20191024 abi_x86_32
+# required by media-sound/pulseaudio-13.0::gentoo[alsa,alsa-plugin]
+# required by gnome-base/gnome-settings-daemon-3.34.2::gentoo
+# required by gnome-base/gnome-session-3.34.2::gentoo
+# required by gnome-base/gnome-control-center-3.34.5-r1::gentoo
+# required by gnome-base/gnome-shell-3.34.5::gentoo
+# required by gnome-base/gdm-3.34.1::gentoo
+>=media-plugins/alsa-plugins-1.2.2 abi_x86_32
+# required by media-libs/libsndfile-1.0.29_pre2_p20191024::gentoo[-minimal]
+# required by media-sound/pulseaudio-13.0::gentoo
+# required by gnome-base/gnome-settings-daemon-3.34.2::gentoo
+# required by gnome-base/gnome-session-3.34.2::gentoo
+# required by gnome-base/gnome-control-center-3.34.5-r1::gentoo
+# required by gnome-base/gnome-shell-3.34.5::gentoo
+# required by gnome-base/gdm-3.34.1::gentoo
+>=media-libs/opus-1.3.1-r1 abi_x86_32

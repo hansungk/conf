@@ -1,0 +1,4 @@
+media-gfx/maim ~amd64
+# required by media-gfx/maim-5.6.3::gentoo
+# required by maim (argument)
+x11-misc/slop ~amd64
