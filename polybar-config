@@ -51,7 +51,7 @@ fixed-center = true
 background = ${colors.background}
 foreground = ${colors.foreground}
 
-line-size = 3
+line-size = 5
 line-color = #f00
 
 border-size = 0
@@ -68,11 +68,11 @@ dpi-y = 192
 
 ;font-0 = fixed:pixelsize=30;1
 ;font-0 = scientifica:size=30:hinting=none;4
-font-0 = hack:size=8:hinting=none;0
+font-0 = Inconsolata:size=10:hinting=none;0
 font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
 font-2 = siji:pixelsize=10;1
 
-modules-left = i3
+modules-left = bspwm
 modules-center = xwindow
 modules-right = eth filesystem cpu temperature memory date
 

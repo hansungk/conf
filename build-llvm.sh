@@ -15,8 +15,8 @@
 # Some useful docs.
 # Purpose of LLVM_ENABLE_LIBCXX: http://lists.llvm.org/pipermail/llvm-dev/2015-July/088689.html
 
-export CC=${CC:-/usr/bin/clang}
-export CXX=${CXX:-/usr/bin/clang++}
+export CC=${CC:-clang}
+export CXX=${CXX:-clang++}
 
 usage() {
     echo "usage: ${0} srcdir [name]"
@@ -60,7 +60,7 @@ echo ">>> Configuring LLVM."
 if [ "$(uname)" == "Darwin" ]; then
     projects="clang;clang-tools-extra;compiler-rt;libcxx;libunwind;lld;lldb;openmp;polly"
 else
-    projects="clang;clang-tools-extra;compiler-rt;libcxx;libcxxabi;libunwind;lld;lldb;openmp;polly"
+    projects="clang;clang-tools-extra;compiler-rt;libcxx;libcxxabi;lld;lldb;openmp;polly"
 fi
 
 cmake_args=(
@@ -128,6 +128,7 @@ else
 
     cmake_args+=( -DLLVM_ENABLE_LTO=Thin)
     cmake_args+=( -DLLVM_USE_LINKER=lld)
+
     # cmake_args+=( -DLLVM_PARALLEL_LINK_JOBS=2)
 
     # not really needed for Void linux
@@ -139,9 +140,9 @@ fi
 
 cmake ${srcdir}/llvm -G Ninja "${cmake_args[@]}"
 
-echo ""
-echo ">>> Building."
-cmake --build . -- -v
+# echo ""
+# echo ">>> Building."
+# cmake --build . -- -v
 
 # echo ""
 # echo ">>> Checking."
