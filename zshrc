@@ -4,6 +4,7 @@ promptinit
 # Vi mode
 # bindkey -v
 bindkey -e
+bindkey \^U backward-kill-line
 
 if [ -d $HOME/.zshrc.d ]
 then
