@@ -4,11 +4,11 @@
 
 # terminal emulator
 super + Return
-	alacritty
+	st
 
 # program launcher
 super + @space
-	rofi -show run
+	rofi -modi "run,drun" -show run
 
 # make sxhkd reload its configuration files:
 super + Escape
@@ -19,7 +19,7 @@ super + Escape
 #
 
 # quit/restart bspwm
-super + alt + {q,r}
+super + shift + {q,r}
 	bspc {quit,wm -r}
 
 # close and kill
@@ -36,7 +36,7 @@ super + y
 
 # swap the current node and the biggest node
 super + g
-	bspc node -s biggest
+	bspc node -s biggest.local
 
 #
 # state/flags
@@ -71,6 +71,7 @@ super + bracket{left,right}
 	bspc desktop -f {prev,next}.local
 
 # focus the last node/desktop
+# Esc was grave
 super + {grave,Tab}
 	bspc {node,desktop} -f last
 
@@ -83,10 +84,6 @@ super + {o,i}
 # focus or send to the given desktop
 super + {_,shift + }{1-9,0}
 	bspc {desktop -f,node -d} '^{1-9,10}'
-
-# mouse button raises window
-# super + button1
-# 	bspc pointer -g focus
 
 #
 # preselect
@@ -119,6 +116,10 @@ super + alt + {h,j,k,l}
 # contract a window by moving one of its side inward
 super + alt + shift + {h,j,k,l}
 	bspc node -z {right -40 0,top 0 40,bottom 0 -40,left 40 0}
+
+# move window to the preselected area
+super + q
+	bspc node -n 'newest.!automatic.local'
 
 # move a floating window
 super + {Left,Down,Up,Right}
