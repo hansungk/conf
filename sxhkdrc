@@ -124,3 +124,19 @@ super + q
 # move a floating window
 super + {Left,Down,Up,Right}
 	bspc node -v {-40 0,0 40,0 -40,40 0}
+
+#
+# media keys
+#
+
+XF86AudioMute
+    amixer -q sset Master toggle
+
+XF86AudioMicMute
+    amixer -q sset Capture toggle
+
+XF86Audio{Raise,Lower}Volume
+    amixer -q sset Master 5%{+,-}
+
+XF86MonBrightness{Up,Down}
+    xbacklight -{inc,dec} 5
