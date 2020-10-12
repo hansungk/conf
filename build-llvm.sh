@@ -37,9 +37,16 @@ if [ "$#" -ge 2 ]; then
     tag=${2}
 else
     timestamp=$(date +'%y%m%d-%H%M%S')
-    tag=${timestamp}
+    pushd ${srcdir}
+    head=$(git rev-parse HEAD)
+    popd
+    tag=${head}-${timestamp}
 fi
 prefix=${HOME}/build/llvm-${tag}
+
+# make build directory
+mkdir build-${tag}
+cd build-${tag}
 
 # echo ">>> Fetching LLVM."
 # if [[ ! -d ${srcdir} ]]; then
@@ -124,7 +131,7 @@ else
     # cmake_args+=( -DCOMPILER_RT_USE_BUILTINS_LIBRARY=On)
     # cmake_args+=( -DCOMPILER_RT_USE_LIBCXX=On)
 
-    cmake_args+=( -DCMAKE_EXE_LINKER_FLAGS="-L${HOME}/build/llvm/lib -Wl,-rpath,${HOME}/build/llvm/lib")
+    # cmake_args+=( -DCMAKE_EXE_LINKER_FLAGS="-L${HOME}/build/llvm/lib -Wl,-rpath,${HOME}/build/llvm/lib")
 
     cmake_args+=( -DLLVM_ENABLE_LTO=Thin)
     cmake_args+=( -DLLVM_USE_LINKER=lld)
@@ -135,17 +142,16 @@ else
     # cmake_args+=( -DLLVM_LIBDIR_SUFFIX=64)
 fi
 
-# echo ">>> Configured arguments:"
-# echo ${cmake_args[*]}
-
+echo ">>> Configured arguments:"
+echo ${cmake_args[*]}
 cmake ${srcdir}/llvm -G Ninja "${cmake_args[@]}"
 
-# echo ""
-# echo ">>> Building."
-# cmake --build . -- -v
+echo ""
+echo ">>> Building."
+cmake --build . -- -v
 
-# echo ""
-# echo ">>> Checking."
+echo ""
+echo ">>> Checking."
 # Tests failing on Darwin:
 # - check-tsan
 # - check-lldb-api
@@ -163,7 +169,7 @@ cmake ${srcdir}/llvm -G Ninja "${cmake_args[@]}"
 #      Clang :: Driver/riscv64-toolchain-extra.c
 #      Clang :: Driver/sysroot.c
 #      Clang :: Frontend/warning-poison-system-directories.c
-# cmake --build . --target check-llvm check-clang check-cxx check-cxxabi check-lld
+cmake --build . --target check-llvm check-clang check-{asan,msan,tsan} check-cxx check-cxxabi check-lld check-lldb
 
 # echo ""
 # echo ">>> Installing."
