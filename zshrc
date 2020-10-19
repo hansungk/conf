@@ -12,9 +12,9 @@ then
 fi
 
 # History
-HISTSIZE=10000
+HISTSIZE=100000
 HISTFILE=~/.zsh_history
-SAVEHIST=10000
+SAVEHIST=100000
 setopt EXTENDED_HISTORY
 setopt HIST_EXPIRE_DUPS_FIRST
 setopt HIST_IGNORE_DUPS
@@ -29,6 +29,7 @@ autoload -U select-word-style
 select-word-style bash
 
 export PATH="$HOME/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
 
 autoload -z edit-command-line
 zle -N edit-command-line
