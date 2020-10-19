@@ -159,7 +159,7 @@ endif
 let g:lsc_server_commands = {
 \ 'cpp': {
 "\    'command': 'ccls --log-file=/tmp/ccls.log',
-\    'command': 'clangd -j=7 --background-index --cross-file-rename',
+\    'command': 'clangd -j=10 --background-index --cross-file-rename',
 \    'message_hooks': {
 \        'initialize': {
 \            'rootUri': {m, p -> lsc#uri#documentUri(fnamemodify(findfile('compile_commands.json', expand('%:p') . ';'), ':p:h'))}
@@ -169,7 +169,7 @@ let g:lsc_server_commands = {
 \  },
 \ 'c': {
 "\    'command': 'ccls --log-file=/tmp/ccls.log',
-\    'command': 'clangd -j=7 --background-index --cross-file-rename',
+\    'command': 'clangd -j=10 --background-index --cross-file-rename',
 \    'message_hooks': {
 \        'initialize': {
 \            'rootUri': {m, p -> lsc#uri#documentUri(fnamemodify(findfile('compile_commands.json', expand('%:p') . ';'), ':p:h'))}
@@ -268,9 +268,13 @@ endif
 
 set termguicolors
 " let ayucolor="light"
-" colo ayu
-" set cursorline
 set background=dark
+colo hybrid
+" set cursorline
+
+" " for ayu
+" hi VertSplit guifg=#191f26 " was 14191F
+" hi VertSplit guifg=#272d38 " was 212733
 
 " hi! link Error Normal
 " hi Error            guifg=NONE        guibg=NONE        gui=undercurl     guisp=#FF6C60
@@ -278,7 +282,3 @@ set background=dark
 " for ir_black
 " hi Todo             guifg=#A8FF60
 " hi! link Todo Number
-
-" for ayu
-hi VertSplit guifg=#191f26 " was 14191F
-hi VertSplit guifg=#272d38 " was 212733
