@@ -31,7 +31,7 @@ if [ "${1}" == "-h" ] || [ "${1}" == "--help" ]; then
     usage
 fi
 
-srcdir=${1}
+srcdir=$(readlink -f ${1})
 
 if [ "$#" -ge 2 ]; then
     tag=${2}
@@ -43,10 +43,11 @@ else
     tag=${head}-${timestamp}
 fi
 prefix=${HOME}/build/llvm-${tag}
+workname=build-${tag}
 
 # make build directory
-mkdir build-${tag}
-cd build-${tag}
+mkdir ${workname}
+cd ${workname}
 
 # echo ">>> Fetching LLVM."
 # if [[ ! -d ${srcdir} ]]; then
@@ -67,7 +68,7 @@ echo ">>> Configuring LLVM."
 if [ "$(uname)" == "Darwin" ]; then
     projects="clang;clang-tools-extra;compiler-rt;libcxx;libunwind;lld;lldb;openmp;polly"
 else
-    projects="clang;clang-tools-extra;compiler-rt;libcxx;libcxxabi;lld;lldb;openmp;polly"
+    projects="clang;clang-tools-extra;compiler-rt;libcxx;libcxxabi;lld;lldb;openmp"
 fi
 
 cmake_args=(
@@ -80,7 +81,6 @@ cmake_args=(
 -DLLDB_ENABLE_LIBEDIT=On
 -DLLVM_ENABLE_ASSERTIONS=Off
 -DLIBCXXABI_ENABLE_ASSERTIONS=Off
--DLIBUNWIND_ENABLE_ASSERTIONS=Off
 )
 # -DLIBCXX_USE_COMPILER_RT=On
 # -DLIBCXXABI_USE_COMPILER_RT=On
@@ -110,6 +110,7 @@ if [ "$(uname)" == "Darwin" ]; then
     cmake_args+=( -DCOMPILER_RT_ENABLE_IOS=Off) # causes compiler-rt to be built with the new Clang
     cmake_args+=( -DLLVM_BUILD_EXTERNAL_COMPILER_RT=ON)
     cmake_args+=( -DLLVM_ENABLE_LIBCXX=ON)
+    cmake_args+=( -DLIBUNWIND_ENABLE_ASSERTIONS=Off)
     cmake_args+=( -DLIBCXX_CXX_ABI=libcxxabi)
     cmake_args+=( -DLIBCXX_CXX_ABI_INCLUDE_PATHS=$(xcrun --sdk macosx --show-sdk-path)/usr/include)
     cmake_args+=( -DLIBCXX_CXX_ABI_LIBRARY_PATH=/usr/lib)
@@ -142,17 +143,17 @@ else
     # cmake_args+=( -DLLVM_LIBDIR_SUFFIX=64)
 fi
 
-echo ">>> Configured arguments:"
-echo ${cmake_args[*]}
-cmake ${srcdir}/llvm -G Ninja "${cmake_args[@]}"
+# echo ">>> Configured arguments:"
+# echo ${cmake_args[*]}
+cmake ${srcdir}/llvm -G "Ninja" "${cmake_args[@]}"
 
 echo ""
 echo ">>> Building."
-cmake --build . -- -v
+/usr/bin/time cmake --build . -- -v
 
 echo ""
 echo ">>> Checking."
-# Tests failing on Darwin:
+# Tests failing on arwin:
 # - check-tsan
 # - check-lldb-api
 # - check-clang:
@@ -169,7 +170,24 @@ echo ">>> Checking."
 #      Clang :: Driver/riscv64-toolchain-extra.c
 #      Clang :: Driver/sysroot.c
 #      Clang :: Frontend/warning-poison-system-directories.c
-cmake --build . --target check-llvm check-clang check-{asan,msan,tsan} check-cxx check-cxxabi check-lld check-lldb
+# Tests failing on Linux (Void):
+# - check-clang:
+#   Clang :: Driver/cross-linux.c
+# - check-sanitizer:
+#   SanitizerCommon-asan-x86_64-Linux :: Linux/protoent.cpp
+#   SanitizerCommon-lsan-x86_64-Linux :: Linux/protoent.cpp
+#   SanitizerCommon-msan-x86_64-Linux :: Linux/protoent.cpp
+#   SanitizerCommon-tsan-x86_64-Linux :: Linux/protoent.cpp
+#   SanitizerCommon-ubsan-x86_64-Linux :: Linux/protoent.cpp
+# - check-msan:
+#   MemorySanitizer-Unit :: ./Msan-x86_64-Test/MemorySanitizer.VAArgOverflow
+#   MemorySanitizer-Unit :: ./Msan-x86_64-Test/MemorySanitizer.VAArgTest
+#   MemorySanitizer-Unit :: ./Msan-x86_64-Test/VectorShiftTest.avx2_left
+#   MemorySanitizer-Unit :: ./Msan-x86_64-with-call-Test/MemorySanitizer.VAArgOverflow
+#   MemorySanitizer-Unit :: ./Msan-x86_64-with-call-Test/MemorySanitizer.VAArgTest
+#   MemorySanitizer-Unit :: ./Msan-x86_64-with-call-Test/VectorShiftTest.avx2_left
+# cmake --build . --target check-llvm check-clang check-{asan,msan,tsan} check-cxx check-cxxabi check-lld check-lldb -- -v
+/usr/bin/time cmake --build . --target check-all -- -k 0 -v
 
 # echo ""
 # echo ">>> Installing."
