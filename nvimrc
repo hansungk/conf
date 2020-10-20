@@ -86,40 +86,13 @@ nnoremap =l :ll<cr>
 nnoremap ]l :lnext<cr>
 nnoremap [l :lprev<cr>
 
+" Jump to last edited position on startup
 autocmd BufReadPost *
     \ if line("'\"") >= 1 && line("'\"") <= line("$") && &ft !~# 'commit'
     \ |   exe "normal! g`\""
     \ | endif
 
-" autocmd BufEnter * call ncm2#enable_for_buffer()
-" " IMPORTANT: :help Ncm2PopupOpen for more information
-" set completeopt=noinsert,menuone,noselect
-" " When the <Enter> key is pressed while the popup menu is visible, it only
-" " hides the menu. Use this mapping to close the menu and also start a new
-" " line.
-" inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
-
-" Use <TAB> to select the popup menu:
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-
-set makeprg=ninja\ -C\ build
-" let g:deoplete#enable_at_startup = 1
-" call deoplete#custom#option({
-"              \ 'auto_complete_delay': 200,
-"              \ })
-" inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-
 cabbr <expr> %% expand('%:p:h')
-
-let g:lightline = {
-            \ 'colorscheme': 'default',
-            \ }
-
-augroup workaround_fish_issue
-    autocmd!
-    autocmd DirChanged * let $PWD = v:event.cwd
-augroup END
 
 " LSP {{{
 let g:LanguageClient_serverCommands = {
