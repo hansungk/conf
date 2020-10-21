@@ -1,3 +1,0 @@
-#!/bin/sh
-
-amixer get Master | grep '\w*%' -om1 --color=never
