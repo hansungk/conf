@@ -1,0 +1,11 @@
+#!/bin/bash
+state=$(acpi -b | cut -d' ' -f3)
+if [ ${state} == "Full," ]; then
+    echo F
+elif [ ${state} == "Charging," ]; then
+    echo "$(acpi -b | cut -d' ' -f4 | cut -d, -f1)C"
+elif [ ${state} == "Discharging," ]; then
+    echo "$(acpi -b | cut -d' ' -f4 | cut -d, -f1)D"
+else
+    echo $(acpi -b | cut -d' ' -f4 | cut -d, -f1)
+fi
