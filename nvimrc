@@ -32,10 +32,12 @@ Plug 'jnurmine/Zenburn'
 Plug 'lifepillar/vim-solarized8'
 Plug 'nanotech/jellybeans.vim'
 Plug 'w0ng/vim-hybrid'
+Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
 Plug 'kristijanhusak/vim-hybrid-material'
 Plug 'kaicataldo/material.vim'
 Plug 'croaker/mustang-vim'
 Plug 'morhetz/gruvbox'
+Plug 'yorickpeterse/happy_hacking.vim'
 call plug#end()
 
 set autoindent
@@ -241,11 +243,11 @@ endif
 
 set termguicolors
 " let ayucolor="light"
-set background=dark
-colo hybrid
+colo happy_hacking
 " set cursorline
-
-" " for ayu
+set background=dark
+"
+" for ayu
 " hi VertSplit guifg=#191f26 " was 14191F
 " hi VertSplit guifg=#272d38 " was 212733
 
