@@ -167,6 +167,14 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
+# Multimedia keys
+bindsym XF86AudioRaiseVolume exec "amixer -q sset Master 2%+"
+bindsym XF86AudioLowerVolume exec "amixer -q sset Master 2%-"
+bindsym XF86AudioMute exec "amixer -q sset Master toggle"
+bindsym XF86AudioMicMute exec "amixer -q sset Capture toggle"
+bindsym XF86MonBrightnessUp exec "sudo oled-backlight +"
+bindsym XF86MonBrightnessDown exec "sudo oled-backlight -"
+
 for_window [window_role="pop-up"] floating enable
 for_window [window_role="task_dialog"] floating enable
 for_window [class="kakaotalk.exe" instance="kakaotalk.exe"] floating enable
