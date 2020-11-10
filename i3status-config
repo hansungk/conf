@@ -33,12 +33,12 @@ ethernet _first_ {
 }
 
 tztime berkeley {
-    format = "%b %d %H:%M:%S"
+    format = "%b %d %a %H:%M:%S"
     timezone = "America/Los_Angeles"
 }
 
 tztime local {
-    format = "%b %d %H:%M:%S"
+    format = "%b %d %a %H:%M:%S"
 }
 
 memory {
