@@ -167,6 +167,8 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
+bindsym $mod+m exec "screenshot"
+
 # Multimedia keys
 bindsym XF86AudioRaiseVolume exec "amixer -q sset Master 2%+"
 bindsym XF86AudioLowerVolume exec "amixer -q sset Master 2%-"
