@@ -90,14 +90,15 @@ There are two things you can do about this warning:
 (global-set-key (kbd "C-c k") 'counsel-rg)
 
 ;; Evil
-(setq evil-want-C-u-scroll t)
-(require 'evil)
-(evil-set-initial-state 'xref--xref-buffer-mode 'emacs)
-(evil-set-initial-state 'compilation-mode 'emacs)
-(evil-mode 1)
-(require 'evil-escape)
-(evil-escape-mode 1)
-(setq-default evil-escape-key-sequence "jk")
+; (setq evil-want-C-u-scroll t)
+; (require 'evil)
+; (evil-set-initial-state 'xref--xref-buffer-mode 'emacs)
+; (evil-set-initial-state 'compilation-mode 'emacs)
+; (evil-mode 1)
+; (require 'evil-escape)
+; (evil-escape-mode 1)
+; (setq-default evil-escape-key-sequence "jk")
+; (setq evil-want-C-u-scroll t)
 
 ;; Keys
 (global-set-key (kbd "C-x g") 'magit-status)
@@ -111,9 +112,6 @@ There are two things you can do about this warning:
 (global-set-key (kbd "C-c k") 'counsel-rg)
 (global-set-key (kbd "C-c m") 'counsel-linux-app)
 (global-set-key (kbd "C-c n") 'counsel-fzf)
-
-;; Evil
-(setq evil-want-C-u-scroll t)
 
 ;; Make column number start at 1
 (setq column-number-indicator-zero-based nil)
