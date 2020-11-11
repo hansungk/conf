@@ -1,10 +1,15 @@
 -- Compiler flags --
 {-# LANGUAGE NoMonomorphismRestriction #-}
+{-# LANGUAGE FlexibleContexts #-}
 
 -- Imports --
 import XMonad
 
 import XMonad.Actions.CycleWS
+import XMonad.Actions.DynamicWorkspaces
+import XMonad.Actions.CopyWindow(copy)
+import XMonad.Prompt
+import XMonad.Prompt.Shell
 
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageHelpers
@@ -13,12 +18,21 @@ import XMonad.Hooks.UrgencyHook
 import XMonad.Hooks.InsertPosition
 import XMonad.Hooks.EwmhDesktops
 
+import XMonad.Layout
 import XMonad.Layout.NoBorders as NB
 import XMonad.Layout.Spacing
 -- import XMonad.Layout.ResizableTile
 import XMonad.Layout.Renamed
 import XMonad.Layout.Fullscreen
+import XMonad.Layout.SubLayouts
+import XMonad.Layout.Decoration
+import XMonad.Layout.NoFrillsDecoration
+import XMonad.Layout.NoFrillsDecoration
+import qualified XMonad.StackSet as W
+import XMonad.Layout.WindowNavigation
+import XMonad.Layout.BoringWindows
 import XMonad.Layout.Tabbed
+import XMonad.Layout.Simplest
 
 import XMonad.Util.Run (spawnPipe, hPutStrLn)
 
@@ -48,18 +62,46 @@ myConfig p = def
         , modMask = mod4Mask
         , terminal = "st"
         , keys = \c -> mykeys c `M.union` keys def c
+        , focusedBorderColor = "#ffffff"
+        , normalBorderColor = "#000000"
         , borderWidth = 3
-        , focusedBorderColor = (colLook Red 0)
-        , normalBorderColor = (colLook Black 0)
         }
 
 
 ------------------------------------------------------------------------------------------
 -- Keybindings
 mykeys (XConfig {modMask = modm}) = M.fromList $
-        [ ((modm, xK_Tab),    toggleWS)
+        [ ((modm,                 xK_h), sendMessage $ Go L)
+        , ((modm,                 xK_l), sendMessage $ Go R)
+        , ((modm,                 xK_k), sendMessage $ Go U)
+        , ((modm,                 xK_j), sendMessage $ Go D)
+        , ((modm .|. controlMask, xK_h), sendMessage $ pullGroup L)
+        , ((modm .|. controlMask, xK_l), sendMessage $ pullGroup R)
+        , ((modm .|. controlMask, xK_k), sendMessage $ pullGroup U)
+        , ((modm .|. controlMask, xK_j), sendMessage $ pullGroup D)
+
+        , ((modm .|. controlMask, xK_m), withFocused (sendMessage . MergeAll))
+        , ((modm .|. controlMask, xK_u), withFocused (sendMessage . UnMerge))
+
+        , ((modm .|. controlMask, xK_period), onGroup W.focusUp')
+        , ((modm .|. controlMask, xK_comma), onGroup W.focusDown')
+
+        -- dynamic workspaces
+        , ((modm .|. shiftMask, xK_BackSpace), removeWorkspace)
+        , ((modm .|. shiftMask, xK_r), renameWorkspace prompt_conf)
+        -- , ((modm, xK_m), withWorkspace prompt_conf (windows . W.shift))
+
+        , ((modm, xK_Tab),    toggleWS)
         , ((modm , xK_p),     spawn "rofi -modi run,drun -show run")
         , ((modm, xK_b     ), sendMessage ToggleStruts)]
+        ++
+        zip (zip (repeat (modm)) [xK_1..xK_9]) (map (withNthWorkspace W.greedyView) [0..])
+
+prompt_conf = def {
+      position = Top
+    , font = "xft:Hack:size=10"
+    , height = 50
+}
 
 ------------------------------------------------------------------------------------------
 -- Constants
@@ -96,10 +138,10 @@ myLogHook h = dynamicLogWithPP $ def
         , ppUrgent	= xmobarColor (colLook White 1) "" . wrap "[" "]"
         , ppLayout	= xmobarColor (colLook Green 1) "" .
         (\x -> case x of
-         "Spacing 7 Tall" -> "[]="
-         "Tall"           -> "[]="
-         "Full"	          -> "[F]"
-         _                -> x
+         "Spacing Tall"        -> "[]="
+         "Spacing Mirror Tall" -> "[-]"
+         "Spacing Full"        -> "[F]"
+         _                     -> x
         )
         , ppTitle	= xmobarColor (colLook White 1) "" . shorten 80
         , ppSep		= xmobarColor (colLook Grey 0) "" " | "
@@ -133,10 +175,45 @@ myLogHook h = dynamicLogWithPP $ def
 --		ratio	= 1/2
 
 myLayoutHook =
-        NB.lessBorders NB.OnlyScreenFloat $
+        -- NB.lessBorders NB.OnlyScreenFloat $
         avoidStruts $
-        spacingRaw True (Border 0 10 10 10) True (Border 10 10 10 10) True $
-        layoutHook defaultConfig
+        windowNavigation $
+        addTopBar $
+        spacingRaw True (Border 0 20 20 20) True (Border 20 20 20 20) True $
+        tiled ||| Full ||| subLayout [] (tabbed shrinkText def) (Tall 1 (1/20) (1/2))
+        where 
+                tiled = Tall nmaster delta ratio
+
+                -- The default number of windows in the master pane
+                nmaster = 1
+                -- Percentage of screen to increment by when resizing panes
+                delta   = 5/100
+                -- Default proportion of screen occupied by master pane
+                ratio   = 1/2
+
+                addTopBar = noFrillsDeco shrinkText topBarTheme
+
+topBarTheme = def
+        { fontName = "xft:Hack:size=9"
+        , inactiveBorderColor = "#000000"
+        , inactiveColor = "#000000"
+        , inactiveTextColor = "#000000"
+        , activeBorderColor = "#ffffff"
+        , activeColor = "#ffffff"
+        , activeTextColor = "#ffffff"
+        , activeBorderWidth = 3
+        , decoHeight = 10
+        }
+
+myTabTheme = def
+    { fontName              = "xft:Hack:size=10"
+    , activeColor           = "#ffffff"
+    , inactiveColor         = "#ffffff"
+    , activeBorderColor     = "#ffffff"
+    , inactiveBorderColor   = "#ffffff"
+    , activeTextColor       = "#ffffff"
+    , inactiveTextColor     = "#ffffff"
+    }
 
 ------------------------------------------------------------------------------------------
 -- Key Bindings
