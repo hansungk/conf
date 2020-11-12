@@ -42,9 +42,6 @@ import Data.Maybe (maybeToList)
 
 -- Notes.
 --
--- Resources:
--- - brisbin's dotfiles [https://github.com/pbrisbin/dotfiles]
---
 -- Fullscreen issue:
 -- - see https://github.com/xmonad/xmonad-contrib/issues/183#issuecomment-307407822
 --
@@ -87,8 +84,7 @@ mykeys (XConfig {modMask = modm}) = M.fromList $
         , ((modm .|. controlMask, xK_u), withFocused (sendMessage . UnMerge))
         , ((modm, xK_semicolon), onGroup W.focusUp')
         , ((modm, xK_apostrophe), onGroup W.focusDown')
-        , ((modm, xK_j), focusDown)
-        , ((modm, xK_k), focusUp)
+        , ((modm, xK_c), focusDown)
 
         -- dynamic workspaces
         , ((modm .|. shiftMask, xK_BackSpace), removeWorkspace)
@@ -120,6 +116,8 @@ myManageHook =
     <+> XMonad.Layout.Fullscreen.fullscreenManageHook
     <+> composeAll
             [ className =? "kakaotalk.exe" --> doFloat
+            -- , title =? "KakaoTalkShadowWnd" --> doIgnore
+            -- , title =? "KakaoTalkEdgeWnd" --> doIgnore
             ]
 
 
@@ -173,9 +171,8 @@ myLayoutHook =
         -- NB.lessBorders NB.OnlyScreenFloat $
         boringWindows $
         tall ||| full ||| tabbed
-    where 
-
-        spacing = spacingRaw True (Border 0 15 15 15) True (Border 15 15 15 15) True
+    where
+        spacing = spacingRaw False (Border 15 15 15 15) True (Border 15 15 15 15) True
         addTopBar = noFrillsDeco shrinkText topBarTheme
         named n = renamed [(XMonad.Layout.Renamed.Replace n)]
 
@@ -207,8 +204,8 @@ myLayoutHook =
             $ subLayout [] Simplest $ boringWindows $ Tall 1 (1/20) (1/2)
 
 
-foreground = "#597b9c"
-background = "#000000"
+foreground = "#8abeb7"
+background = "#1d1f21"
 myFont = "xft:Hack:size=9"
 
 topBarTheme = def
@@ -224,14 +221,14 @@ topBarTheme = def
         }
 
 myTabTheme = def
-    { fontName = myFont
+    { fontName = "xft:Hack:size=8"
     , inactiveBorderColor = background
     , inactiveColor = background
-    , inactiveTextColor = background
+    , inactiveTextColor = "#cccccc"
     , activeColor = foreground
     , activeTextColor = background
     , activeBorderColor = foreground
-    , decoHeight = 40
+    , decoHeight = 30
     }
 
 ------------------------------------------------------------------------------------------
@@ -268,7 +265,7 @@ colors = M.fromList
 	, (Red	 	, (	"#c90c25",
 					"#F21835"))
 	, (Green 	, (	"#308888",
-					"#53A6A6"))
+					"#8abeb7"))
 	, (Yellow 	, (	"#54777d",
 					"#415D62"))
 	, (Blue 	, (	"#5c5dad",
