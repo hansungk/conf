@@ -42,7 +42,10 @@ import Data.Maybe (maybeToList)
 
 -- Notes.
 --
--- Fullscreen:
+-- Resources:
+-- - brisbin's dotfiles [https://github.com/pbrisbin/dotfiles]
+--
+-- Fullscreen issue:
 -- - see https://github.com/xmonad/xmonad-contrib/issues/183#issuecomment-307407822
 --
 ------------------------------------------------------------------------------------------
@@ -55,15 +58,15 @@ main = do
 
 myConfig p = def
         { manageHook = myManageHook <+> manageHook defaultConfig -- merge with default
-        , handleEventHook = XMonad.Layout.Fullscreen.fullscreenEventHook -- FIXME
+        , handleEventHook = myHandleEventHook
         , layoutHook = myLayoutHook
         , logHook = myLogHook p
         , startupHook = addEWMHFullscreen
         , modMask = mod4Mask
         , terminal = "st"
         , keys = \c -> mykeys c `M.union` keys def c
-        , focusedBorderColor = "#ffffff"
-        , normalBorderColor = "#000000"
+        , focusedBorderColor = "#597b9c"
+        , normalBorderColor = "#222222"
         , borderWidth = 3
         }
 
@@ -75,16 +78,17 @@ mykeys (XConfig {modMask = modm}) = M.fromList $
         , ((modm,                 xK_l), sendMessage $ Go R)
         , ((modm,                 xK_k), sendMessage $ Go U)
         , ((modm,                 xK_j), sendMessage $ Go D)
+
         , ((modm .|. controlMask, xK_h), sendMessage $ pullGroup L)
         , ((modm .|. controlMask, xK_l), sendMessage $ pullGroup R)
         , ((modm .|. controlMask, xK_k), sendMessage $ pullGroup U)
         , ((modm .|. controlMask, xK_j), sendMessage $ pullGroup D)
-
         , ((modm .|. controlMask, xK_m), withFocused (sendMessage . MergeAll))
         , ((modm .|. controlMask, xK_u), withFocused (sendMessage . UnMerge))
-
-        , ((modm .|. controlMask, xK_period), onGroup W.focusUp')
-        , ((modm .|. controlMask, xK_comma), onGroup W.focusDown')
+        , ((modm, xK_semicolon), onGroup W.focusUp')
+        , ((modm, xK_apostrophe), onGroup W.focusDown')
+        , ((modm, xK_j), focusDown)
+        , ((modm, xK_k), focusUp)
 
         -- dynamic workspaces
         , ((modm .|. shiftMask, xK_BackSpace), removeWorkspace)
@@ -121,7 +125,8 @@ myManageHook =
 
 ------------------------------------------------------------------------------------------
 -- Handle event hook
-myHandleEventHook = handleEventHook def
+myHandleEventHook = docksEventHook
+                <+> handleEventHook def
                 <+> XMonad.Layout.Fullscreen.fullscreenEventHook
 
 
@@ -131,22 +136,22 @@ myHandleEventHook = handleEventHook def
 
 -- Pretty with colored background
 myLogHook h = dynamicLogWithPP $ def
-        { ppCurrent	= xmobarColor (colLook White 1) (colLook Green 0) . wrap " " " "
-        , ppVisible	= xmobarColor (colLook Green 1) "" . wrap " " " "
-        , ppHidden	= xmobarColor (colLook White 1) "" . wrap " " " "
+        { ppCurrent = xmobarColor (colLook White 1) (colLook Green 0) . wrap " " " "
+        , ppVisible = xmobarColor (colLook Green 1) "" . wrap " " " "
+        , ppHidden  = xmobarColor (colLook White 1) "" . wrap " " " "
         , ppHiddenNoWindows = xmobarColor (colLook Black 0) "" . wrap " " " "
-        , ppUrgent	= xmobarColor (colLook White 1) "" . wrap "[" "]"
-        , ppLayout	= xmobarColor (colLook Green 1) "" .
+        , ppUrgent  = xmobarColor (colLook White 1) "" . wrap "[" "]"
+        , ppLayout  = xmobarColor (colLook Green 1) "" .
         (\x -> case x of
          "Spacing Tall"        -> "[]="
          "Spacing Mirror Tall" -> "[-]"
          "Spacing Full"        -> "[F]"
          _                     -> x
         )
-        , ppTitle	= xmobarColor (colLook White 1) "" . shorten 80
-        , ppSep		= xmobarColor (colLook Grey 0) "" " | "
-        , ppWsSep	= xmobarColor "" "" "" -- Eliminates the gap
-        , ppOutput	= hPutStrLn h
+        , ppTitle   = xmobarColor (colLook White 1) "" . shorten 80
+        , ppSep     = xmobarColor (colLook Grey 0) "" " | "
+        , ppWsSep   = xmobarColor "" "" "" -- Eliminates the gap
+        , ppOutput  = hPutStrLn h
         }
 
 -- Vanilla config
@@ -158,61 +163,75 @@ myLogHook h = dynamicLogWithPP $ def
 
 ------------------------------------------------------------------------------------------
 -- Custom layoutHook
--- configure layouts
-
--- Useless gaps
--- gaplessLayoutHook = avoidStruts $
---	tiled ||| Full ||| fullTiled
---	where 
---		tiled		= spacing 7 $ Tall nmaster delta ratio
---		fullTiled	= Tall nmaster delta ratio
 --
---		-- The default number of windows in the master pane
---		nmaster	= 1
---		-- Percentage of screen to increment by when resizing panes
---		delta	= 5/100
---		-- Default proportion of screen occupied by master pane
---		ratio	= 1/2
+-- Configure layouts
+-- Referenced https://github.com/altercation/dotfiles-tilingwm.
 
 myLayoutHook =
-        -- NB.lessBorders NB.OnlyScreenFloat $
-        avoidStruts $
         windowNavigation $
-        addTopBar $
-        spacingRaw True (Border 0 20 20 20) True (Border 20 20 20 20) True $
-        tiled ||| Full ||| subLayout [] (tabbed shrinkText def) (Tall 1 (1/20) (1/2))
-        where 
-                tiled = Tall nmaster delta ratio
+        fullscreenFocus $ fullscreenFloat $
+        -- NB.lessBorders NB.OnlyScreenFloat $
+        boringWindows $
+        tall ||| full ||| tabbed
+    where 
 
-                -- The default number of windows in the master pane
-                nmaster = 1
-                -- Percentage of screen to increment by when resizing panes
-                delta   = 5/100
-                -- Default proportion of screen occupied by master pane
-                ratio   = 1/2
+        spacing = spacingRaw True (Border 0 15 15 15) True (Border 15 15 15 15) True
+        addTopBar = noFrillsDeco shrinkText topBarTheme
+        named n = renamed [(XMonad.Layout.Renamed.Replace n)]
 
-                addTopBar = noFrillsDeco shrinkText topBarTheme
+        tall = named "tall"
+            $ avoidStruts
+            $ NB.noBorders
+            $ addTopBar
+            $ spacing
+            $ Tall nmaster delta ratio
+            where
+            -- The default number of windows in the master pane
+            nmaster = 1
+            -- Percentage of screen to increment by when resizing panes
+            delta   = 5/100
+            -- Default proportion of screen occupied by master pane
+            ratio   = 1/2
+
+        full = named "full"
+            $ avoidStruts
+            $ NB.noBorders
+            $ Full
+
+        tabbed = named "tabbed"
+            $ avoidStruts
+            $ NB.noBorders
+            $ addTopBar
+            $ addTabs shrinkText myTabTheme
+            $ spacing
+            $ subLayout [] Simplest $ boringWindows $ Tall 1 (1/20) (1/2)
+
+
+foreground = "#597b9c"
+background = "#000000"
+myFont = "xft:Hack:size=9"
 
 topBarTheme = def
-        { fontName = "xft:Hack:size=9"
-        , inactiveBorderColor = "#000000"
-        , inactiveColor = "#000000"
-        , inactiveTextColor = "#000000"
-        , activeBorderColor = "#ffffff"
-        , activeColor = "#ffffff"
-        , activeTextColor = "#ffffff"
+        { fontName = myFont
+        , inactiveBorderColor = background
+        , inactiveColor = background
+        , inactiveTextColor = background
+        , activeBorderColor = foreground
+        , activeColor = foreground
+        , activeTextColor = foreground
         , activeBorderWidth = 3
-        , decoHeight = 10
+        , decoHeight = 15
         }
 
 myTabTheme = def
-    { fontName              = "xft:Hack:size=10"
-    , activeColor           = "#ffffff"
-    , inactiveColor         = "#ffffff"
-    , activeBorderColor     = "#ffffff"
-    , inactiveBorderColor   = "#ffffff"
-    , activeTextColor       = "#ffffff"
-    , inactiveTextColor     = "#ffffff"
+    { fontName = myFont
+    , inactiveBorderColor = background
+    , inactiveColor = background
+    , inactiveTextColor = background
+    , activeColor = foreground
+    , activeTextColor = background
+    , activeBorderColor = foreground
+    , decoHeight = 40
     }
 
 ------------------------------------------------------------------------------------------
