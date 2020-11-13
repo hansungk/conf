@@ -10,7 +10,7 @@ Config { font = "xft:Hack:size=9"
                     , Run CoreTemp ["-t", "temp <core0>C", "-L", "40", "-H", "60", "--normal","green","--high","red","--low","lightblue"] 50
                     --, Run Network "wlp7s0" ["-t", "<dev> <rx>K|<tx>K", "-L","0","-H","1000","--normal","green","--high","red"] 10
                     -- , Run DiskIO [("/", "HDD R:<read>|W:<write>")] [] 10
-                    --, Run BatteryP ["BAT0"] ["-t", "<acstatus>,<left>%"] 300
+                    , Run BatteryP ["BAT0"] ["-t", "<left>% <timeleft>", "--Low", "99", "--low", "darkgreen"] 50
                     , Run Date "%b %_d %a %H:%M:%S" "date" 10
                     , Run DateZone "%b %_d %a %H:%M:%S" "en_US.UTF-8" "America/Los_Angeles" "berkeleytime" 10
                     , Run Com "mailcount" [] "mail" 50
@@ -18,5 +18,5 @@ Config { font = "xft:Hack:size=9"
        ]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = "%StdinReader% }{ [ <fc=#D6D6D6>mail %mail%</fc> ][ <fc=#D6D6D6>%cpu%</fc> ][ <fc=#D6D6D6>%memory%</fc> ][ <fc=#D6D6D6>%coretemp%</fc> ][ <fc=#D6D6D6>%berkeleytime%</fc> ][ <fc=#D6D6D6>%date%</fc> ]"
+       , template = "%StdinReader% }{ [ <fc=#D6D6D6>mail %mail%</fc> ][ <fc=#D6D6D6>bat %battery%</fc> ][ <fc=#D6D6D6>%cpu%</fc> ][ <fc=#D6D6D6>%memory%</fc> ][ <fc=#D6D6D6>%coretemp%</fc> ][ <fc=#D6D6D6>%berkeleytime%</fc> ][ <fc=#D6D6D6>%date%</fc> ]"
 }

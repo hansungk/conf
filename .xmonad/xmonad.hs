@@ -5,6 +5,7 @@
 -- Imports --
 import XMonad
 
+import Graphics.X11.ExtraTypes.XF86
 import XMonad.Actions.CycleWS
 import XMonad.Actions.DynamicWorkspaces
 import XMonad.Actions.CopyWindow(copy)
@@ -91,11 +92,20 @@ mykeys (XConfig {modMask = modm}) = M.fromList $
         , ((modm .|. shiftMask, xK_r), renameWorkspace prompt_conf)
         -- , ((modm, xK_m), withWorkspace prompt_conf (windows . W.shift))
 
+        , ((modm, xK_w),      withFocused killWindow)
         , ((modm, xK_Tab),    toggleWS)
         , ((modm , xK_p),     spawn "rofi -modi run,drun -show run")
-        , ((modm, xK_b     ), sendMessage ToggleStruts)]
-        ++
-        zip (zip (repeat (modm)) [xK_1..xK_9]) (map (withNthWorkspace W.greedyView) [0..])
+        , ((modm, xK_b     ), sendMessage ToggleStruts)
+
+        -- media keys
+        , ((0, xF86XK_AudioRaiseVolume), spawn "amixer -q sset Master 2%+")
+        , ((0, xF86XK_AudioLowerVolume), spawn "amixer -q sset Master 2%-")
+        , ((0, xF86XK_AudioMute), spawn "amixer -q sset Master toggle")
+        , ((0, xF86XK_AudioMicMute), spawn "amixer -q sset Capture toggle")
+        , ((0, xF86XK_MonBrightnessUp), spawn "sudo oled-backlight +")
+        , ((0, xF86XK_MonBrightnessDown), spawn "sudo oled-backlight -")
+        ]
+        ++ zip (zip (repeat (modm)) [xK_1..xK_9]) (map (withNthWorkspace W.greedyView) [0..])
 
 prompt_conf = def {
       position = Top
