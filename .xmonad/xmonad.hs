@@ -7,6 +7,7 @@ import XMonad
 
 import Graphics.X11.ExtraTypes.XF86
 import XMonad.Actions.CycleWS
+import XMonad.Actions.SwapWorkspaces
 import XMonad.Actions.DynamicWorkspaces
 import XMonad.Actions.CopyWindow(copy)
 -- import XMonad.Actions.Navigation2D
@@ -27,6 +28,7 @@ import XMonad.Layout.Spacing
 -- import XMonad.Layout.ResizableTile
 import XMonad.Layout.Renamed
 import XMonad.Layout.Fullscreen
+import XMonad.Layout.ToggleLayouts
 import XMonad.Layout.SubLayouts
 import XMonad.Layout.Decoration
 import XMonad.Layout.NoFrillsDecoration
@@ -64,7 +66,8 @@ main = do
                $ myConfig h
 
 myConfig p = def
-        { manageHook = myManageHook <+> manageHook defaultConfig -- merge with default
+        { workspaces = myWorkspaces
+        , manageHook = myManageHook <+> manageHook defaultConfig -- merge with default
         , handleEventHook = myHandleEventHook
         , layoutHook = myLayoutHook
         , logHook = myLogHook p
@@ -77,6 +80,7 @@ myConfig p = def
         , borderWidth = 3
         }
 
+myWorkspaces = ["web","dev","sys","4","5","6","7","8","9"]
 foreground = "#81a2be"
 background = "#1d1f21"
 
@@ -103,9 +107,12 @@ mykeys (XConfig {modMask = modm}) = M.fromList $
         , ((modm, xK_apostrophe), onGroup W.focusDown')
         , ((modm, xK_c), focusDown)
 
+        -- fullscreen toggle
+        , ((modm, xK_f), sendMessage ToggleLayout)
+
         , ((modm , xK_grave), nextMatchWithThis Forward  className)
 
-        -- dynamic workspaces
+        -- workspaces
         , ((modm .|. shiftMask, xK_BackSpace), removeWorkspace)
         , ((modm .|. shiftMask, xK_r), renameWorkspace prompt_conf)
         -- , ((modm, xK_m), withWorkspace prompt_conf (windows . W.shift))
@@ -123,7 +130,10 @@ mykeys (XConfig {modMask = modm}) = M.fromList $
         , ((0, xF86XK_MonBrightnessUp), spawn "sudo oled-backlight +")
         , ((0, xF86XK_MonBrightnessDown), spawn "sudo oled-backlight -")
         ]
-        ++ zip (zip (repeat (modm)) [xK_1..xK_9]) (map (withNthWorkspace W.greedyView) [0..])
+        ++
+        [((modm .|. controlMask, k), windows $ swapWithCurrent i)
+            | (i, k) <- zip myWorkspaces [xK_1 ..]]
+        -- ++ zip (zip (repeat (modm)) [xK_1..xK_9]) (map (withNthWorkspace W.greedyView) [0..])
 
 prompt_conf = def {
       position = Top
@@ -144,8 +154,8 @@ myManageHook =
     <+> XMonad.Layout.Fullscreen.fullscreenManageHook
     <+> composeAll
             [ className =? "kakaotalk.exe" --> doFloat
-            -- , title =? "KakaoTalkShadowWnd" --> doIgnore
-            -- , title =? "KakaoTalkEdgeWnd" --> doIgnore
+            , className =? "Slack" --> doShift "8"
+            , isFullscreen --> doFullFloat
             ]
 
 
@@ -194,11 +204,12 @@ myLogHook h = dynamicLogWithPP $ def
 -- Referenced https://github.com/altercation/dotfiles-tilingwm.
 
 myLayoutHook =
-        -- fullscreenFocus $ fullscreenFloat $
+        fullscreenFocus $ fullscreenFloat $
         -- NB.lessBorders NB.OnlyScreenFloat $
         windowNavigation $
         boringWindows $
         onWorkspace "1" full $
+        toggleLayouts full $
         tabbed ||| full ||| tall
     where
         spacing = spacingRaw False (Border 15 15 15 15) True (Border 15 15 15 15) True
