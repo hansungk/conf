@@ -9,6 +9,8 @@ import Graphics.X11.ExtraTypes.XF86
 import XMonad.Actions.CycleWS
 import XMonad.Actions.DynamicWorkspaces
 import XMonad.Actions.CopyWindow(copy)
+-- import XMonad.Actions.Navigation2D
+import XMonad.Actions.GroupNavigation
 import XMonad.Prompt
 import XMonad.Prompt.Shell
 
@@ -29,6 +31,7 @@ import XMonad.Layout.SubLayouts
 import XMonad.Layout.Decoration
 import XMonad.Layout.NoFrillsDecoration
 import XMonad.Layout.NoFrillsDecoration
+import XMonad.Layout.PerWorkspace
 import qualified XMonad.StackSet as W
 import XMonad.Layout.WindowNavigation
 import XMonad.Layout.BoringWindows
@@ -52,7 +55,13 @@ main :: IO()
 --main = xmonad =<< statusBar myBar myPP toggleStrutsKey myConfig
 main = do
         h <- spawnPipe myBar
-        xmonad $ ewmh $ fullscreenSupport $ docks $ myConfig h
+        xmonad $ ewmh $ fullscreenSupport $ docks
+               -- $ navigation2D def
+               --                (xK_Up, xK_Left, xK_Down, xK_Right)
+               --                [(mod4Mask,               windowGo  ),
+               --                (mod4Mask .|. shiftMask, windowSwap)]
+               --                False
+               $ myConfig h
 
 myConfig p = def
         { manageHook = myManageHook <+> manageHook defaultConfig -- merge with default
@@ -63,19 +72,26 @@ myConfig p = def
         , modMask = mod4Mask
         , terminal = "st"
         , keys = \c -> mykeys c `M.union` keys def c
-        , focusedBorderColor = "#597b9c"
-        , normalBorderColor = "#222222"
+        , focusedBorderColor = foreground
+        , normalBorderColor = background
         , borderWidth = 3
         }
 
+foreground = "#81a2be"
+background = "#1d1f21"
 
 ------------------------------------------------------------------------------------------
 -- Keybindings
 mykeys (XConfig {modMask = modm}) = M.fromList $
-        [ ((modm,                 xK_h), sendMessage $ Go L)
+        [
+          ((modm,                 xK_h), sendMessage $ Go L)
         , ((modm,                 xK_l), sendMessage $ Go R)
         , ((modm,                 xK_k), sendMessage $ Go U)
         , ((modm,                 xK_j), sendMessage $ Go D)
+        , ((modm .|. shiftMask,   xK_h), sendMessage $ Swap L)
+        , ((modm .|. shiftMask,   xK_l), sendMessage $ Swap R)
+        , ((modm .|. shiftMask,   xK_k), sendMessage $ Swap U)
+        , ((modm .|. shiftMask,   xK_j), sendMessage $ Swap D)
 
         , ((modm .|. controlMask, xK_h), sendMessage $ pullGroup L)
         , ((modm .|. controlMask, xK_l), sendMessage $ pullGroup R)
@@ -86,6 +102,8 @@ mykeys (XConfig {modMask = modm}) = M.fromList $
         , ((modm, xK_semicolon), onGroup W.focusUp')
         , ((modm, xK_apostrophe), onGroup W.focusDown')
         , ((modm, xK_c), focusDown)
+
+        , ((modm , xK_grave), nextMatchWithThis Forward  className)
 
         -- dynamic workspaces
         , ((modm .|. shiftMask, xK_BackSpace), removeWorkspace)
@@ -144,12 +162,12 @@ myHandleEventHook = docksEventHook
 
 -- Pretty with colored background
 myLogHook h = dynamicLogWithPP $ def
-        { ppCurrent = xmobarColor (colLook White 1) (colLook Green 0) . wrap " " " "
-        , ppVisible = xmobarColor (colLook Green 1) "" . wrap " " " "
+        { ppCurrent = xmobarColor (colLook White 1) (colLook Blue 0) . wrap " " " "
+        , ppVisible = xmobarColor (colLook Blue 1) "" . wrap " " " "
         , ppHidden  = xmobarColor (colLook White 1) "" . wrap " " " "
         , ppHiddenNoWindows = xmobarColor (colLook Black 0) "" . wrap " " " "
         , ppUrgent  = xmobarColor (colLook White 1) "" . wrap "[" "]"
-        , ppLayout  = xmobarColor (colLook Green 1) "" .
+        , ppLayout  = xmobarColor (colLook Blue 1) "" .
         (\x -> case x of
          "Spacing Tall"        -> "[]="
          "Spacing Mirror Tall" -> "[-]"
@@ -176,11 +194,12 @@ myLogHook h = dynamicLogWithPP $ def
 -- Referenced https://github.com/altercation/dotfiles-tilingwm.
 
 myLayoutHook =
-        windowNavigation $
-        fullscreenFocus $ fullscreenFloat $
+        -- fullscreenFocus $ fullscreenFloat $
         -- NB.lessBorders NB.OnlyScreenFloat $
+        windowNavigation $
         boringWindows $
-        tall ||| full ||| tabbed
+        onWorkspace "1" full $
+        tabbed ||| full ||| tall
     where
         spacing = spacingRaw False (Border 15 15 15 15) True (Border 15 15 15 15) True
         addTopBar = noFrillsDeco shrinkText topBarTheme
@@ -188,9 +207,9 @@ myLayoutHook =
 
         tall = named "tall"
             $ avoidStruts
-            $ NB.noBorders
-            $ addTopBar
-            $ spacing
+            -- $ NB.noBorders
+            -- $ addTopBar
+            -- $ spacing
             $ Tall nmaster delta ratio
             where
             -- The default number of windows in the master pane
@@ -207,27 +226,25 @@ myLayoutHook =
 
         tabbed = named "tabbed"
             $ avoidStruts
-            $ NB.noBorders
-            $ addTopBar
+            -- $ NB.noBorders
+            -- $ addTopBar
             $ addTabs shrinkText myTabTheme
-            $ spacing
-            $ subLayout [] Simplest $ boringWindows $ Tall 1 (1/20) (1/2)
+            -- $ spacing
+            $ subLayout [] Simplest $ Tall 1 (1/20) (1/2)
 
 
-foreground = "#8abeb7"
-background = "#1d1f21"
 myFont = "xft:Hack:size=9"
 
 topBarTheme = def
         { fontName = myFont
-        , inactiveBorderColor = background
-        , inactiveColor = background
-        , inactiveTextColor = background
-        , activeBorderColor = foreground
-        , activeColor = foreground
-        , activeTextColor = foreground
-        , activeBorderWidth = 3
-        , decoHeight = 15
+        -- , inactiveBorderColor = background
+        -- , inactiveColor = background
+        -- , inactiveTextColor = background
+        -- , activeBorderColor = foreground
+        -- , activeColor = foreground
+        -- , activeTextColor = foreground
+        -- , activeBorderWidth = 3
+        -- , decoHeight = 15
         }
 
 myTabTheme = def
@@ -235,9 +252,10 @@ myTabTheme = def
     , inactiveBorderColor = background
     , inactiveColor = background
     , inactiveTextColor = "#cccccc"
-    , activeColor = foreground
-    , activeTextColor = background
+    , activeColor = background
+    , activeTextColor = "#cccccc"
     , activeBorderColor = foreground
+    , activeBorderWidth = 3
     , decoHeight = 30
     }
 
@@ -278,8 +296,8 @@ colors = M.fromList
 					"#8abeb7"))
 	, (Yellow 	, (	"#54777d",
 					"#415D62"))
-	, (Blue 	, (	"#5c5dad",
-					"#5063ab"))
+	, (Blue 	, (	"#81a2be",
+					"#81a2be"))
 	, (Magenta 	, (	"#6f4484",
 					"#915eaa"))
 	, (Cyan 	, (	"#2B7694",

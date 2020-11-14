@@ -1,9 +1,9 @@
 -- vim:ft=haskell
 Config { font = "xft:Hack:size=9"
        , additionalFonts = [ "xft:Source Han Sans KR:size=9" ]
-       , bgColor = "black"
-       , fgColor = "#555555"
-       , position = TopW L 100
+       , bgColor = "#1d1f21"
+       , fgColor = "#c5c8c6"
+       , position = BottomW L 100
        , commands = [ Run Cpu ["-t", "cpu <total>%", "-L","49","-H","50","--normal","green","--high","red"] 20
                     , Run Memory ["-t","mem <usedratio>%"] 20
                     -- , Run Weather "RKSS" ["-t","<tempC>C","-L","10","-H","25","--normal","green","--high","red","--low","lightblue"] 36000
