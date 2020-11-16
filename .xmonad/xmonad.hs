@@ -213,7 +213,7 @@ myLayoutHook =
         windowNavigation $
         onWorkspace "1" full $
         toggleLayouts full $
-        tabbed ||| full ||| tall
+        tabbed ||| tall
     where
         spacing = spacingRaw False (Border 15 15 15 15) True (Border 15 15 15 15) True
         addTopBar = noFrillsDeco shrinkText topBarTheme
