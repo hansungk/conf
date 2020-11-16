@@ -8,6 +8,7 @@ import XMonad
 import Graphics.X11.ExtraTypes.XF86
 import XMonad.Actions.CycleWS
 import XMonad.Actions.SwapWorkspaces
+import XMonad.Actions.WorkspaceNames
 import XMonad.Actions.DynamicWorkspaces
 import XMonad.Actions.CopyWindow(copy)
 -- import XMonad.Actions.Navigation2D
@@ -106,6 +107,8 @@ mykeys (XConfig {modMask = modm}) = M.fromList $
         , ((modm, xK_semicolon), onGroup W.focusUp')
         , ((modm, xK_apostrophe), onGroup W.focusDown')
         , ((modm, xK_c), focusDown)
+        , ((modm, xK_bracketleft), sendMessage Shrink)
+        , ((modm, xK_bracketright), sendMessage Expand)
 
         -- fullscreen toggle
         , ((modm, xK_f), sendMessage ToggleLayout)
@@ -114,7 +117,7 @@ mykeys (XConfig {modMask = modm}) = M.fromList $
 
         -- workspaces
         , ((modm .|. shiftMask, xK_BackSpace), removeWorkspace)
-        , ((modm .|. shiftMask, xK_r), renameWorkspace prompt_conf)
+        , ((modm .|. shiftMask, xK_r), XMonad.Actions.WorkspaceNames.renameWorkspace prompt_conf)
         -- , ((modm, xK_m), withWorkspace prompt_conf (windows . W.shift))
 
         , ((modm, xK_w),      withFocused killWindow)
@@ -131,7 +134,7 @@ mykeys (XConfig {modMask = modm}) = M.fromList $
         , ((0, xF86XK_MonBrightnessDown), spawn "sudo oled-backlight -")
         ]
         ++
-        [((modm .|. controlMask, k), windows $ swapWithCurrent i)
+        [((modm .|. controlMask, k), XMonad.Actions.WorkspaceNames.swapWithCurrent i)
             | (i, k) <- zip myWorkspaces [xK_1 ..]]
         -- ++ zip (zip (repeat (modm)) [xK_1..xK_9]) (map (withNthWorkspace W.greedyView) [0..])
 
@@ -155,7 +158,7 @@ myManageHook =
     <+> composeAll
             [ className =? "kakaotalk.exe" --> doFloat
             , className =? "Slack" --> doShift "8"
-            , isFullscreen --> doFullFloat
+            , isFullscreen --> doShift "8" -- FIXME
             ]
 
 
@@ -171,7 +174,7 @@ myHandleEventHook = docksEventHook
 -- configure xmobar looks
 
 -- Pretty with colored background
-myLogHook h = dynamicLogWithPP $ def
+myLogHook h = (workspaceNamesPP $ def
         { ppCurrent = xmobarColor (colLook White 1) (colLook Blue 0) . wrap " " " "
         , ppVisible = xmobarColor (colLook Blue 1) "" . wrap " " " "
         , ppHidden  = xmobarColor (colLook White 1) "" . wrap " " " "
@@ -188,7 +191,7 @@ myLogHook h = dynamicLogWithPP $ def
         , ppSep     = xmobarColor (colLook Grey 0) "" " | "
         , ppWsSep   = xmobarColor "" "" "" -- Eliminates the gap
         , ppOutput  = hPutStrLn h
-        }
+        }) >>= dynamicLogWithPP
 
 -- Vanilla config
 -- myLogHook h = dynamicLogWithPP xmobarPP
@@ -206,8 +209,8 @@ myLogHook h = dynamicLogWithPP $ def
 myLayoutHook =
         fullscreenFocus $ fullscreenFloat $
         -- NB.lessBorders NB.OnlyScreenFloat $
-        windowNavigation $
         boringWindows $
+        windowNavigation $
         onWorkspace "1" full $
         toggleLayouts full $
         tabbed ||| full ||| tall
@@ -226,7 +229,7 @@ myLayoutHook =
             -- The default number of windows in the master pane
             nmaster = 1
             -- Percentage of screen to increment by when resizing panes
-            delta   = 5/100
+            delta   = 1/40
             -- Default proportion of screen occupied by master pane
             ratio   = 1/2
 
@@ -241,7 +244,7 @@ myLayoutHook =
             -- $ addTopBar
             $ addTabs shrinkText myTabTheme
             -- $ spacing
-            $ subLayout [] Simplest $ Tall 1 (1/20) (1/2)
+            $ subLayout [] Simplest $ Tall 1 (1/40) (1/2)
 
 
 myFont = "xft:Hack:size=9"
