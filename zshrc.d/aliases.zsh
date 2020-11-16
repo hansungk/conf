@@ -4,8 +4,8 @@ if [ "$(uname)" != "Darwin" ]; then
 else
 fi
 # alias l='exa -l'
-alias ll='ls -lh'
-alias la='ls -alh'
+# alias ll='ls -lh'
+# alias la='ls -alh'
 alias cdw='cd ~/src/compiler-base'
 alias cdwb='cd ~/src/compiler-base/build'
 alias cdresearch='cd ~/berkeley/research'

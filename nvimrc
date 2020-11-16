@@ -244,7 +244,7 @@ endif
 
 set termguicolors
 " let ayucolor="light"
-colo happy_hacking
+colo base16-tomorrow-night
 " set cursorline
 set background=dark
 "
