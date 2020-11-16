@@ -32,7 +32,7 @@
 ;; (setq doom-theme 'doom-one)
 (setq doom-theme (if (eq system-type 'darwin)
                      'doom-nord-light
-                     'zenburn))
+                     'doom-tomorrow-night))
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
