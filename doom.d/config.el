@@ -60,7 +60,11 @@
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 
+;; No italic face, hopefully.
 (set-face-italic-p 'italic nil)
+;; Turn off cursorline highlight.
+(add-hook! hl-line-mode
+  :init (global-hl-line-mode -1))
 
 (add-hook! prog-mode
   (smartparens-global-mode -1))
@@ -83,9 +87,9 @@
   (progn
     (lsp-register-client
      (make-lsp-client :new-connection (lsp-tramp-connection "clangd")
-		    :major-modes '(c++-mode)
-		    :remote? t
-		    :server-id 'clangd-remote))
+                      :major-modes '(c++-mode)
+                      :remote? t
+                      :server-id 'clangd-remote))
     ;; (setq lsp-enable-xref t)
     ;; (flycheck-add-mode 'lsp 'c++-mode)
     ;; (setq flycheck-checker 'lsp)
@@ -104,7 +108,20 @@
 ;; * mu4e for dummies [https://www.reddit.com/r/emacs/comments/bfsck6/mu4e_for_dummies/?utm_source=share&utm_medium=web2x]
 ;; * https://www.chrislockard.net/posts/2019-11-14-notes-on-configuring-mu4e-and-doom-emacs/
 (after! mu4e
-  (setq! mu4e-maildir (expand-file-name "~/.mail/gmail") ; the rest of the mu4e folders are RELATIVE to this one
+  (setq! mu4e-maildir (expand-file-name "/home/hansung/.mutt/mailbox") ; the rest of the mu4e folders are RELATIVE to this one
+         mu4e-bookmarks '(( :name "Unread messages"
+                           :query "flag:unread AND NOT flag:trashed AND NOT maildir:/trash"
+                           :key ?u)
+                          ( :name "Today's messages"
+                            :query "date:today..now"
+                            :key ?t)
+                          ( :name "Last 7 days"
+                            :query "date:7d..now"
+                            :hide-unread t
+                            :key ?w))
+         mu4e-sent-folder "/sent"
+         mu4e-drafts-folder "/drafts"
+         mu4e-trash-folder "/trash"
          mu4e-get-mail-command "mbsync -a"
          mu4e-index-update-in-background t
          mu4e-compose-signature-auto-include t
@@ -118,6 +135,10 @@
          ;; Message Formatting and sending
          message-send-mail-function 'smtpmail-send-it
          )
+  ;; (add-to-list 'mu4e-bookmarks
+  ;;              '( :name "Unread messages"
+  ;;                 :query "flag:unread AND NOT flag:trashed AND NOT maildir:/trash"
+  ;;                 :key ?u))
   (evil-set-initial-state 'mu4e-view-mode 'normal)
   ; Fixes switcing to insert state when entering the header area.
   ; See https://github.com/emacs-evil/evil-collection/issues/345 and check if
@@ -132,10 +153,10 @@
            (evil-normal-state))
 
 (set-email-account! "berkeley.edu"
-  '((mu4e-sent-folder       . "/[Gmail]/Sent Mail")
-    (mu4e-drafts-folder     . "/[Gmail]/Drafts")
-    (mu4e-trash-folder      . "/[Gmail]/Trash")
-    (mu4e-refile-folder     . "/[Gmail]/All Mail")
+  '((mu4e-sent-folder       . "/sent")
+    ;; (mu4e-drafts-folder     . "/[Gmail]/Drafts")
+    (mu4e-trash-folder      . "/trash")
+    ;; (mu4e-refile-folder     . "/[Gmail]/All Mail")
     (smtpmail-smtp-user     . "hansung_kim@berkeley.edu")
     (smtpmail-smtp-server   . "smtp.gmail.com")
     (smtpmail-smtp-service  . 587)
