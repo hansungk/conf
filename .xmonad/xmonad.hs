@@ -81,7 +81,7 @@ myConfig p = def
         , borderWidth = 3
         }
 
-myWorkspaces = ["web","dev","sys","4","5","6","7","8","9"]
+myWorkspaces = ["web", "emacs", "dev","sys", "5","6","7","8","9"]
 foreground = "#81a2be"
 background = "#1d1f21"
 
@@ -123,6 +123,7 @@ mykeys (XConfig {modMask = modm}) = M.fromList $
         , ((modm, xK_w),      withFocused killWindow)
         , ((modm, xK_Tab),    toggleWS)
         , ((modm , xK_p),     spawn "rofi -modi run,drun -show run")
+        , ((modm , xK_s),     spawn "screenshot")
         , ((modm, xK_b     ), sendMessage ToggleStruts)
 
         -- media keys
