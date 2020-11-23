@@ -62,10 +62,19 @@
 
 ;; No italic face, hopefully.
 (set-face-italic-p 'italic nil)
-;; Turn off cursorline highlight.
+;; Disable "smart" things.
 (add-hook! hl-line-mode
   :init (global-hl-line-mode -1))
+(after! smartparens
+  (smartparens-global-mode -1))
 
+;; UI keys
+;;
+(define-key evil-motion-state-map (kbd "C-s") 'swiper)
+(global-set-key (kbd "C-s") 'swiper)
+
+;; Language-specific configs
+;;
 (add-hook! prog-mode
   (smartparens-global-mode -1))
 
@@ -73,6 +82,14 @@
   (setq flycheck-disabled-checkers '(c/c++-clang c/c++-gcc c/c++-cppcheck))
   (smartparens-global-mode -1))
 (add-hook! (c-mode c++-mode) #'lsp)
+
+(add-hook! verilog-mode
+  (setq indent-tabs-mode nil)
+  (setq verilog-indent-level 2
+        verilog-indent-level-module 2
+        verilog-indent-level-declaration 2
+        verilog-auto-newline nil)
+  (set-fill-column 80))
 
 (use-package! lsp-mode
   :commands lsp
@@ -95,12 +112,7 @@
     ;; (setq flycheck-checker 'lsp)
     ))
 
-(after! smartparens
-  (smartparens-global-mode -1))
-
 (define-key doom-leader-map (kbd "=") 'lsp-format-region)
-(define-key evil-motion-state-map (kbd "C-s") 'swiper)
-(global-set-key (kbd "C-s") 'swiper)
 
 ;; mu4e configuration
 ;; Refs:

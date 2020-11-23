@@ -52,3 +52,4 @@
 (package! zenburn-theme)
 (package! cmake-mode)
 (package! swift-mode)
+(package! base16-theme)

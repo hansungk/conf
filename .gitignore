@@ -13,3 +13,4 @@ xmonad-x86_64-linux
 base16*
 
 .vim/bundle/
+doom.d/custom.el
