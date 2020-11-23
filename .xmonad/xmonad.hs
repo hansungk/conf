@@ -81,7 +81,8 @@ myConfig p = def
         , borderWidth = 3
         }
 
-myWorkspaces = ["web", "emacs", "dev","sys", "5","6","7","8","9"]
+-- myWorkspaces = ["web", "emacs", "dev","sys", "5","6","7","8","9"]
+myWorkspaces = ["1","2","3","4","5","6","7","8","9"]
 foreground = "#81a2be"
 background = "#1d1f21"
 
@@ -210,8 +211,8 @@ myLogHook h = (workspaceNamesPP $ def
 myLayoutHook =
         fullscreenFocus $ fullscreenFloat $
         -- NB.lessBorders NB.OnlyScreenFloat $
-        boringWindows $
         windowNavigation $
+        boringWindows $
         onWorkspace "1" full $
         toggleLayouts full $
         tabbed ||| tall
@@ -267,8 +268,8 @@ myTabTheme = def
     , inactiveBorderColor = background
     , inactiveColor = background
     , inactiveTextColor = "#cccccc"
-    , activeColor = background
-    , activeTextColor = "#cccccc"
+    , activeColor = foreground
+    , activeTextColor = background
     , activeBorderColor = foreground
     , activeBorderWidth = 3
     , decoHeight = 30
