@@ -47,7 +47,7 @@ set expandtab
 set fillchars+=vert:│
 set hlsearch
 set ignorecase
-set laststatus=1
+set laststatus=2
 "set listchars=tab:▸\ ,eol:¬,trail:·
 "set listchars=tab:▸\ ,trail:·
 "set list
@@ -72,6 +72,7 @@ inoremap jk <Esc>
 
 let mapleader = " "
 nnoremap <leader>y "+y
+vnoremap <leader>y "+y
 nnoremap <leader>p "+p
 nnoremap <silent> <leader>, :Buffers<cr>
 nnoremap <silent> <leader><space> :Files<cr>
@@ -244,7 +245,7 @@ endif
 
 set termguicolors
 " let ayucolor="light"
-colo base16-tomorrow-night
+colo base16-oceanicnext
 " set cursorline
 set background=dark
 "
