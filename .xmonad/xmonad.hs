@@ -83,8 +83,11 @@ myConfig p = def
 
 -- myWorkspaces = ["web", "emacs", "dev","sys", "5","6","7","8","9"]
 myWorkspaces = ["1","2","3","4","5","6","7","8","9"]
-foreground = "#81a2be"
-background = "#1d1f21"
+
+foreground = "#c0c5ce"
+background = "#1b2b34"
+visualColor = "#4f5b66"
+commentColor = "#65737e"
 
 ------------------------------------------------------------------------------------------
 -- Keybindings
@@ -118,11 +121,12 @@ mykeys (XConfig {modMask = modm}) = M.fromList $
 
         -- workspaces
         , ((modm .|. shiftMask, xK_BackSpace), removeWorkspace)
-        , ((modm .|. shiftMask, xK_r), XMonad.Actions.WorkspaceNames.renameWorkspace prompt_conf)
+        , ((modm, xK_r), XMonad.Actions.WorkspaceNames.renameWorkspace prompt_conf)
         -- , ((modm, xK_m), withWorkspace prompt_conf (windows . W.shift))
 
         , ((modm, xK_w),      withFocused killWindow)
         , ((modm, xK_Tab),    toggleWS)
+        , ((modm .|. shiftMask, xK_r), spawn "xmonad --restart")
         , ((modm , xK_p),     spawn "rofi -modi run,drun -show run")
         , ((modm , xK_s),     spawn "screenshot")
         , ((modm, xK_b     ), sendMessage ToggleStruts)
@@ -177,12 +181,12 @@ myHandleEventHook = docksEventHook
 
 -- Pretty with colored background
 myLogHook h = (workspaceNamesPP $ def
-        { ppCurrent = xmobarColor (colLook White 1) (colLook Blue 0) . wrap " " " "
-        , ppVisible = xmobarColor (colLook Blue 1) "" . wrap " " " "
+        { ppCurrent = xmobarColor (colLook White 1) visualColor . wrap " " " "
+        , ppVisible = xmobarColor background "" . wrap " " " "
         , ppHidden  = xmobarColor (colLook White 1) "" . wrap " " " "
-        , ppHiddenNoWindows = xmobarColor (colLook Black 0) "" . wrap " " " "
+        , ppHiddenNoWindows = xmobarColor commentColor "" . wrap " " " "
         , ppUrgent  = xmobarColor (colLook White 1) "" . wrap "[" "]"
-        , ppLayout  = xmobarColor (colLook Blue 1) "" .
+        , ppLayout  = xmobarColor foreground "" .
         (\x -> case x of
          "Spacing Tall"        -> "[]="
          "Spacing Mirror Tall" -> "[-]"

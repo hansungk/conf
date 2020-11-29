@@ -10,7 +10,7 @@
 xmonad-x86_64-linux
 
 # Base16 color schemes
-base16*
+base16*.vim
 
 .vim/bundle/
 doom.d/custom.el
