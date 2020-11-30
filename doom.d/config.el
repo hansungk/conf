@@ -22,17 +22,17 @@
 ;; (setq doom-font (font-spec :family "monospace" :size 12 :weight 'semi-light)
 ;;       doom-variable-pitch-font (font-spec :family "sans" :size 13))
 (setq doom-font
-      (if (eq system-type 'darwin)
-          (font-spec :family "Menlo" :size 14)
+      (if (string-match-p (regexp-quote "thinkpad") system-name)
+          (font-spec :family "Hack" :size 10.0)
           (font-spec :family "Hack" :size 10.0 :weight 'normal)))
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
 ;; (setq doom-theme 'doom-one)
-(setq doom-theme (if (eq system-type 'darwin)
-                     'doom-nord-light
-                     'doom-tomorrow-night))
+(setq doom-theme (if (string-match-p (regexp-quote "thinkpad") system-name)
+                     'doom-zenburn
+                     'doom-zenburn))
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
@@ -115,6 +115,7 @@
 (define-key doom-leader-map (kbd "=") 'lsp-format-region)
 
 ;; mu4e configuration
+;;
 ;; Refs:
 ;; * Doom mu4e module manual
 ;; * mu4e for dummies [https://www.reddit.com/r/emacs/comments/bfsck6/mu4e_for_dummies/?utm_source=share&utm_medium=web2x]
