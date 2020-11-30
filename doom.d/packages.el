@@ -53,3 +53,4 @@
 (package! cmake-mode)
 (package! swift-mode)
 (package! base16-theme)
+(package! pyvenv)

@@ -68,6 +68,10 @@
 (after! smartparens
   (smartparens-global-mode -1))
 
+(set-language-environment "Korean")
+(prefer-coding-system 'utf-8)
+(global-set-key (kbd "M-SPC") 'toggle-input-method)
+
 ;; UI keys
 ;;
 (define-key evil-motion-state-map (kbd "C-s") 'swiper)
