@@ -65,6 +65,7 @@ set scrolloff=3
 set smartcase
 set smartindent
 set ts=8 sw=4
+set cinwords=
 set undodir=~/.vimdid
 set undofile
 
@@ -235,7 +236,6 @@ au FileType go set ts=8 sw=8 noexpandtab
 au FileType tex set ts=2 sw=2 expandtab
 au FileType tex set makeprg=pdflatex\ --shell-escape\ %
 au FileType verilog set ts=3 sw=3 expandtab
-au FileType markdown setlocal cinwords=
 
 if !has("nvim")
     if exists('+termguicolors')
