@@ -235,6 +235,7 @@ au FileType go set ts=8 sw=8 noexpandtab
 au FileType tex set ts=2 sw=2 expandtab
 au FileType tex set makeprg=pdflatex\ --shell-escape\ %
 au FileType verilog set ts=3 sw=3 expandtab
+au FileType markdown setlocal cinwords=
 
 if !has("nvim")
     if exists('+termguicolors')
@@ -245,7 +246,7 @@ endif
 
 set termguicolors
 " let ayucolor="light"
-colo base16-oceanicnext
+colo base16-tomorrow-night
 " set cursorline
 set background=dark
 "
