@@ -5,13 +5,11 @@
 
 case "${1-}" in
     'pre')
-	chvt 63
-	echo "suspend" > /proc/driver/nvidia/suspend
+        /usr/bin/nvidia-sleep.sh suspend
         ;;
 
     'post')
-	echo "resume" > /proc/driver/nvidia/suspend
-        (sleep 2 && chvt 1)&
+        /usr/bin/nvidia-sleep.sh resume &
         ;;
     *)
         exit 1
