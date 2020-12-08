@@ -14,3 +14,6 @@
 (set-default 'preview-scale-function 1.3)
 (global-hl-line-mode -1)
 (setq global-hl-line-mode -1)
+
+(global-set-key (kbd "C-c j") 'counsel-rg)
+(global-set-key (kbd "C-c '") 'avy-goto-char-2)

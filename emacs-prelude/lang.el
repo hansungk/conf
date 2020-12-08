@@ -1,6 +1,9 @@
 (global-flycheck-mode -1)
-(defun disable-flycheck-mode ()
-  (global-flycheck-mode -1))
-(add-hook 'prog-mode-hook 'disable-flycheck-mode)
+(smartparens-global-mode -1)
+(defun my-prog-mode-hook ()
+  (global-flycheck-mode -1)
+  (smartparens-mode -1)
+  (global-hl-line-mode -1))
+(add-hook 'prog-mode-hook 'my-prog-mode-hook)
 
 (setq verilog-auto-newline nil)
