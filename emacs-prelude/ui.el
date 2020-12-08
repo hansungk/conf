@@ -2,6 +2,7 @@
 (scroll-bar-mode -1)
 (setq prelude-whitespace nil)
 (setq mouse-wheel-progressive-speed nil)
+(setq prelude-flyspell nil)
 
 ;; Dired: default program to use when using "&" on a file.
 (setq dired-guess-shell-alist-user '(("\\.pdf\\'" "zathura")))
