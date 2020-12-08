@@ -2,6 +2,7 @@
 (scroll-bar-mode -1)
 (setq prelude-whitespace nil)
 (setq mouse-wheel-progressive-speed nil)
+(setq prelude-theme nil)
 (setq prelude-flyspell nil)
 
 ;; Dired: default program to use when using "&" on a file.
@@ -11,3 +12,5 @@
 
 ;; AUCTeX preview font size
 (set-default 'preview-scale-function 1.3)
+(global-hl-line-mode -1)
+(setq global-hl-line-mode -1)
