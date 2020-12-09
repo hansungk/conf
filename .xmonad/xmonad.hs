@@ -159,6 +159,7 @@ myManageHook =
     <+> XMonad.Layout.Fullscreen.fullscreenManageHook
     <+> composeAll
             [ className =? "kakaotalk.exe" --> doFloat
+            , className =? "Wine" --> doFloat
             , className =? "Slack" --> doShift "8"
             , isFullscreen --> doShift "8" -- FIXME
             ]
