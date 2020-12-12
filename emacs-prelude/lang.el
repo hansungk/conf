@@ -28,4 +28,4 @@
 
 (defun hammer-check-error ()
   (interactive)
-  (swiper "\\.v, "))
+  (occur "src/.*\\.v, "))
