@@ -15,5 +15,8 @@
 (global-hl-line-mode -1)
 (setq global-hl-line-mode -1)
 
+(global-set-key (kbd "C-a") 'move-beginning-of-line)
+(define-key prelude-mode-map (kbd "C-a") 'move-beginning-of-line)
 (global-set-key (kbd "C-c j") 'counsel-rg)
 (global-set-key (kbd "C-c '") 'avy-goto-char-2)
+(global-set-key (kbd "C-c ;") 'avy-goto-char-in-line)

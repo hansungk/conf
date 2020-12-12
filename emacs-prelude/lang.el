@@ -25,3 +25,7 @@
   ;; (define-key verilog-mode-map (kbd "TAB") 'tab-to-tab-stop)
   )
 (add-hook 'verilog-mode-hook 'my-verilog-mode-hook)
+
+(defun hammer-check-error ()
+  (interactive)
+  (swiper "\\.v, "))
