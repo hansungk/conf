@@ -2,8 +2,6 @@
 (global-flycheck-mode -1)
 (smartparens-global-mode -1)
 
-(add-hook 'before-save-hook 'whitespace-cleanup)
-
 (defun my-prog-mode-hook ()
   (global-flycheck-mode -1)
   (smartparens-mode -1)
