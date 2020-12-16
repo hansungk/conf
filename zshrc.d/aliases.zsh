@@ -24,3 +24,4 @@ alias cclean='rm -rf CMakeCache.txt CMakeFiles/'
 alias xi='xbps-install'
 alias xq='xbps-query'
 alias sudo='sudo ' # to make aliases work
+alias emacs='TERM=screen-24bit emacs -nw'
