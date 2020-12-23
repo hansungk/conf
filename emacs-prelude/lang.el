@@ -12,7 +12,11 @@
 (defun my-c-mode-hook ()
   (c-set-style "linux")
   (c-toggle-comment-style -1)
-  (define-key c-mode-map (kbd "TAB") 'clang-format-region))
+  (define-key c-mode-map (kbd "TAB") 'clang-format-region)
+  (define-key c-mode-map (kbd "M-q")
+    (lambda () (interactive) (if (use-region-p)
+                                 (fill-region (region-beginning) (region-end))
+                               (c-fill-paragraph)))))
 (add-hook 'c-mode-hook 'my-c-mode-hook)
 
 (require 'eglot)
