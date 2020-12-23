@@ -20,6 +20,7 @@
 	    (define-key prelude-mode-map (kbd "C-a") 'move-beginning-of-line)))
 
 (global-set-key (kbd "C-a") 'move-beginning-of-line)
+(global-set-key (kbd "C-c c") 'counsel-compile)
 (global-set-key (kbd "C-c j") 'counsel-rg)
 (global-set-key (kbd "C-c '") 'avy-goto-char-2)
 (global-set-key (kbd "C-c ;") 'avy-goto-char-in-line)

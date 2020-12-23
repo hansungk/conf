@@ -8,6 +8,18 @@
   (global-hl-line-mode -1))
 (add-hook 'prog-mode-hook 'my-prog-mode-hook)
 
+;; C
+(defun my-c-mode-hook ()
+  (c-set-style "linux")
+  (c-toggle-comment-style -1)
+  (define-key c-mode-map (kbd "TAB") 'clang-format-region))
+(add-hook 'c-mode-hook 'my-c-mode-hook)
+
+(require 'eglot)
+(add-to-list 'eglot-server-programs '((c++-mode c-mode) "clangd" "-j=7" "--background-index" "--cross-file-rename"))
+;; (add-hook 'eglot-managed-mode-hook (lambda () (flymake-mode -1)))
+(setq eldoc-echo-area-use-multiline-p nil)
+
 ;; Verilog
 (defun my-verilog-mode-hook ()
   (setq indent-tabs-mode nil)
