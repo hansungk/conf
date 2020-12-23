@@ -17,9 +17,10 @@
 
 (add-hook 'prelude-mode-hook
 	  (lambda ()
-	    (define-key prelude-mode-map (kbd "C-a") 'move-beginning-of-line)))
+	    (define-key prelude-mode-map (kbd "C-a") 'move-beginning-of-line)
+            (define-key prelude-mode-map (kbd "M-o") 'ace-window)))
 
-(global-set-key (kbd "C-a") 'move-beginning-of-line)
+(global-set-key (kbd "<f5>") 'revert-buffer)
 (global-set-key (kbd "C-c c") 'counsel-compile)
 (global-set-key (kbd "C-c j") 'counsel-rg)
 (global-set-key (kbd "C-c '") 'avy-goto-char-2)
