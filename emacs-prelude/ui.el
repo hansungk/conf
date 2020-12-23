@@ -5,6 +5,11 @@
 (setq prelude-theme nil)
 (setq prelude-flyspell nil)
 
+;; Don't be so quick
+(setq confirm-kill-emacs 'y-or-n-p)
+(if (display-graphic-p)
+    (put 'suspend-frame 'disabled t))
+
 ;; Dired: default program to use when using "&" on a file.
 (setq dired-guess-shell-alist-user '(("\\.pdf\\'" "zathura")))
 
