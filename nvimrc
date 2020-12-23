@@ -8,6 +8,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
+Plug 'plasticboy/vim-markdown'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim'
@@ -78,7 +79,7 @@ nnoremap <leader>p "+p
 nnoremap <silent> <leader>, :Buffers<cr>
 nnoremap <silent> <leader><space> :Files<cr>
 nnoremap <silent> <leader>l :BLines<cr>
-nnoremap <leader>g :Rg 
+nnoremap <leader>g :Git diff --cached<cr>
 nnoremap <silent> <leader>n :ALENextWrap<cr>
 nnoremap <silent> <leader>c :make<cr>
 nnoremap <silent> <leader>q :copen<cr>
@@ -229,7 +230,7 @@ let g:fzf_colors =
 map <C-K> :py3f ~/build/llvm/share/clang/clang-format.py<cr>
 imap <C-K> <c-o>:py3f ~/build/llvm/share/clang/clang-format.py<cr>
 
-au FileType c setlocal sw=8 noexpandtab
+au FileType c setlocal ts=8 sw=8 noexpandtab
 au FileType cpp setlocal sw=4 commentstring=//\ %s expandtab
 au FileType cmake set ts=2 sw=2 expandtab
 au FileType go set ts=8 sw=8 noexpandtab
